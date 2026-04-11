@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UGC Systems Club — Maya Creative Co</title>
+<meta name="description" content="Monthly membership for UGC creators: live Deal Clinic calls, a new asset drop each month, full vault access. Implementation support, not more theory." />
+<meta property="og:title" content="UGC Systems Club — Maya Creative Co" />
+<meta property="og:description" content="For creators who treat this like a business — not a side hustle." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          cream: '#F5F0E4', creamDeep: '#EDE5D2', forest: '#1B3A2F',
+          forestDeep: '#0F2620', forestLight: '#2D5742', moss: '#4A7C59',
+          ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background-color: #F5F0E4; color: #0A1A12; }
+  .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .display-balance { text-wrap: balance; }
+
+  .checkerboard {
+    background-image:
+      linear-gradient(45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(-45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #1B3A2F 75%),
+      linear-gradient(-45deg, transparent 75%, #1B3A2F 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  }
+  .checkerboard-cream {
+    background-image:
+      linear-gradient(45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(-45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #F5F0E4 75%),
+      linear-gradient(-45deg, transparent 75%, #F5F0E4 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+  }
+
+  .btn-primary {
+    background-color: #1B3A2F; color: #F5F0E4; padding: 16px 28px; border-radius: 4px;
+    font-weight: 600; font-size: 15px; transition: background-color 0.15s ease, transform 0.1s ease;
+    display: inline-flex; align-items: center; gap: 10px; border: 2px solid #1B3A2F;
+    font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
+  }
+  .btn-primary:hover { background-color: #0F2620; }
+  .btn-primary:active { transform: scale(0.98); }
+
+  .btn-secondary {
+    background-color: transparent; color: #1B3A2F; padding: 16px 28px; border-radius: 4px;
+    font-weight: 600; font-size: 15px; border: 2px solid #1B3A2F; transition: all 0.15s ease;
+    display: inline-flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .btn-secondary:hover { background-color: #1B3A2F; color: #F5F0E4; }
+
+  .mono-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: #1B3A2F; font-weight: 500;
+  }
+
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .faq-icon { transform: rotate(45deg); }
+  .faq-icon { transition: transform 0.2s ease; }
+
+  .toggle-btn {
+    padding: 10px 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: transparent;
+    border: none;
+    color: #4A5C50;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+  }
+  .toggle-btn.active { background: #1B3A2F; color: #F5F0E4; }
+</style>
+</head>
+<body class="antialiased">
+
+<div class="checkerboard h-2"></div>
+
+<!-- NAV -->
+<nav class="border-b border-line bg-cream sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2">
+      <span class="inline-block w-5 h-5 checkerboard rounded-sm"></span>
+      Maya Creative Co
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ash">
+      <a href="bookedout.html" class="hover:text-forest transition-colors">Kit</a>
+      <a href="intensive.html" class="hover:text-forest transition-colors">Strategy</a>
+      <a href="club.html" class="text-forest transition-colors">Club</a>
+      <a href="about.html" class="hover:text-forest transition-colors">About</a>
+    </div>
+    <a href="#pricing" class="btn-primary text-sm hidden md:inline-flex !py-3 !px-5">Join — $39/mo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="px-6 py-20 md:py-28">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-center gap-3 mb-8">
+      <span class="inline-block w-8 h-2 checkerboard"></span>
+      <span class="mono-label">Maya_Creative_Co / ugc_systems_club.v1</span>
+    </div>
+    <h1 class="font-display text-5xl md:text-7xl font-bold leading-[1.02] tracking-tight display-balance mb-8 text-forest">
+      For creators who treat this like a <span class="italic text-moss">business</span> — not a side hustle.
+    </h1>
+    <p class="text-lg md:text-xl text-ash leading-relaxed max-w-2xl mb-10 display-balance">
+      The UGC Systems Club is a monthly membership for implementation, deal feedback, and the kind of behind-the-scenes support that gets people booked.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+      <a href="#pricing" class="btn-primary">Join the Club — $39/mo</a>
+      <a href="#vault" class="btn-secondary">See what's inside</a>
+    </div>
+  </div>
+</section>
+
+<div class="checkerboard h-3"></div>
+
+<!-- EVERY MONTH -->
+<section class="px-6 py-24 bg-forest text-cream">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-14 max-w-2xl">
+      <span class="mono-label !text-cream/60">// every_month</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 display-balance">
+        What you get, every single month.
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="border-2 border-moss rounded-md p-8 bg-forestDeep/50">
+        <p class="font-mono text-moss text-xs mb-4">// benefit_01 · live</p>
+        <h3 class="font-display text-2xl font-bold text-cream mb-4">Deal Clinic call</h3>
+        <p class="text-cream/70 leading-relaxed">One live 60–90 minute group call per month. Bring your stuck deals, pitches, rate questions, weird brand emails — we troubleshoot live. Recorded if you can't make it.</p>
+      </div>
+      <div class="border-2 border-moss rounded-md p-8 bg-forestDeep/50">
+        <p class="font-mono text-moss text-xs mb-4">// benefit_02 · async</p>
+        <h3 class="font-display text-2xl font-bold text-cream mb-4">New asset drop</h3>
+        <p class="text-cream/70 leading-relaxed">A new template, tool, or script every month — based on what members are actually struggling with. Rate sheets, pitch scripts, contract clauses, SOP docs.</p>
+      </div>
+      <div class="border-2 border-moss rounded-md p-8 bg-forestDeep/50">
+        <p class="font-mono text-moss text-xs mb-4">// benefit_03 · compounding</p>
+        <h3 class="font-display text-2xl font-bold text-cream mb-4">Full vault access</h3>
+        <p class="text-cream/70 leading-relaxed">Every past asset, every past Deal Clinic recording, every past drop. The longer you stay, the bigger it gets — and you keep access to everything for as long as you're a member.</p>
+      </div>
+      <div class="border-2 border-moss rounded-md p-8 bg-forestDeep/50">
+        <p class="font-mono text-moss text-xs mb-4">// benefit_04 · optional</p>
+        <h3 class="font-display text-2xl font-bold text-cream mb-4">Member community</h3>
+        <p class="text-cream/70 leading-relaxed">Private channel for members only. Share wins, post brand deals, ask quick questions between calls. Actual working creators — no lurkers, no coaches-in-disguise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YEAR IN THE CLUB -->
+<section class="px-6 py-24 bg-cream">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-14 max-w-2xl">
+      <span class="mono-label">// a_year_in_the_club</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 text-forest display-balance">
+        What this looks like over time.
+      </h2>
+      <p class="text-lg text-ash mt-6 leading-relaxed">The value compounds. Here's roughly what a year of membership looks like for someone who actually shows up.</p>
+    </div>
+    <div class="space-y-2">
+      <div class="bg-white border border-line rounded-md p-6 flex gap-6 items-start">
+        <div class="font-mono text-forest text-sm shrink-0 w-20">// month_01</div>
+        <div><h3 class="font-semibold text-forest mb-1">Set your pricing</h3><p class="text-ash text-sm">Deal Clinic audit + new rate sheet asset drop. You finally have numbers you can defend.</p></div>
+      </div>
+      <div class="bg-white border border-line rounded-md p-6 flex gap-6 items-start">
+        <div class="font-mono text-forest text-sm shrink-0 w-20">// month_02</div>
+        <div><h3 class="font-semibold text-forest mb-1">Build your pipeline</h3><p class="text-ash text-sm">Outreach cadence template drops. You run your first real pitch week.</p></div>
+      </div>
+      <div class="bg-white border border-line rounded-md p-6 flex gap-6 items-start">
+        <div class="font-mono text-forest text-sm shrink-0 w-20">// month_03</div>
+        <div><h3 class="font-semibold text-forest mb-1">Close your first retainer</h3><p class="text-ash text-sm">Retainer proposal template drops. You bring the contract to Deal Clinic for a group review.</p></div>
+      </div>
+      <div class="bg-white border border-line rounded-md p-6 flex gap-6 items-start">
+        <div class="font-mono text-forest text-sm shrink-0 w-20">// month_06</div>
+        <div><h3 class="font-semibold text-forest mb-1">Tighten the systems</h3><p class="text-ash text-sm">Onboarding + client-off-boarding SOPs drop. You stop repeating yourself between deals.</p></div>
+      </div>
+      <div class="bg-white border border-line rounded-md p-6 flex gap-6 items-start">
+        <div class="font-mono text-forest text-sm shrink-0 w-20">// month_09</div>
+        <div><h3 class="font-semibold text-forest mb-1">Scale the business</h3><p class="text-ash text-sm">Hiring / sub-creator templates drop. You start thinking about the next level.</p></div>
+      </div>
+      <div class="bg-white border border-line rounded-md p-6 flex gap-6 items-start">
+        <div class="font-mono text-forest text-sm shrink-0 w-20">// month_12</div>
+        <div><h3 class="font-semibold text-forest mb-1">Operate like a business</h3><p class="text-ash text-sm">A full vault of assets, a working pipeline, a tight pricing model, and a network of peers who get it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THIS IS NOT -->
+<section class="px-6 py-20 bg-forest text-cream">
+  <div class="max-w-3xl mx-auto">
+    <span class="mono-label !text-cream/60">// what_this_is_NOT</span>
+    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-8 display-balance">
+      Let's set expectations.
+    </h2>
+    <ul class="space-y-4 text-lg text-cream/80">
+      <li class="flex gap-4"><span class="text-moss font-mono">×</span> Not a course you binge. There's no curriculum to "finish."</li>
+      <li class="flex gap-4"><span class="text-moss font-mono">×</span> Not a Discord that goes silent after week two.</li>
+      <li class="flex gap-4"><span class="text-moss font-mono">×</span> Not "mindset content" or "manifesting clients" affirmations.</li>
+      <li class="flex gap-4"><span class="text-moss font-mono">×</span> Not a place to lurk — members who never show up unsubscribe themselves within a few months.</li>
+    </ul>
+    <p class="mt-10 text-cream font-semibold">This is implementation support for creators who want the work, not the theater.</p>
+  </div>
+</section>
+
+<!-- VAULT PEEK -->
+<section id="vault" class="px-6 py-24 bg-creamDeep">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-14 max-w-2xl">
+      <span class="mono-label">// inside_the_vault</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 text-forest display-balance">
+        A look at what's in the vault.
+      </h2>
+      <p class="text-lg text-ash mt-6 leading-relaxed">Every past asset drop, live and usable. This list grows every month — once you're in, you keep access to everything.</p>
+    </div>
+    <div class="bg-forestDeep text-cream p-8 rounded-md font-mono text-xs md:text-sm leading-relaxed">
+      <div class="text-cream/50 mb-4">$ ls ./vault --sort=recent</div>
+      <div class="space-y-1">
+        <div><span class="text-moss">→</span> rate_sheet_template_v3.xlsx <span class="text-cream/40">// added this month</span></div>
+        <div><span class="text-moss">→</span> cold_pitch_scripts_2026.md</div>
+        <div><span class="text-moss">→</span> retainer_proposal_template.docx</div>
+        <div><span class="text-moss">→</span> contract_clauses_to_always_add.md</div>
+        <div><span class="text-moss">→</span> followup_sequence_7day.md</div>
+        <div><span class="text-moss">→</span> deal_clinic_2026-03_recording.mp4</div>
+        <div><span class="text-moss">→</span> onboarding_SOP_v2.pdf</div>
+        <div><span class="text-moss">→</span> brand_research_checklist.md</div>
+        <div><span class="text-moss">→</span> client_tracker_starter.csv</div>
+        <div><span class="text-moss">→</span> whitelisting_rate_calculator.xlsx</div>
+        <div><span class="text-moss">→</span> usage_rights_contract_addendum.docx</div>
+        <div><span class="text-moss">→</span> deal_clinic_2026-02_recording.mp4</div>
+        <div class="text-cream/40">... and 40+ more assets</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="px-6 py-24 bg-cream">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-10">
+      <span class="mono-label">// pricing</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 text-forest">Two ways in.</h2>
+    </div>
+
+    <div class="flex justify-center mb-10">
+      <div class="bg-white border border-line rounded-md p-1 inline-flex gap-1">
+        <button id="monthlyBtn" class="toggle-btn active">Monthly</button>
+        <button id="annualBtn" class="toggle-btn">Annual · Save 15%</button>
+      </div>
+    </div>
+
+    <div id="pricingCard" class="bg-white border-2 border-forest rounded-md overflow-hidden">
+      <div class="checkerboard h-2"></div>
+      <div class="p-10 md:p-12">
+        <div class="text-center mb-8">
+          <p class="mono-label mb-3">// <span id="planLabel">monthly_membership</span></p>
+          <h3 class="font-display text-6xl md:text-7xl font-bold text-forest">
+            $<span id="planPrice">39</span><span class="text-xl text-ash font-mono">/<span id="planPeriod">mo</span></span>
+          </h3>
+          <p class="text-sm text-ash mt-2 font-mono"><span id="planNote">cancel_anytime</span></p>
+        </div>
+        <ul class="space-y-3 text-ash text-sm mb-10">
+          <li class="flex gap-3"><span class="text-moss">→</span> 1 live Deal Clinic call every month</li>
+          <li class="flex gap-3"><span class="text-moss">→</span> 1 new asset drop every month</li>
+          <li class="flex gap-3"><span class="text-moss">→</span> Full vault of past assets and recordings</li>
+          <li class="flex gap-3"><span class="text-moss">→</span> Private member community</li>
+          <li class="flex gap-3"><span class="text-moss">→</span> Early access to new Maya Creative Co drops</li>
+          <li class="flex gap-3"><span class="text-moss">→</span> 10% off the Strategy Intensive for active members</li>
+        </ul>
+        <a href="#" class="btn-primary w-full justify-center">Join now →</a>
+      </div>
+    </div>
+
+    <!-- Founding member bonus -->
+    <div class="mt-8 border-l-4 border-moss bg-creamDeep p-6 rounded-r-md">
+      <p class="mono-label !text-moss mb-2">// founding_member_bonus</p>
+      <p class="text-ash text-sm leading-relaxed">The first 50 founding members lock in this price for life — your rate will never go up as long as you're a member. After that, pricing climbs to $49/mo and $497/yr.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="px-6 py-24 bg-creamDeep">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-14">
+      <span class="mono-label">// from_members</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 text-forest">Members talking.</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="text-forest leading-relaxed mb-6">"Deal Clinic paid for a year of membership in the first month. I brought a brand email I was going to accept and Maya rewrote my response — the new rate landed and I booked at 2× what I would have."</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-line">
+          <div class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center font-mono text-xs text-forest">DC</div>
+          <div><p class="font-semibold text-forest text-sm">Danielle C.</p><p class="mono-label !text-ash">// wellness_UGC</p></div>
+        </div>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="text-forest leading-relaxed mb-6">"The asset drops alone are worth more than $39. The vault is becoming my whole back-office — I pull a template almost every week."</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-line">
+          <div class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center font-mono text-xs text-forest">RP</div>
+          <div><p class="font-semibold text-forest text-sm">Ray P.</p><p class="mono-label !text-ash">// home_goods_creator</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="px-6 py-24 bg-cream">
+  <div class="max-w-3xl mx-auto">
+    <div class="mb-12">
+      <span class="mono-label">// questions</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 text-forest">Questions.</h2>
+    </div>
+    <div class="space-y-3">
+      <details class="border border-line rounded-md bg-white">
+        <summary class="p-6 flex justify-between items-center font-semibold text-forest">Can I cancel anytime? <span class="faq-icon text-2xl text-forest font-light">+</span></summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Yes — one click, no "please stay" emails, no retention call. You keep access until the end of your current billing period.</div>
+      </details>
+      <details class="border border-line rounded-md bg-white">
+        <summary class="p-6 flex justify-between items-center font-semibold text-forest">What if I miss a live call? <span class="faq-icon text-2xl text-forest font-light">+</span></summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Every Deal Clinic is recorded and dropped in the vault within 24 hours. You can also submit questions in advance and I'll answer them live — so you still get your answer even if you can't attend.</div>
+      </details>
+      <details class="border border-line rounded-md bg-white">
+        <summary class="p-6 flex justify-between items-center font-semibold text-forest">Do I need the Kit first? <span class="faq-icon text-2xl text-forest font-light">+</span></summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Not required, but it helps. The Kit gives you the foundations — rate calculator, core scripts, the proposal template. The Club is ongoing implementation support layered on top.</div>
+      </details>
+      <details class="border border-line rounded-md bg-white">
+        <summary class="p-6 flex justify-between items-center font-semibold text-forest">Is there a community? <span class="faq-icon text-2xl text-forest font-light">+</span></summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Yes — a private channel for members only. Small, working creators, no lurkers, no coaches. It's not the whole point of the membership, but it's a real one.</div>
+      </details>
+      <details class="border border-line rounded-md bg-white">
+        <summary class="p-6 flex justify-between items-center font-semibold text-forest">What platform is it on? <span class="faq-icon text-2xl text-forest font-light">+</span></summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Membership and vault are hosted on Stan. Deal Clinic calls happen on Zoom. Community lives in a private channel you'll get access to once you join.</div>
+      </details>
+      <details class="border border-line rounded-md bg-white">
+        <summary class="p-6 flex justify-between items-center font-semibold text-forest">Do prices ever go up? <span class="faq-icon text-2xl text-forest font-light">+</span></summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Yes — after the first 50 founding members, pricing moves to $49/mo and $497/yr. Founding members lock in today's rate for as long as they're an active member.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="px-6 py-24 bg-cream border-t border-line">
+  <div class="max-w-3xl mx-auto text-center">
+    <span class="mono-label">// ready</span>
+    <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-6 display-balance text-forest">See you in the Club.</h2>
+    <p class="text-lg text-ash mb-10 max-w-xl mx-auto display-balance">Lock in founding member pricing while it's still available.</p>
+    <a href="#pricing" class="btn-primary">Join the Club — $39/mo</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-forestDeep text-cream/70">
+  <div class="checkerboard h-2"></div>
+  <div class="px-6 py-14 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="inline-block w-5 h-5 checkerboard-cream"></span>
+        <p class="font-display text-lg font-bold text-cream">Maya Creative Co</p>
+      </div>
+      <p class="text-xs max-w-xs">Systems for UGC creators who want to be booked, paid, and run like a business.</p>
+    </div>
+    <div class="text-xs grid grid-cols-2 gap-x-10 gap-y-2">
+      <a href="index.html" class="hover:text-cream font-mono">→ home</a>
+      <a href="bookedout.html" class="hover:text-cream font-mono">→ the kit</a>
+      <a href="intensive.html" class="hover:text-cream font-mono">→ strategy intensive</a>
+      <a href="advisory.html" class="hover:text-cream font-mono">→ advisory</a>
+      <a href="club.html" class="hover:text-cream font-mono">→ the club</a>
+      <a href="about.html" class="hover:text-cream font-mono">→ about</a>
+      <a href="https://mayaherring.com" class="hover:text-cream font-mono">→ mayaherring.com</a>
+      <a href="mailto:hello@collegarestudio.com" class="hover:text-cream font-mono">→ contact</a>
+    </div>
+    <p class="text-xs font-mono">© 2026</p>
+  </div>
+</footer>
+
+<script>
+  const monthlyBtn = document.getElementById('monthlyBtn');
+  const annualBtn = document.getElementById('annualBtn');
+  const planLabel = document.getElementById('planLabel');
+  const planPrice = document.getElementById('planPrice');
+  const planPeriod = document.getElementById('planPeriod');
+  const planNote = document.getElementById('planNote');
+
+  monthlyBtn.addEventListener('click', () => {
+    monthlyBtn.classList.add('active');
+    annualBtn.classList.remove('active');
+    planLabel.textContent = 'monthly_membership';
+    planPrice.textContent = '39';
+    planPeriod.textContent = 'mo';
+    planNote.textContent = 'cancel_anytime';
+  });
+
+  annualBtn.addEventListener('click', () => {
+    annualBtn.classList.add('active');
+    monthlyBtn.classList.remove('active');
+    planLabel.textContent = 'annual_membership · save_15%';
+    planPrice.textContent = '397';
+    planPeriod.textContent = 'yr';
+    planNote.textContent = 'locked_in_for_12_months';
+  });
+</script>
+
+</body>
+</html>

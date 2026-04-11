@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>4-Week Advisory — Maya Creative Co</title>
+<meta name="description" content="Hands-on 4-week advisory for UGC creators and creator-founders ready to operate like a business. 1 kickoff + 3 follow-up calls + Voxer access + written roadmap." />
+<meta property="og:title" content="4-Week Advisory — Maya Creative Co" />
+<meta property="og:description" content="Four weeks to a sharper offer, a stronger pipeline, and a plan you'll actually execute." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          cream: '#F5F0E4', creamDeep: '#EDE5D2', forest: '#1B3A2F',
+          forestDeep: '#0F2620', forestLight: '#2D5742', moss: '#4A7C59',
+          ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background-color: #F5F0E4; color: #0A1A12; }
+  .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .display-balance { text-wrap: balance; }
+
+  .checkerboard {
+    background-image:
+      linear-gradient(45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(-45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #1B3A2F 75%),
+      linear-gradient(-45deg, transparent 75%, #1B3A2F 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  }
+  .checkerboard-cream {
+    background-image:
+      linear-gradient(45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(-45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #F5F0E4 75%),
+      linear-gradient(-45deg, transparent 75%, #F5F0E4 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+  }
+
+  .btn-primary {
+    background-color: #1B3A2F; color: #F5F0E4; padding: 16px 28px; border-radius: 4px;
+    font-weight: 600; font-size: 15px; transition: background-color 0.15s ease, transform 0.1s ease;
+    display: inline-flex; align-items: center; gap: 10px; border: 2px solid #1B3A2F;
+    font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
+  }
+  .btn-primary:hover { background-color: #0F2620; }
+  .btn-primary:active { transform: scale(0.98); }
+
+  .btn-secondary {
+    background-color: transparent; color: #1B3A2F; padding: 16px 28px; border-radius: 4px;
+    font-weight: 600; font-size: 15px; border: 2px solid #1B3A2F; transition: all 0.15s ease;
+    display: inline-flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .btn-secondary:hover { background-color: #1B3A2F; color: #F5F0E4; }
+
+  .mono-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: #1B3A2F; font-weight: 500;
+  }
+
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .faq-icon { transform: rotate(45deg); }
+  .faq-icon { transition: transform 0.2s ease; }
+</style>
+</head>
+<body class="antialiased">
+
+<div class="checkerboard h-2"></div>
+
+<!-- NAV -->
+<nav class="border-b border-line bg-cream sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2">
+      <span class="inline-block w-5 h-5 checkerboard rounded-sm"></span>
+      Maya Creative Co
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ash">
+      <a href="bookedout.html" class="hover:text-forest transition-colors">Kit</a>
+      <a href="intensive.html" class="hover:text-forest transition-colors">Strategy</a>
+      <a href="club.html" class="hover:text-forest transition-colors">Club</a>
+      <a href="about.html" class="hover:text-forest transition-colors">About</a>
+    </div>
+    <a href="#apply" class="btn-primary text-sm hidden md:inline-flex !py-3 !px-5">Apply</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="px-6 py-20 md:py-28">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-center gap-3 mb-8">
+      <span class="inline-block w-8 h-2 checkerboard"></span>
+      <span class="mono-label">Maya_Creative_Co / advisory_container.v1</span>
+    </div>
+    <h1 class="font-display text-5xl md:text-7xl font-bold leading-[1.02] tracking-tight display-balance mb-8 text-forest">
+      Four weeks to a sharper offer, a stronger pipeline, and a plan you'll <span class="italic text-moss">actually execute.</span>
+    </h1>
+    <p class="text-lg md:text-xl text-ash leading-relaxed max-w-2xl mb-10 display-balance">
+      Hands-on advisory for UGC creators and creator-founders ready to operate like a business — not a side hustle.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+      <a href="#apply" class="btn-primary">Apply for advisory →</a>
+      <a href="#weeks" class="btn-secondary">See the 4-week plan</a>
+    </div>
+    <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ash">
+      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-moss rounded-full"></span> 4 weekly calls</span>
+      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-moss rounded-full"></span> Voxer access</span>
+      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-moss rounded-full"></span> Capped at 4 clients/month</span>
+    </div>
+  </div>
+</section>
+
+<div class="checkerboard h-3"></div>
+
+<!-- WHO THIS IS FOR -->
+<section class="px-6 py-24 bg-forest text-cream">
+  <div class="max-w-5xl mx-auto">
+    <span class="mono-label !text-cream/60">// who_this_is_for</span>
+    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-10 display-balance">
+      Three creators this is built for.
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="border border-cream/20 rounded-md p-8">
+        <p class="font-mono text-moss text-sm mb-4">// archetype_01</p>
+        <h3 class="font-display text-xl font-bold text-cream mb-3">The creator scaling past $10K/mo</h3>
+        <p class="text-cream/70 text-sm leading-relaxed">You're booked but burning out. You need systems to stop being the bottleneck so the business can grow without you grinding harder.</p>
+      </div>
+      <div class="border border-cream/20 rounded-md p-8">
+        <p class="font-mono text-moss text-sm mb-4">// archetype_02</p>
+        <h3 class="font-display text-xl font-bold text-cream mb-3">The mini-agency owner</h3>
+        <p class="text-cream/70 text-sm leading-relaxed">You've added 1–2 creators under you, pricing is a mess, and you need an offer architecture that works at team scale, not just solo.</p>
+      </div>
+      <div class="border border-cream/20 rounded-md p-8">
+        <p class="font-mono text-moss text-sm mb-4">// archetype_03</p>
+        <h3 class="font-display text-xl font-bold text-cream mb-3">The creator-founder</h3>
+        <p class="text-cream/70 text-sm leading-relaxed">You're building a product or SaaS alongside your creator business. You need help deciding what to say yes to and what to kill.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="px-6 py-24 bg-cream">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-14 max-w-2xl">
+      <span class="mono-label">// what_is_included</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 text-forest display-balance">
+        Everything you need to actually move.
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="mono-label mb-3">// 01 · kickoff</p>
+        <h3 class="font-display text-xl font-bold text-forest mb-2">90-min deep-dive kickoff</h3>
+        <p class="text-ash text-sm leading-relaxed">We go through everything — offers, pricing, pipeline, content, roadblocks — and leave the call with an agreed-on plan for the 4 weeks.</p>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="mono-label mb-3">// 02 · weekly_calls</p>
+        <h3 class="font-display text-xl font-bold text-forest mb-2">3 follow-up calls (45 min)</h3>
+        <p class="text-ash text-sm leading-relaxed">One per week after kickoff. Review what's shipped, troubleshoot what's stuck, re-prioritize for the next 7 days.</p>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="mono-label mb-3">// 03 · voxer</p>
+        <h3 class="font-display text-xl font-bold text-forest mb-2">Voxer / DM access</h3>
+        <p class="text-ash text-sm leading-relaxed">Send me pitches, pricing questions, contract flags, rough drafts. Voice memos back within 24 hours on weekdays.</p>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="mono-label mb-3">// 04 · roadmap</p>
+        <h3 class="font-display text-xl font-bold text-forest mb-2">Written roadmap</h3>
+        <p class="text-ash text-sm leading-relaxed">Delivered after kickoff, updated weekly. A living doc of priorities, decisions, and commitments so nothing slips.</p>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="mono-label mb-3">// 05 · async_feedback</p>
+        <h3 class="font-display text-xl font-bold text-forest mb-2">Async feedback on assets</h3>
+        <p class="text-ash text-sm leading-relaxed">Pitches, proposals, landing pages, email sequences, offer copy — send them over, I'll mark them up and send back.</p>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="mono-label mb-3">// 06 · weekly_priorities</p>
+        <h3 class="font-display text-xl font-bold text-forest mb-2">Weekly priorities doc</h3>
+        <p class="text-ash text-sm leading-relaxed">Every Monday you get a short list: the 3 things that actually matter this week. Nothing more, nothing less.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 WEEKS -->
+<section id="weeks" class="px-6 py-24 bg-creamDeep">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-14 max-w-2xl">
+      <span class="mono-label">// the_four_weeks</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 text-forest display-balance">
+        A structured month.
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="bg-forest text-cream p-8 rounded-md relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-8 h-2 checkerboard-cream"></div>
+        <p class="font-mono text-moss text-xs mb-4">// week_01</p>
+        <h3 class="font-display text-2xl font-bold mb-3">Audit & Roadmap</h3>
+        <p class="text-cream/70 text-sm leading-relaxed">Full kickoff. We look at everything and build the plan. You leave the week with clear priorities for the next three.</p>
+      </div>
+      <div class="bg-white border border-line p-8 rounded-md">
+        <p class="mono-label mb-4">// week_02</p>
+        <h3 class="font-display text-2xl font-bold text-forest mb-3">Offer & Pricing</h3>
+        <p class="text-ash text-sm leading-relaxed">Rebuild your pricing model. Tighten your offer architecture. Ship the new rate card or proposal template.</p>
+      </div>
+      <div class="bg-white border border-line p-8 rounded-md">
+        <p class="mono-label mb-4">// week_03</p>
+        <h3 class="font-display text-2xl font-bold text-forest mb-3">Systems & Outreach</h3>
+        <p class="text-ash text-sm leading-relaxed">Build the pipeline. Cold + warm pitch cadence. CRM in place. First round of real outreach going out.</p>
+      </div>
+      <div class="bg-white border border-line p-8 rounded-md">
+        <p class="mono-label mb-4">// week_04</p>
+        <h3 class="font-display text-2xl font-bold text-forest mb-3">Launch & Iterate</h3>
+        <p class="text-ash text-sm leading-relaxed">Push the new offer or campaign live. Review what worked, what needs revision, and what your next 90 days look like.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="px-6 py-24 bg-forest text-cream">
+  <div class="max-w-4xl mx-auto">
+    <span class="mono-label !text-cream/60">// what_you_walk_away_with</span>
+    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-10 display-balance">
+      After four weeks you should have:
+    </h2>
+    <ul class="space-y-5 text-lg text-cream/80">
+      <li class="flex gap-4"><span class="text-moss font-mono shrink-0">→</span> A tightened offer you can actually defend on a sales call.</li>
+      <li class="flex gap-4"><span class="text-moss font-mono shrink-0">→</span> A validated pricing model — no more guessing, no more apologizing for your rates.</li>
+      <li class="flex gap-4"><span class="text-moss font-mono shrink-0">→</span> A working pipeline with repeatable outreach and follow-up cadences.</li>
+      <li class="flex gap-4"><span class="text-moss font-mono shrink-0">→</span> A 90-day roadmap for what happens after we wrap — so the progress keeps compounding.</li>
+      <li class="flex gap-4"><span class="text-moss font-mono shrink-0">→</span> Real, usable assets — proposals, scripts, landing copy — not just advice.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section id="apply" class="px-6 py-24 bg-creamDeep">
+  <div class="max-w-3xl mx-auto">
+    <div class="bg-white border-2 border-forest rounded-md overflow-hidden">
+      <div class="checkerboard h-2"></div>
+      <div class="p-10 md:p-14 text-center">
+        <span class="mono-label">// investment</span>
+        <h2 class="font-display text-5xl md:text-6xl font-bold text-forest mt-6 mb-2">$3,500</h2>
+        <p class="text-sm text-ash font-mono mb-8">// four_week_container · limited_to_4_per_month</p>
+        <p class="text-ash leading-relaxed max-w-md mx-auto mb-10">One 90-min kickoff, three 45-min follow-ups, Voxer access for the full month, written roadmap, async asset feedback.</p>
+        <a href="#" class="btn-primary w-full justify-center">Apply for advisory →</a>
+        <p class="mt-6 text-xs text-ash font-mono">// payment_plans_available · application_required</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="px-6 py-24 bg-cream">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-14 max-w-2xl">
+      <span class="mono-label">// the_process</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 text-forest display-balance">
+        How we start.
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="border-l-4 border-forest pl-6 py-2">
+        <p class="mono-label">// step_01</p>
+        <h3 class="font-display text-lg font-bold text-forest mt-2 mb-2">Apply</h3>
+        <p class="text-sm text-ash">Tell me where you are and what you want in 4 weeks.</p>
+      </div>
+      <div class="border-l-4 border-forest pl-6 py-2">
+        <p class="mono-label">// step_02</p>
+        <h3 class="font-display text-lg font-bold text-forest mt-2 mb-2">Fit call</h3>
+        <p class="text-sm text-ash">A quick 20-min fit check. No pitch. Just alignment.</p>
+      </div>
+      <div class="border-l-4 border-forest pl-6 py-2">
+        <p class="mono-label">// step_03</p>
+        <h3 class="font-display text-lg font-bold text-forest mt-2 mb-2">Onboarding</h3>
+        <p class="text-sm text-ash">Intake forms, access, kickoff date booked.</p>
+      </div>
+      <div class="border-l-4 border-forest pl-6 py-2">
+        <p class="mono-label">// step_04</p>
+        <h3 class="font-display text-lg font-bold text-forest mt-2 mb-2">Week 1 begins</h3>
+        <p class="text-sm text-ash">90-min kickoff. The 4 weeks are on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="px-6 py-24 bg-creamDeep">
+  <div class="max-w-3xl mx-auto">
+    <span class="mono-label">// from_a_past_client</span>
+    <blockquote class="font-display text-2xl md:text-4xl font-bold leading-tight text-forest mt-8 mb-8 display-balance">
+      "I came in thinking I needed a new pitch script. I left with a completely restructured offer that doubled my average deal size. The weekly rhythm kept me accountable — that's the part I'd pay for twice."
+    </blockquote>
+    <div class="flex items-center gap-3 pt-4 border-t border-line">
+      <div class="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center font-mono text-sm text-forest">MK</div>
+      <div>
+        <p class="font-semibold text-forest">Morgan K.</p>
+        <p class="mono-label !text-ash">// creator_founder · skincare_UGC</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="px-6 py-24 bg-cream">
+  <div class="max-w-3xl mx-auto">
+    <div class="mb-12">
+      <span class="mono-label">// questions</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 text-forest">Questions.</h2>
+    </div>
+    <div class="space-y-3">
+      <details class="border border-line rounded-md bg-white">
+        <summary class="p-6 flex justify-between items-center font-semibold text-forest">Do you offer payment plans? <span class="faq-icon text-2xl text-forest font-light">+</span></summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Yes — split into 2 payments ($1,750 on booking, $1,750 at Week 2) with no added cost. Longer plans available on request.</div>
+      </details>
+      <details class="border border-line rounded-md bg-white">
+        <summary class="p-6 flex justify-between items-center font-semibold text-forest">What if I need more than 4 weeks? <span class="faq-icon text-2xl text-forest font-light">+</span></summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">The container is intentionally short — 4 weeks is enough to reset the foundations. If you want ongoing support after, we can talk about extending at a discounted continuation rate.</div>
+      </details>
+      <details class="border border-line rounded-md bg-white">
+        <summary class="p-6 flex justify-between items-center font-semibold text-forest">Can I extend after the 4 weeks? <span class="faq-icon text-2xl text-forest font-light">+</span></summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Yes — past advisory clients can continue at a reduced monthly rate for ongoing implementation support.</div>
+      </details>
+      <details class="border border-line rounded-md bg-white">
+        <summary class="p-6 flex justify-between items-center font-semibold text-forest">Do you sign NDAs? <span class="faq-icon text-2xl text-forest font-light">+</span></summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Happy to. Send yours during onboarding or use mine — whichever works.</div>
+      </details>
+      <details class="border border-line rounded-md bg-white">
+        <summary class="p-6 flex justify-between items-center font-semibold text-forest">Do you do this for non-creators? <span class="faq-icon text-2xl text-forest font-light">+</span></summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Only if there's a clear adjacency — creator-founders building products, mini-agencies in the creator economy. Pure ecommerce or SaaS isn't a fit.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="px-6 py-24 bg-cream border-t border-line">
+  <div class="max-w-3xl mx-auto text-center">
+    <span class="mono-label">// final_call</span>
+    <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-6 display-balance text-forest">Four weeks. One plan. No fluff.</h2>
+    <p class="text-lg text-ash mb-10 max-w-xl mx-auto display-balance">If you're ready to operate like a business, I'll help you build the systems to do it.</p>
+    <a href="#apply" class="btn-primary">Apply for advisory — $3,500</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-forestDeep text-cream/70">
+  <div class="checkerboard h-2"></div>
+  <div class="px-6 py-14 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="inline-block w-5 h-5 checkerboard-cream"></span>
+        <p class="font-display text-lg font-bold text-cream">Maya Creative Co</p>
+      </div>
+      <p class="text-xs max-w-xs">Systems for UGC creators who want to be booked, paid, and run like a business.</p>
+    </div>
+    <div class="text-xs grid grid-cols-2 gap-x-10 gap-y-2">
+      <a href="index.html" class="hover:text-cream font-mono">→ home</a>
+      <a href="bookedout.html" class="hover:text-cream font-mono">→ the kit</a>
+      <a href="intensive.html" class="hover:text-cream font-mono">→ strategy intensive</a>
+      <a href="advisory.html" class="hover:text-cream font-mono">→ advisory</a>
+      <a href="club.html" class="hover:text-cream font-mono">→ the club</a>
+      <a href="about.html" class="hover:text-cream font-mono">→ about</a>
+      <a href="https://mayaherring.com" class="hover:text-cream font-mono">→ mayaherring.com</a>
+      <a href="mailto:hello@collegarestudio.com" class="hover:text-cream font-mono">→ contact</a>
+    </div>
+    <p class="text-xs font-mono">© 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Maya — Maya Creative Co</title>
+<meta name="description" content="I'm Maya. I build systems for the UGC creators I wish I'd had when I started. Working brand creator, tool builder, and founder of Maya Creative Co." />
+<meta property="og:title" content="About Maya — Maya Creative Co" />
+<meta property="og:description" content="Working UGC creator, tool builder, and founder of Maya Creative Co." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          cream: '#F5F0E4', creamDeep: '#EDE5D2', forest: '#1B3A2F',
+          forestDeep: '#0F2620', forestLight: '#2D5742', moss: '#4A7C59',
+          ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background-color: #F5F0E4; color: #0A1A12; }
+  .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .display-balance { text-wrap: balance; }
+
+  .checkerboard {
+    background-image:
+      linear-gradient(45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(-45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #1B3A2F 75%),
+      linear-gradient(-45deg, transparent 75%, #1B3A2F 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  }
+  .checkerboard-cream {
+    background-image:
+      linear-gradient(45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(-45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #F5F0E4 75%),
+      linear-gradient(-45deg, transparent 75%, #F5F0E4 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+  }
+
+  input[type="email"] {
+    background-color: #FFFFFF; border: 1.5px solid #D8D0BE; border-radius: 4px;
+    padding: 14px 16px; font-size: 15px; color: #0A1A12; width: 100%;
+    font-family: 'Inter', sans-serif;
+  }
+  input[type="email"]:focus { outline: none; border-color: #1B3A2F; box-shadow: 0 0 0 3px rgba(27, 58, 47, 0.12); }
+
+  .btn-primary {
+    background-color: #1B3A2F; color: #F5F0E4; padding: 16px 28px; border-radius: 4px;
+    font-weight: 600; font-size: 15px; transition: background-color 0.15s ease, transform 0.1s ease;
+    display: inline-flex; align-items: center; gap: 10px; border: 2px solid #1B3A2F;
+    font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
+  }
+  .btn-primary:hover { background-color: #0F2620; }
+  .btn-primary:active { transform: scale(0.98); }
+
+  .btn-secondary {
+    background-color: transparent; color: #1B3A2F; padding: 16px 28px; border-radius: 4px;
+    font-weight: 600; font-size: 15px; border: 2px solid #1B3A2F; transition: all 0.15s ease;
+    display: inline-flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .btn-secondary:hover { background-color: #1B3A2F; color: #F5F0E4; }
+
+  .mono-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: #1B3A2F; font-weight: 500;
+  }
+
+  .headshot-placeholder {
+    background: linear-gradient(135deg, #1B3A2F 0%, #2D5742 100%);
+    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    color: #F5F0E4; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-align: center; padding: 16px; border-radius: 4px; position: relative; overflow: hidden;
+  }
+  .headshot-placeholder::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(45deg, rgba(245,240,228,0.1) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(245,240,228,0.1) 25%, transparent 25%);
+    background-size: 20px 20px;
+  }
+  .headshot-placeholder span { position: relative; z-index: 1; }
+</style>
+</head>
+<body class="antialiased">
+
+<div class="checkerboard h-2"></div>
+
+<!-- NAV -->
+<nav class="border-b border-line bg-cream sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2">
+      <span class="inline-block w-5 h-5 checkerboard rounded-sm"></span>
+      Maya Creative Co
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ash">
+      <a href="bookedout.html" class="hover:text-forest transition-colors">Kit</a>
+      <a href="intensive.html" class="hover:text-forest transition-colors">Strategy</a>
+      <a href="club.html" class="hover:text-forest transition-colors">Club</a>
+      <a href="about.html" class="text-forest transition-colors">About</a>
+    </div>
+    <a href="bookedout.html" class="btn-primary text-sm hidden md:inline-flex !py-3 !px-5">Get the Kit</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="px-6 py-20 md:py-28">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-12 items-center">
+    <div class="md:col-span-2">
+      <div class="headshot-placeholder max-w-sm">
+        <span>[ headshot.jpg<br/>drop in /public ]</span>
+      </div>
+    </div>
+    <div class="md:col-span-3">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="inline-block w-8 h-2 checkerboard"></span>
+        <span class="mono-label">Maya_Creative_Co / about.me</span>
+      </div>
+      <h1 class="font-display text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight display-balance text-forest">
+        I'm Maya. I build systems for the creators I <span class="italic text-moss">wish I'd had</span> when I started.
+      </h1>
+    </div>
+  </div>
+</section>
+
+<div class="checkerboard h-3"></div>
+
+<!-- THE STORY -->
+<section class="px-6 py-24 bg-cream">
+  <div class="max-w-3xl mx-auto">
+    <span class="mono-label">// the_story</span>
+    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-10 text-forest display-balance">
+      How I got here.
+    </h2>
+    <div class="space-y-6 text-lg text-ash leading-relaxed">
+      <p>I started shooting UGC four years ago with no plan, no pricing framework, and no idea what I was doing. I said yes to everything, charged whatever felt "fair," and spent more time second-guessing my rates than actually creating content.</p>
+      <p>For a while, it worked — in the way that anything works when you're grinding hard enough to compensate for bad systems. But by year two, I was burnt out, inconsistent, and watching other creators with weaker content get booked at 3× my rate because they pitched like real businesses and I pitched like someone who was scared to send the email.</p>
+      <p>So I started building systems. A pricing model that actually accounted for usage rights and turnaround. An outreach cadence I could run every week without rewriting it. A client tracker so nothing slipped. A proposal template that made me look like I'd been doing this for a decade. Within six months, my rates doubled. Within a year, I had a roster of repeat brand clients who valued what I built, not just what I shot.</p>
+      <p>Maya Creative Co is where I share all of it. Not as a course. Not as theory. As the actual working tools I use in my own UGC business — <a href="https://mayaherring.com" class="text-forest underline decoration-moss decoration-2 underline-offset-4 hover:decoration-forest">mayaherring.com</a>, which is still my active portfolio and still the engine paying the bills.</p>
+      <p class="text-forest font-semibold">If I can save you two years of the figuring-it-out phase, that's the whole point.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I'M BUILDING -->
+<section class="px-6 py-24 bg-forest text-cream">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-14 max-w-2xl">
+      <span class="mono-label !text-cream/60">// what_i_am_building</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 display-balance">
+        Two businesses. One creative stack.
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="border-2 border-cream/20 rounded-md p-8 bg-forestDeep/50">
+        <p class="font-mono text-moss text-xs mb-4">// business_01 · brand_side</p>
+        <h3 class="font-display text-2xl font-bold text-cream mb-4">mayaherring.com</h3>
+        <p class="text-cream/70 leading-relaxed mb-6">My personal UGC portfolio. Where DTC brands come to hire me for video production, ad creative, and retainer work. This is the active business — the engine.</p>
+        <a href="https://mayaherring.com" class="font-mono text-xs text-moss hover:text-cream">→ see the portfolio</a>
+      </div>
+      <div class="border-2 border-moss rounded-md p-8 bg-forestDeep/50">
+        <p class="font-mono text-moss text-xs mb-4">// business_02 · creator_side</p>
+        <h3 class="font-display text-2xl font-bold text-cream mb-4">Maya Creative Co</h3>
+        <p class="text-cream/70 leading-relaxed mb-6">This site. Where I share the tools, kits, and systems I built for myself with fellow UGC creators. Not for brand clients — this is for creators who want what I had to figure out the hard way.</p>
+        <a href="index.html" class="font-mono text-xs text-moss hover:text-cream">→ you're here</a>
+      </div>
+    </div>
+    <p class="mt-10 text-cream/60 text-sm max-w-3xl leading-relaxed">These two sites are intentionally separate. If you're a brand looking to hire me for UGC, go to mayaherring.com. If you're a creator looking to learn from the systems I built, you're in the right place.</p>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="px-6 py-24 bg-cream">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-14 max-w-2xl">
+      <span class="mono-label">// how_i_work</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 text-forest display-balance">
+        Four things I believe.
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="mono-label mb-4">// principle_01</p>
+        <h3 class="font-display text-xl font-bold text-forest mb-3">Systems > motivation.</h3>
+        <p class="text-ash text-sm leading-relaxed">Most creator content is emotional fuel. Useful for a day, forgotten by the next. I'd rather give you one tool you'll use every week than one post that makes you feel inspired for an hour.</p>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="mono-label mb-4">// principle_02</p>
+        <h3 class="font-display text-xl font-bold text-forest mb-3">Ship working tools, not courses.</h3>
+        <p class="text-ash text-sm leading-relaxed">I'm a creator who can code. That means what I make are actual tools — calculators, trackers, generators — not modules you have to binge and then figure out how to apply.</p>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="mono-label mb-4">// principle_03</p>
+        <h3 class="font-display text-xl font-bold text-forest mb-3">Show the work, not the guru pose.</h3>
+        <p class="text-ash text-sm leading-relaxed">Everything I teach is stress-tested against my own active business. If I haven't shipped it, I don't sell it.</p>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="mono-label mb-4">// principle_04</p>
+        <h3 class="font-display text-xl font-bold text-forest mb-3">Price it so it's serious.</h3>
+        <p class="text-ash text-sm leading-relaxed">Free stuff gets ignored. The best work I've done with creators started when they decided to actually invest in the systems they needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS / AS SEEN IN — placeholder -->
+<section class="px-6 py-16 bg-creamDeep border-y border-line">
+  <div class="max-w-5xl mx-auto text-center">
+    <span class="mono-label">// featured_in · coming_soon</span>
+    <p class="text-ash mt-4 text-sm max-w-xl mx-auto font-mono">[ press_logos.placeholder — add when first features land ]</p>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter" class="px-6 py-24 bg-forestDeep text-cream">
+  <div class="max-w-3xl mx-auto">
+    <div class="flex items-center gap-3 mb-8">
+      <span class="inline-block w-8 h-2 checkerboard-cream"></span>
+      <span class="mono-label !text-cream/60">// weekly_playbook</span>
+    </div>
+    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mb-6 display-balance">
+      The weekly playbook.
+    </h2>
+    <p class="text-lg text-cream/70 mb-10 display-balance">
+      One email a week. Real pricing frameworks, outreach scripts I'm actually using, and behind-the-scenes of my own brand deals. No fluff.
+    </p>
+    <form id="emailForm" class="flex flex-col sm:flex-row gap-3 max-w-xl">
+      <input type="email" id="emailInput" placeholder="your@email.com" required class="flex-1" />
+      <button type="submit" class="btn-primary !bg-moss !border-moss !text-forestDeep hover:!bg-cream hover:!border-cream whitespace-nowrap">Subscribe →</button>
+    </form>
+    <p id="emailStatus" class="hidden mt-4 text-sm text-moss font-mono"></p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="px-6 py-24 bg-cream">
+  <div class="max-w-3xl mx-auto">
+    <span class="mono-label">// contact</span>
+    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-8 text-forest display-balance">
+      How to reach me.
+    </h2>
+    <div class="space-y-5 text-ash text-base leading-relaxed">
+      <div class="flex gap-4">
+        <span class="font-mono text-forest text-sm w-32 shrink-0">// general</span>
+        <a href="mailto:hello@collegarestudio.com" class="text-forest underline decoration-moss decoration-2 underline-offset-4">hello@collegarestudio.com</a>
+      </div>
+      <div class="flex gap-4">
+        <span class="font-mono text-forest text-sm w-32 shrink-0">// brand_inquiries</span>
+        <a href="https://mayaherring.com" class="text-forest underline decoration-moss decoration-2 underline-offset-4">mayaherring.com</a>
+        <span class="text-ash/60 text-sm">(not handled here)</span>
+      </div>
+      <div class="flex gap-4">
+        <span class="font-mono text-forest text-sm w-32 shrink-0">// instagram</span>
+        <a href="#" class="text-forest underline decoration-moss decoration-2 underline-offset-4">@mayacreativeco</a>
+      </div>
+      <div class="flex gap-4">
+        <span class="font-mono text-forest text-sm w-32 shrink-0">// tiktok</span>
+        <a href="#" class="text-forest underline decoration-moss decoration-2 underline-offset-4">@mayacreativeco</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="px-6 py-24 bg-creamDeep border-t border-line">
+  <div class="max-w-3xl mx-auto text-center">
+    <span class="mono-label">// where_to_go_next</span>
+    <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-6 display-balance text-forest">Now that you know me.</h2>
+    <p class="text-lg text-ash mb-10 max-w-xl mx-auto display-balance">Start with the Kit, book a strategy call, or join the Club. All three are built to actually move your business.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a href="bookedout.html" class="btn-primary">Get the Kit — $99</a>
+      <a href="intensive.html" class="btn-secondary">Book an Intensive</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-forestDeep text-cream/70">
+  <div class="checkerboard h-2"></div>
+  <div class="px-6 py-14 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="inline-block w-5 h-5 checkerboard-cream"></span>
+        <p class="font-display text-lg font-bold text-cream">Maya Creative Co</p>
+      </div>
+      <p class="text-xs max-w-xs">Systems for UGC creators who want to be booked, paid, and run like a business.</p>
+    </div>
+    <div class="text-xs grid grid-cols-2 gap-x-10 gap-y-2">
+      <a href="index.html" class="hover:text-cream font-mono">→ home</a>
+      <a href="bookedout.html" class="hover:text-cream font-mono">→ the kit</a>
+      <a href="intensive.html" class="hover:text-cream font-mono">→ strategy intensive</a>
+      <a href="advisory.html" class="hover:text-cream font-mono">→ advisory</a>
+      <a href="club.html" class="hover:text-cream font-mono">→ the club</a>
+      <a href="about.html" class="hover:text-cream font-mono">→ about</a>
+      <a href="https://mayaherring.com" class="hover:text-cream font-mono">→ mayaherring.com</a>
+      <a href="mailto:hello@collegarestudio.com" class="hover:text-cream font-mono">→ contact</a>
+    </div>
+    <p class="text-xs font-mono">© 2026</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('emailForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const status = document.getElementById('emailStatus');
+    status.classList.remove('hidden');
+    status.textContent = '✓ You\'re on the list. Replace this form with your Kit form embed.';
+    document.getElementById('emailInput').value = '';
+  });
+</script>
+
+</body>
+</html>
