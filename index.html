@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Booked Out UGC Kit — Maya Creative Co</title>
-<meta name="description" content="The complete system for pricing, pitching, and booking UGC clients. Includes the live Rate Calculator, outreach scripts, follow-up templates, client tracker, and proposal toolkit." />
-<meta property="og:title" content="Booked Out UGC Kit — Maya Creative Co" />
-<meta property="og:description" content="The toolkit UGC creators use to charge more, pitch better, and stop guessing." />
+<title>Maya Creative Co — Systems for UGC creators</title>
+<meta name="description" content="Systems for UGC creators who want to be booked, paid, and run like a business. Tools, templates, and strategy from a working brand creator." />
+<meta property="og:title" content="Maya Creative Co — Systems for UGC creators" />
+<meta property="og:description" content="Tools, kits, and advisory for UGC creators ready to operate like a business." />
 <meta property="og:type" content="website" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,13 +45,7 @@
   .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .display-balance { text-wrap: balance; }
-  .fade-in { animation: fadeIn 0.4s ease-out; }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
 
-  /* Checkerboard motif (from Maya's logo) */
   .checkerboard {
     background-image:
       linear-gradient(45deg, #1B3A2F 25%, transparent 25%),
@@ -60,15 +54,6 @@
       linear-gradient(-45deg, transparent 75%, #1B3A2F 75%);
     background-size: 16px 16px;
     background-position: 0 0, 0 8px, 8px -8px, -8px 0;
-  }
-  .checkerboard-mini {
-    background-image:
-      linear-gradient(45deg, #1B3A2F 25%, transparent 25%),
-      linear-gradient(-45deg, #1B3A2F 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #1B3A2F 75%),
-      linear-gradient(-45deg, transparent 75%, #1B3A2F 75%);
-    background-size: 8px 8px;
-    background-position: 0 0, 0 4px, 4px -4px, -4px 0;
   }
   .checkerboard-cream {
     background-image:
@@ -80,34 +65,21 @@
     background-position: 0 0, 0 6px, 6px -6px, -6px 0;
   }
 
-  /* Form input baseline */
-  select, input[type="number"], input[type="email"] {
+  input[type="email"] {
     background-color: #FFFFFF;
     border: 1.5px solid #D8D0BE;
     border-radius: 4px;
-    padding: 12px 14px;
+    padding: 14px 16px;
     font-size: 15px;
     color: #0A1A12;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
     width: 100%;
     font-family: 'Inter', sans-serif;
   }
-  select:focus, input:focus {
+  input[type="email"]:focus {
     outline: none;
     border-color: #1B3A2F;
     box-shadow: 0 0 0 3px rgba(27, 58, 47, 0.12);
   }
-  label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    color: #4A5C50;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 8px;
-    display: block;
-  }
-  label::before { content: '> '; color: #1B3A2F; }
 
   .btn-primary {
     background-color: #1B3A2F;
@@ -153,38 +125,18 @@
     font-weight: 500;
   }
 
-  details > summary { list-style: none; cursor: pointer; }
-  details > summary::-webkit-details-marker { display: none; }
-  details[open] .faq-icon { transform: rotate(45deg); }
-  .faq-icon { transition: transform 0.2s ease; }
-
-  /* Sticky mobile CTA */
-  .sticky-cta {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #1B3A2F;
-    color: #F5F0E4;
-    padding: 14px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 50;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
-  }
-  @media (min-width: 768px) { .sticky-cta { display: none; } }
-
-  /* Terminal-style result panel */
-  .terminal {
-    background-color: #0F2620;
-    color: #F5F0E4;
+  .card-offer {
+    background-color: #FFFFFF;
+    border: 1.5px solid #D8D0BE;
     border-radius: 4px;
-    border: 1.5px solid #1B3A2F;
-    font-family: 'JetBrains Mono', monospace;
+    padding: 32px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
+  .card-offer:hover { border-color: #1B3A2F; transform: translateY(-2px); }
 
-  /* Headshot placeholder */
   .headshot-placeholder {
     background: linear-gradient(135deg, #1B3A2F 0%, #2D5742 100%);
     aspect-ratio: 1;
@@ -214,51 +166,98 @@
 </head>
 <body class="antialiased">
 
-<!-- ============ TOP STRIP (checkerboard) ============ -->
+<!-- ============ TOP STRIP ============ -->
 <div class="checkerboard h-2"></div>
 
 <!-- ============ NAV ============ -->
 <nav class="border-b border-line bg-cream sticky top-0 z-40">
   <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="#" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2">
+    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2">
       <span class="inline-block w-5 h-5 checkerboard rounded-sm"></span>
       Maya Creative Co
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ash">
-      <a href="#tool" class="hover:text-forest transition-colors">The Tool</a>
-      <a href="#kit" class="hover:text-forest transition-colors">The Kit</a>
-      <a href="#about" class="hover:text-forest transition-colors">About</a>
-      <a href="#pricing" class="hover:text-forest transition-colors">Pricing</a>
+      <a href="bookedout.html" class="hover:text-forest transition-colors">Kit</a>
+      <a href="intensive.html" class="hover:text-forest transition-colors">Strategy</a>
+      <a href="club.html" class="hover:text-forest transition-colors">Club</a>
+      <a href="about.html" class="hover:text-forest transition-colors">About</a>
     </div>
-    <a href="#pricing" class="btn-primary text-sm hidden md:inline-flex !py-3 !px-5">Get the Kit — $99</a>
+    <a href="bookedout.html" class="btn-primary text-sm hidden md:inline-flex !py-3 !px-5">Get the Kit</a>
   </div>
 </nav>
 
 <!-- ============ HERO ============ -->
-<section class="px-6 py-20 md:py-28 relative overflow-hidden">
-  <div class="max-w-5xl mx-auto relative">
+<section class="px-6 py-20 md:py-32 relative overflow-hidden">
+  <div class="max-w-5xl mx-auto">
     <div class="flex items-center gap-3 mb-8">
       <span class="inline-block w-8 h-2 checkerboard"></span>
-      <span class="mono-label">Maya_Creative_Co / booked_out_kit.v1</span>
+      <span class="mono-label">Maya_Creative_Co / home.index</span>
     </div>
-
-    <h1 class="font-display text-5xl md:text-7xl font-bold leading-[1.02] tracking-tight display-balance mb-8 text-forest">
-      The system for UGC creators who are ready to be <span class="italic text-moss">booked out.</span>
+    <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] tracking-tight display-balance mb-8 text-forest">
+      Systems for UGC creators who want to be <span class="italic text-moss">booked out.</span>
     </h1>
-
-    <p class="text-lg md:text-xl text-ash leading-relaxed max-w-2xl mb-10 display-balance">
-      Pricing tools. Outreach scripts. A working client tracker. Proposal templates. The Booked Out Kit is everything I wish I'd had when I started — packaged into one system you can use today.
+    <p class="text-lg md:text-2xl text-ash leading-relaxed max-w-2xl mb-12 display-balance">
+      Tools, templates, and strategy from a working brand creator — so you can stop guessing your rates, land consistent deals, and run your business like the business it is.
     </p>
-
     <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-      <a href="#pricing" class="btn-primary">Get the Kit — $99</a>
-      <a href="#tool" class="btn-secondary">Try the Calculator →</a>
+      <a href="bookedout.html" class="btn-primary">Start with the Kit →</a>
+      <a href="#newsletter" class="btn-secondary">Get the weekly playbook</a>
     </div>
+  </div>
+</section>
 
-    <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ash">
-      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-moss rounded-full"></span> Lifetime access</span>
-      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-moss rounded-full"></span> Free updates</span>
-      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-moss rounded-full"></span> Built by a working creator</span>
+<!-- ============ TRUST STRIP ============ -->
+<section class="border-y-2 border-forest bg-cream">
+  <div class="checkerboard h-1"></div>
+  <div class="max-w-6xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div>
+      <p class="font-display text-3xl md:text-4xl font-bold text-forest">60+</p>
+      <p class="mono-label mt-2">// ad_creatives_shipped</p>
+    </div>
+    <div>
+      <p class="font-display text-3xl md:text-4xl font-bold text-forest">4 yrs</p>
+      <p class="mono-label mt-2">// building_for_DTC</p>
+    </div>
+    <div>
+      <p class="font-display text-3xl md:text-4xl font-bold text-forest">25+</p>
+      <p class="mono-label mt-2">// brand_clients</p>
+    </div>
+    <div>
+      <p class="font-display text-3xl md:text-4xl font-bold text-forest">2</p>
+      <p class="mono-label mt-2">// brands_built</p>
+    </div>
+  </div>
+  <div class="checkerboard h-1"></div>
+</section>
+
+<!-- ============ WHAT LIVES HERE ============ -->
+<section class="px-6 py-24 bg-cream">
+  <div class="max-w-6xl mx-auto">
+    <div class="mb-16 max-w-2xl">
+      <span class="mono-label">// what_lives_here</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 text-forest display-balance">
+        Three ways to work with me.
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="bookedout.html" class="card-offer group">
+        <span class="mono-label">// 01</span>
+        <h3 class="font-display text-2xl font-bold text-forest mt-6 mb-4">Tools & Systems</h3>
+        <p class="text-ash leading-relaxed mb-6 flex-1">The Booked Out UGC Kit — pricing tools, outreach scripts, follow-ups, proposal templates, and a working client tracker. Built to actually use.</p>
+        <span class="mono-label group-hover:text-moss">→ see the kit</span>
+      </a>
+      <a href="intensive.html" class="card-offer group">
+        <span class="mono-label">// 02</span>
+        <h3 class="font-display text-2xl font-bold text-forest mt-6 mb-4">Strategy Intensives</h3>
+        <p class="text-ash leading-relaxed mb-6 flex-1">90-minute 1:1 strategy calls for creators stuck on pricing, positioning, or pipeline. You leave with a custom 90-day roadmap and 14 days of async support.</p>
+        <span class="mono-label group-hover:text-moss">→ book an intensive</span>
+      </a>
+      <a href="club.html" class="card-offer group">
+        <span class="mono-label">// 03</span>
+        <h3 class="font-display text-2xl font-bold text-forest mt-6 mb-4">The Club</h3>
+        <p class="text-ash leading-relaxed mb-6 flex-1">UGC Systems Club — monthly Deal Clinic calls, a new asset drop each month, and a full vault of past tools. For creators who treat this like a business.</p>
+        <span class="mono-label group-hover:text-moss">→ join the club</span>
+      </a>
     </div>
   </div>
 </section>
@@ -266,456 +265,169 @@
 <!-- ============ CHECKERBOARD DIVIDER ============ -->
 <div class="checkerboard h-3"></div>
 
-<!-- ============ PROBLEM ============ -->
-<section class="px-6 py-20 bg-forest text-cream">
+<!-- ============ THE PITCH ============ -->
+<section class="px-6 py-24 bg-forest text-cream">
   <div class="max-w-3xl mx-auto">
-    <span class="mono-label !text-cream/60">// the problem</span>
+    <span class="mono-label !text-cream/60">// the_pitch</span>
     <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-10 display-balance">
-      You can create. The problem isn't your content — it's that your pipeline is chaos.
+      Most UGC creators are bottlenecked by pricing, pitching, and pipeline — not creativity.
     </h2>
     <div class="space-y-5 text-lg text-cream/80 leading-relaxed">
-      <p>Pricing is guesswork. Outreach is one-off. Onboarding is whatever you remember from last time. You spend more time second-guessing your rate than shooting the actual content.</p>
-      <p>Brands feel it. They ghost. Or worse — they accept your number and you spend the whole project knowing you charged half what it was worth.</p>
-      <p class="text-cream font-semibold">The Booked Out Kit fixes the pipeline so you can focus on the work.</p>
+      <p>There's no shortage of "how to make UGC" content. What's missing is the business layer — the pricing frameworks, the outreach systems, the client tracking, the proposal templates — the stuff that actually decides whether you get booked.</p>
+      <p>Maya Creative Co exists to solve that. Every tool here is built to fix a specific problem I hit while running my own UGC business, and every system is stress-tested against real brand deals.</p>
+      <p class="text-cream font-semibold">You bring the creativity. I'll give you the systems.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ THE LIVE TOOL ============ -->
-<section id="tool" class="px-6 py-20 md:py-28 bg-cream">
+<!-- ============ FEATURED PRODUCT ============ -->
+<section class="px-6 py-24 bg-cream">
   <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-12">
-      <span class="mono-label">// live demo · no purchase needed</span>
-      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-6 display-balance text-forest">
-        Try the Rate Calculator.
-      </h2>
-      <p class="text-lg text-ash max-w-2xl mx-auto display-balance">
-        This is one of the seven tools inside the Kit. Go ahead — run a real project through it and see what you should be charging.
-      </p>
-    </div>
-
-    <div class="bg-white border-2 border-forest rounded-md p-6 md:p-10 relative">
-      <!-- Corner ticks -->
-      <div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-forest"></div>
-      <div class="absolute -top-2 -right-2 w-4 h-4 border-t-2 border-r-2 border-forest"></div>
-      <div class="absolute -bottom-2 -left-2 w-4 h-4 border-b-2 border-l-2 border-forest"></div>
-      <div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-forest"></div>
-
-      <div class="flex items-center justify-between mb-8 pb-4 border-b border-line">
-        <span class="mono-label">rate_calculator.run()</span>
-        <span class="mono-label !text-ash">v1.0</span>
-      </div>
-
-      <form id="rateForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <div>
-          <label for="deliverableType">deliverable_type</label>
-          <select id="deliverableType" required>
-            <option value="video15">15-second video</option>
-            <option value="video30" selected>30-second video</option>
-            <option value="video60">60-second video</option>
-            <option value="photoSet">Photo set</option>
-            <option value="voiceover">Voiceover only</option>
-            <option value="grwm">GRWM video</option>
-            <option value="unboxing">Unboxing video</option>
-            <option value="testimonial">Testimonial video</option>
-            <option value="lifestyle">Lifestyle video</option>
-            <option value="adStyle">Ad-style video</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="numDeliverables">number_of_deliverables</label>
-          <input type="number" id="numDeliverables" min="1" max="50" value="3" required />
-        </div>
-
-        <div>
-          <label for="usageRights">usage_rights</label>
-          <select id="usageRights" required>
-            <option value="organic">Organic only</option>
-            <option value="paid30" selected>Paid social — 30 days</option>
-            <option value="paid90">Paid social — 90 days</option>
-            <option value="paid180">Paid social — 6 months</option>
-            <option value="paid365">Paid social — 1 year</option>
-            <option value="whitelisting">Whitelisting</option>
-            <option value="buyout">Full buyout</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="turnaround">turnaround</label>
-          <select id="turnaround" required>
-            <option value="2weeks" selected>2 weeks</option>
-            <option value="1week">1 week</option>
-            <option value="3days">3 days</option>
-            <option value="rush">24-hour rush</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="revisions">revisions_included</label>
-          <input type="number" id="revisions" min="0" max="10" value="1" required />
-        </div>
-
-        <div>
-          <label for="concepts">hooks_concepts_requested</label>
-          <input type="number" id="concepts" min="1" max="10" value="2" required />
-        </div>
-
-        <div>
-          <label for="experience">experience_tier</label>
-          <select id="experience" required>
-            <option value="new">New (under 6 months)</option>
-            <option value="growing" selected>Growing (6–18 months)</option>
-            <option value="established">Established (18+ months)</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="brandSize">brand_size</label>
-          <select id="brandSize">
-            <option value="indie">Indie / early stage</option>
-            <option value="growing" selected>Growing DTC</option>
-            <option value="established">Established DTC</option>
-            <option value="enterprise">Enterprise</option>
-          </select>
-        </div>
-
-        <div class="md:col-span-2 flex flex-col sm:flex-row gap-4 items-center justify-center pt-4">
-          <button type="submit" class="btn-primary">→ Calculate my rate</button>
-          <button type="button" id="resetBtn" class="text-ash text-sm font-mono underline hover:text-forest">reset()</button>
-        </div>
-      </form>
-
-      <!-- RESULT PANEL (TERMINAL STYLE) -->
-      <div id="resultPanel" class="hidden mt-10 fade-in">
-        <div class="terminal p-6 md:p-8">
-          <div class="flex items-center justify-between mb-6 pb-3 border-b border-cream/20">
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-cream/30"></span>
-              <span class="w-2 h-2 rounded-full bg-cream/30"></span>
-              <span class="w-2 h-2 rounded-full bg-moss"></span>
-            </div>
-            <span class="text-xs text-cream/50">output.json</span>
-          </div>
-
-          <div class="text-center mb-8">
-            <p class="text-cream/60 text-xs mb-3">> calculated_rate_range:</p>
-            <p class="font-display text-5xl md:text-7xl font-bold tracking-tight text-cream" id="rateRange">—</p>
-            <p class="text-cream/60 text-xs mt-3" id="rateContext">for_this_scope</p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
-            <div class="border border-cream/20 rounded p-4">
-              <p class="text-xs text-cream/50 mb-2">per_deliverable</p>
-              <p class="font-display text-2xl font-bold text-cream" id="perDeliverable">—</p>
-            </div>
-            <div class="border border-cream/20 rounded p-4">
-              <p class="text-xs text-cream/50 mb-2">suggested_package</p>
-              <p class="font-display text-2xl font-bold text-cream" id="packagePrice">—</p>
-              <p class="text-xs text-cream/40 mt-1" id="packageNote"></p>
-            </div>
-            <div class="border border-cream/20 rounded p-4">
-              <p class="text-xs text-cream/50 mb-2">confidence</p>
-              <p class="font-display text-2xl font-bold text-cream" id="confidence">—</p>
-              <p class="text-xs text-cream/40 mt-1" id="confidenceNote"></p>
-            </div>
-          </div>
-
-          <div class="border border-cream/20 rounded p-5">
-            <p class="text-xs text-cream/50 mb-3">> negotiation_notes:</p>
-            <ul id="negotiationNotes" class="space-y-2 text-sm text-cream/90 leading-relaxed font-sans"></ul>
+    <div class="bg-white border-2 border-forest rounded-md relative overflow-hidden">
+      <div class="checkerboard h-2"></div>
+      <div class="p-8 md:p-14 grid md:grid-cols-5 gap-10 items-center">
+        <div class="md:col-span-3">
+          <span class="mono-label">// featured_product · live_now</span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight text-forest mt-6 mb-6 display-balance">
+            The Booked Out UGC Kit.
+          </h2>
+          <p class="text-lg text-ash leading-relaxed mb-8 display-balance">
+            Seven tools, templates, and workflows that turn your UGC business into a system you can actually run. Includes the live Rate Calculator — try it free on the Kit page.
+          </p>
+          <ul class="space-y-2 text-ash mb-10 text-sm">
+            <li class="flex gap-3"><span class="text-moss">→</span> Rate Calculator with negotiation notes</li>
+            <li class="flex gap-3"><span class="text-moss">→</span> Cold & warm outreach scripts</li>
+            <li class="flex gap-3"><span class="text-moss">→</span> Follow-up templates that don't feel weird</li>
+            <li class="flex gap-3"><span class="text-moss">→</span> Proposal template + client tracker + onboarding workflow</li>
+          </ul>
+          <div class="flex flex-wrap gap-4 items-center">
+            <a href="bookedout.html" class="btn-primary">Get the Kit — $99</a>
+            <span class="text-xs text-ash font-mono">// instant_access · lifetime_updates</span>
           </div>
         </div>
-
-        <div class="flex flex-col sm:flex-row gap-3 justify-center mt-6">
-          <button type="button" id="copyBtn" class="btn-secondary text-sm !py-3 !px-5">Copy result</button>
-          <a href="#pricing" class="btn-primary text-sm !py-3 !px-5">Unlock the full Kit →</a>
+        <div class="md:col-span-2">
+          <div class="bg-forestDeep text-cream p-6 rounded-md font-mono text-xs leading-relaxed">
+            <div class="text-cream/50 mb-3">$ ./booked-out-kit --run</div>
+            <div class="text-moss">→ rate_calculator.js</div>
+            <div class="text-moss">→ outreach_scripts.md</div>
+            <div class="text-moss">→ followup_templates.md</div>
+            <div class="text-moss">→ proposal_template.docx</div>
+            <div class="text-moss">→ client_tracker.csv</div>
+            <div class="text-moss">→ onboarding_workflow.md</div>
+            <div class="text-moss">→ 50_dtc_brand_list.csv</div>
+            <div class="text-cream/50 mt-3">─────────────────</div>
+            <div class="text-cream">status: <span class="text-moss">ready_to_ship</span></div>
+          </div>
         </div>
-
-        <p class="text-center text-xs text-ash mt-6 italic max-w-xl mx-auto">This is your range, not your final number. The full Kit teaches you how to defend it, pitch it, and build the rest of your pipeline around it.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ ABOUT MAYA ============ -->
-<section id="about" class="px-6 py-20 md:py-28 bg-creamDeep">
-  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
-
+<!-- ============ BEHIND THE BRAND ============ -->
+<section id="about-preview" class="px-6 py-24 bg-creamDeep">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-12 items-center">
     <div class="md:col-span-2">
-      <div class="headshot-placeholder">
-        <span>
-          [HEADSHOT]<br/>
-          Replace with Maya's<br/>
-          actual photo<br/>
-          <span class="opacity-60">aspect-ratio: 1:1</span><br/>
-          <span class="opacity-60">recommended: 800×800px</span>
-        </span>
-      </div>
-      <div class="mt-3 flex gap-1">
-        <span class="w-3 h-3 checkerboard-mini"></span>
-        <span class="w-3 h-3 bg-forest"></span>
-        <span class="w-3 h-3 checkerboard-mini"></span>
+      <div class="headshot-placeholder max-w-xs">
+        <span>[ headshot.jpg<br/>drop in /public ]</span>
       </div>
     </div>
-
     <div class="md:col-span-3">
-      <span class="mono-label">// who built this</span>
-      <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-4 mb-6 text-forest display-balance">
+      <span class="mono-label">// behind_the_brand</span>
+      <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-6 text-forest display-balance">
         Hi, I'm Maya.
       </h2>
       <div class="space-y-4 text-ash leading-relaxed">
-        <p>I'm a working UGC creator. I've shot for DTC brands across beauty, wellness, and lifestyle, and I've spent the last few years figuring out how to actually run this like a business — not a side hustle.</p>
-        <p>The Booked Out Kit is the system I built for myself. The same calculator, the same scripts, the same proposal template. It's the thing I wish someone had handed me when I was undercharging and ghost-pitching brands at 1 AM.</p>
-        <p>I'm sharing it because creator coaching is full of theory, and I'd rather just give you the tools.</p>
+        <p>I've been shooting UGC for DTC brands for four years. Along the way I built the pricing models, outreach systems, and client workflows that took me from "charging whatever felt fair" to running this like a real business.</p>
+        <p>Maya Creative Co is where I share those systems — not as theory, but as tools you can open and use today. Everything on this site is something I actually run in my own business.</p>
       </div>
-      <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-mono text-ash">
-        <a href="#" class="hover:text-forest underline">→ mayaherring.com</a>
-        <a href="#" class="hover:text-forest underline">→ instagram</a>
-        <a href="#" class="hover:text-forest underline">→ tiktok</a>
+      <div class="mt-8 flex gap-4">
+        <a href="about.html" class="btn-secondary !py-3 !px-5 text-sm">Read my story →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ WHAT'S IN THE KIT ============ -->
-<section id="kit" class="px-6 py-20 md:py-28 bg-cream">
+<!-- ============ TESTIMONIALS ============ -->
+<section class="px-6 py-24 bg-cream">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <span class="mono-label">// what's inside</span>
-      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-6 display-balance text-forest">
-        Six tools. One system.
+    <div class="mb-16 max-w-2xl">
+      <span class="mono-label">// what_creators_say</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 text-forest display-balance">
+        From creators running the playbook.
       </h2>
-      <p class="text-lg text-ash max-w-2xl mx-auto display-balance">
-        Built to work together. Use one piece, use all of them — they all plug into the same pipeline.
-      </p>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-      <div class="bg-white border-2 border-forest rounded-md p-7 relative">
-        <span class="absolute top-3 right-3 mono-label !text-xs">01</span>
-        <div class="w-10 h-10 checkerboard mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-3 text-forest">Rate Calculator</h3>
-        <p class="text-ash text-sm leading-relaxed">The interactive tool you tried above — full version with saved scenarios, package presets, and an export-to-PDF.</p>
-      </div>
-
-      <div class="bg-white border border-line rounded-md p-7 relative">
-        <span class="absolute top-3 right-3 mono-label !text-xs">02</span>
-        <div class="w-10 h-10 bg-forest rounded-sm mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-3 text-forest">Outreach Scripts</h3>
-        <p class="text-ash text-sm leading-relaxed">Cold DM, cold email, warm intro, and referral ask — three variations each, with subject lines that actually open.</p>
-      </div>
-
-      <div class="bg-white border border-line rounded-md p-7 relative">
-        <span class="absolute top-3 right-3 mono-label !text-xs">03</span>
-        <div class="w-10 h-10 checkerboard-mini mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-3 text-forest">Follow-up Templates</h3>
-        <p class="text-ash text-sm leading-relaxed">A 2-week sequence that doesn't sound desperate. Plus the "ghosted" recovery message that actually gets replies.</p>
-      </div>
-
-      <div class="bg-white border border-line rounded-md p-7 relative">
-        <span class="absolute top-3 right-3 mono-label !text-xs">04</span>
-        <div class="w-10 h-10 border-2 border-forest mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-3 text-forest">Proposal Template</h3>
-        <p class="text-ash text-sm leading-relaxed">A Notion + Google Doc template with sections for scope, deliverables, usage, timeline, and investment. Looks like an agency. Takes 15 minutes.</p>
-      </div>
-
-      <div class="bg-white border border-line rounded-md p-7 relative">
-        <span class="absolute top-3 right-3 mono-label !text-xs">05</span>
-        <div class="w-10 h-10 bg-moss rounded-sm mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-3 text-forest">Client Tracker</h3>
-        <p class="text-ash text-sm leading-relaxed">A simple Notion CRM: leads, pitches, deals in motion, paid invoices, deliverables. The whole pipeline in one view.</p>
-      </div>
-
-      <div class="bg-white border border-line rounded-md p-7 relative">
-        <span class="absolute top-3 right-3 mono-label !text-xs">06</span>
-        <div class="w-10 h-10 checkerboard mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-3 text-forest">Onboarding Workflow</h3>
-        <p class="text-ash text-sm leading-relaxed">The exact sequence I run from "they said yes" → "deliverable shipped." Email templates, contract checkpoints, and deliverable handoff.</p>
-      </div>
-
-    </div>
-
-    <!-- ============ STRATEGY INTENSIVE UPSELL ============ -->
-    <div class="mt-10 bg-forest text-cream rounded-md p-8 md:p-12 relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-32 h-32 checkerboard-cream opacity-10"></div>
-      <div class="relative grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
-        <div class="md:col-span-3">
-          <span class="mono-label !text-moss">// for_when_you_need_more_than_tools</span>
-          <h3 class="font-display text-3xl md:text-4xl font-bold mt-4 mb-4 leading-tight display-balance">Want strategy with the system?</h3>
-          <p class="text-cream/80 leading-relaxed mb-6 max-w-xl">The Kit gives you the tools. The Strategy Intensive gives you the plan. A 90-minute 1:1 call with me — pre-call audit, custom 90-day roadmap, 14 days of async follow-up. For creators who need more than templates.</p>
-          <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-mono text-cream/70">
-            <span>→ 90-min advisory call</span>
-            <span>→ pre-call audit form</span>
-            <span>→ custom roadmap doc</span>
-            <span>→ 14-day async support</span>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="text-forest leading-relaxed mb-6">"I doubled my rates in a weekend after using Maya's calculator. I'd been leaving so much on the table and didn't even know it."</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-line">
+          <div class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center font-mono text-xs text-forest">JR</div>
+          <div>
+            <p class="font-semibold text-forest text-sm">Jordan R.</p>
+            <p class="mono-label !text-ash">// UGC_creator</p>
           </div>
         </div>
-        <div class="md:col-span-2 text-center md:text-left md:border-l md:border-cream/20 md:pl-8">
-          <p class="mono-label !text-moss mb-2">// strategy_intensive</p>
-          <p class="font-display text-5xl font-bold text-cream mb-1">$750+</p>
-          <p class="text-xs text-cream/60 font-mono mb-6">// starting · price scales with scope</p>
-          <a href="#" class="btn-primary !bg-moss !border-moss !text-forestDeep hover:!bg-cream hover:!border-cream w-full justify-center">Apply for an Intensive →</a>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="text-forest leading-relaxed mb-6">"The outreach scripts alone were worth it. Landed two brand deals in the first week just by sending what was in the kit."</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-line">
+          <div class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center font-mono text-xs text-forest">AM</div>
+          <div>
+            <p class="font-semibold text-forest text-sm">Alex M.</p>
+            <p class="mono-label !text-ash">// creator_founder</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="text-forest leading-relaxed mb-6">"Maya runs a real UGC business — that's why her systems actually work. This isn't theory from someone who's never shipped."</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-line">
+          <div class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center font-mono text-xs text-forest">TS</div>
+          <div>
+            <p class="font-semibold text-forest text-sm">Taylor S.</p>
+            <p class="mono-label !text-ash">// mini_agency_owner</p>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ============ CHECKERBOARD DIVIDER ============ -->
-<div class="checkerboard h-3"></div>
-
-<!-- ============ OUTCOMES ============ -->
-<section class="px-6 py-20 md:py-28 bg-forest text-cream">
+<!-- ============ NEWSLETTER ============ -->
+<section id="newsletter" class="px-6 py-24 bg-forestDeep text-cream">
   <div class="max-w-3xl mx-auto">
-    <span class="mono-label !text-cream/60">// after_using_this</span>
-    <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-12 display-balance">
-      You'll never undersell yourself again.
+    <div class="flex items-center gap-3 mb-8">
+      <span class="inline-block w-8 h-2 checkerboard-cream"></span>
+      <span class="mono-label !text-cream/60">// weekly_playbook</span>
+    </div>
+    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mb-6 display-balance">
+      Get the weekly creator playbook.
     </h2>
-    <div class="space-y-5">
-      <div class="flex gap-5 items-start border-b border-cream/20 pb-5">
-        <span class="font-mono text-xs text-moss mt-2">→ 01</span>
-        <p class="text-lg flex-1">Know what to charge for any deliverable, in any usage scenario.</p>
-      </div>
-      <div class="flex gap-5 items-start border-b border-cream/20 pb-5">
-        <span class="font-mono text-xs text-moss mt-2">→ 02</span>
-        <p class="text-lg flex-1">Send a pitch in under 10 minutes — without rewriting from scratch.</p>
-      </div>
-      <div class="flex gap-5 items-start border-b border-cream/20 pb-5">
-        <span class="font-mono text-xs text-moss mt-2">→ 03</span>
-        <p class="text-lg flex-1">Track every lead, deal, and deliverable in one Notion view.</p>
-      </div>
-      <div class="flex gap-5 items-start border-b border-cream/20 pb-5">
-        <span class="font-mono text-xs text-moss mt-2">→ 04</span>
-        <p class="text-lg flex-1">Defend your price with the levers brands actually respect.</p>
-      </div>
-      <div class="flex gap-5 items-start">
-        <span class="font-mono text-xs text-moss mt-2">→ 05</span>
-        <p class="text-lg flex-1">Finally feel like you're running a business — not a string of one-off gigs.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PRICING ============ -->
-<section id="pricing" class="px-6 py-20 md:py-28 bg-cream">
-  <div class="max-w-2xl mx-auto">
-    <div class="text-center mb-12">
-      <span class="mono-label">// pricing</span>
-      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-4 display-balance text-forest">One time. Yours forever.</h2>
-      <p class="text-lg text-ash">No subscription. No upsells. Free updates for life.</p>
-    </div>
-
-    <div class="bg-white border-2 border-forest rounded-md p-10 text-center relative">
-      <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-forest text-cream px-4 py-1 mono-label !text-cream">booked_out_kit</div>
-
-      <p class="font-display text-7xl font-bold mb-2 text-forest">$99</p>
-      <p class="text-ash text-sm mb-8 font-mono">// instant_access · lifetime_updates</p>
-
-      <ul class="text-left space-y-3 mb-10 max-w-sm mx-auto">
-        <li class="flex items-start gap-3"><span class="w-4 h-4 bg-forest mt-1 flex-shrink-0"></span> Full Rate Calculator (with PDF export)</li>
-        <li class="flex items-start gap-3"><span class="w-4 h-4 checkerboard-mini mt-1 flex-shrink-0"></span> Outreach Scripts (cold + warm + referral)</li>
-        <li class="flex items-start gap-3"><span class="w-4 h-4 bg-forest mt-1 flex-shrink-0"></span> 2-Week Follow-up Sequence</li>
-        <li class="flex items-start gap-3"><span class="w-4 h-4 checkerboard-mini mt-1 flex-shrink-0"></span> Proposal Template (Notion + Doc)</li>
-        <li class="flex items-start gap-3"><span class="w-4 h-4 bg-forest mt-1 flex-shrink-0"></span> Notion Client Tracker</li>
-        <li class="flex items-start gap-3"><span class="w-4 h-4 checkerboard-mini mt-1 flex-shrink-0"></span> Onboarding Workflow + Email Templates</li>
-        <li class="flex items-start gap-3"><span class="w-4 h-4 bg-moss mt-1 flex-shrink-0"></span> <strong>Bonus:</strong> 50 DTC brand contact list</li>
-      </ul>
-
-      <a href="#" id="buyBtn" class="btn-primary w-full justify-center text-base">→ Get the Kit — $99</a>
-      <p class="text-xs text-ash mt-4 font-mono">// replace_with_stan_checkout_url</p>
-    </div>
-
-    <p class="text-center text-ash text-sm mt-8">Want strategy too? <a href="#" class="text-forest font-semibold underline">Book a Strategy Intensive →</a></p>
-  </div>
-</section>
-
-<!-- ============ EMAIL CAPTURE ============ -->
-<section class="px-6 py-20 bg-forestDeep text-cream relative overflow-hidden">
-  <div class="absolute top-0 left-0 w-full h-2 checkerboard-cream"></div>
-  <div class="absolute bottom-0 left-0 w-full h-2 checkerboard-cream"></div>
-  <div class="max-w-2xl mx-auto text-center">
-    <span class="mono-label !text-moss">// not_ready_yet</span>
-    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-4 display-balance">Get the weekly creator playbook.</h2>
-    <p class="text-cream/70 mb-8 display-balance">One short email a week on pricing, pitching, and the systems that actually book UGC creators. No fluff. No "manifest your dream brand."</p>
-    <form id="emailForm" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-      <input type="email" id="emailInput" placeholder="your@email.com" required class="flex-1 !text-ink" />
-      <button type="submit" class="btn-primary !bg-moss !border-moss hover:!bg-forestLight whitespace-nowrap">Subscribe →</button>
+    <p class="text-lg text-cream/70 mb-10 display-balance">
+      One email a week. Real pricing frameworks, outreach scripts I'm actually using, and behind-the-scenes of my own brand deals. No fluff.
+    </p>
+    <form id="emailForm" class="flex flex-col sm:flex-row gap-3 max-w-xl">
+      <input type="email" id="emailInput" placeholder="your@email.com" required class="flex-1" />
+      <button type="submit" class="btn-primary !bg-moss !border-moss !text-forestDeep hover:!bg-cream hover:!border-cream whitespace-nowrap">Subscribe →</button>
     </form>
-    <p id="emailStatus" class="text-cream/60 text-sm mt-4 hidden"></p>
+    <p id="emailStatus" class="hidden mt-4 text-sm text-moss font-mono"></p>
+    <p class="mt-6 text-xs text-cream/40 font-mono">// no_spam · unsubscribe_anytime</p>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="px-6 py-20 md:py-28 bg-cream">
-  <div class="max-w-2xl mx-auto">
-    <div class="text-center mb-14">
-      <span class="mono-label">// faq</span>
-      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 display-balance text-forest">Quick answers.</h2>
-    </div>
-
-    <div class="space-y-3">
-      <details class="border-2 border-forest rounded-md bg-white">
-        <summary class="p-6 flex justify-between items-center font-semibold text-forest">
-          Is the calculator I just used really part of the Kit?
-          <span class="faq-icon text-2xl text-forest font-light">+</span>
-        </summary>
-        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Yes — that's the core engine. The full version inside the Kit adds saved scenarios, package presets, PDF export, and the negotiation playbook for every output it generates.</div>
-      </details>
-
-      <details class="border border-line rounded-md bg-white">
-        <summary class="p-6 flex justify-between items-center font-semibold text-forest">
-          How do I access everything after I buy?
-          <span class="faq-icon text-2xl text-forest font-light">+</span>
-        </summary>
-        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Right after checkout you'll get an email with your access link and a password to the Kit portal. Save that email — it's your lifetime access.</div>
-      </details>
-
-      <details class="border border-line rounded-md bg-white">
-        <summary class="p-6 flex justify-between items-center font-semibold text-forest">
-          Is this a course?
-          <span class="faq-icon text-2xl text-forest font-light">+</span>
-        </summary>
-        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">No. There are no modules, lessons, or curriculum. The Kit is a system of tools and templates you start using on day one. The mini training videos are short walkthroughs of how I use the tools in real client work — not lectures.</div>
-      </details>
-
-      <details class="border border-line rounded-md bg-white">
-        <summary class="p-6 flex justify-between items-center font-semibold text-forest">
-          Will the rates work for my niche?
-          <span class="faq-icon text-2xl text-forest font-light">+</span>
-        </summary>
-        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">The base rates are calibrated for DTC brand work — beauty, wellness, lifestyle, food/bev, home. If you work in B2B, finance, or pharma, the numbers will skew low and you can adjust upward using the brand-size lever.</div>
-      </details>
-
-      <details class="border border-line rounded-md bg-white">
-        <summary class="p-6 flex justify-between items-center font-semibold text-forest">
-          Do you offer refunds?
-          <span class="faq-icon text-2xl text-forest font-light">+</span>
-        </summary>
-        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">If the Kit doesn't help you within 14 days, email me and I'll refund you. No essay required.</div>
-      </details>
-
-      <details class="border border-line rounded-md bg-white">
-        <summary class="p-6 flex justify-between items-center font-semibold text-forest">
-          What's the difference between this and the Strategy Intensive?
-          <span class="faq-icon text-2xl text-forest font-light">+</span>
-        </summary>
-        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">The Kit is self-serve — you use the tools yourself, on your own time. The Strategy Intensive is 1:1 — we get on a call, audit your business, and build a custom 90-day roadmap together. They work well together: the Kit gives you the systems, the Intensive gives you the plan.</div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FINAL CTA ============ -->
+<!-- ============ FINAL CTA BAND ============ -->
 <section class="px-6 py-24 bg-cream border-t border-line">
-  <div class="max-w-3xl mx-auto text-center">
-    <span class="mono-label">// final_call</span>
-    <h2 class="font-display text-4xl md:text-7xl font-bold leading-tight mt-6 mb-6 display-balance text-forest">Stop guessing. Start booking.</h2>
-    <p class="text-lg text-ash mb-10 max-w-xl mx-auto display-balance">The tools are built. The templates are ready. The only thing left is for you to use them.</p>
-    <a href="#pricing" class="btn-primary text-base">→ Get the Kit — $99</a>
+  <div class="max-w-4xl mx-auto text-center">
+    <span class="mono-label">// pick_your_path</span>
+    <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-8 display-balance text-forest">
+      Two ways to start.
+    </h2>
+    <p class="text-lg text-ash mb-12 max-w-xl mx-auto display-balance">
+      Grab the Kit if you want tools to use today. Book an intensive if you want a custom plan built around your business.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a href="bookedout.html" class="btn-primary">Start with the Kit — $99</a>
+      <a href="intensive.html" class="btn-secondary">Apply for an Intensive</a>
+    </div>
   </div>
 </section>
 
@@ -731,161 +443,20 @@
       <p class="text-xs max-w-xs">Systems for UGC creators who want to be booked, paid, and run like a business.</p>
     </div>
     <div class="text-xs grid grid-cols-2 gap-x-10 gap-y-2">
-      <a href="#" class="hover:text-cream font-mono">→ instagram</a>
-      <a href="#" class="hover:text-cream font-mono">→ tiktok</a>
-      <a href="#" class="hover:text-cream font-mono">→ mayaherring.com</a>
-      <a href="#" class="hover:text-cream font-mono">→ contact</a>
-      <a href="#" class="hover:text-cream font-mono">→ refund policy</a>
+      <a href="index.html" class="hover:text-cream font-mono">→ home</a>
+      <a href="bookedout.html" class="hover:text-cream font-mono">→ the kit</a>
+      <a href="intensive.html" class="hover:text-cream font-mono">→ strategy intensive</a>
+      <a href="advisory.html" class="hover:text-cream font-mono">→ advisory</a>
+      <a href="club.html" class="hover:text-cream font-mono">→ the club</a>
+      <a href="about.html" class="hover:text-cream font-mono">→ about</a>
+      <a href="https://mayaherring.com" class="hover:text-cream font-mono">→ mayaherring.com</a>
+      <a href="mailto:hello@collegarestudio.com" class="hover:text-cream font-mono">→ contact</a>
     </div>
     <p class="text-xs font-mono">© 2026</p>
   </div>
 </footer>
 
-<!-- ============ STICKY MOBILE CTA ============ -->
-<div class="sticky-cta">
-  <span class="text-sm font-semibold">Booked Out Kit</span>
-  <a href="#pricing" class="bg-moss text-forestDeep px-4 py-2 rounded text-sm font-bold">Get it — $99</a>
-</div>
-
-<!-- ============ CALCULATOR LOGIC ============ -->
 <script>
-  const BASE_RATES = {
-    video15: 300, video30: 450, video60: 600, photoSet: 250, voiceover: 150,
-    grwm: 400, unboxing: 350, testimonial: 400, lifestyle: 350, adStyle: 500,
-  };
-  const DELIVERABLE_LABELS = {
-    video15: '15-second video', video30: '30-second video', video60: '60-second video',
-    photoSet: 'photo set', voiceover: 'voiceover', grwm: 'GRWM video',
-    unboxing: 'unboxing video', testimonial: 'testimonial video',
-    lifestyle: 'lifestyle video', adStyle: 'ad-style video',
-  };
-  const USAGE_MULTIPLIERS = {
-    organic: 1.0, paid30: 1.4, paid90: 1.7, paid180: 2.1, paid365: 2.5,
-    whitelisting: 1.6, buyout: 3.5,
-  };
-  const USAGE_LABELS = {
-    organic: 'organic only', paid30: 'paid social for 30 days',
-    paid90: 'paid social for 90 days', paid180: 'paid social for 6 months',
-    paid365: 'paid social for 1 year', whitelisting: 'whitelisting',
-    buyout: 'a full buyout',
-  };
-  const TURNAROUND_MULTIPLIERS = { '2weeks': 1.0, '1week': 1.15, '3days': 1.4, rush: 1.75 };
-  const TURNAROUND_LABELS = { '2weeks': '2-week', '1week': '1-week', '3days': '3-day', rush: '24-hour rush' };
-  const EXPERIENCE_MULTIPLIERS = { new: 0.85, growing: 1.0, established: 1.25 };
-  const BRAND_MULTIPLIERS = { indie: 0.9, growing: 1.0, established: 1.2, enterprise: 1.4 };
-
-  function formatMoney(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
-
-  function calculateRate(inputs) {
-    const baseRate = BASE_RATES[inputs.deliverableType] * inputs.numDeliverables;
-    const revisionAdd = inputs.revisions * 50;
-    const conceptsAdd = Math.max(0, inputs.concepts - 1) * 75;
-    const subtotal = baseRate + revisionAdd + conceptsAdd;
-    const usage = USAGE_MULTIPLIERS[inputs.usageRights];
-    const turn = TURNAROUND_MULTIPLIERS[inputs.turnaround];
-    const exp = EXPERIENCE_MULTIPLIERS[inputs.experience];
-    const brand = BRAND_MULTIPLIERS[inputs.brandSize];
-    const adjusted = subtotal * usage * turn * exp * brand;
-    const low = Math.round(adjusted * 0.9 / 25) * 25;
-    const high = Math.round(adjusted * 1.25 / 25) * 25;
-    const mid = Math.round((low + high) / 2 / 25) * 25;
-    const perDeliverable = Math.round(mid / inputs.numDeliverables / 25) * 25;
-    return { low, high, mid, perDeliverable, usage, turn, exp, brand };
-  }
-
-  function buildNegotiationNotes(inputs, calc) {
-    const notes = [];
-    if (calc.usage >= 2.1) {
-      notes.push(`<strong class="text-cream">Usage rights are doing the heavy lifting.</strong> You're licensing for ${USAGE_LABELS[inputs.usageRights]} — about ${Math.round(calc.usage * 100 - 100)}% above organic. If the brand pushes back, offer to halve the window for a 25% cut.`);
-    } else if (calc.usage >= 1.4) {
-      notes.push(`<strong class="text-cream">Usage is your biggest negotiation lever.</strong> ${USAGE_LABELS[inputs.usageRights].charAt(0).toUpperCase() + USAGE_LABELS[inputs.usageRights].slice(1)} adds ~${Math.round(calc.usage * 100 - 100)}% over organic. Expanding to a full year of paid? Your rate jumps another 40–60%.`);
-    } else {
-      notes.push(`<strong class="text-cream">Organic-only deal.</strong> Make sure the contract explicitly excludes paid social, whitelisting, and ads. If they ever want to run this as an ad, that's a separate fee.`);
-    }
-    if (calc.turn >= 1.4) {
-      notes.push(`<strong class="text-cream">Rush turnaround justifies a real premium.</strong> ${TURNAROUND_LABELS[inputs.turnaround]} adds ${Math.round(calc.turn * 100 - 100)}% to your base. Don't apologize for it — fast work is more valuable.`);
-    } else if (calc.turn === 1.15) {
-      notes.push(`<strong class="text-cream">1-week turnaround is reasonable but not free.</strong> The 15% bump is small enough that brands won't blink — but it adds up across a retainer.`);
-    }
-    if (inputs.experience === 'new') {
-      notes.push(`<strong class="text-cream">You're early — that's fine.</strong> The calculator built in a 15% adjustment. Once you have 3 testimonials and 6 months of work, switch to "growing" and your floor jumps.`);
-    } else if (inputs.experience === 'established') {
-      notes.push(`<strong class="text-cream">You're past the proving stage.</strong> Don't anchor to what new creators charge. 18+ months of brand work earns you the right to defend bigger numbers.`);
-    }
-    if (inputs.concepts >= 3) {
-      notes.push(`<strong class="text-cream">${inputs.concepts} concepts is more work than most brands realize.</strong> Each unique hook is essentially a separate creative deliverable. Line-item it in the proposal.`);
-    }
-    if (inputs.brandSize === 'enterprise') {
-      notes.push(`<strong class="text-cream">Enterprise brands have budget.</strong> Don't undercharge them out of impostor syndrome — procurement teams are calibrated for higher numbers. Quoting low makes you look junior.`);
-    } else if (inputs.brandSize === 'indie') {
-      notes.push(`<strong class="text-cream">Indie brands have less budget but better relationships.</strong> Trade a 10–15% discount for stronger usage, a public testimonial, or a longer-term commitment.`);
-    }
-    notes.push(`<strong class="text-cream">Quote the high end first.</strong> Lead with $${calc.high.toLocaleString()}. The low end is your floor — not your starting point.`);
-    return notes;
-  }
-
-  function renderResult(inputs, calc, notes) {
-    const panel = document.getElementById('resultPanel');
-    panel.classList.remove('hidden');
-    document.getElementById('rateRange').textContent = `${formatMoney(calc.low)} – ${formatMoney(calc.high)}`;
-    document.getElementById('rateContext').textContent = `${inputs.numDeliverables}x_${DELIVERABLE_LABELS[inputs.deliverableType].replace(/\s/g, '_')}_with_${USAGE_LABELS[inputs.usageRights].replace(/\s/g, '_')}`;
-    document.getElementById('perDeliverable').textContent = formatMoney(calc.perDeliverable);
-    document.getElementById('packagePrice').textContent = formatMoney(calc.mid);
-    document.getElementById('packageNote').textContent = `${inputs.numDeliverables} deliverables`;
-
-    let conf = 'solid', confNote = 'within market range';
-    if (calc.high > 8000) { conf = 'high-ticket'; confNote = 'quote with confidence'; }
-    if (calc.low < 500) { conf = 'entry-level'; confNote = 'protect your floor'; }
-    document.getElementById('confidence').textContent = conf;
-    document.getElementById('confidenceNote').textContent = confNote;
-
-    const ul = document.getElementById('negotiationNotes');
-    ul.innerHTML = '';
-    notes.forEach(note => {
-      const li = document.createElement('li');
-      li.innerHTML = `<span class="text-moss">→</span> ${note}`;
-      ul.appendChild(li);
-    });
-    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
-  }
-
-  document.getElementById('rateForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const inputs = {
-      deliverableType: document.getElementById('deliverableType').value,
-      numDeliverables: parseInt(document.getElementById('numDeliverables').value, 10) || 1,
-      usageRights: document.getElementById('usageRights').value,
-      turnaround: document.getElementById('turnaround').value,
-      revisions: parseInt(document.getElementById('revisions').value, 10) || 0,
-      concepts: parseInt(document.getElementById('concepts').value, 10) || 1,
-      experience: document.getElementById('experience').value,
-      brandSize: document.getElementById('brandSize').value,
-    };
-    const calc = calculateRate(inputs);
-    const notes = buildNegotiationNotes(inputs, calc);
-    renderResult(inputs, calc, notes);
-  });
-
-  document.getElementById('resetBtn').addEventListener('click', function() {
-    document.getElementById('rateForm').reset();
-    document.getElementById('resultPanel').classList.add('hidden');
-  });
-
-  document.getElementById('copyBtn').addEventListener('click', function() {
-    const range = document.getElementById('rateRange').textContent;
-    const context = document.getElementById('rateContext').textContent;
-    const per = document.getElementById('perDeliverable').textContent;
-    const pkg = document.getElementById('packagePrice').textContent;
-    const notes = Array.from(document.querySelectorAll('#negotiationNotes li')).map(li => '• ' + li.textContent.replace(/^→\s*/, '')).join('\n\n');
-    const text = `MY UGC RATE\n${range}\n${context}\n\nPer deliverable: ${per}\nSuggested package: ${pkg}\n\nNEGOTIATION NOTES:\n${notes}\n\nCalculated with the Booked Out UGC Kit by Maya Creative Co`;
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = document.getElementById('copyBtn');
-      const original = btn.textContent;
-      btn.textContent = 'Copied ✓';
-      setTimeout(() => { btn.textContent = original; }, 2000);
-    });
-  });
-
   document.getElementById('emailForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const status = document.getElementById('emailStatus');
