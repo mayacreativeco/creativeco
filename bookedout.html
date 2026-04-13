@@ -249,28 +249,35 @@
 <!-- ============ HERO ============ -->
 <section class="px-6 py-20 md:py-28 relative overflow-hidden">
   <div class="max-w-5xl mx-auto relative">
-    <div class="flex items-center gap-3 mb-8">
-      <span class="inline-block w-8 h-2 checkerboard"></span>
-      <span class="mono-label">Maya_Creative_Co / command_center.v1</span>
-    </div>
+    <div class="grid md:grid-cols-5 gap-12 items-center">
+      <div class="md:col-span-3">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="inline-block w-8 h-2 checkerboard"></span>
+          <span class="mono-label">Maya_Creative_Co / command_center.v1</span>
+        </div>
 
-    <h1 class="font-display text-5xl md:text-7xl font-bold leading-[1.02] tracking-tight display-balance mb-8 text-forest">
-      Your UGC business, in one <span class="italic text-moss">command center.</span>
-    </h1>
+        <h1 class="font-display text-5xl md:text-7xl font-bold leading-[1.02] tracking-tight display-balance mb-8 text-forest">
+          Your UGC business, in one <span class="italic text-moss">command center.</span>
+        </h1>
 
-    <p class="text-lg md:text-xl text-ash leading-relaxed max-w-2xl mb-10 display-balance">
-      The Booked Out Kit isn't a PDF dump or a Notion doc. It's a live command center — interactive tools, templates, scripts, short walkthrough videos, and a working resource vault. Open it, use it, ship the work.
-    </p>
+        <p class="text-lg md:text-xl text-ash leading-relaxed mb-10 display-balance">
+          The Booked Out Kit isn't a PDF dump or a Notion doc. It's a live command center — interactive tools, templates, scripts, short walkthrough videos, and a working resource vault. Open it, use it, ship the work.
+        </p>
 
-    <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-      <a href="#pricing" class="btn-primary">Unlock the Command Center — $99</a>
-      <a href="#tool" class="btn-secondary">Try the Calculator →</a>
-    </div>
+        <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+          <a href="#pricing" class="btn-primary">Unlock the Command Center — $99</a>
+          <a href="#tool" class="btn-secondary">Try the Calculator →</a>
+        </div>
 
-    <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ash">
-      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-moss rounded-full"></span> Interactive · not a PDF</span>
-      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-moss rounded-full"></span> Lifetime access + updates</span>
-      <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-moss rounded-full"></span> Built by a working creator</span>
+        <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ash">
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-moss rounded-full"></span> Interactive · not a PDF</span>
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-moss rounded-full"></span> Lifetime access + updates</span>
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-moss rounded-full"></span> Built by a working creator</span>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <img src="Tezza-8235.JPG" alt="Maya — Maya Creative Co" class="w-full rounded-md object-cover" />
+      </div>
     </div>
   </div>
 </section>
@@ -657,11 +664,7 @@
     <span class="mono-label !text-moss">// not_ready_yet</span>
     <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-4 display-balance">Get the weekly creator playbook.</h2>
     <p class="text-cream/70 mb-8 display-balance">One short email a week on pricing, pitching, and the systems that actually book UGC creators. No fluff. No "manifest your dream brand."</p>
-    <form id="emailForm" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-      <input type="email" id="emailInput" placeholder="your@email.com" required class="flex-1 !text-ink" />
-      <button type="submit" class="btn-primary !bg-moss !border-moss hover:!bg-forestLight whitespace-nowrap">Subscribe →</button>
-    </form>
-    <p id="emailStatus" class="text-cream/60 text-sm mt-4 hidden"></p>
+    <script async data-uid="ef3b310cee" src="https://maya-creative-co.kit.com/ef3b310cee/index.js"></script>
   </div>
 </section>
 
@@ -913,13 +916,6 @@
     });
   });
 
-  document.getElementById('emailForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const status = document.getElementById('emailStatus');
-    status.classList.remove('hidden');
-    status.textContent = '✓ You\'re on the list. Replace this form with your Kit form embed.';
-    document.getElementById('emailInput').value = '';
-  });
   document.getElementById('menuBtn').addEventListener('click', function() {
     document.getElementById('mobileMenu').classList.toggle('hidden');
   });

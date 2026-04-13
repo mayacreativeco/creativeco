@@ -414,12 +414,7 @@
     <p class="text-lg text-cream/70 mb-10 display-balance">
       One email a week. Real pricing frameworks, outreach scripts I'm actually using, and behind-the-scenes of my own brand deals. No fluff.
     </p>
-    <form id="emailForm" class="flex flex-col sm:flex-row gap-3 max-w-xl">
-      <input type="email" id="emailInput" placeholder="your@email.com" required class="flex-1" />
-      <button type="submit" class="btn-primary !bg-moss !border-moss !text-forestDeep hover:!bg-cream hover:!border-cream whitespace-nowrap">Subscribe →</button>
-    </form>
-    <p id="emailStatus" class="hidden mt-4 text-sm text-moss font-mono"></p>
-    <p class="mt-6 text-xs text-cream/40 font-mono">// no_spam · unsubscribe_anytime</p>
+    <script async data-uid="ef3b310cee" src="https://maya-creative-co.kit.com/ef3b310cee/index.js"></script>
   </div>
 </section>
 
@@ -466,13 +461,6 @@
 </footer>
 
 <script>
-  document.getElementById('emailForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const status = document.getElementById('emailStatus');
-    status.classList.remove('hidden');
-    status.textContent = '✓ You\'re on the list. Replace this form with your Kit form embed.';
-    document.getElementById('emailInput').value = '';
-  });
   document.getElementById('menuBtn').addEventListener('click', function() {
     document.getElementById('mobileMenu').classList.toggle('hidden');
   });
