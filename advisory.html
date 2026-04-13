@@ -105,6 +105,18 @@
       <a href="about.html" class="hover:text-forest transition-colors">About</a>
     </div>
     <a href="#apply" class="btn-primary text-sm hidden md:inline-flex !py-3 !px-5">Apply</a>
+    <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+      <span class="w-6 h-0.5 bg-forest block"></span>
+      <span class="w-6 h-0.5 bg-forest block"></span>
+      <span class="w-6 h-0.5 bg-forest block"></span>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-line bg-cream px-6 py-6 flex flex-col gap-5">
+    <a href="bookedout.html" class="text-sm font-medium text-ash hover:text-forest transition-colors">Kit</a>
+    <a href="intensive.html" class="text-sm font-medium text-ash hover:text-forest transition-colors">Strategy</a>
+    <a href="club.html" class="text-sm font-medium text-ash hover:text-forest transition-colors">Club</a>
+    <a href="about.html" class="text-sm font-medium text-ash hover:text-forest transition-colors">About</a>
+    <a href="#apply" class="btn-primary !py-3 !px-5 text-sm justify-center">Apply</a>
   </div>
 </nav>
 
@@ -393,5 +405,10 @@
   </div>
 </footer>
 
+<script>
+  document.getElementById('menuBtn').addEventListener('click', function() {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+</script>
 </body>
 </html>

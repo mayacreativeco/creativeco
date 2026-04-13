@@ -120,6 +120,18 @@
       <a href="about.html" class="hover:text-forest transition-colors">About</a>
     </div>
     <a href="#pricing" class="btn-primary text-sm hidden md:inline-flex !py-3 !px-5">Coming Soon — $39/mo</a>
+    <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+      <span class="w-6 h-0.5 bg-forest block"></span>
+      <span class="w-6 h-0.5 bg-forest block"></span>
+      <span class="w-6 h-0.5 bg-forest block"></span>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-line bg-cream px-6 py-6 flex flex-col gap-5">
+    <a href="bookedout.html" class="text-sm font-medium text-ash hover:text-forest transition-colors">Kit</a>
+    <a href="intensive.html" class="text-sm font-medium text-ash hover:text-forest transition-colors">Strategy</a>
+    <a href="club.html" class="text-sm font-semibold text-forest">Club</a>
+    <a href="about.html" class="text-sm font-medium text-ash hover:text-forest transition-colors">About</a>
+    <a href="#pricing" class="btn-primary !py-3 !px-5 text-sm justify-center">Coming Soon — $39/mo</a>
   </div>
 </nav>
 
@@ -432,6 +444,9 @@
     planPrice.textContent = '397';
     planPeriod.textContent = 'yr';
     planNote.textContent = 'locked_in_for_12_months';
+  });
+  document.getElementById('menuBtn').addEventListener('click', function() {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
   });
 </script>
 
