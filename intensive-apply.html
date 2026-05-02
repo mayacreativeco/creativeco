@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apply — Strategy Intensive · Maya Creative Co</title>
+<meta name="description" content="Apply for the Strategy Intensive. Takes about 5 minutes. I review every application within 48 hours." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          cream: '#F5F0E4',
+          creamDeep: '#EDE5D2',
+          forest: '#1B3A2F',
+          forestDeep: '#0F2620',
+          forestLight: '#2D5742',
+          moss: '#4A7C59',
+          ink: '#0A1A12',
+          ash: '#4A5C50',
+          line: '#D8D0BE',
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background-color: #F5F0E4; color: #0A1A12; }
+  .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
+  .display-balance { text-wrap: balance; }
+
+  .checkerboard {
+    background-image:
+      linear-gradient(45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(-45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #1B3A2F 75%),
+      linear-gradient(-45deg, transparent 75%, #1B3A2F 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  }
+  .checkerboard-cream {
+    background-image:
+      linear-gradient(45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(-45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #F5F0E4 75%),
+      linear-gradient(-45deg, transparent 75%, #F5F0E4 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+  }
+
+  .mono-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #1B3A2F;
+    font-weight: 500;
+  }
+
+  .field-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: #4A5C50;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .field-label::before { content: '> '; color: #1B3A2F; }
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    background-color: #FFFFFF;
+    border: 1.5px solid #D8D0BE;
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-size: 15px;
+    color: #0A1A12;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #1B3A2F;
+    box-shadow: 0 0 0 3px rgba(27, 58, 47, 0.12);
+  }
+  textarea { resize: vertical; min-height: 100px; }
+
+  .btn-primary {
+    background-color: #1B3A2F;
+    color: #F5F0E4;
+    padding: 16px 32px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #1B3A2F;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+  }
+  .btn-primary:hover { background-color: #0F2620; }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+</style>
+</head>
+<body class="antialiased">
+
+<div class="checkerboard h-2"></div>
+
+<!-- NAV -->
+<nav class="border-b border-line bg-cream">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2">
+      <span class="inline-block w-5 h-5 checkerboard rounded-sm"></span>
+      Maya Creative Co
+    </a>
+    <a href="intensive.html" class="text-sm font-mono text-ash hover:text-forest transition-colors">← Back to Intensive</a>
+  </div>
+</nav>
+
+<!-- FORM PAGE -->
+<section class="px-6 py-16 md:py-24">
+  <div class="max-w-2xl mx-auto">
+
+    <!-- Header -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="inline-block w-8 h-2 checkerboard"></span>
+        <span class="mono-label">// application · strategy_intensive</span>
+      </div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-forest leading-tight display-balance mb-4">
+        Apply for the Intensive.
+      </h1>
+      <p class="text-ash leading-relaxed">Takes about 5 minutes. I review every application within 48 hours and get back to you — yes, no, or not yet — always with context. No one gets left on read.</p>
+    </div>
+
+    <!-- Success state (hidden until submission) -->
+    <div id="successMessage" class="hidden bg-forest text-cream rounded-md p-10 text-center">
+      <div class="checkerboard h-1 mb-8 -mx-10 -mt-10 rounded-t-md"></div>
+      <p class="mono-label !text-moss mb-4">// application_received</p>
+      <h2 class="font-display text-3xl font-bold mb-4">Thanks for applying.</h2>
+      <p class="text-cream/80 leading-relaxed mb-6">I review applications within 48 hours and get back to everyone — yes or no. Watch your inbox. In the meantime, if you don't already have the Booked Out Kit, it's worth grabbing before we start.</p>
+      <a href="index.html" class="inline-flex items-center gap-2 text-moss font-mono text-sm hover:text-cream transition-colors">← Back to mayacreativeco.com</a>
+    </div>
+
+    <!-- Form -->
+    <form id="applyForm" class="space-y-8">
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="field-label" for="fullName">Full name</label>
+          <input type="text" id="fullName" name="full_name" placeholder="Your name" required />
+        </div>
+        <div>
+          <label class="field-label" for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+      </div>
+
+      <div>
+        <label class="field-label" for="handle">Instagram or TikTok handle</label>
+        <input type="text" id="handle" name="social_handle" placeholder="@yourhandle" required />
+      </div>
+
+      <div>
+        <label class="field-label" for="revenue">Current average monthly revenue from UGC</label>
+        <select id="revenue" name="monthly_revenue" required>
+          <option value="" disabled selected>Select a range</option>
+          <option value="0-1k">$0–1K / month</option>
+          <option value="1-3k">$1–3K / month</option>
+          <option value="3-5k">$3–5K / month</option>
+          <option value="5-10k">$5–10K / month</option>
+          <option value="10k+">$10K+ / month</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="field-label" for="bottleneck">Biggest bottleneck right now</label>
+        <p class="text-xs text-ash font-mono mb-3 -mt-1">1–2 sentences. Be specific — "pricing" is less useful than "I don't know how to price retainers vs. one-offs."</p>
+        <textarea id="bottleneck" name="biggest_bottleneck" placeholder="What's actually blocking you right now?" required></textarea>
+      </div>
+
+      <div>
+        <label class="field-label" for="outcome">What do you want to walk away with after the intensive?</label>
+        <p class="text-xs text-ash font-mono mb-3 -mt-1">1–2 sentences. Specific outcomes are more useful than general goals.</p>
+        <textarea id="outcome" name="desired_outcome" placeholder="What does success look like for you at the end of the quarter?" required></textarea>
+      </div>
+
+      <div>
+        <label class="field-label" for="anything_else">Anything else I should know? <span class="text-ash">(optional)</span></label>
+        <textarea id="anything_else" name="anything_else" placeholder="Previous coaching, unusual circumstances, payment plan request, etc." style="min-height:80px;"></textarea>
+      </div>
+
+      <div class="pt-2">
+        <button type="submit" id="submitBtn" class="btn-primary">
+          Submit Application →
+        </button>
+        <p class="text-xs text-ash font-mono text-center mt-4">I respond to every application within 48 hours.</p>
+      </div>
+
+    </form>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-forestDeep text-cream/70">
+  <div class="checkerboard h-2"></div>
+  <div class="px-6 py-10 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <p class="font-display text-sm font-bold text-cream">Maya Creative Co</p>
+    <div class="flex gap-8 text-xs font-mono">
+      <a href="intensive.html" class="hover:text-cream">→ intensive</a>
+      <a href="index.html" class="hover:text-cream">→ home</a>
+      <a href="mailto:support@mayaherring.com" class="hover:text-cream">→ contact</a>
+    </div>
+    <p class="text-xs font-mono">© 2026</p>
+  </div>
+</footer>
+
+<script>
+  // -------------------------------------------------------------------------
+  // SETUP NOTE FOR MAYA:
+  // This form uses Formspree (formspree.io — free tier works for launch).
+  // To activate:
+  //   1. Go to formspree.io and sign up / log in
+  //   2. Create a new form — it will give you an endpoint like:
+  //      https://formspree.io/f/xabcdefg
+  //   3. Replace YOUR_FORMSPREE_ENDPOINT below with that URL
+  //   4. In Formspree dashboard, enable "Reply-To" so applicants get
+  //      an auto-confirmation email, and set your notification email
+  //      to support@mayaherring.com
+  // -------------------------------------------------------------------------
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT';
+
+  document.getElementById('applyForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+
+    // Add a reply-to field so Formspree can auto-reply to the applicant
+    data['_replyto'] = data['email'];
+    data['_subject'] = 'New Intensive Application — ' + data['full_name'];
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        document.getElementById('applyForm').classList.add('hidden');
+        document.getElementById('successMessage').classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Submit Application →';
+      alert('Something went wrong. Please email your application directly to support@mayaherring.com');
+    }
+  });
+</script>
+
+</body>
+</html>

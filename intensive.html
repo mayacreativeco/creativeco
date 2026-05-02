@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Strategy Intensive — Maya Creative Co</title>
+<meta name="description" content="Three sessions across one quarter. A custom dashboard built for your business. The full AI workflow that took me from $5K to $15K months. For UGC creators making $2-10K/month who are ready to scale past $10K." />
+<meta property="og:title" content="Strategy Intensive — Maya Creative Co" />
+<meta property="og:description" content="Three sessions. One quarter. A real plan to scale your UGC business past $10K months." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          cream: '#F5F0E4',
+          creamDeep: '#EDE5D2',
+          forest: '#1B3A2F',
+          forestDeep: '#0F2620',
+          forestLight: '#2D5742',
+          moss: '#4A7C59',
+          ink: '#0A1A12',
+          ash: '#4A5C50',
+          line: '#D8D0BE',
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background-color: #F5F0E4; color: #0A1A12; }
+  .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
+  .display-balance { text-wrap: balance; }
+
+  .checkerboard {
+    background-image:
+      linear-gradient(45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(-45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #1B3A2F 75%),
+      linear-gradient(-45deg, transparent 75%, #1B3A2F 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  }
+  .checkerboard-mini {
+    background-image:
+      linear-gradient(45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(-45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #1B3A2F 75%),
+      linear-gradient(-45deg, transparent 75%, #1B3A2F 75%);
+    background-size: 8px 8px;
+    background-position: 0 0, 0 4px, 4px -4px, -4px 0;
+  }
+  .checkerboard-cream {
+    background-image:
+      linear-gradient(45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(-45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #F5F0E4 75%),
+      linear-gradient(-45deg, transparent 75%, #F5F0E4 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+  }
+
+  .btn-primary {
+    background-color: #1B3A2F;
+    color: #F5F0E4;
+    padding: 16px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #1B3A2F;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .btn-primary:hover { background-color: #0F2620; }
+  .btn-primary:active { transform: scale(0.98); }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: #1B3A2F;
+    padding: 16px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 15px;
+    border: 2px solid #1B3A2F;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .btn-secondary:hover { background-color: #1B3A2F; color: #F5F0E4; }
+
+  .mono-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #1B3A2F;
+    font-weight: 500;
+  }
+
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .faq-icon { transform: rotate(45deg); }
+  .faq-icon { transition: transform 0.2s ease; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- TOP STRIP -->
+<div class="checkerboard h-2"></div>
+
+<!-- NAV -->
+<nav class="border-b border-line bg-cream sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2">
+      <span class="inline-block w-5 h-5 checkerboard rounded-sm"></span>
+      Maya Creative Co
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ash">
+      <a href="about.html" class="hover:text-forest transition-colors">About</a>
+    </div>
+    <a href="intensive-apply.html" class="btn-primary text-sm hidden md:inline-flex !py-3 !px-5">Apply for an Intensive →</a>
+    <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+      <span class="w-6 h-0.5 bg-forest block"></span>
+      <span class="w-6 h-0.5 bg-forest block"></span>
+      <span class="w-6 h-0.5 bg-forest block"></span>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-line bg-cream px-6 py-6 flex flex-col gap-5">
+    <a href="about.html" class="text-sm font-medium text-ash hover:text-forest transition-colors">About</a>
+    <a href="intensive-apply.html" class="btn-primary !py-3 !px-5 text-sm justify-center">Apply for an Intensive →</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="px-6 py-20 md:py-36 relative overflow-hidden bg-cream">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-center gap-3 mb-8">
+      <span class="inline-block w-8 h-2 checkerboard"></span>
+      <span class="mono-label">// strategy_intensive</span>
+    </div>
+    <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] tracking-tight display-balance mb-8 text-forest">
+      For UGC creators ready to scale past <span class="italic text-moss">$10K months.</span>
+    </h1>
+    <p class="text-lg md:text-2xl text-ash leading-relaxed max-w-2xl mb-12 display-balance">
+      Three sessions across one quarter. A custom dashboard built around your business. The full AI workflow that took me from $5K to $15K months.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+      <a href="intensive-apply.html" class="btn-primary text-base">Apply for an Intensive →</a>
+      <p class="text-ash font-mono text-sm">$1,250 · one quarter · application required</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="checkerboard h-3"></div>
+
+<!-- ============ QUALIFICATION ============ -->
+<section class="px-6 py-24 bg-forest text-cream">
+  <div class="max-w-5xl mx-auto">
+    <span class="mono-label !text-moss">// qualification</span>
+    <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 mb-12 display-balance">
+      This is for a specific kind of creator.
+    </h2>
+    <div class="grid md:grid-cols-2 gap-10">
+      <div>
+        <p class="font-mono text-xs text-moss mb-6 uppercase tracking-widest">This is for you if:</p>
+        <div class="space-y-4">
+          <div class="flex gap-4">
+            <span class="font-mono text-moss mt-1 shrink-0">→</span>
+            <p class="text-cream/80 leading-relaxed">You're already making $2–10K/month from UGC and want to break $10K+ consistently.</p>
+          </div>
+          <div class="flex gap-4">
+            <span class="font-mono text-moss mt-1 shrink-0">→</span>
+            <p class="text-cream/80 leading-relaxed">You have brand deals coming in but can't predict next month's income.</p>
+          </div>
+          <div class="flex gap-4">
+            <span class="font-mono text-moss mt-1 shrink-0">→</span>
+            <p class="text-cream/80 leading-relaxed">You've maxed out what hustle alone can do — you need systems, not motivation.</p>
+          </div>
+          <div class="flex gap-4">
+            <span class="font-mono text-moss mt-1 shrink-0">→</span>
+            <p class="text-cream/80 leading-relaxed">You're ready to actually implement, not just consume more content about it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-cream/20 md:border-t-0 md:border-l md:pl-10 pt-10 md:pt-0">
+        <p class="font-mono text-xs text-cream/40 mb-6 uppercase tracking-widest">This isn't for you if:</p>
+        <div class="space-y-4">
+          <div class="flex gap-4">
+            <span class="font-mono text-cream/30 mt-1 shrink-0">×</span>
+            <p class="text-cream/50 leading-relaxed">You haven't landed your first paid brand deal yet. Start with the <a href="index.html" class="underline hover:text-cream">Booked Out Kit</a>.</p>
+          </div>
+          <div class="flex gap-4">
+            <span class="font-mono text-cream/30 mt-1 shrink-0">×</span>
+            <p class="text-cream/50 leading-relaxed">You're looking for done-for-you services. This is strategy and systems — not execution.</p>
+          </div>
+          <div class="flex gap-4">
+            <span class="font-mono text-cream/30 mt-1 shrink-0">×</span>
+            <p class="text-cream/50 leading-relaxed">You want a one-off coaching call. This is a full quarter of focused work together.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INSIDE ============ -->
+<section id="inside" class="px-6 py-24 bg-cream">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-16">
+      <span class="mono-label">// what_lives_inside</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 display-balance text-forest">
+        Five deliverables. One quarter.
+      </h2>
+    </div>
+
+    <div class="space-y-5">
+
+      <div class="bg-white border-2 border-forest rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start">
+        <div class="md:col-span-1">
+          <p class="font-mono text-xs text-moss mb-2">// 01</p>
+          <div class="w-8 h-8 checkerboard"></div>
+        </div>
+        <div class="md:col-span-4">
+          <h3 class="font-display text-2xl font-bold text-forest mb-3">Your Custom Dashboard</h3>
+          <p class="text-ash leading-relaxed">A shared step-by-step plan built around your specific business. We map your current pipeline, your gaps, and your 90-day path together. Updated each session — not a static doc you forget about. You leave with a live document that keeps working after the quarter ends.</p>
+        </div>
+      </div>
+
+      <div class="bg-white border border-line rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start">
+        <div class="md:col-span-1">
+          <p class="font-mono text-xs text-moss mb-2">// 02</p>
+          <div class="w-8 h-8 bg-forest rounded-sm"></div>
+        </div>
+        <div class="md:col-span-4">
+          <h3 class="font-display text-2xl font-bold text-forest mb-3">The $15K Playbook</h3>
+          <p class="text-ash leading-relaxed">The exact AI workflow, agents, and CRM stack I use to run my UGC business at $10–15K months. I walk you through every tool, every prompt, every automation — so you can build your own version, adapted to your niche and client mix. Not a PDF. A walkthrough.</p>
+        </div>
+      </div>
+
+      <div class="bg-white border border-line rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start">
+        <div class="md:col-span-1">
+          <p class="font-mono text-xs text-moss mb-2">// 03</p>
+          <div class="w-8 h-8 checkerboard-mini"></div>
+        </div>
+        <div class="md:col-span-4">
+          <h3 class="font-display text-2xl font-bold text-forest mb-3">Three Quarterly Sessions</h3>
+          <p class="text-ash leading-relaxed">Not one-and-done. Three 90-minute sessions across the quarter — strategy deep-dive at session one, mid-quarter adjustment at session two, results review and next-quarter plan at session three. Each session is built around what's actually happening in your business, not a fixed curriculum.</p>
+        </div>
+      </div>
+
+      <div class="bg-white border border-line rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start">
+        <div class="md:col-span-1">
+          <p class="font-mono text-xs text-moss mb-2">// 04</p>
+          <div class="w-8 h-8 border-2 border-forest"></div>
+        </div>
+        <div class="md:col-span-4">
+          <h3 class="font-display text-2xl font-bold text-forest mb-3">Async Support Between Sessions</h3>
+          <p class="text-ash leading-relaxed">14 days of async messaging after each call. Hit a wall on a pitch? A brand just sent a contract you're not sure about? Need a gut-check on your rate before you send? Send it. I respond within one business day. The work doesn't stop when the call ends.</p>
+        </div>
+      </div>
+
+      <div class="bg-white border border-line rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start">
+        <div class="md:col-span-1">
+          <p class="font-mono text-xs text-moss mb-2">// 05</p>
+          <div class="w-8 h-8 bg-moss rounded-sm"></div>
+        </div>
+        <div class="md:col-span-4">
+          <h3 class="font-display text-2xl font-bold text-forest mb-3">Custom Resource Library</h3>
+          <p class="text-ash leading-relaxed">Whatever templates, scripts, or AI prompts we build together during our sessions — saved into your shared dashboard permanently. Not just available for the duration of the program. Yours to keep and build on after the quarter closes.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="checkerboard h-3"></div>
+
+<!-- ============ THE METHOD ============ -->
+<section class="px-6 py-24 bg-forest text-cream">
+  <div class="max-w-3xl mx-auto">
+    <span class="mono-label !text-moss">// the_method</span>
+    <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 mb-10 display-balance">
+      How I built a UGC business that consistently clears $10–15K/month — and how I'll help you do the same.
+    </h2>
+    <div class="space-y-5 text-lg text-cream/80 leading-relaxed">
+      <p>
+        <!-- PLACEHOLDER: Maya to fill in her real story here. Suggested beats: where you started, what the turning point was, what specific systems/AI tools changed your revenue, what you see creators doing wrong. -->
+        [Replace this with your real story — where you started, what shifted, what tools and workflows changed everything for you. 3-4 paragraphs. Be specific: name the tools, the income numbers, the moment things clicked.]
+      </p>
+      <p>Most creators stay stuck in the same loop — not because they lack creativity or work ethic, but because they're running their business entirely from memory. No systems. No pipeline visibility. No way to know what's coming in next month.</p>
+      <p>The Intensive is where I share everything I've built. Not theory. The actual workflow — every AI tool, every agent, every CRM config, every script that's moved a deal forward. Adapted to your business, not copied from mine.</p>
+      <p class="text-cream font-semibold">The Intensive is where I share all of it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="px-6 py-24 bg-creamDeep">
+  <div class="max-w-4xl mx-auto">
+    <span class="mono-label">// process · what_to_expect</span>
+    <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 mb-14 text-forest display-balance">
+      What the quarter looks like.
+    </h2>
+
+    <div class="space-y-0">
+
+      <div class="flex gap-8 pb-10 border-b border-line">
+        <div class="shrink-0 w-24">
+          <p class="font-mono text-xs text-moss">Week_0</p>
+        </div>
+        <div>
+          <p class="font-semibold text-forest mb-1">Application reviewed</p>
+          <p class="text-ash text-sm leading-relaxed">I review every application within 48 hours and respond with a yes, a no, or a "not quite yet" with context. Everyone gets a real answer.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-8 py-10 border-b border-line">
+        <div class="shrink-0 w-24">
+          <p class="font-mono text-xs text-moss">Week_1a</p>
+        </div>
+        <div>
+          <p class="font-semibold text-forest mb-1">Pre-session questionnaire + onboarding</p>
+          <p class="text-ash text-sm leading-relaxed">Before we meet, you fill out a detailed questionnaire. Your current rates, pipeline, biggest deal, last three months of revenue, where you feel stuck. I review it before session one so we're not spending the first 20 minutes catching up.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-8 py-10 border-b border-line">
+        <div class="shrink-0 w-24">
+          <p class="font-mono text-xs text-moss">Week_1b</p>
+        </div>
+        <div>
+          <p class="font-semibold text-forest mb-1">Session 1 — Strategy deep-dive</p>
+          <p class="text-ash text-sm leading-relaxed">90 minutes. We audit your business, map your 90-day path, and start building your custom dashboard. Full AI workflow walkthrough begins. You leave with a clear plan and immediate actions.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-8 py-10 border-b border-line">
+        <div class="shrink-0 w-24">
+          <p class="font-mono text-xs text-moss">Weeks_2–5</p>
+        </div>
+        <div>
+          <p class="font-semibold text-forest mb-1">Implementation phase</p>
+          <p class="text-ash text-sm leading-relaxed">You implement. Async support is active for the 14 days following session one — questions, contract reviews, rate gut-checks, pitch feedback. Real-world application of what we built together.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-8 py-10 border-b border-line">
+        <div class="shrink-0 w-24">
+          <p class="font-mono text-xs text-moss">Week_6</p>
+        </div>
+        <div>
+          <p class="font-semibold text-forest mb-1">Session 2 — Mid-quarter adjustment</p>
+          <p class="text-ash text-sm leading-relaxed">90 minutes. What's working, what isn't, what to adjust. We update your dashboard with real data from the past 5 weeks. Course-correct before the quarter is half gone.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-8 py-10 border-b border-line">
+        <div class="shrink-0 w-24">
+          <p class="font-mono text-xs text-moss">Weeks_7–11</p>
+        </div>
+        <div>
+          <p class="font-semibold text-forest mb-1">Implementation continues</p>
+          <p class="text-ash text-sm leading-relaxed">Async support active for 14 days after session two. You're in execution mode — the systems are live, the pipeline is moving.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-8 pt-10">
+        <div class="shrink-0 w-24">
+          <p class="font-mono text-xs text-moss">Week_12</p>
+        </div>
+        <div>
+          <p class="font-semibold text-forest mb-1">Session 3 — Results review + next-quarter plan</p>
+          <p class="text-ash text-sm leading-relaxed">90 minutes. We review results against the plan, document what we built, and map next steps — whether that's a second quarter together, moving to async-only advisory, or graduating to running it solo.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ INVESTMENT ============ -->
+<section id="investment" class="px-6 py-24 bg-cream">
+  <div class="max-w-4xl mx-auto">
+    <span class="mono-label">// investment</span>
+    <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 mb-4 text-forest display-balance">
+      $1,250 for the quarter.
+    </h2>
+    <p class="text-lg text-ash leading-relaxed max-w-2xl mb-10 display-balance">Three 90-minute sessions, your custom dashboard, the full AI playbook walkthrough, six weeks of async support, and every resource we build together — yours to keep.</p>
+
+    <div class="bg-creamDeep border border-line rounded-md p-8 mb-10 max-w-2xl">
+      <p class="mono-label mb-4">// what_you_get</p>
+      <div class="space-y-3">
+        <div class="flex gap-3"><span class="font-mono text-moss text-xs mt-1">→</span><p class="text-ash text-sm">3 × 90-minute 1:1 sessions across the quarter</p></div>
+        <div class="flex gap-3"><span class="font-mono text-moss text-xs mt-1">→</span><p class="text-ash text-sm">Custom dashboard built around your specific business</p></div>
+        <div class="flex gap-3"><span class="font-mono text-moss text-xs mt-1">→</span><p class="text-ash text-sm">Full AI workflow + $15K playbook walkthrough</p></div>
+        <div class="flex gap-3"><span class="font-mono text-moss text-xs mt-1">→</span><p class="text-ash text-sm">6 weeks of async support (14 days after each of the first two sessions)</p></div>
+        <div class="flex gap-3"><span class="font-mono text-moss text-xs mt-1">→</span><p class="text-ash text-sm">Custom resource library — every template, script, and prompt we build together</p></div>
+      </div>
+    </div>
+
+    <p class="text-sm text-ash leading-relaxed max-w-2xl mb-8">A 1:1 strategist at this caliber bills $300–500/hour. A typical 90-day group coaching program runs $2,000–5,000. You're getting fully individualized work for less than either — because I'm building this carefully and only working with creators who are actually ready to implement.</p>
+    <p class="text-sm text-ash leading-relaxed max-w-2xl mb-10 font-mono">Installment option: split into two payments of $625, at the start of months 1 and 2. Mention it in your application.</p>
+
+    <a href="intensive-apply.html" class="btn-primary text-base">Apply for an Intensive →</a>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS (PLACEHOLDER) ============ -->
+<section class="px-6 py-24 bg-creamDeep">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-16 max-w-2xl">
+      <span class="mono-label">// client_results</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 text-forest display-balance">
+        What clients say after the quarter.
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="text-forest leading-relaxed mb-6 italic text-lg">"[Placeholder — real client quote coming soon.]"</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-line">
+          <div class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center font-mono text-xs text-forest">—</div>
+          <div>
+            <p class="font-semibold text-forest text-sm">Client name</p>
+            <p class="mono-label !text-ash">// UGC_creator</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8">
+        <p class="text-forest leading-relaxed mb-6 italic text-lg">"[Placeholder — real client quote coming soon.]"</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-line">
+          <div class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center font-mono text-xs text-forest">—</div>
+          <div>
+            <p class="font-semibold text-forest text-sm">Client name</p>
+            <p class="mono-label !text-ash">// UGC_creator</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="px-6 py-24 bg-cream">
+  <div class="max-w-3xl mx-auto">
+    <span class="mono-label">// faq</span>
+    <h2 class="font-display text-4xl font-bold leading-tight mt-6 mb-12 text-forest">Common questions.</h2>
+
+    <div class="space-y-2">
+
+      <details class="border border-line rounded-md bg-white overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-5 hover:bg-creamDeep transition-colors">
+          <p class="font-display font-semibold text-forest">How is this different from the Booked Out Kit?</p>
+          <span class="faq-icon font-mono text-forest text-xl ml-4 shrink-0">+</span>
+        </summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">The Kit gives you the tools — calculators, templates, scripts, the whole operator stack. The Intensive gives you the strategy and personal coaching to apply them to your specific business. Most clients run the Kit alongside the Intensive — the tools become more powerful with personalized direction. If you don't have the Kit yet, you'll get the most out of the Intensive if you do.</div>
+      </details>
+
+      <details class="border border-line rounded-md bg-white overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-5 hover:bg-creamDeep transition-colors">
+          <p class="font-display font-semibold text-forest">Why three sessions instead of more or fewer?</p>
+          <span class="faq-icon font-mono text-forest text-xl ml-4 shrink-0">+</span>
+        </summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">One session isn't enough to actually move a business. Weekly sessions create dependency and don't leave time for real implementation between calls. Three sessions across a quarter gives us time to set strategy, implement, and measure results — three real decision points instead of one. It's designed to get you running independently, not to keep you in a coaching relationship.</div>
+      </details>
+
+      <details class="border border-line rounded-md bg-white overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-5 hover:bg-creamDeep transition-colors">
+          <p class="font-display font-semibold text-forest">Do you take everyone who applies?</p>
+          <span class="faq-icon font-mono text-forest text-xl ml-4 shrink-0">+</span>
+        </summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">No. The Intensive only works if you're positioned to actually implement what we build. If you're not at the right stage — typically $2K+/month from UGC and ready to execute on systems — I'll tell you, and suggest the Kit or a different path. The application is how we make sure you're a fit and that the quarter will actually move the needle for you.</div>
+      </details>
+
+      <details class="border border-line rounded-md bg-white overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-5 hover:bg-creamDeep transition-colors">
+          <p class="font-display font-semibold text-forest">What if I need more support after the quarter?</p>
+          <span class="faq-icon font-mono text-forest text-xl ml-4 shrink-0">+</span>
+        </summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Some clients renew for a second quarter at the same rate. Some move to async-only advisory. Some graduate and run it entirely on their own — which is the goal. By the end of the quarter you should have the dashboard, the workflow, and the skills to keep scaling without needing me in the room.</div>
+      </details>
+
+      <details class="border border-line rounded-md bg-white overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-5 hover:bg-creamDeep transition-colors">
+          <p class="font-display font-semibold text-forest">Can I pay in installments?</p>
+          <span class="faq-icon font-mono text-forest text-xl ml-4 shrink-0">+</span>
+        </summary>
+        <div class="px-6 pb-6 text-ash text-sm leading-relaxed">Yes — split into two payments of $625, at the start of months 1 and 2 of the quarter. Just mention it in your application and I'll set it up before our first session.</div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="px-6 py-24 bg-forestDeep text-cream">
+  <div class="max-w-3xl mx-auto">
+    <div class="flex items-center gap-3 mb-8">
+      <span class="inline-block w-8 h-2 checkerboard-cream opacity-60"></span>
+      <span class="mono-label !text-cream/60">// next_step</span>
+    </div>
+    <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mb-6 display-balance">
+      Three sessions. One quarter. A real plan to scale.
+    </h2>
+    <p class="text-cream/70 text-lg leading-relaxed mb-10 max-w-xl display-balance">Applications take about 5 minutes. I review every one within 48 hours and get back to everyone — yes or no, always with context.</p>
+    <a href="intensive-apply.html" class="btn-primary text-base !bg-moss !border-moss !text-forestDeep hover:!bg-cream hover:!border-cream">Apply for an Intensive →</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-forestDeep text-cream/70 border-t border-cream/10">
+  <div class="checkerboard h-2"></div>
+  <div class="px-6 py-14 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="inline-block w-5 h-5 checkerboard-cream"></span>
+        <p class="font-display text-lg font-bold text-cream">Maya Creative Co</p>
+      </div>
+      <p class="text-xs max-w-xs">For UGC creators ready to operate like a business.</p>
+    </div>
+    <div class="text-xs grid grid-cols-2 gap-x-10 gap-y-2">
+      <a href="https://booked-out.mayacreativeco.com/" class="hover:text-cream font-mono">→ booked out kit</a>
+      <a href="intensive.html" class="hover:text-cream font-mono">→ intensive</a>
+      <a href="about.html" class="hover:text-cream font-mono">→ about</a>
+      <a href="mailto:support@mayaherring.com" class="hover:text-cream font-mono">→ contact</a>
+      <a href="#" class="hover:text-cream font-mono">→ instagram</a>
+      <a href="#" class="hover:text-cream font-mono">→ tiktok</a>
+    </div>
+    <p class="text-xs font-mono">© 2026</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', function() {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+</script>
+
+</body>
+</html>

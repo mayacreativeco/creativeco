@@ -366,154 +366,6 @@
   </div>
 </section>
 
-<!-- ============ RATE CALCULATOR ============ -->
-<section id="calculator" class="px-6 py-24 bg-creamDeep">
-  <div class="max-w-4xl mx-auto">
-    <div class="mb-12">
-      <span class="mono-label">// rate_calculator</span>
-      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-4 text-forest display-balance">
-        What should you be charging?
-      </h2>
-      <p class="text-lg text-ash max-w-xl display-balance">Fill in the scope and get a market-calibrated rate range with negotiation notes — right now, before you even log in.</p>
-    </div>
-
-    <div class="bg-white border-2 border-forest rounded-md p-8 md:p-12">
-      <form id="rateForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <div>
-          <label for="deliverableType">deliverable_type</label>
-          <select id="deliverableType" required>
-            <option value="video15">15-second video</option>
-            <option value="video30" selected>30-second video</option>
-            <option value="video60">60-second video</option>
-            <option value="photoSet">Photo set</option>
-            <option value="voiceover">Voiceover only</option>
-            <option value="grwm">GRWM video</option>
-            <option value="unboxing">Unboxing video</option>
-            <option value="testimonial">Testimonial video</option>
-            <option value="lifestyle">Lifestyle video</option>
-            <option value="adStyle">Ad-style video</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="numDeliverables">number_of_deliverables</label>
-          <input type="number" id="numDeliverables" min="1" max="50" value="3" required />
-        </div>
-
-        <div>
-          <label for="usageRights">usage_rights</label>
-          <select id="usageRights" required>
-            <option value="organic">Organic only</option>
-            <option value="paid30" selected>Paid social — 30 days</option>
-            <option value="paid90">Paid social — 90 days</option>
-            <option value="paid180">Paid social — 6 months</option>
-            <option value="paid365">Paid social — 1 year</option>
-            <option value="whitelisting">Whitelisting</option>
-            <option value="buyout">Full buyout</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="turnaround">turnaround</label>
-          <select id="turnaround" required>
-            <option value="2weeks" selected>2 weeks</option>
-            <option value="1week">1 week</option>
-            <option value="3days">3 days</option>
-            <option value="rush">24-hour rush</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="revisions">revisions_included</label>
-          <input type="number" id="revisions" min="0" max="10" value="1" required />
-        </div>
-
-        <div>
-          <label for="concepts">hooks_concepts_requested</label>
-          <input type="number" id="concepts" min="1" max="10" value="2" required />
-        </div>
-
-        <div>
-          <label for="experience">experience_tier</label>
-          <select id="experience" required>
-            <option value="new">New (under 6 months)</option>
-            <option value="growing" selected>Growing (6–18 months)</option>
-            <option value="established">Established (18+ months)</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="brandSize">brand_size</label>
-          <select id="brandSize">
-            <option value="indie">Indie / early stage</option>
-            <option value="growing" selected>Growing DTC</option>
-            <option value="established">Established DTC</option>
-            <option value="enterprise">Enterprise</option>
-          </select>
-        </div>
-
-        <div class="md:col-span-2 flex flex-col sm:flex-row gap-4 items-center justify-center pt-4">
-          <button type="submit" class="btn-primary">→ Calculate my rate</button>
-          <button type="button" id="resetBtn" class="text-ash text-sm font-mono underline hover:text-forest">reset()</button>
-        </div>
-      </form>
-
-      <!-- RESULT PANEL (TERMINAL STYLE) -->
-      <div id="resultPanel" class="hidden mt-10 fade-in">
-        <div class="terminal p-6 md:p-8">
-          <div class="flex items-center justify-between mb-6 pb-3 border-b border-cream/20">
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-cream/30"></span>
-              <span class="w-2 h-2 rounded-full bg-cream/30"></span>
-              <span class="w-2 h-2 rounded-full bg-moss"></span>
-            </div>
-            <span class="text-xs text-cream/50">output.json</span>
-          </div>
-
-          <div class="text-center mb-8">
-            <p class="text-cream/60 text-xs mb-3">> calculated_rate_range:</p>
-            <p class="font-display text-5xl md:text-7xl font-bold tracking-tight text-cream" id="rateRange">—</p>
-            <p class="text-cream/60 text-xs mt-3" id="rateContext">for_this_scope</p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
-            <div class="border border-cream/20 rounded p-4">
-              <p class="text-xs text-cream/50 mb-2">per_deliverable</p>
-              <p class="font-display text-2xl font-bold text-cream" id="perDeliverable">—</p>
-            </div>
-            <div class="border border-cream/20 rounded p-4">
-              <p class="text-xs text-cream/50 mb-2">suggested_package</p>
-              <p class="font-display text-2xl font-bold text-cream" id="packagePrice">—</p>
-              <p class="text-xs text-cream/40 mt-1" id="packageNote"></p>
-            </div>
-            <div class="border border-cream/20 rounded p-4">
-              <p class="text-xs text-cream/50 mb-2">confidence</p>
-              <p class="font-display text-2xl font-bold text-cream" id="confidence">—</p>
-              <p class="text-xs text-cream/40 mt-1" id="confidenceNote"></p>
-            </div>
-          </div>
-
-          <div class="border border-cream/20 rounded p-5">
-            <p class="text-xs text-cream/50 mb-3">> negotiation_notes:</p>
-            <ul id="negotiationNotes" class="space-y-2 text-sm text-cream/90 leading-relaxed font-sans"></ul>
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row gap-3 justify-center mt-6">
-          <button type="button" id="copyBtn" class="btn-secondary text-sm !py-3 !px-5">Copy result</button>
-          <a href="https://booked-out.mayacreativeco.com" class="btn-primary text-sm !py-3 !px-5">Unlock the full Kit →</a>
-        </div>
-
-        <p class="text-center text-xs text-ash mt-6 italic max-w-xl mx-auto">This is your range, not your final number. The full Kit teaches you how to defend it, pitch it, and build the rest of your pipeline around it.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CHECKERBOARD DIVIDER ============ -->
-<div class="checkerboard h-3"></div>
-
 <!-- ============ PRICING ============ -->
 <section id="pricing" class="px-6 py-24 bg-cream">
   <div class="max-w-5xl mx-auto">
@@ -523,43 +375,34 @@
       <p class="text-lg text-ash max-w-xl mx-auto display-balance">One subscription. Unlimited access to the full command center, every template, all scripts, and new drops every month.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch max-w-3xl mx-auto">
 
       <!-- PRIMARY: Founding Annual -->
       <div class="bg-forest text-cream rounded-md relative overflow-hidden flex flex-col">
         <div class="checkerboard h-2"></div>
         <div class="p-8 flex flex-col flex-1">
-          <div class="flex items-center justify-between mb-6">
-            <span class="mono-label !text-moss !text-xs">// founding_annual</span>
-            <span class="bg-moss text-forestDeep text-xs font-mono font-bold px-3 py-1 rounded-full">Limited: First 100</span>
+          <div class="mb-4">
+            <span class="inline-block bg-moss text-forestDeep text-xs font-mono font-bold px-3 py-1 rounded-full mb-3">Limited: First 100 Members</span>
+            <p class="mono-label !text-moss !text-xs">// founding_annual</p>
           </div>
           <p class="font-display text-6xl font-bold text-cream mb-1">$197</p>
-          <p class="text-xs text-cream/60 font-mono mb-2">// per year</p>
-          <p class="text-cream/70 text-sm leading-relaxed mb-8 flex-1">Founding member rate — locked in forever. Full command center access, all scripts, monthly video drops, contract redline detector, and every new tool we ship.</p>
-          <a href="https://booked-out.mayacreativeco.com" class="btn-primary !bg-moss !border-moss !text-forestDeep hover:!bg-cream hover:!border-cream w-full justify-center text-base font-bold">Get Founding Access →</a>
-          <p class="text-xs text-cream/40 font-mono text-center mt-4">First 100 members only</p>
-        </div>
-      </div>
-
-      <!-- Annual -->
-      <div class="bg-white border-2 border-line rounded-md flex flex-col">
-        <div class="p-8 flex flex-col flex-1">
-          <span class="mono-label !text-xs mb-6">// annual</span>
-          <p class="font-display text-6xl font-bold text-forest mb-1">$397</p>
-          <p class="text-xs text-ash font-mono mb-2">// per year</p>
-          <p class="text-ash text-sm leading-relaxed mb-8 flex-1">Full command center access, all scripts and templates, monthly video drops, contract redline detector, and every new tool we ship.</p>
-          <a href="https://booked-out.mayacreativeco.com" class="btn-secondary w-full justify-center">Get Annual Access</a>
+          <p class="text-xs text-cream/60 font-mono mb-4">// per year — locked in forever</p>
+          <p class="text-cream/70 text-sm leading-relaxed mb-8 flex-1">Founding member rate, locked in for as long as you stay subscribed. After the first 100 members, annual reverts to $397/yr. Full command center access, all scripts, monthly video drops, contract redline detector, and every new tool we ship.</p>
+          <a href="https://booked-out.mayacreativeco.com/" class="btn-primary !bg-moss !border-moss !text-forestDeep hover:!bg-cream hover:!border-cream w-full justify-center text-base font-bold">Get Founding Access →</a>
         </div>
       </div>
 
       <!-- Monthly -->
-      <div class="bg-white border border-line rounded-md flex flex-col">
+      <div class="bg-white border-2 border-line rounded-md flex flex-col">
         <div class="p-8 flex flex-col flex-1">
-          <span class="mono-label !text-xs mb-6">// monthly</span>
+          <div class="mb-4">
+            <span class="inline-block text-xs font-mono text-ash px-3 py-1 border border-line rounded-full mb-3">Pay as you go</span>
+            <p class="mono-label !text-xs">// monthly</p>
+          </div>
           <p class="font-display text-6xl font-bold text-forest mb-1">$49</p>
-          <p class="text-xs text-ash font-mono mb-2">// per month</p>
-          <p class="text-ash text-sm leading-relaxed mb-8 flex-1">Full command center access, all scripts and templates, monthly video drops, and every new tool we ship. Cancel any time.</p>
-          <a href="https://booked-out.mayacreativeco.com" class="btn-secondary w-full justify-center">Get Monthly Access</a>
+          <p class="text-xs text-ash font-mono mb-4">// per month · cancel any time</p>
+          <p class="text-ash text-sm leading-relaxed mb-8 flex-1">Full command center access, all scripts and templates, monthly video drops, contract redline detector, and every new tool we ship. No annual commitment.</p>
+          <a href="https://booked-out.mayacreativeco.com/" class="btn-secondary w-full justify-center">Get Monthly Access</a>
         </div>
       </div>
 
@@ -571,28 +414,37 @@
   </div>
 </section>
 
-<!-- ============ INTENSIVE UPSELL ============ -->
+<!-- ============ INTENSIVE ============ -->
 <section id="intensive" class="px-6 py-16 bg-creamDeep">
   <div class="max-w-5xl mx-auto">
-    <div class="bg-forest text-cream rounded-md p-8 md:p-12 relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-32 h-32 checkerboard-cream opacity-10"></div>
-      <div class="relative grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
-        <div class="md:col-span-3">
-          <span class="mono-label !text-moss">// for_when_you_need_more_than_tools</span>
-          <h3 class="font-display text-3xl md:text-4xl font-bold mt-4 mb-4 leading-tight display-balance">Want strategy with the system?</h3>
-          <p class="text-cream/80 leading-relaxed mb-6 max-w-xl">The Kit gives you the tools. The Intensive gives you the plan. Three dedicated sessions across one quarter — deep-dive on your pricing, positioning, and pipeline — with a custom roadmap you can actually execute.</p>
-          <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-mono text-cream/70">
-            <span>→ 3 sessions / 1 quarter</span>
-            <span>→ pre-session audit</span>
-            <span>→ custom roadmap doc</span>
-            <span>→ async support between sessions</span>
+    <div class="bg-forest text-cream rounded-md p-8 md:p-14 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-48 h-48 checkerboard-cream opacity-10"></div>
+      <div class="relative">
+        <span class="mono-label !text-moss">// for_when_you_need_more_than_tools</span>
+        <h3 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-5 leading-tight display-balance">The Strategy Intensive.</h3>
+        <p class="text-cream/80 text-lg leading-relaxed mb-8 max-w-2xl">Three sessions across one quarter. A custom dashboard built for your business. The full AI workflow that took me from $5K to $15K months — every tool, every agent, every prompt.</p>
+        <p class="text-cream/60 text-sm font-mono mb-8">For UGC creators making $2–10K/month who are ready to scale past $10K.</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+          <div class="border border-cream/20 rounded p-4">
+            <p class="text-xs text-cream/50 font-mono mb-2">// 01</p>
+            <p class="text-sm text-cream font-semibold leading-snug">Custom dashboard built for your business</p>
+          </div>
+          <div class="border border-cream/20 rounded p-4">
+            <p class="text-xs text-cream/50 font-mono mb-2">// 02</p>
+            <p class="text-sm text-cream font-semibold leading-snug">Full AI workflow &amp; $15K playbook</p>
+          </div>
+          <div class="border border-cream/20 rounded p-4">
+            <p class="text-xs text-cream/50 font-mono mb-2">// 03</p>
+            <p class="text-sm text-cream font-semibold leading-snug">Three sessions across the quarter</p>
+          </div>
+          <div class="border border-cream/20 rounded p-4">
+            <p class="text-xs text-cream/50 font-mono mb-2">// 04</p>
+            <p class="text-sm text-cream font-semibold leading-snug">Async support between sessions</p>
           </div>
         </div>
-        <div class="md:col-span-2 text-center md:text-left md:border-l md:border-cream/20 md:pl-8">
-          <p class="mono-label !text-moss mb-2">// strategy_intensive</p>
-          <p class="font-display text-5xl font-bold text-cream mb-1">$1,250</p>
-          <p class="text-xs text-cream/60 font-mono mb-6">// 3 sessions · one quarter</p>
-          <a href="https://stan.store/mayacreativeco/p/strategy-intensive-g5nxk41l" class="btn-primary !bg-moss !border-moss !text-forestDeep hover:!bg-cream hover:!border-cream w-full justify-center">Apply for an Intensive →</a>
+        <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+          <a href="intensive.html" class="btn-primary !bg-moss !border-moss !text-forestDeep hover:!bg-cream hover:!border-cream">See the full Intensive →</a>
+          <p class="text-cream/60 font-mono text-sm">$1,250 · one quarter</p>
         </div>
       </div>
     </div>
@@ -672,22 +524,6 @@
   </div>
 </section>
 
-<!-- ============ NEWSLETTER ============ -->
-<section id="newsletter" class="px-6 py-24 bg-forestDeep text-cream">
-  <div class="max-w-3xl mx-auto">
-    <div class="flex items-center gap-3 mb-8">
-      <span class="inline-block w-8 h-2 checkerboard-cream opacity-60"></span>
-      <span class="mono-label !text-cream/60">// weekly_playbook</span>
-    </div>
-    <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mb-4 display-balance">
-      The weekly playbook, in your inbox.
-    </h2>
-    <p class="text-cream/70 mb-8 display-balance">One email a week. Real pricing frameworks, outreach scripts I'm actually using, and behind-the-scenes of my own brand deals. No fluff.</p>
-    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-    <form action="https://app.kit.com/forms/9319858/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9319858" data-uid="ef3b310cee" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:true},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;hide&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800" style="background-color: rgb(255, 254, 238); border-radius: 4px;"><div class="formkit-background" style="opacity: 0.2;"></div><div data-style="minimal"><div class="formkit-header" data-element="header" style="color: rgb(21, 75, 20); font-size: 27px; font-weight: 700;"><h2>Join the Newsletter</h2></div><div class="formkit-subheader" data-element="subheader" style="color: rgb(21, 75, 20); font-size: 18px;"><p>Subscribe to get our latest content by email.</p></div><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="true" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" aria-label="First Name" name="fields[first_name]" required="" placeholder="First Name" type="text" style="color: rgb(21, 75, 20); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(21, 75, 20); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(21, 75, 20); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Subscribe</span></button></div><div class="formkit-guarantee" data-element="guarantee" style="color: rgb(21, 75, 20); font-size: 13px; font-weight: 400;"><p>We won't send you spam. Unsubscribe at any time.</p></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with Kit</a></div></div><style>.formkit-form[data-uid="ef3b310cee"] *{box-sizing:border-box;}.formkit-form[data-uid="ef3b310cee"]{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.formkit-form[data-uid="ef3b310cee"] legend{border:none;font-size:inherit;margin-bottom:10px;padding:0;position:relative;display:table;}.formkit-form[data-uid="ef3b310cee"] fieldset{border:0;padding:0.01em 0 0 0;margin:0;min-width:0;}.formkit-form[data-uid="ef3b310cee"] body:not(:-moz-handler-blocked) fieldset{display:table-cell;}.formkit-form[data-uid="ef3b310cee"] h1,.formkit-form[data-uid="ef3b310cee"] h2,.formkit-form[data-uid="ef3b310cee"] h3,.formkit-form[data-uid="ef3b310cee"] h4,.formkit-form[data-uid="ef3b310cee"] h5,.formkit-form[data-uid="ef3b310cee"] h6{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="ef3b310cee"] h2{font-size:1.5em;margin:1em 0;}.formkit-form[data-uid="ef3b310cee"] h3{font-size:1.17em;margin:1em 0;}.formkit-form[data-uid="ef3b310cee"] p{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="ef3b310cee"] ol:not([template-default]),.formkit-form[data-uid="ef3b310cee"] ul:not([template-default]),.formkit-form[data-uid="ef3b310cee"] blockquote:not([template-default]){text-align:left;}.formkit-form[data-uid="ef3b310cee"] p:not([template-default]),.formkit-form[data-uid="ef3b310cee"] ol:not([template-default]),.formkit-form[data-uid="ef3b310cee"] ul:not([template-default]),.formkit-form[data-uid="ef3b310cee"] blockquote:not([template-default]){font-size:1em;}.formkit-form[data-uid="ef3b310cee"] a{color:inherit;}.formkit-form[data-uid="ef3b310cee"] a:hover{color:inherit;}.formkit-form[data-uid="ef3b310cee"][data-format=modal]{display:none;}.formkit-form[data-uid="ef3b310cee"][data-format=slide_in]{display:none;}.formkit-form[data-uid="ef3b310cee"][data-format=sticky_bar]{display:none;}.formkit-sticky-bar .formkit-form[data-uid="ef3b310cee"][data-format=sticky_bar]{display:block;}.formkit-form[data-uid="ef3b310cee"] .formkit-input{width:100%;}.formkit-form[data-uid="ef3b310cee"] .formkit-input::placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="ef3b310cee"] .formkit-submit{width:100%;cursor:pointer;}.formkit-form[data-uid="ef3b310cee"] .formkit-field{margin-bottom:8px;}.formkit-form[data-uid="ef3b310cee"][min-width~="700"] .formkit-fields[data-stacked="false"]{display:flex;flex-wrap:wrap;}.formkit-form[data-uid="ef3b310cee"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-field{flex:1 1 auto;margin-bottom:0;margin-right:8px;}.formkit-form[data-uid="ef3b310cee"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-submit{flex:0 0 auto;}.formkit-form[data-uid="ef3b310cee"] .formkit-input{padding:12px;font-size:15px;border-style:solid;border-width:1px;}.formkit-form[data-uid="ef3b310cee"] .formkit-submit{padding:12px;font-size:15px;}</style></form>
-  </div>
-</section>
-
 <!-- ============ FOOTER ============ -->
 <footer class="bg-forestDeep text-cream/70">
   <div class="checkerboard h-2"></div>
@@ -701,7 +537,7 @@
     </div>
     <div class="text-xs grid grid-cols-2 gap-x-10 gap-y-2">
       <a href="https://booked-out.mayacreativeco.com" class="hover:text-cream font-mono">→ booked out kit</a>
-      <a href="#intensive" class="hover:text-cream font-mono">→ intensive</a>
+      <a href="intensive.html" class="hover:text-cream font-mono">→ intensive</a>
       <a href="about.html" class="hover:text-cream font-mono">→ about</a>
       <a href="mailto:support@mayaherring.com" class="hover:text-cream font-mono">→ contact</a>
       <a href="#" class="hover:text-cream font-mono">→ instagram</a>
@@ -711,145 +547,7 @@
   </div>
 </footer>
 
-<!-- ============ CALCULATOR LOGIC ============ -->
 <script>
-  const BASE_RATES = {
-    video15: 300, video30: 450, video60: 600, photoSet: 250, voiceover: 150,
-    grwm: 400, unboxing: 350, testimonial: 400, lifestyle: 350, adStyle: 500,
-  };
-  const DELIVERABLE_LABELS = {
-    video15: '15-second video', video30: '30-second video', video60: '60-second video',
-    photoSet: 'photo set', voiceover: 'voiceover', grwm: 'GRWM video',
-    unboxing: 'unboxing video', testimonial: 'testimonial video',
-    lifestyle: 'lifestyle video', adStyle: 'ad-style video',
-  };
-  const USAGE_MULTIPLIERS = {
-    organic: 1.0, paid30: 1.4, paid90: 1.7, paid180: 2.1, paid365: 2.5,
-    whitelisting: 1.6, buyout: 3.5,
-  };
-  const USAGE_LABELS = {
-    organic: 'organic only', paid30: 'paid social for 30 days',
-    paid90: 'paid social for 90 days', paid180: 'paid social for 6 months',
-    paid365: 'paid social for 1 year', whitelisting: 'whitelisting',
-    buyout: 'a full buyout',
-  };
-  const TURNAROUND_MULTIPLIERS = { '2weeks': 1.0, '1week': 1.15, '3days': 1.4, rush: 1.75 };
-  const TURNAROUND_LABELS = { '2weeks': '2-week', '1week': '1-week', '3days': '3-day', rush: '24-hour rush' };
-  const EXPERIENCE_MULTIPLIERS = { new: 0.85, growing: 1.0, established: 1.25 };
-  const BRAND_MULTIPLIERS = { indie: 0.9, growing: 1.0, established: 1.2, enterprise: 1.4 };
-
-  function formatMoney(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
-
-  function calculateRate(inputs) {
-    const baseRate = BASE_RATES[inputs.deliverableType] * inputs.numDeliverables;
-    const revisionAdd = inputs.revisions * 50;
-    const conceptsAdd = Math.max(0, inputs.concepts - 1) * 75;
-    const subtotal = baseRate + revisionAdd + conceptsAdd;
-    const usage = USAGE_MULTIPLIERS[inputs.usageRights];
-    const turn = TURNAROUND_MULTIPLIERS[inputs.turnaround];
-    const exp = EXPERIENCE_MULTIPLIERS[inputs.experience];
-    const brand = BRAND_MULTIPLIERS[inputs.brandSize];
-    const adjusted = subtotal * usage * turn * exp * brand;
-    const low = Math.round(adjusted * 0.9 / 25) * 25;
-    const high = Math.round(adjusted * 1.25 / 25) * 25;
-    const mid = Math.round((low + high) / 2 / 25) * 25;
-    const perDeliverable = Math.round(mid / inputs.numDeliverables / 25) * 25;
-    return { low, high, mid, perDeliverable, usage, turn, exp, brand };
-  }
-
-  function buildNegotiationNotes(inputs, calc) {
-    const notes = [];
-    if (calc.usage >= 2.1) {
-      notes.push(`<strong class="text-cream">Usage rights are doing the heavy lifting.</strong> You're licensing for ${USAGE_LABELS[inputs.usageRights]} — about ${Math.round(calc.usage * 100 - 100)}% above organic. If the brand pushes back, offer to halve the window for a 25% cut.`);
-    } else if (calc.usage >= 1.4) {
-      notes.push(`<strong class="text-cream">Usage is your biggest negotiation lever.</strong> ${USAGE_LABELS[inputs.usageRights].charAt(0).toUpperCase() + USAGE_LABELS[inputs.usageRights].slice(1)} adds ~${Math.round(calc.usage * 100 - 100)}% over organic. Expanding to a full year of paid? Your rate jumps another 40–60%.`);
-    } else {
-      notes.push(`<strong class="text-cream">Organic-only deal.</strong> Make sure the contract explicitly excludes paid social, whitelisting, and ads. If they ever want to run this as an ad, that's a separate fee.`);
-    }
-    if (calc.turn >= 1.4) {
-      notes.push(`<strong class="text-cream">Rush turnaround justifies a real premium.</strong> ${TURNAROUND_LABELS[inputs.turnaround]} adds ${Math.round(calc.turn * 100 - 100)}% to your base. Don't apologize for it — fast work is more valuable.`);
-    } else if (calc.turn === 1.15) {
-      notes.push(`<strong class="text-cream">1-week turnaround is reasonable but not free.</strong> The 15% bump is small enough that brands won't blink — but it adds up across a retainer.`);
-    }
-    if (inputs.experience === 'new') {
-      notes.push(`<strong class="text-cream">You're early — that's fine.</strong> The calculator built in a 15% adjustment. Once you have 3 testimonials and 6 months of work, switch to "growing" and your floor jumps.`);
-    } else if (inputs.experience === 'established') {
-      notes.push(`<strong class="text-cream">You're past the proving stage.</strong> Don't anchor to what new creators charge. 18+ months of brand work earns you the right to defend bigger numbers.`);
-    }
-    if (inputs.concepts >= 3) {
-      notes.push(`<strong class="text-cream">${inputs.concepts} concepts is more work than most brands realize.</strong> Each unique hook is essentially a separate creative deliverable. Line-item it in the proposal.`);
-    }
-    if (inputs.brandSize === 'enterprise') {
-      notes.push(`<strong class="text-cream">Enterprise brands have budget.</strong> Don't undercharge them out of impostor syndrome — procurement teams are calibrated for higher numbers. Quoting low makes you look junior.`);
-    } else if (inputs.brandSize === 'indie') {
-      notes.push(`<strong class="text-cream">Indie brands have less budget but better relationships.</strong> Trade a 10–15% discount for stronger usage, a public testimonial, or a longer-term commitment.`);
-    }
-    notes.push(`<strong class="text-cream">Quote the high end first.</strong> Lead with $${calc.high.toLocaleString()}. The low end is your floor — not your starting point.`);
-    return notes;
-  }
-
-  function renderResult(inputs, calc, notes) {
-    const panel = document.getElementById('resultPanel');
-    panel.classList.remove('hidden');
-    document.getElementById('rateRange').textContent = `${formatMoney(calc.low)} – ${formatMoney(calc.high)}`;
-    document.getElementById('rateContext').textContent = `${inputs.numDeliverables}x_${DELIVERABLE_LABELS[inputs.deliverableType].replace(/\s/g, '_')}_with_${USAGE_LABELS[inputs.usageRights].replace(/\s/g, '_')}`;
-    document.getElementById('perDeliverable').textContent = formatMoney(calc.perDeliverable);
-    document.getElementById('packagePrice').textContent = formatMoney(calc.mid);
-    document.getElementById('packageNote').textContent = `${inputs.numDeliverables} deliverables`;
-
-    let conf = 'solid', confNote = 'within market range';
-    if (calc.high > 8000) { conf = 'high-ticket'; confNote = 'quote with confidence'; }
-    if (calc.low < 500) { conf = 'entry-level'; confNote = 'protect your floor'; }
-    document.getElementById('confidence').textContent = conf;
-    document.getElementById('confidenceNote').textContent = confNote;
-
-    const ul = document.getElementById('negotiationNotes');
-    ul.innerHTML = '';
-    notes.forEach(note => {
-      const li = document.createElement('li');
-      li.innerHTML = `<span class="text-moss">→</span> ${note}`;
-      ul.appendChild(li);
-    });
-    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
-  }
-
-  document.getElementById('rateForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const inputs = {
-      deliverableType: document.getElementById('deliverableType').value,
-      numDeliverables: parseInt(document.getElementById('numDeliverables').value, 10) || 1,
-      usageRights: document.getElementById('usageRights').value,
-      turnaround: document.getElementById('turnaround').value,
-      revisions: parseInt(document.getElementById('revisions').value, 10) || 0,
-      concepts: parseInt(document.getElementById('concepts').value, 10) || 1,
-      experience: document.getElementById('experience').value,
-      brandSize: document.getElementById('brandSize').value,
-    };
-    const calc = calculateRate(inputs);
-    const notes = buildNegotiationNotes(inputs, calc);
-    renderResult(inputs, calc, notes);
-  });
-
-  document.getElementById('resetBtn').addEventListener('click', function() {
-    document.getElementById('rateForm').reset();
-    document.getElementById('resultPanel').classList.add('hidden');
-  });
-
-  document.getElementById('copyBtn').addEventListener('click', function() {
-    const range = document.getElementById('rateRange').textContent;
-    const context = document.getElementById('rateContext').textContent;
-    const per = document.getElementById('perDeliverable').textContent;
-    const pkg = document.getElementById('packagePrice').textContent;
-    const notes = Array.from(document.querySelectorAll('#negotiationNotes li')).map(li => '• ' + li.textContent.replace(/^→\s*/, '')).join('\n\n');
-    const text = `MY UGC RATE\n${range}\n${context}\n\nPer deliverable: ${per}\nSuggested package: ${pkg}\n\nNEGOTIATION NOTES:\n${notes}\n\nCalculated with the Booked Out UGC Kit by Maya Creative Co`;
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = document.getElementById('copyBtn');
-      const original = btn.textContent;
-      btn.textContent = 'Copied ✓';
-      setTimeout(() => { btn.textContent = original; }, 2000);
-    });
-  });
-
   document.getElementById('menuBtn').addEventListener('click', function() {
     document.getElementById('mobileMenu').classList.toggle('hidden');
   });
