@@ -45,7 +45,24 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Inter', system-ui, sans-serif; background-color: #F5F0E4; color: #0A1A12; }
   .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
   .display-balance { text-wrap: balance; }
+  section[id] { scroll-margin-top: 84px; }
+
+  .shadow-hard { box-shadow: 7px 7px 0 0 #1B3A2F; }
+  .shadow-hard-sm { box-shadow: 4px 4px 0 0 #1B3A2F; }
+  .shadow-hard-moss { box-shadow: 7px 7px 0 0 #4A7C59; }
+  .lift { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .lift:hover { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 0 #1B3A2F; }
+
+  .nav-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: #4A5C50;
+    transition: color 0.15s ease;
+  }
+  .nav-link:hover { color: #1B3A2F; }
 
   .checkerboard {
     background-image:
@@ -131,24 +148,34 @@
 <div class="checkerboard h-2"></div>
 
 <!-- NAV -->
-<nav class="border-b border-line bg-cream sticky top-0 z-40">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2">
+<nav class="border-b border-line bg-cream/95 backdrop-blur sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center gap-6">
+    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2 shrink-0">
       <span class="inline-block w-5 h-5 checkerboard rounded-sm"></span>
       Maya Creative Co
     </a>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ash">
-      <a href="about.html" class="hover:text-forest transition-colors">About</a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="#fit" class="nav-link">Is it for me?</a>
+      <a href="#inside" class="nav-link">What's included</a>
+      <a href="#process" class="nav-link">Process</a>
+      <a href="#investment" class="nav-link">Investment</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="index.html" class="nav-link">Booked Out Kit</a>
     </div>
-    <a href="intensive-apply.html" class="btn-primary text-sm hidden md:inline-flex !py-3 !px-5">Apply for an Intensive →</a>
-    <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+    <a href="intensive-apply.html" class="btn-primary text-sm hidden lg:inline-flex !py-3 !px-5">Apply →</a>
+    <button id="menuBtn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
       <span class="w-6 h-0.5 bg-forest block"></span>
       <span class="w-6 h-0.5 bg-forest block"></span>
       <span class="w-6 h-0.5 bg-forest block"></span>
     </button>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden border-t border-line bg-cream px-6 py-6 flex flex-col gap-5">
-    <a href="about.html" class="text-sm font-medium text-ash hover:text-forest transition-colors">About</a>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-cream px-6 py-6 flex flex-col gap-5">
+    <a href="#fit" class="nav-link !text-sm">Is it for me?</a>
+    <a href="#inside" class="nav-link !text-sm">What's included</a>
+    <a href="#process" class="nav-link !text-sm">Process</a>
+    <a href="#investment" class="nav-link !text-sm">Investment</a>
+    <a href="#faq" class="nav-link !text-sm">FAQ</a>
+    <a href="index.html" class="nav-link !text-sm">Booked Out Kit</a>
     <a href="intensive-apply.html" class="btn-primary !py-3 !px-5 text-sm justify-center">Apply for an Intensive →</a>
   </div>
 </nav>
@@ -177,7 +204,7 @@
 <div class="checkerboard h-3"></div>
 
 <!-- ============ QUALIFICATION ============ -->
-<section class="px-6 py-24 bg-forest text-cream">
+<section id="fit" class="px-6 py-24 bg-forest text-cream">
   <div class="max-w-5xl mx-auto">
     <span class="mono-label !text-moss">// qualification</span>
     <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 mb-12 display-balance">
@@ -238,7 +265,7 @@
 
     <div class="space-y-5">
 
-      <div class="bg-white border-2 border-forest rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start">
+      <div class="bg-white border-2 border-forest rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start shadow-hard-sm lift">
         <div class="md:col-span-1">
           <p class="font-mono text-xs text-moss mb-2">// 01</p>
           <div class="w-8 h-8 checkerboard"></div>
@@ -249,7 +276,7 @@
         </div>
       </div>
 
-      <div class="bg-white border border-line rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start">
+      <div class="bg-white border border-line rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start lift">
         <div class="md:col-span-1">
           <p class="font-mono text-xs text-moss mb-2">// 02</p>
           <div class="w-8 h-8 bg-forest rounded-sm"></div>
@@ -260,7 +287,7 @@
         </div>
       </div>
 
-      <div class="bg-white border border-line rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start">
+      <div class="bg-white border border-line rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start lift">
         <div class="md:col-span-1">
           <p class="font-mono text-xs text-moss mb-2">// 03</p>
           <div class="w-8 h-8 checkerboard-mini"></div>
@@ -271,7 +298,7 @@
         </div>
       </div>
 
-      <div class="bg-white border border-line rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start">
+      <div class="bg-white border border-line rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start lift">
         <div class="md:col-span-1">
           <p class="font-mono text-xs text-moss mb-2">// 04</p>
           <div class="w-8 h-8 border-2 border-forest"></div>
@@ -282,7 +309,7 @@
         </div>
       </div>
 
-      <div class="bg-white border border-line rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start">
+      <div class="bg-white border border-line rounded-md p-8 md:p-10 grid md:grid-cols-5 gap-6 items-start lift">
         <div class="md:col-span-1">
           <p class="font-mono text-xs text-moss mb-2">// 05</p>
           <div class="w-8 h-8 bg-moss rounded-sm"></div>
@@ -293,6 +320,43 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUTCOMES ============ -->
+<section class="px-6 py-24 bg-creamDeep">
+  <div class="max-w-5xl mx-auto">
+    <div class="max-w-2xl mb-14">
+      <span class="mono-label">// the_outcome</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 mb-5 text-forest display-balance">
+        Where you'll be in 90 days.
+      </h2>
+      <p class="text-lg text-ash leading-relaxed display-balance">
+        The deliverables are the "what." This is the point of all of it — the four things that should be true about your business when the quarter closes.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="bg-white border border-line rounded-md p-8 lift">
+        <p class="font-mono text-xs text-moss mb-4">// outcome_01</p>
+        <h3 class="font-display text-2xl font-bold text-forest mb-3">A pipeline you can actually see.</h3>
+        <p class="text-ash leading-relaxed">You'll know what's closing, what's pending, and what next month looks like — instead of running your business from memory and hoping.</p>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8 lift">
+        <p class="font-mono text-xs text-moss mb-4">// outcome_02</p>
+        <h3 class="font-display text-2xl font-bold text-forest mb-3">Rates that hold under pressure.</h3>
+        <p class="text-ash leading-relaxed">You'll quote with confidence and stop discounting out of fear — because you'll have the data and the script to back the number up.</p>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8 lift">
+        <p class="font-mono text-xs text-moss mb-4">// outcome_03</p>
+        <h3 class="font-display text-2xl font-bold text-forest mb-3">A workflow that runs without you.</h3>
+        <p class="text-ash leading-relaxed">The AI stack and systems we build will handle the repetitive busywork — so your hours go to the work that actually pays.</p>
+      </div>
+      <div class="bg-white border border-line rounded-md p-8 lift">
+        <p class="font-mono text-xs text-moss mb-4">// outcome_04</p>
+        <h3 class="font-display text-2xl font-bold text-forest mb-3">A repeatable path past $10K.</h3>
+        <p class="text-ash leading-relaxed">Not a one-time spike you can't explain — a model you understand well enough to run again, every quarter, on your own.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -320,7 +384,7 @@
 </section>
 
 <!-- ============ PROCESS ============ -->
-<section class="px-6 py-24 bg-creamDeep">
+<section id="process" class="px-6 py-24 bg-creamDeep">
   <div class="max-w-4xl mx-auto">
     <span class="mono-label">// process · what_to_expect</span>
     <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 mb-14 text-forest display-balance">
@@ -431,7 +495,7 @@
 </section>
 
 <!-- ============ FAQ ============ -->
-<section class="px-6 py-24 bg-cream">
+<section id="faq" class="px-6 py-24 bg-cream">
   <div class="max-w-3xl mx-auto">
     <span class="mono-label">// faq</span>
     <h2 class="font-display text-4xl font-bold leading-tight mt-6 mb-12 text-forest">Common questions.</h2>
@@ -513,8 +577,8 @@
       <a href="intensive.html" class="hover:text-cream font-mono">→ intensive</a>
       <a href="about.html" class="hover:text-cream font-mono">→ about</a>
       <a href="mailto:support@mayaherring.com" class="hover:text-cream font-mono">→ contact</a>
-      <a href="#" class="hover:text-cream font-mono">→ instagram</a>
-      <a href="#" class="hover:text-cream font-mono">→ tiktok</a>
+      <a href="https://www.instagram.com/mayacreativeco/" target="_blank" rel="noopener" class="hover:text-cream font-mono">→ instagram</a>
+      <a href="https://www.tiktok.com/@mayacreativeco" target="_blank" rel="noopener" class="hover:text-cream font-mono">→ tiktok</a>
     </div>
     <p class="text-xs font-mono">© 2026</p>
   </div>
@@ -523,6 +587,11 @@
 <script>
   document.getElementById('menuBtn').addEventListener('click', function() {
     document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+  document.querySelectorAll('#mobileMenu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    });
   });
 </script>
 

@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Maya Creative Co — Booked Out UGC Kit</title>
-<meta name="description" content="The command center that turns one-off brand deals into consistent $5-10K months. Tools, templates, scripts, and strategy for UGC creators ready to operate like a business." />
-<meta property="og:title" content="Maya Creative Co — Booked Out UGC Kit" />
-<meta property="og:description" content="For UGC creators ready to operate like a business. The command center that turns one-off brand deals into consistent $5-10K months." />
+<title>Booked Out — The UGC Command Center | Maya Creative Co</title>
+<meta name="description" content="Booked Out is a subscription platform for UGC creators — interactive tools that price your rates, write your pitches, audit your contracts, and walk you through six stages of building a real business." />
+<meta property="og:title" content="Booked Out — The UGC Command Center" />
+<meta property="og:description" content="A subscription platform with interactive tools, templates, and monthly drops. For UGC creators ready to operate like a business." />
 <meta property="og:type" content="website" />
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -47,11 +47,8 @@
   .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .display-balance { text-wrap: balance; }
-  .fade-in { animation: fadeIn 0.4s ease-out; }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  /* offset anchored scroll so the sticky nav doesn't cover headings */
+  section[id] { scroll-margin-top: 84px; }
 
   .checkerboard {
     background-image:
@@ -81,6 +78,13 @@
     background-position: 0 0, 0 6px, 6px -6px, -6px 0;
   }
 
+  /* hard offset shadow — keeps the brand's flat, editorial feel while adding depth */
+  .shadow-hard { box-shadow: 7px 7px 0 0 #1B3A2F; }
+  .shadow-hard-sm { box-shadow: 4px 4px 0 0 #1B3A2F; }
+  .shadow-hard-moss { box-shadow: 7px 7px 0 0 #4A7C59; }
+  .lift { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .lift:hover { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 0 #1B3A2F; }
+
   select, input[type="number"], input[type="email"] {
     background-color: #FFFFFF;
     border: 1.5px solid #D8D0BE;
@@ -97,17 +101,6 @@
     border-color: #1B3A2F;
     box-shadow: 0 0 0 3px rgba(27, 58, 47, 0.12);
   }
-  label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    color: #4A5C50;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 8px;
-    display: block;
-  }
-  label::before { content: '> '; color: #1B3A2F; }
 
   .btn-primary {
     background-color: #1B3A2F;
@@ -153,25 +146,17 @@
     font-weight: 500;
   }
 
-  .card-offer {
-    background-color: #FFFFFF;
-    border: 1.5px solid #D8D0BE;
-    border-radius: 4px;
-    padding: 32px;
-    transition: border-color 0.2s ease, transform 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  .card-offer:hover { border-color: #1B3A2F; transform: translateY(-2px); }
-
-  .terminal {
-    background-color: #0F2620;
-    color: #F5F0E4;
-    border-radius: 4px;
-    border: 1.5px solid #1B3A2F;
+  .nav-link {
     font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: #4A5C50;
+    transition: color 0.15s ease;
   }
+  .nav-link:hover { color: #1B3A2F; }
+
+  /* browser-chrome frame for product screenshots */
+  .browser-bar { background-color: #0F2620; }
 </style>
 </head>
 <body class="antialiased">
@@ -180,41 +165,58 @@
 <div class="checkerboard h-2"></div>
 
 <!-- ============ NAV ============ -->
-<nav class="border-b border-line bg-cream sticky top-0 z-40">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2">
+<nav class="border-b border-line bg-cream/95 backdrop-blur sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center gap-6">
+    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2 shrink-0">
       <span class="inline-block w-5 h-5 checkerboard rounded-sm"></span>
       Maya Creative Co
     </a>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ash">
-      <a href="about.html" class="hover:text-forest transition-colors">About</a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#benefits" class="nav-link">Benefits</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="intensive.html" class="nav-link">Intensive</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </div>
-    <a href="https://booked-out.mayacreativeco.com" class="btn-primary text-sm hidden md:inline-flex !py-3 !px-5">Get Started →</a>
-    <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+    <a href="https://booked-out.mayacreativeco.com" class="btn-primary text-sm hidden lg:inline-flex !py-3 !px-5">Get Started →</a>
+    <button id="menuBtn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
       <span class="w-6 h-0.5 bg-forest block"></span>
       <span class="w-6 h-0.5 bg-forest block"></span>
       <span class="w-6 h-0.5 bg-forest block"></span>
     </button>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden border-t border-line bg-cream px-6 py-6 flex flex-col gap-5">
-    <a href="about.html" class="text-sm font-medium text-ash hover:text-forest transition-colors">About</a>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-cream px-6 py-6 flex flex-col gap-5">
+    <a href="#features" class="nav-link !text-sm">Features</a>
+    <a href="#benefits" class="nav-link !text-sm">Benefits</a>
+    <a href="#pricing" class="nav-link !text-sm">Pricing</a>
+    <a href="intensive.html" class="nav-link !text-sm">Intensive</a>
+    <a href="#contact" class="nav-link !text-sm">Contact</a>
     <a href="https://booked-out.mayacreativeco.com" class="btn-primary !py-3 !px-5 text-sm justify-center">Get Started →</a>
   </div>
 </nav>
 
 <!-- ============ HERO ============ -->
-<section class="px-6 py-20 md:py-36 relative overflow-hidden">
+<section class="px-6 py-20 md:py-32 relative overflow-hidden">
   <div class="max-w-5xl mx-auto">
     <div class="flex items-center gap-3 mb-8">
       <span class="inline-block w-8 h-2 checkerboard"></span>
-      <span class="mono-label">Maya_Creative_Co / booked_out_kit</span>
+      <span class="mono-label">// booked_out — your ugc command center</span>
     </div>
     <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] tracking-tight display-balance mb-8 text-forest">
       For UGC creators ready to operate like a <span class="italic text-moss">business.</span>
     </h1>
-    <p class="text-lg md:text-2xl text-ash leading-relaxed max-w-2xl mb-12 display-balance">
-      The command center that turns one-off brand deals into consistent $5–10K months.
+    <p class="text-lg md:text-2xl text-ash leading-relaxed max-w-2xl mb-8 display-balance">
+      <span class="text-forest font-semibold">Booked Out is a subscription platform</span> that walks you through six stages of building a UGC business — with interactive tools that price your rates, write your pitches, audit your contracts, and more.
     </p>
+    <!-- the 6-stage path, stated up front -->
+    <div class="flex flex-wrap items-center gap-x-2 gap-y-2 mb-12 font-mono text-xs text-ash">
+      <span class="bg-white border border-line rounded px-2.5 py-1">01 Clear</span><span class="text-moss">→</span>
+      <span class="bg-white border border-line rounded px-2.5 py-1">02 Visible</span><span class="text-moss">→</span>
+      <span class="bg-white border border-line rounded px-2.5 py-1">03 Paid</span><span class="text-moss">→</span>
+      <span class="bg-white border border-line rounded px-2.5 py-1">04 Booked</span><span class="text-moss">→</span>
+      <span class="bg-white border border-line rounded px-2.5 py-1">05 Consistent</span><span class="text-moss">→</span>
+      <span class="bg-white border border-line rounded px-2.5 py-1">06 Scale</span>
+    </div>
     <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
       <a href="https://booked-out.mayacreativeco.com" class="btn-primary text-base">Get started — $197/yr Founding →</a>
       <a href="https://booked-out.mayacreativeco.com/login.html" class="btn-secondary text-base">Already a member? Sign in →</a>
@@ -243,50 +245,44 @@
   <div class="checkerboard h-1"></div>
 </section>
 
-<!-- ============ PRODUCT PREVIEW ============ -->
+<!-- ============ PRODUCT SHOWCASE ============ -->
 <section class="px-6 py-24 bg-cream">
   <div class="max-w-5xl mx-auto">
-    <div class="bg-white border-2 border-forest rounded-md relative overflow-hidden">
-      <div class="checkerboard h-2"></div>
-      <div class="p-8 md:p-14 grid md:grid-cols-5 gap-10 items-center">
-        <div class="md:col-span-3">
-          <span class="mono-label">// command_center_preview</span>
-          <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-6 text-forest display-balance">
-            Not a PDF dump. A live command center.
-          </h2>
-          <p class="text-lg text-ash leading-relaxed mb-6 display-balance">
-            Interactive tools, templates, outreach scripts, monthly video drops, and a contract redline detector — all in one place. Open it, use it, ship the work.
-          </p>
-          <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm font-mono text-ash mb-8">
-            <span>→ 9+ tools</span>
-            <span>→ 12+ scripts</span>
-            <span>→ monthly_drops</span>
-            <span>→ contract_redline_detector</span>
-          </div>
-          <a href="https://booked-out.mayacreativeco.com" class="btn-primary">Unlock the Command Center →</a>
-        </div>
-        <div class="md:col-span-2">
-          <div class="aspect-video w-full rounded-md overflow-hidden border border-line">
-            <iframe
-              src="https://www.loom.com/embed/d74d2ec920b246d79ff2c5c9f99f0b13"
-              frameborder="0"
-              webkitallowfullscreen
-              mozallowfullscreen
-              allowfullscreen
-              class="w-full h-full"
-              style="width:100%;height:100%;">
-            </iframe>
-          </div>
-        </div>
-      </div>
+    <div class="max-w-2xl mb-12">
+      <span class="mono-label">// the_product</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-5 text-forest display-balance">
+        Not a PDF. Software you log into.
+      </h2>
+      <p class="text-lg text-ash leading-relaxed display-balance">
+        Open Booked Out and you get a real web app — interactive tools that do the work <span class="italic">with</span> you. Not a folder of documents you'll download once and never open again.
+      </p>
     </div>
+
+    <!-- browser-framed product tour video -->
+    <figure class="bg-white border-2 border-forest rounded-md overflow-hidden shadow-hard">
+      <div class="browser-bar flex items-center gap-2 px-4 py-3">
+        <span class="w-3 h-3 rounded-full bg-cream/25"></span>
+        <span class="w-3 h-3 rounded-full bg-cream/25"></span>
+        <span class="w-3 h-3 rounded-full bg-cream/25"></span>
+        <span class="ml-3 font-mono text-[11px] text-cream/50 truncate">booked-out.mayacreativeco.com</span>
+      </div>
+      <video
+        controls
+        preload="metadata"
+        playsinline
+        poster="shot-rate-calculator.png"
+        class="w-full block bg-forestDeep">
+        <source src="product-tour.mp4" type="video/mp4">
+      </video>
+    </figure>
+    <figcaption class="mono-label mt-4 !text-ash">// a 2-minute walk through the command center</figcaption>
   </div>
 </section>
 
 <!-- ============ CHECKERBOARD DIVIDER ============ -->
 <div class="checkerboard h-3"></div>
 
-<!-- ============ THE PITCH ============ -->
+<!-- ============ THE PROBLEM ============ -->
 <section class="px-6 py-24 bg-forest text-cream">
   <div class="max-w-3xl mx-auto">
     <span class="mono-label !text-cream/60">// the_problem</span>
@@ -294,93 +290,257 @@
       Most UGC creators are bottlenecked by pricing, pitching, and pipeline — not creativity.
     </h2>
     <div class="space-y-5 text-lg text-cream/80 leading-relaxed">
-      <p>There's no shortage of "how to make UGC" content. What's missing is the business layer — the pricing frameworks, the outreach systems, the client tracking, the proposal templates — the stuff that actually decides whether you get booked.</p>
-      <p>Maya Creative Co exists to solve that. Every tool here is built to fix a specific problem I hit while running my own UGC business, and every system is stress-tested against real brand deals.</p>
-      <p class="text-cream font-semibold">You bring the creativity. I'll give you the systems.</p>
+      <p>There's no shortage of "how to make UGC" content. What's missing is the business layer — the pricing frameworks, the outreach systems, the client tracking, the contract know-how — the stuff that actually decides whether you get booked.</p>
+      <p>Booked Out exists to solve that. Every tool inside is built to fix a specific problem I hit while running my own UGC business, and every system is stress-tested against real brand deals.</p>
+      <p class="text-cream font-semibold">You bring the creativity. Booked Out gives you the systems.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ WHAT'S INSIDE ============ -->
-<section id="kit" class="px-6 py-24 bg-cream">
+<!-- ============ FEATURES ============ -->
+<section id="features" class="px-6 py-24 bg-cream">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <span class="mono-label">// inside_the_command_center</span>
-      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-6 display-balance text-forest">
-        Six sections. One place to run from.
+    <div class="max-w-2xl mb-16">
+      <span class="mono-label">// features · how_it_works</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-5 display-balance text-forest">
+        Six stages. One clear path.
       </h2>
-      <p class="text-lg text-ash max-w-2xl mx-auto display-balance">
-        Not a Notion dashboard. Not a PDF bundle. A live command center with interactive tools, monthly video drops, and every template you need — all one click away.
+      <p class="text-lg text-ash leading-relaxed display-balance">
+        Every UGC business gets stuck somewhere — a fuzzy niche, no pipeline, underpricing, a contract that quietly costs you money. Booked Out is organized as the exact path out, stage by stage.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <!-- 6-stage grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-24">
 
-      <div class="bg-white border-2 border-forest rounded-md p-7 relative">
-        <span class="absolute top-3 right-3 mono-label !text-xs">01</span>
+      <div class="bg-white border-2 border-forest rounded-md p-7 relative lift">
+        <span class="absolute top-3 right-4 mono-label !text-xs">01</span>
         <div class="w-10 h-10 checkerboard mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-3 text-forest">Interactive Tools</h3>
-        <p class="text-ash text-sm leading-relaxed mb-4">Real tools you click and use — not docs you read. The full Rate Calculator, the Negotiation Playbook, the Pitch Generator, and the Contract Redline Detector.</p>
-        <p class="text-xs font-mono text-moss">→ rate_calculator · negotiation_playbook · pitch_generator · contract_redline</p>
+        <h3 class="font-display text-2xl font-bold mb-2 text-forest">Clear</h3>
+        <p class="text-ash text-sm leading-relaxed">Nail your niche and positioning. The Niche Selector builds the one-line pitch you'll use in every bio, DM, and intro — so you stop sounding like every other creator.</p>
       </div>
 
-      <div class="bg-white border border-line rounded-md p-7 relative">
-        <span class="absolute top-3 right-3 mono-label !text-xs">02</span>
+      <div class="bg-white border border-line rounded-md p-7 relative lift">
+        <span class="absolute top-3 right-4 mono-label !text-xs">02</span>
         <div class="w-10 h-10 bg-forest rounded-sm mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-3 text-forest">Templates</h3>
-        <p class="text-ash text-sm leading-relaxed mb-4">Proposal, client tracker, onboarding workflow, invoice, contract addendum, and deliverable hand-off. Plug-and-play, not "fill in the blank."</p>
-        <p class="text-xs font-mono text-moss">→ proposal · tracker · onboarding · contract</p>
+        <h3 class="font-display text-2xl font-bold mb-2 text-forest">Visible</h3>
+        <p class="text-ash text-sm leading-relaxed">Make content brands actually notice. The Hook Generator and UGC Script Builder turn any product into scroll-stopping hooks and a full, shoot-ready script.</p>
       </div>
 
-      <div class="bg-white border border-line rounded-md p-7 relative">
-        <span class="absolute top-3 right-3 mono-label !text-xs">03</span>
+      <div class="bg-white border border-line rounded-md p-7 relative lift">
+        <span class="absolute top-3 right-4 mono-label !text-xs">03</span>
         <div class="w-10 h-10 checkerboard-mini mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-3 text-forest">12+ Scripts</h3>
-        <p class="text-ash text-sm leading-relaxed mb-4">Cold DM, cold email, warm intro, referral ask, follow-ups, and the ghosted-recovery message that actually gets replies. Every script has 2–3 variations.</p>
-        <p class="text-xs font-mono text-moss">→ cold · warm · follow_up · recovery</p>
+        <h3 class="font-display text-2xl font-bold mb-2 text-forest">Paid</h3>
+        <p class="text-ash text-sm leading-relaxed">Charge what you're worth. The Rate Calculator gives you a defensible number and package for every deal — UGC-only, posting, or a bundle — with negotiation notes built in.</p>
       </div>
 
-      <div class="bg-white border border-line rounded-md p-7 relative">
-        <span class="absolute top-3 right-3 mono-label !text-xs">04</span>
+      <div class="bg-white border border-line rounded-md p-7 relative lift">
+        <span class="absolute top-3 right-4 mono-label !text-xs">04</span>
         <div class="w-10 h-10 border-2 border-forest mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-3 text-forest">Monthly Video Drops</h3>
-        <p class="text-ash text-sm leading-relaxed mb-4">Short 3–5 minute walkthroughs where I use the tools on a real brand scenario — so you can see exactly how to run them, not just read about it. New drops every month.</p>
-        <p class="text-xs font-mono text-moss">→ monthly_drops · under_5_min_each</p>
+        <h3 class="font-display text-2xl font-bold mb-2 text-forest">Booked</h3>
+        <p class="text-ash text-sm leading-relaxed">Close deals without getting burned. The Pitch Generator writes your outreach; the AI Contract Redline Detector audits every clause before you sign a thing.</p>
       </div>
 
-      <div class="bg-white border border-line rounded-md p-7 relative">
-        <span class="absolute top-3 right-3 mono-label !text-xs">05</span>
+      <div class="bg-white border border-line rounded-md p-7 relative lift">
+        <span class="absolute top-3 right-4 mono-label !text-xs">05</span>
         <div class="w-10 h-10 bg-moss rounded-sm mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-3 text-forest">Resource Vault</h3>
-        <p class="text-ash text-sm leading-relaxed mb-4">50 DTC brand contact list, current rate benchmarks, must-have contract clauses, swipe-worthy pitches I've actually sent, and a running FAQ I update monthly.</p>
-        <p class="text-xs font-mono text-moss">→ brand_list · benchmarks · swipe_file · FAQ</p>
+        <h3 class="font-display text-2xl font-bold mb-2 text-forest">Consistent</h3>
+        <p class="text-ash text-sm leading-relaxed">Turn one-off deals into repeat clients. Onboarding, hand-off, and follow-up systems that keep brands rebooking you — so income stops being feast-or-famine.</p>
       </div>
 
-      <div class="bg-white border border-line rounded-md p-7 relative">
-        <span class="absolute top-3 right-3 mono-label !text-xs">06</span>
+      <div class="bg-white border border-line rounded-md p-7 relative lift">
+        <span class="absolute top-3 right-4 mono-label !text-xs">06</span>
         <div class="w-10 h-10 checkerboard mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-3 text-forest">Bonus · Workshop Replay</h3>
-        <p class="text-ash text-sm leading-relaxed mb-4">A 90-minute live workshop replay where I walk through a full UGC deal — pricing, pitch, negotiation, onboarding — start to finish using the command center.</p>
-        <p class="text-xs font-mono text-moss">→ 90_min · full_deal_walkthrough</p>
+        <h3 class="font-display text-2xl font-bold mb-2 text-forest">Scale</h3>
+        <p class="text-ash text-sm leading-relaxed">Build past $10K months. Workflows for raising your rates, packaging retainers, and running like an agency of one — plus monthly workshop drops that go deep.</p>
+      </div>
+
+    </div>
+
+    <!-- TOOLS UP CLOSE -->
+    <div class="max-w-2xl mb-14">
+      <span class="mono-label">// inside_the_tools</span>
+      <h3 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 display-balance text-forest">
+        A look at the tools you'll actually use.
+      </h3>
+    </div>
+
+    <!-- Tool row 01 — Niche Selector -->
+    <div class="grid md:grid-cols-2 gap-10 lg:gap-14 items-center mb-20">
+      <div>
+        <span class="mono-label !text-moss">// 01_clear · niche_selector</span>
+        <h4 class="font-display text-3xl font-bold text-forest mt-4 mb-4 display-balance">What kind of creator are you?</h4>
+        <p class="text-ash leading-relaxed mb-5">Answer a few prompts and the Niche Selector builds your positioning sentence — the one line you'll use in every pitch, bio, and brand intro. No more sounding like a generalist who shoots "anything."</p>
+        <p class="font-mono text-xs text-moss">→ positioning · niche · media_kit_ready</p>
+      </div>
+      <figure class="bg-white border-2 border-forest rounded-md overflow-hidden shadow-hard-sm lift">
+        <div class="browser-bar flex items-center gap-2 px-3 py-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+        </div>
+        <img src="shot-niche-selector.png" alt="The Niche Selector tool inside Booked Out" class="w-full block" loading="lazy">
+      </figure>
+    </div>
+
+    <!-- Tool row 02 — Rate Calculator (image left) -->
+    <div class="grid md:grid-cols-2 gap-10 lg:gap-14 items-center mb-20">
+      <figure class="md:order-1 order-2 bg-white border-2 border-forest rounded-md overflow-hidden shadow-hard-sm lift">
+        <div class="browser-bar flex items-center gap-2 px-3 py-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+        </div>
+        <img src="shot-rate-calculator.png" alt="The Rate Calculator tool inside Booked Out" class="w-full block" loading="lazy">
+      </figure>
+      <div class="md:order-2 order-1">
+        <span class="mono-label !text-moss">// 03_paid · rate_calculator</span>
+        <h4 class="font-display text-3xl font-bold text-forest mt-4 mb-4 display-balance">What should I charge?</h4>
+        <p class="text-ash leading-relaxed mb-5">Run any deal through the calculator — deliverables, usage rights, turnaround, revisions, your experience tier — and get a defensible rate range, a suggested package, and tailored negotiation notes. Works for UGC-only, posting, and bundles.</p>
+        <p class="font-mono text-xs text-moss">→ rate_range · package · negotiation_notes</p>
+      </div>
+    </div>
+
+    <!-- Tool row 03 — Contract Redline Detector -->
+    <div class="grid md:grid-cols-2 gap-10 lg:gap-14 items-center mb-24">
+      <div>
+        <span class="mono-label !text-moss">// 04_booked · contract_redline_detector</span>
+        <h4 class="font-display text-3xl font-bold text-forest mt-4 mb-4 display-balance">Don't sign that contract yet.</h4>
+        <p class="text-ash leading-relaxed mb-5">Paste a brand's contract and the AI audits every clause against 9 categories that quietly cost creators money, rights, and leverage — then writes the exact redlines to send back. Private: nothing is logged or stored.</p>
+        <p class="font-mono text-xs text-moss">→ ai_powered · 9_categories · redlines_written_for_you</p>
+      </div>
+      <figure class="bg-white border-2 border-forest rounded-md overflow-hidden shadow-hard-sm lift">
+        <div class="browser-bar flex items-center gap-2 px-3 py-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+        </div>
+        <img src="shot-contract-redline.png" alt="The Contract Redline Detector inside Booked Out" class="w-full block" loading="lazy">
+      </figure>
+    </div>
+
+    <!-- Smaller tool grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+      <div class="bg-white border border-line rounded-md overflow-hidden lift">
+        <div class="browser-bar flex items-center gap-2 px-3 py-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+        </div>
+        <img src="shot-hook-generator.png" alt="The Hook Generator inside Booked Out" class="w-full block border-b border-line" loading="lazy">
+        <div class="p-6">
+          <span class="mono-label !text-moss !text-[10px]">// 02_visible · hook_generator</span>
+          <h4 class="font-display text-xl font-bold text-forest mt-2 mb-1">Generate 5 hooks for any product</h4>
+          <p class="text-ash text-sm leading-relaxed">The first 2 seconds decide everything. Drop in a product and get five specific, scroll-stopping hooks — ready to shoot.</p>
+        </div>
+      </div>
+
+      <div class="bg-white border border-line rounded-md overflow-hidden lift">
+        <div class="browser-bar flex items-center gap-2 px-3 py-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+        </div>
+        <img src="shot-script-builder.png" alt="The UGC Script Builder inside Booked Out" class="w-full block border-b border-line" loading="lazy">
+        <div class="p-6">
+          <span class="mono-label !text-moss !text-[10px]">// 02_visible · ugc_script_builder</span>
+          <h4 class="font-display text-xl font-bold text-forest mt-2 mb-1">Build a viral UGC script</h4>
+          <p class="text-ash text-sm leading-relaxed">Pick your format, mode, and timing — get a complete script with visual direction built in. Sells the transformation, not the spec sheet.</p>
+        </div>
+      </div>
+
+      <div class="bg-white border border-line rounded-md overflow-hidden lift">
+        <div class="browser-bar flex items-center gap-2 px-3 py-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+        </div>
+        <img src="shot-pitch-generator.png" alt="The Pitch Generator inside Booked Out" class="w-full block border-b border-line" loading="lazy">
+        <div class="p-6">
+          <span class="mono-label !text-moss !text-[10px]">// 04_booked · pitch_generator</span>
+          <h4 class="font-display text-xl font-bold text-forest mt-2 mb-1">Write the outbound for me</h4>
+          <p class="text-ash text-sm leading-relaxed">Fill the fields, get a personalized cold pitch that sounds like you — so the blank DM box stops being the reason you don't pitch.</p>
+        </div>
+      </div>
+
+      <div class="bg-white border border-line rounded-md overflow-hidden lift">
+        <div class="browser-bar flex items-center gap-2 px-3 py-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cream/25"></span>
+        </div>
+        <img src="shot-workshops.png" alt="In-depth workshops inside Booked Out" class="w-full block border-b border-line" loading="lazy">
+        <div class="p-6">
+          <span class="mono-label !text-moss !text-[10px]">// workshops · members_only</span>
+          <h4 class="font-display text-xl font-bold text-forest mt-2 mb-1">In-depth workshops</h4>
+          <p class="text-ash text-sm leading-relaxed">Real walkthroughs on the business-critical stuff nobody teaches — portfolio, taxes, systems. New drops every month.</p>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- ============ BENEFITS ============ -->
+<section id="benefits" class="px-6 py-24 bg-creamDeep">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl mb-16">
+      <span class="mono-label">// benefits</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-5 display-balance text-forest">
+        What changes when you run on Booked Out.
+      </h2>
+      <p class="text-lg text-ash leading-relaxed display-balance">
+        The tools are the "what." Here's the "so what" — the four shifts members feel first.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <div class="bg-white border border-line rounded-md p-8 lift">
+        <p class="font-mono text-xs text-moss mb-4">// benefit_01</p>
+        <h3 class="font-display text-2xl font-bold text-forest mb-3">You stop guessing your rates.</h3>
+        <p class="text-ash leading-relaxed">The Rate Calculator and live benchmarks mean you walk into every deal with a number you can defend — and stop leaving money on the table because you panicked and picked something low.</p>
+      </div>
+
+      <div class="bg-white border border-line rounded-md p-8 lift">
+        <p class="font-mono text-xs text-moss mb-4">// benefit_02</p>
+        <h3 class="font-display text-2xl font-bold text-forest mb-3">Your pipeline stays full.</h3>
+        <p class="text-ash leading-relaxed">The Pitch Generator and 12+ outreach scripts mean consistent pitching becomes a 10-minute task — not a staring contest with an empty DM box that ends in "I'll do it tomorrow."</p>
+      </div>
+
+      <div class="bg-white border border-line rounded-md p-8 lift">
+        <p class="font-mono text-xs text-moss mb-4">// benefit_03</p>
+        <h3 class="font-display text-2xl font-bold text-forest mb-3">You never sign a bad contract.</h3>
+        <p class="text-ash leading-relaxed">The AI Redline Detector flags the usage, exclusivity, and payment clauses that quietly cost creators thousands — and hands you the exact language to send back.</p>
+      </div>
+
+      <div class="bg-white border border-line rounded-md p-8 lift">
+        <p class="font-mono text-xs text-moss mb-4">// benefit_04</p>
+        <h3 class="font-display text-2xl font-bold text-forest mb-3">You know what's coming next month.</h3>
+        <p class="text-ash leading-relaxed">Systems for onboarding, hand-off, and follow-up turn one-off deals into repeat clients — so income becomes something you can predict, not pray for.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHECKERBOARD DIVIDER ============ -->
+<div class="checkerboard h-3"></div>
 
 <!-- ============ PRICING ============ -->
 <section id="pricing" class="px-6 py-24 bg-cream">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-14">
       <span class="mono-label">// pricing</span>
-      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-4 display-balance text-forest">Join the Booked Out Kit.</h2>
-      <p class="text-lg text-ash max-w-xl mx-auto display-balance">One subscription. Unlimited access to the full command center, every template, all scripts, and new drops every month.</p>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-4 display-balance text-forest">One subscription. The whole platform.</h2>
+      <p class="text-lg text-ash max-w-xl mx-auto display-balance">Unlimited access to all six stages, every interactive tool, all scripts and templates, and new workshop drops every month.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch max-w-3xl mx-auto">
 
       <!-- PRIMARY: Founding Annual -->
-      <div class="bg-forest text-cream rounded-md relative overflow-hidden flex flex-col">
+      <div class="bg-forest text-cream rounded-md relative overflow-hidden flex flex-col shadow-hard-moss">
         <div class="checkerboard h-2"></div>
         <div class="p-8 flex flex-col flex-1">
           <div class="mb-4">
@@ -389,7 +549,7 @@
           </div>
           <p class="font-display text-6xl font-bold text-cream mb-1">$197</p>
           <p class="text-xs text-cream/60 font-mono mb-4">// per year — locked in forever</p>
-          <p class="text-cream/70 text-sm leading-relaxed mb-8 flex-1">Founding member rate, locked in for as long as you stay subscribed. After the first 100 members, annual reverts to $397/yr. Full command center access, all scripts, monthly video drops, contract redline detector, and every new tool we ship.</p>
+          <p class="text-cream/70 text-sm leading-relaxed mb-8 flex-1">Founding member rate, locked in for as long as you stay subscribed. After the first 100 members, annual reverts to $397/yr. Full platform access, every tool, all scripts, monthly workshop drops, the contract redline detector, and every new tool we ship.</p>
           <a href="https://booked-out.mayacreativeco.com/" class="btn-primary !bg-moss !border-moss !text-forestDeep hover:!bg-cream hover:!border-cream w-full justify-center text-base font-bold">Get Founding Access →</a>
         </div>
       </div>
@@ -403,7 +563,7 @@
           </div>
           <p class="font-display text-6xl font-bold text-forest mb-1">$49</p>
           <p class="text-xs text-ash font-mono mb-4">// per month · cancel any time</p>
-          <p class="text-ash text-sm leading-relaxed mb-8 flex-1">Full command center access, all scripts and templates, monthly video drops, contract redline detector, and every new tool we ship. No annual commitment.</p>
+          <p class="text-ash text-sm leading-relaxed mb-8 flex-1">Full platform access, all six stages, every tool, all scripts and templates, monthly workshop drops, the contract redline detector, and every new tool we ship. No annual commitment.</p>
           <a href="https://booked-out.mayacreativeco.com/" class="btn-secondary w-full justify-center">Get Monthly Access</a>
         </div>
       </div>
@@ -416,7 +576,7 @@
   </div>
 </section>
 
-<!-- ============ INTENSIVE ============ -->
+<!-- ============ INTENSIVE TEASER ============ -->
 <section id="intensive" class="px-6 py-16 bg-creamDeep">
   <div class="max-w-5xl mx-auto">
     <div class="bg-forest text-cream rounded-md p-8 md:p-14 relative overflow-hidden">
@@ -424,7 +584,7 @@
       <div class="relative">
         <span class="mono-label !text-moss">// for_when_you_need_more_than_tools</span>
         <h3 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-5 leading-tight display-balance">The Strategy Intensive.</h3>
-        <p class="text-cream/80 text-lg leading-relaxed mb-8 max-w-2xl">Three sessions across one quarter. A custom dashboard built for your business. The full AI workflow that took me from $5K to $15K months — every tool, every agent, every prompt.</p>
+        <p class="text-cream/80 text-lg leading-relaxed mb-8 max-w-2xl">Three sessions across one quarter. A custom dashboard built for your business. The full AI workflow that took me from $5K to $15K months — every tool, every agent, every prompt. This is 1:1 coaching, not a course.</p>
         <p class="text-cream/60 text-sm font-mono mb-8">For UGC creators making $2–10K/month who are ready to scale past $10K.</p>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
           <div class="border border-cream/20 rounded p-4">
@@ -446,7 +606,7 @@
         </div>
         <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
           <a href="intensive.html" class="btn-primary !bg-moss !border-moss !text-forestDeep hover:!bg-cream hover:!border-cream">See the full Intensive →</a>
-          <p class="text-cream/60 font-mono text-sm">$1,250 · one quarter</p>
+          <p class="text-cream/60 font-mono text-sm">$1,250 · one quarter · application required</p>
         </div>
       </div>
     </div>
@@ -463,7 +623,7 @@
       </h2>
     </div>
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white border border-line rounded-md p-8">
+      <div class="bg-white border border-line rounded-md p-8 lift">
         <p class="text-forest leading-relaxed mb-6">"I doubled my rates in a weekend after using Maya's calculator. I'd been leaving so much on the table and didn't even know it."</p>
         <div class="flex items-center gap-3 pt-4 border-t border-line">
           <div class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center font-mono text-xs text-forest">JR</div>
@@ -473,7 +633,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-white border border-line rounded-md p-8">
+      <div class="bg-white border border-line rounded-md p-8 lift">
         <p class="text-forest leading-relaxed mb-6">"The outreach scripts alone were worth it. Landed two brand deals in the first week just by sending what was in the kit."</p>
         <div class="flex items-center gap-3 pt-4 border-t border-line">
           <div class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center font-mono text-xs text-forest">AM</div>
@@ -483,7 +643,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-white border border-line rounded-md p-8">
+      <div class="bg-white border border-line rounded-md p-8 lift">
         <p class="text-forest leading-relaxed mb-6">"Maya runs a real UGC business — that's why her systems actually work. This isn't theory from someone who's never shipped."</p>
         <div class="flex items-center gap-3 pt-4 border-t border-line">
           <div class="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center font-mono text-xs text-forest">TS</div>
@@ -515,12 +675,51 @@
       </h2>
       <div class="space-y-4 text-ash leading-relaxed">
         <p>I'm a working UGC creator. I've shot for DTC brands across beauty, wellness, and lifestyle, and I've spent the last five years figuring out how to actually run this like a business — not a side hustle.</p>
-        <p>This command center is the one I built for myself. The same calculator, the same scripts, the same proposal template, the same vault I actually run from. It's the thing I wish someone had handed me when I was undercharging and ghost-pitching brands at 1 AM.</p>
+        <p>Booked Out is the command center I built for myself. The same calculator, the same scripts, the same contract auditor, the same systems I actually run from. It's the thing I wish someone had handed me when I was undercharging and ghost-pitching brands at 1 AM.</p>
         <p>I'm sharing it because creator coaching is full of theory, and I'd rather just hand you the tools I use.</p>
       </div>
       <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-mono text-ash">
         <a href="about.html" class="hover:text-forest underline">→ full story</a>
-        <a href="mailto:support@mayaherring.com" class="hover:text-forest underline">→ contact</a>
+        <a href="#contact" class="hover:text-forest underline">→ contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="px-6 py-24 bg-forest text-cream">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="mono-label !text-moss">// contact</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-6 mb-5 display-balance">
+          Questions before you join?
+        </h2>
+        <p class="text-cream/80 text-lg leading-relaxed mb-8 display-balance">
+          Not sure if Booked Out is the right fit, or whether you're ready for the Intensive? Email me directly — it comes to me, and I answer every one personally.
+        </p>
+        <a href="mailto:support@mayaherring.com" class="btn-primary !bg-moss !border-moss !text-forestDeep hover:!bg-cream hover:!border-cream">Email Maya →</a>
+      </div>
+      <div class="border border-cream/20 rounded-md p-8">
+        <p class="mono-label !text-cream/50 mb-5">// reach_me</p>
+        <div class="space-y-4">
+          <a href="mailto:support@mayaherring.com" class="flex items-center justify-between border-b border-cream/15 pb-4 group">
+            <span class="text-cream/70 font-mono text-sm">email</span>
+            <span class="text-cream group-hover:text-moss transition-colors font-medium">support@mayaherring.com</span>
+          </a>
+          <a href="https://www.instagram.com/mayacreativeco/" target="_blank" rel="noopener" class="flex items-center justify-between border-b border-cream/15 pb-4 group">
+            <span class="text-cream/70 font-mono text-sm">instagram</span>
+            <span class="text-cream group-hover:text-moss transition-colors font-medium">@mayacreativeco →</span>
+          </a>
+          <a href="https://www.tiktok.com/@mayacreativeco" target="_blank" rel="noopener" class="flex items-center justify-between border-b border-cream/15 pb-4 group">
+            <span class="text-cream/70 font-mono text-sm">tiktok</span>
+            <span class="text-cream group-hover:text-moss transition-colors font-medium">@mayacreativeco →</span>
+          </a>
+          <a href="intensive.html" class="flex items-center justify-between group">
+            <span class="text-cream/70 font-mono text-sm">coaching</span>
+            <span class="text-cream group-hover:text-moss transition-colors font-medium">Apply for the Intensive →</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -535,15 +734,17 @@
         <span class="inline-block w-5 h-5 checkerboard-cream"></span>
         <p class="font-display text-lg font-bold text-cream">Maya Creative Co</p>
       </div>
-      <p class="text-xs max-w-xs">For UGC creators ready to operate like a business.</p>
+      <p class="text-xs max-w-xs">Booked Out — the command center for UGC creators ready to operate like a business.</p>
     </div>
     <div class="text-xs grid grid-cols-2 gap-x-10 gap-y-2">
-      <a href="https://booked-out.mayacreativeco.com" class="hover:text-cream font-mono">→ booked out kit</a>
+      <a href="#features" class="hover:text-cream font-mono">→ features</a>
+      <a href="#pricing" class="hover:text-cream font-mono">→ pricing</a>
+      <a href="#benefits" class="hover:text-cream font-mono">→ benefits</a>
       <a href="intensive.html" class="hover:text-cream font-mono">→ intensive</a>
       <a href="about.html" class="hover:text-cream font-mono">→ about</a>
-      <a href="mailto:support@mayaherring.com" class="hover:text-cream font-mono">→ contact</a>
-      <a href="#" class="hover:text-cream font-mono">→ instagram</a>
-      <a href="#" class="hover:text-cream font-mono">→ tiktok</a>
+      <a href="#contact" class="hover:text-cream font-mono">→ contact</a>
+      <a href="https://booked-out.mayacreativeco.com" class="hover:text-cream font-mono">→ booked out</a>
+      <a href="https://booked-out.mayacreativeco.com/login.html" class="hover:text-cream font-mono">→ sign in</a>
     </div>
     <p class="text-xs font-mono">© 2026</p>
   </div>
@@ -552,6 +753,12 @@
 <script>
   document.getElementById('menuBtn').addEventListener('click', function() {
     document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+  // close the mobile menu after tapping an anchor link
+  document.querySelectorAll('#mobileMenu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    });
   });
 </script>
 
