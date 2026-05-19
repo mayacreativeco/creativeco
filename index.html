@@ -6,7 +6,7 @@
 <title>Booked Out — The UGC Command Center | Maya Creative Co</title>
 <meta name="description" content="Booked Out is a subscription platform for UGC creators — interactive tools that price your rates, write your pitches, audit your contracts, and walk you through six stages of building a real business." />
 <meta property="og:title" content="Booked Out — The UGC Command Center" />
-<meta property="og:description" content="A subscription platform with interactive tools, templates, and monthly drops. For UGC creators ready to operate like a business." />
+<meta property="og:description" content="Great videos don't book brands. Systems do. The subscription platform for UGC creators ready to operate like a business." />
 <meta property="og:type" content="website" />
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -26,16 +26,9 @@
           mono: ['JetBrains Mono', 'monospace'],
         },
         colors: {
-          cream: '#F5F0E4',
-          creamDeep: '#EDE5D2',
-          forest: '#1B3A2F',
-          forestDeep: '#0F2620',
-          forestLight: '#2D5742',
-          moss: '#4A7C59',
-          mint: '#86C9A1',
-          ink: '#0A1A12',
-          ash: '#4A5C50',
-          line: '#D8D0BE',
+          cream: '#F5F0E4', creamDeep: '#EDE5D2', forest: '#1B3A2F',
+          forestDeep: '#0F2620', forestLight: '#2D5742', moss: '#4A7C59',
+          mint: '#86C9A1', ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
         },
       },
     },
@@ -50,9 +43,15 @@
   .display-balance { text-wrap: balance; }
   section[id] { scroll-margin-top: 84px; }
 
-  /* ---- gradient section flow — sections blend between the two greens ---- */
-  .flow-a { background: linear-gradient(180deg, #1B3A2F 0%, #0F2620 100%); }
-  .flow-b { background: linear-gradient(180deg, #0F2620 0%, #1B3A2F 100%); }
+  /* ---- section background flow — sections blend on scroll ---- */
+  .flow-a   { background: linear-gradient(180deg, #1B3A2F 0%, #0F2620 100%); }
+  .flow-b   { background: linear-gradient(180deg, #0F2620 0%, #1B3A2F 100%); }
+  .bg-deep  { background: #0F2620; }
+  .bg-green { background: #1B3A2F; }
+  /* green → cream transition (fade happens in the top 160px) */
+  .enter-cream { background: linear-gradient(180deg, #1B3A2F 0px, #F5F0E4 160px, #F5F0E4 100%); }
+  /* cream → green transition */
+  .enter-green { background: linear-gradient(180deg, #F5F0E4 0px, #0F2620 170px, #0F2620 100%); }
 
   /* ---- checkerboard motif ---- */
   .checkerboard-cream {
@@ -82,13 +81,22 @@
     background-size: 16px 16px;
     background-position: 0 0, 0 8px, 8px -8px, -8px 0;
   }
+  .checkerboard-forest {
+    background-image:
+      linear-gradient(45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(-45deg, #1B3A2F 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #1B3A2F 75%),
+      linear-gradient(-45deg, transparent 75%, #1B3A2F 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  }
 
   /* ---- elevation ---- */
   .shadow-float { box-shadow: 0 30px 70px -28px rgba(0,0,0,0.85); }
+  .shadow-float-soft { box-shadow: 0 24px 50px -26px rgba(10,26,18,0.45); }
   .shadow-hard-moss { box-shadow: 10px 10px 0 0 #4A7C59; }
-  .shadow-hard-cream { box-shadow: 8px 8px 0 0 #F5F0E4; }
-  .lift { transition: transform .22s cubic-bezier(.16,1,.3,1), box-shadow .22s ease, border-color .22s ease; }
-  .lift:hover { transform: translateY(-5px); box-shadow: 0 22px 44px -20px rgba(0,0,0,0.7); }
+  .lift { transition: transform .22s cubic-bezier(.16,1,.3,1), box-shadow .22s ease; }
+  .lift:hover { transform: translateY(-5px); box-shadow: 0 22px 44px -20px rgba(0,0,0,0.55); }
 
   /* ---- buttons ---- */
   .btn-primary {
@@ -99,6 +107,7 @@
     display: inline-flex; align-items: center; gap: 10px;
     border: 2px solid #F5F0E4;
     font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
+    cursor: pointer;
   }
   .btn-primary:hover { background-color: #FFFFFF; border-color: #FFFFFF; box-shadow: 0 8px 24px -8px rgba(0,0,0,.6); }
   .btn-primary:active { transform: scale(0.98); }
@@ -114,11 +123,26 @@
   }
   .btn-secondary:hover { background-color: #F5F0E4; color: #0F2620; border-color: #F5F0E4; }
 
+  /* dark button — for use inside cream sections */
+  .btn-dark {
+    background-color: #1B3A2F; color: #F5F0E4;
+    padding: 16px 28px; border-radius: 4px;
+    font-weight: 600; font-size: 15px;
+    transition: background-color .15s ease, transform .1s ease, box-shadow .15s ease;
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 2px solid #1B3A2F;
+    font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
+    cursor: pointer;
+  }
+  .btn-dark:hover { background-color: #0F2620; box-shadow: 0 10px 26px -10px rgba(10,26,18,.5); }
+  .btn-dark:active { transform: scale(0.98); }
+
   .mono-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; text-transform: uppercase;
     letter-spacing: 0.1em; color: #86C9A1; font-weight: 500;
   }
+  .mono-label.on-cream { color: #4A7C59; }
 
   .nav-link {
     font-family: 'JetBrains Mono', monospace;
@@ -129,6 +153,31 @@
 
   .browser-bar { background-color: #0A1A12; }
 
+  /* ---- interactive stage stepper ---- */
+  .stage-tab {
+    font-family: 'Space Grotesk', sans-serif;
+    text-align: left; cursor: pointer;
+    background: rgba(245,240,228,0.04);
+    border: 1.5px solid rgba(245,240,228,0.12);
+    border-radius: 6px; padding: 16px 18px;
+    transition: background-color .2s ease, border-color .2s ease, transform .15s ease;
+  }
+  .stage-tab:hover { border-color: rgba(134,201,161,0.55); transform: translateY(-2px); }
+  .stage-tab.is-active {
+    background: #F5F0E4; border-color: #F5F0E4;
+  }
+  .stage-tab.is-active .st-num { color: #4A7C59; }
+  .stage-tab.is-active .st-name { color: #1B3A2F; }
+  .stage-panel { display: none; }
+  .stage-panel.is-active { display: block; animation: panelIn .45s cubic-bezier(.16,1,.3,1); }
+  @keyframes panelIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  /* ---- testimonial marquee ---- */
+  .marquee { overflow: hidden; }
+  .marquee-track { display: flex; gap: 1.25rem; width: max-content; }
+  .zoom-wrap { overflow: hidden; }
+  .zoom-img { transform-origin: center; will-change: transform; }
+
   /* ---- scroll-reveal + motion ---- */
   .reveal-d1 { transition-delay: .08s; }
   .reveal-d2 { transition-delay: .16s; }
@@ -138,27 +187,25 @@
     .reveal {
       opacity: 0; transform: translateY(28px);
       transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
-      will-change: opacity, transform;
     }
     .reveal-left  { transform: translateX(-36px); }
     .reveal-right { transform: translateX(36px); }
     .reveal-scale { transform: scale(.94); }
     .reveal.in { opacity: 1; transform: none; }
 
-    /* drifting checkerboard */
     @keyframes checkerDrift {
       from { background-position: 0 0, 0 8px, 8px -8px, -8px 0; }
       to   { background-position: 32px 0, 32px 8px, 40px -8px, 24px 0; }
     }
     .checker-drift { animation: checkerDrift 7s linear infinite; }
 
-    /* drawing checkmark — animates when its card enters view */
+    /* checkmark draws itself when its card enters view */
     .draw-check path { stroke-dasharray: 30; stroke-dashoffset: 30; transition: stroke-dashoffset .7s ease .2s; }
-    .reveal.in .draw-check path { stroke-dashoffset: 0; }
+    .reveal.in .draw-check path, .in .draw-check path { stroke-dashoffset: 0; }
 
-    /* soft floating glow */
-    @keyframes glowPulse { 0%,100% { opacity:.55; } 50% { opacity:.9; } }
-    .glow-orb { animation: glowPulse 6s ease-in-out infinite; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { animation: marquee 56s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
   }
 </style>
 </head>
@@ -175,6 +222,7 @@
       Maya Creative Co
     </a>
     <div class="hidden lg:flex items-center gap-7">
+      <a href="#story" class="nav-link">Story</a>
       <a href="#features" class="nav-link">Features</a>
       <a href="#benefits" class="nav-link">Benefits</a>
       <a href="#pricing" class="nav-link">Pricing</a>
@@ -189,6 +237,7 @@
     </button>
   </div>
   <div id="mobileMenu" class="hidden lg:hidden border-t border-cream/10 bg-forestDeep px-6 py-6 flex flex-col gap-5">
+    <a href="#story" class="nav-link !text-sm">Story</a>
     <a href="#features" class="nav-link !text-sm">Features</a>
     <a href="#benefits" class="nav-link !text-sm">Benefits</a>
     <a href="#pricing" class="nav-link !text-sm">Pricing</a>
@@ -200,7 +249,6 @@
 
 <!-- ============ HERO ============ -->
 <section class="px-6 py-24 md:py-36 relative overflow-hidden flow-a">
-  <!-- ambient glow -->
   <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[640px] h-[640px] rounded-full pointer-events-none"
        style="background: radial-gradient(circle, rgba(74,124,89,0.38) 0%, rgba(74,124,89,0) 70%);"></div>
   <div class="max-w-4xl mx-auto relative text-center">
@@ -210,12 +258,11 @@
       <span class="inline-block w-8 h-2 checkerboard-cream"></span>
     </div>
     <h1 class="reveal reveal-d1 font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] tracking-tight display-balance mb-8 text-cream">
-      For UGC creators ready to operate like a <span class="italic text-mint">business.</span>
+      Great videos don't book brands. <span class="italic text-mint">Systems do.</span>
     </h1>
     <p class="reveal reveal-d2 text-lg md:text-2xl text-cream/70 leading-relaxed max-w-2xl mx-auto mb-8 display-balance">
-      <span class="text-cream font-semibold">Booked Out is a subscription platform</span> that walks you through six stages of building a UGC business — with interactive tools that price your rates, write your pitches, audit your contracts, and more.
+      <span class="text-cream font-semibold">Booked Out is a subscription platform</span> that hands UGC creators that system — interactive tools to price your rates, write your pitches, audit your contracts, and walk you through all six stages of building a real business.
     </p>
-    <!-- 6-stage path -->
     <div data-stagger class="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 mb-12 font-mono text-xs text-cream/60">
       <span class="reveal bg-cream/5 border border-cream/15 rounded px-2.5 py-1">01 Clear</span><span class="reveal text-mint">→</span>
       <span class="reveal bg-cream/5 border border-cream/15 rounded px-2.5 py-1">02 Visible</span><span class="reveal text-mint">→</span>
@@ -235,7 +282,7 @@
 </section>
 
 <!-- ============ TRUST STRIP ============ -->
-<section class="border-y border-cream/10 bg-forestDeep">
+<section class="border-y border-cream/10 bg-deep">
   <div data-stagger class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-3 gap-8">
     <div class="reveal text-center">
       <p class="font-display text-4xl md:text-5xl font-bold text-cream" data-count="390" data-suffix="+">390+</p>
@@ -265,7 +312,6 @@
       </p>
     </div>
 
-    <!-- browser-framed auto-playing product tour -->
     <figure class="reveal reveal-scale bg-cream rounded-md overflow-hidden shadow-hard-moss">
       <div class="browser-bar flex items-center gap-2 px-4 py-3">
         <span class="w-3 h-3 rounded-full bg-cream/20"></span>
@@ -273,11 +319,7 @@
         <span class="w-3 h-3 rounded-full bg-cream/20"></span>
         <span class="ml-3 font-mono text-[11px] text-cream/40 truncate">booked-out.mayacreativeco.com</span>
       </div>
-      <video
-        autoplay muted loop playsinline
-        preload="metadata"
-        poster="shot-rate-calculator.png"
-        class="w-full block bg-forestDeep">
+      <video autoplay muted loop playsinline preload="metadata" poster="shot-rate-calculator.png" class="w-full block bg-forestDeep">
         <source src="product-tour.mp4" type="video/mp4">
       </video>
     </figure>
@@ -285,90 +327,232 @@
   </div>
 </section>
 
-<!-- ============ THE PROBLEM ============ -->
-<section class="px-6 py-28 flow-a">
-  <div class="reveal max-w-3xl mx-auto">
-    <span class="mono-label">// the_problem</span>
-    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-10 display-balance text-cream">
-      Most UGC creators are bottlenecked by pricing, pitching, and pipeline — not creativity.
-    </h2>
-    <div class="space-y-5 text-lg text-cream/70 leading-relaxed">
-      <p>There's no shortage of "how to make UGC" content. What's missing is the business layer — the pricing frameworks, the outreach systems, the client tracking, the contract know-how — the stuff that actually decides whether you get booked.</p>
-      <p>Booked Out exists to solve that. Every tool inside is built to fix a specific problem I hit while running my own UGC business, and every system is stress-tested against real brand deals.</p>
-      <p class="text-cream font-semibold">You bring the creativity. Booked Out gives you the systems.</p>
+<!-- ============ STORY (about + problem, combined) ============ -->
+<section id="story" class="enter-cream px-6 pt-44 pb-28">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal max-w-3xl mb-14">
+      <span class="mono-label on-cream">// the_story</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-[1.05] mt-6 display-balance text-forest">
+        You don't have a talent problem. You have a <span class="italic text-moss">systems</span> problem.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-5 gap-12 items-start">
+      <div class="reveal reveal-left md:col-span-2">
+        <img src="Tezza-8235.JPG" alt="Maya — founder of Maya Creative Co" class="w-full rounded-md object-cover shadow-float-soft" />
+        <div class="mt-3 flex gap-1">
+          <span class="w-3 h-3 checkerboard-forest"></span>
+          <span class="w-3 h-3 bg-forest"></span>
+          <span class="w-3 h-3 checkerboard-forest"></span>
+        </div>
+        <p class="mt-4 font-mono text-xs text-ash">// maya — working ugc creator, founder</p>
+      </div>
+
+      <div class="reveal reveal-right md:col-span-3">
+        <div class="space-y-4 text-ash leading-relaxed text-lg">
+          <p>For my first year as a UGC creator, I was broke. Not because my videos were bad — they were good. I was broke because I was guessing at everything: my rates, my pitches, when to follow up, what to sign.</p>
+          <p>Then I started watching the creators pulling <span class="text-forest font-semibold">$15K months</span>. They weren't more talented than me. They weren't working more hours. They were running <span class="text-forest font-semibold">systems</span> — for pricing, outreach, contracts, keeping clients — while I was running on memory and vibes.</p>
+          <p>So I built the systems. Every calculator, every script, every workflow. My income went from unpredictable to $5K, then $10K, then $15K months. <span class="text-forest font-semibold">Booked Out is those exact systems</span> — handed to you, so you skip the year I wasted figuring it out.</p>
+        </div>
+
+        <!-- animated checkmarks -->
+        <div data-stagger class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 mt-8">
+          <div class="reveal flex items-center gap-3">
+            <svg class="draw-check w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
+            <span class="text-forest font-medium">Income you can predict</span>
+          </div>
+          <div class="reveal flex items-center gap-3">
+            <svg class="draw-check w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
+            <span class="text-forest font-medium">Rates that actually hold</span>
+          </div>
+          <div class="reveal flex items-center gap-3">
+            <svg class="draw-check w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
+            <span class="text-forest font-medium">A pipeline that's always full</span>
+          </div>
+          <div class="reveal flex items-center gap-3">
+            <svg class="draw-check w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
+            <span class="text-forest font-medium">Your evenings back</span>
+          </div>
+        </div>
+
+        <div class="reveal flex flex-col sm:flex-row gap-4 items-start sm:items-center mt-9">
+          <a href="https://booked-out.mayacreativeco.com" class="btn-dark">Try Booked Out for Free →</a>
+          <a href="about.html" class="font-mono text-sm text-ash hover:text-forest underline">→ read my full story</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FEATURES ============ -->
-<section id="features" class="px-6 py-28 flow-b">
+<!-- ============ FEATURES — INTERACTIVE STAGE STEPPER ============ -->
+<section id="features" class="enter-green px-6 pt-44 pb-28">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal max-w-2xl mb-16">
-      <span class="mono-label">// features · how_it_works</span>
+    <div class="reveal max-w-2xl mb-12">
+      <span class="mono-label">// features · one_clear_path</span>
       <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-5 display-balance text-cream">
-        Six stages. One clear path.
+        Six stages. Tap one to see where you are.
       </h2>
       <p class="text-lg text-cream/70 leading-relaxed display-balance">
-        Every UGC business gets stuck somewhere — a fuzzy niche, no pipeline, underpricing, a contract that quietly costs you money. Booked Out is organized as the exact path out, stage by stage.
+        Booked Out isn't a pile of tools — it's an ordered path. Every UGC business gets stuck at one of these six stages. Pick the one that sounds like you and see exactly what changes.
       </p>
     </div>
 
-    <!-- 6-stage grid -->
-    <div data-stagger class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-28">
-
-      <div class="reveal bg-cream/[0.04] border border-mint/40 rounded-md p-7 relative lift">
-        <span class="absolute top-3 right-4 mono-label !text-xs">01</span>
-        <div class="w-10 h-10 checkerboard-cream mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-2 text-cream">Clear</h3>
-        <p class="text-cream/65 text-sm leading-relaxed">Nail your niche and positioning. The Niche Selector builds the one-line pitch you'll use in every bio, DM, and intro — so you stop sounding like every other creator.</p>
-      </div>
-
-      <div class="reveal bg-cream/[0.04] border border-cream/10 rounded-md p-7 relative lift">
-        <span class="absolute top-3 right-4 mono-label !text-xs">02</span>
-        <div class="w-10 h-10 bg-cream rounded-sm mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-2 text-cream">Visible</h3>
-        <p class="text-cream/65 text-sm leading-relaxed">Make content brands actually notice. The Hook Generator and UGC Script Builder turn any product into scroll-stopping hooks and a full, shoot-ready script.</p>
-      </div>
-
-      <div class="reveal bg-cream/[0.04] border border-cream/10 rounded-md p-7 relative lift">
-        <span class="absolute top-3 right-4 mono-label !text-xs">03</span>
-        <div class="w-10 h-10 checkerboard-mini-cream mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-2 text-cream">Paid</h3>
-        <p class="text-cream/65 text-sm leading-relaxed">Charge what you're worth. The Rate Calculator gives you a defensible number and package for every deal — UGC-only, posting, or a bundle — with negotiation notes built in.</p>
-      </div>
-
-      <div class="reveal bg-cream/[0.04] border border-cream/10 rounded-md p-7 relative lift">
-        <span class="absolute top-3 right-4 mono-label !text-xs">04</span>
-        <div class="w-10 h-10 border-2 border-cream mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-2 text-cream">Booked</h3>
-        <p class="text-cream/65 text-sm leading-relaxed">Close deals without getting burned. The Pitch Generator writes your outreach; the AI Contract Redline Detector audits every clause before you sign a thing.</p>
-      </div>
-
-      <div class="reveal bg-cream/[0.04] border border-cream/10 rounded-md p-7 relative lift">
-        <span class="absolute top-3 right-4 mono-label !text-xs">05</span>
-        <div class="w-10 h-10 bg-moss rounded-sm mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-2 text-cream">Consistent</h3>
-        <p class="text-cream/65 text-sm leading-relaxed">Turn one-off deals into repeat clients. Onboarding, hand-off, and follow-up systems that keep brands rebooking you — so income stops being feast-or-famine.</p>
-      </div>
-
-      <div class="reveal bg-cream/[0.04] border border-cream/10 rounded-md p-7 relative lift">
-        <span class="absolute top-3 right-4 mono-label !text-xs">06</span>
-        <div class="w-10 h-10 checkerboard-moss mb-5"></div>
-        <h3 class="font-display text-2xl font-bold mb-2 text-cream">Scale</h3>
-        <p class="text-cream/65 text-sm leading-relaxed">Build past $10K months. Workflows for raising your rates, packaging retainers, and running like an agency of one — plus monthly workshop drops that go deep.</p>
-      </div>
-
+    <!-- stage tabs -->
+    <div data-stagger class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
+      <button class="stage-tab reveal is-active" data-stage="0">
+        <span class="st-num block font-mono text-xs text-mint mb-1">01</span>
+        <span class="st-name block font-bold text-cream">Clear</span>
+      </button>
+      <button class="stage-tab reveal" data-stage="1">
+        <span class="st-num block font-mono text-xs text-mint mb-1">02</span>
+        <span class="st-name block font-bold text-cream">Visible</span>
+      </button>
+      <button class="stage-tab reveal" data-stage="2">
+        <span class="st-num block font-mono text-xs text-mint mb-1">03</span>
+        <span class="st-name block font-bold text-cream">Paid</span>
+      </button>
+      <button class="stage-tab reveal" data-stage="3">
+        <span class="st-num block font-mono text-xs text-mint mb-1">04</span>
+        <span class="st-name block font-bold text-cream">Booked</span>
+      </button>
+      <button class="stage-tab reveal" data-stage="4">
+        <span class="st-num block font-mono text-xs text-mint mb-1">05</span>
+        <span class="st-name block font-bold text-cream">Consistent</span>
+      </button>
+      <button class="stage-tab reveal" data-stage="5">
+        <span class="st-num block font-mono text-xs text-mint mb-1">06</span>
+        <span class="st-name block font-bold text-cream">Scale</span>
+      </button>
     </div>
 
-    <!-- TOOLS UP CLOSE -->
-    <div class="reveal max-w-2xl mb-16 text-center mx-auto">
+    <!-- stage panels -->
+    <div class="reveal">
+      <!-- 01 -->
+      <div class="stage-panel is-active" data-stage="0">
+        <div class="bg-cream/[0.04] border border-cream/12 rounded-md p-8 md:p-12 grid md:grid-cols-3 gap-10">
+          <div class="md:col-span-2">
+            <p class="font-mono text-xs text-mint mb-3">// stage_01 · clear</p>
+            <h3 class="font-display text-3xl md:text-4xl font-bold text-cream mb-4 display-balance">Get clear on who you actually are.</h3>
+            <p class="text-cream/55 text-sm font-mono mb-4">The problem → brands scroll right past creators who feel generic.</p>
+            <p class="text-cream/75 leading-relaxed">The Niche Selector walks you through your strengths, your content style, and your experience level — then writes the one-line positioning statement you'll use in every bio, pitch, and media kit. You stop being "a UGC creator" and become the obvious choice for your niche.</p>
+          </div>
+          <div class="bg-forestDeep border border-cream/10 rounded-md p-6">
+            <p class="mono-label mb-4">// tools_in_this_stage</p>
+            <div class="space-y-3 text-sm">
+              <p class="text-cream font-medium">→ Niche Selector</p>
+              <p class="text-cream/55 leading-relaxed">Builds your positioning sentence + a niche-fit breakdown you can drop straight into a media kit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 02 -->
+      <div class="stage-panel" data-stage="1">
+        <div class="bg-cream/[0.04] border border-cream/12 rounded-md p-8 md:p-12 grid md:grid-cols-3 gap-10">
+          <div class="md:col-span-2">
+            <p class="font-mono text-xs text-mint mb-3">// stage_02 · visible</p>
+            <h3 class="font-display text-3xl md:text-4xl font-bold text-cream mb-4 display-balance">Make content that stops the scroll.</h3>
+            <p class="text-cream/55 text-sm font-mono mb-4">The problem → you can shoot beautifully and still get ignored if the first two seconds don't land.</p>
+            <p class="text-cream/75 leading-relaxed">The Hook Generator turns any product into five tested, scroll-stopping hooks. The UGC Script Builder then expands your pick into a full, shoot-ready script — format, pacing, and visual direction built in — so you film with a plan instead of winging it.</p>
+          </div>
+          <div class="bg-forestDeep border border-cream/10 rounded-md p-6">
+            <p class="mono-label mb-4">// tools_in_this_stage</p>
+            <div class="space-y-3 text-sm">
+              <p class="text-cream font-medium">→ Hook Generator</p>
+              <p class="text-cream/55 leading-relaxed">Five specific hooks for any product — not generic templates.</p>
+              <p class="text-cream font-medium pt-1">→ UGC Script Builder</p>
+              <p class="text-cream/55 leading-relaxed">A complete script with visual direction and timing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 03 -->
+      <div class="stage-panel" data-stage="2">
+        <div class="bg-cream/[0.04] border border-cream/12 rounded-md p-8 md:p-12 grid md:grid-cols-3 gap-10">
+          <div class="md:col-span-2">
+            <p class="font-mono text-xs text-mint mb-3">// stage_03 · paid</p>
+            <h3 class="font-display text-3xl md:text-4xl font-bold text-cream mb-4 display-balance">Charge what the work is actually worth.</h3>
+            <p class="text-cream/55 text-sm font-mono mb-4">The problem → most creators pick a number out of fear and undercharge by hundreds per deal.</p>
+            <p class="text-cream/75 leading-relaxed">The Rate Calculator factors deliverables, usage rights, turnaround, revisions, and your experience tier into a defensible rate range, a suggested package, and negotiation notes — for UGC-only, posting, or bundle deals. You quote with data, not anxiety.</p>
+          </div>
+          <div class="bg-forestDeep border border-cream/10 rounded-md p-6">
+            <p class="mono-label mb-4">// tools_in_this_stage</p>
+            <div class="space-y-3 text-sm">
+              <p class="text-cream font-medium">→ Rate Calculator</p>
+              <p class="text-cream/55 leading-relaxed">A rate range, a package, and negotiation notes for any deal type.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 04 -->
+      <div class="stage-panel" data-stage="3">
+        <div class="bg-cream/[0.04] border border-cream/12 rounded-md p-8 md:p-12 grid md:grid-cols-3 gap-10">
+          <div class="md:col-span-2">
+            <p class="font-mono text-xs text-mint mb-3">// stage_04 · booked</p>
+            <h3 class="font-display text-3xl md:text-4xl font-bold text-cream mb-4 display-balance">Close the deal without getting burned.</h3>
+            <p class="text-cream/55 text-sm font-mono mb-4">The problem → the gap between "interested" and "booked" is outreach and contracts — the two things creators avoid.</p>
+            <p class="text-cream/75 leading-relaxed">The Pitch Generator writes personalized cold outreach that sounds like you. The AI Contract Redline Detector audits every clause against 9 categories that quietly cost creators money and rights — then writes the exact redlines to send back.</p>
+          </div>
+          <div class="bg-forestDeep border border-cream/10 rounded-md p-6">
+            <p class="mono-label mb-4">// tools_in_this_stage</p>
+            <div class="space-y-3 text-sm">
+              <p class="text-cream font-medium">→ Pitch Generator</p>
+              <p class="text-cream/55 leading-relaxed">Personalized cold outreach, written for you.</p>
+              <p class="text-cream font-medium pt-1">→ Contract Redline Detector</p>
+              <p class="text-cream/55 leading-relaxed">AI clause audit + the redlines to send back.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 05 -->
+      <div class="stage-panel" data-stage="4">
+        <div class="bg-cream/[0.04] border border-cream/12 rounded-md p-8 md:p-12 grid md:grid-cols-3 gap-10">
+          <div class="md:col-span-2">
+            <p class="font-mono text-xs text-mint mb-3">// stage_05 · consistent</p>
+            <h3 class="font-display text-3xl md:text-4xl font-bold text-cream mb-4 display-balance">Turn one good month into every month.</h3>
+            <p class="text-cream/55 text-sm font-mono mb-4">The problem → a great month means nothing if the next one is empty.</p>
+            <p class="text-cream/75 leading-relaxed">Onboarding, hand-off, and follow-up systems make brands rebook you by default — and the client tracker keeps your whole pipeline visible so nothing slips. This is where income stops being a rollercoaster.</p>
+          </div>
+          <div class="bg-forestDeep border border-cream/10 rounded-md p-6">
+            <p class="mono-label mb-4">// tools_in_this_stage</p>
+            <div class="space-y-3 text-sm">
+              <p class="text-cream font-medium">→ Client Tracker</p>
+              <p class="text-cream/55 leading-relaxed">Every deal and its status, in one view.</p>
+              <p class="text-cream font-medium pt-1">→ Onboarding &amp; Follow-up Scripts</p>
+              <p class="text-cream/55 leading-relaxed">The messages that turn clients into repeat clients.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 06 -->
+      <div class="stage-panel" data-stage="5">
+        <div class="bg-cream/[0.04] border border-cream/12 rounded-md p-8 md:p-12 grid md:grid-cols-3 gap-10">
+          <div class="md:col-span-2">
+            <p class="font-mono text-xs text-mint mb-3">// stage_06 · scale</p>
+            <h3 class="font-display text-3xl md:text-4xl font-bold text-cream mb-4 display-balance">Build past the solo-creator ceiling.</h3>
+            <p class="text-cream/55 text-sm font-mono mb-4">The problem → there are only so many hours; at some point hustle alone caps your income.</p>
+            <p class="text-cream/75 leading-relaxed">Workflows for raising your rates, packaging retainers, and running like an agency of one — plus monthly workshop drops that go deep on the business side most creators never learn. This is the $10K+ stage.</p>
+          </div>
+          <div class="bg-forestDeep border border-cream/10 rounded-md p-6">
+            <p class="mono-label mb-4">// tools_in_this_stage</p>
+            <div class="space-y-3 text-sm">
+              <p class="text-cream font-medium">→ Retainer &amp; Rate-Raise Playbooks</p>
+              <p class="text-cream/55 leading-relaxed">Package recurring work and raise rates without losing clients.</p>
+              <p class="text-cream font-medium pt-1">→ Monthly Workshops</p>
+              <p class="text-cream/55 leading-relaxed">New deep-dive drops on the business of UGC.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOLS UP CLOSE — screenshots with scroll-zoom -->
+    <div class="reveal max-w-2xl mb-16 mt-28 text-center mx-auto">
       <span class="mono-label">// inside_the_tools</span>
       <h3 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 display-balance text-cream">
         A look at the tools you'll actually use.
       </h3>
     </div>
 
-    <!-- Tool row 01 — Niche Selector -->
     <div class="grid md:grid-cols-2 gap-10 lg:gap-14 items-center mb-24">
       <div class="reveal reveal-left">
         <span class="mono-label">// 01_clear · niche_selector</span>
@@ -382,11 +566,10 @@
           <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
           <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
         </div>
-        <img src="shot-niche-selector.png" alt="The Niche Selector tool inside Booked Out" class="w-full block" loading="lazy">
+        <div class="zoom-wrap"><img data-zoom src="shot-niche-selector.png" alt="The Niche Selector tool inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
       </figure>
     </div>
 
-    <!-- Tool row 02 — Rate Calculator (image left) -->
     <div class="grid md:grid-cols-2 gap-10 lg:gap-14 items-center mb-24">
       <figure class="reveal reveal-left md:order-1 order-2 bg-cream rounded-md overflow-hidden shadow-float lift">
         <div class="browser-bar flex items-center gap-2 px-3 py-2">
@@ -394,7 +577,7 @@
           <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
           <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
         </div>
-        <img src="shot-rate-calculator.png" alt="The Rate Calculator tool inside Booked Out" class="w-full block" loading="lazy">
+        <div class="zoom-wrap"><img data-zoom src="shot-rate-calculator.png" alt="The Rate Calculator tool inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
       </figure>
       <div class="reveal reveal-right md:order-2 order-1">
         <span class="mono-label">// 03_paid · rate_calculator</span>
@@ -404,7 +587,6 @@
       </div>
     </div>
 
-    <!-- Tool row 03 — Contract Redline Detector -->
     <div class="grid md:grid-cols-2 gap-10 lg:gap-14 items-center mb-28">
       <div class="reveal reveal-left">
         <span class="mono-label">// 04_booked · contract_redline_detector</span>
@@ -418,49 +600,43 @@
           <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
           <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
         </div>
-        <img src="shot-contract-redline.png" alt="The Contract Redline Detector inside Booked Out" class="w-full block" loading="lazy">
+        <div class="zoom-wrap"><img data-zoom src="shot-contract-redline.png" alt="The Contract Redline Detector inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
       </figure>
     </div>
 
-    <!-- Smaller tool grid -->
     <div data-stagger class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
       <div class="reveal bg-cream rounded-md overflow-hidden lift shadow-float">
-        <img src="shot-hook-generator.png" alt="The Hook Generator inside Booked Out" class="w-full block" loading="lazy">
+        <div class="zoom-wrap"><img data-zoom src="shot-hook-generator.png" alt="The Hook Generator inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
         <div class="p-6">
           <span class="font-mono text-[10px] tracking-widest uppercase text-moss font-medium">// 02_visible · hook_generator</span>
           <h4 class="font-display text-xl font-bold text-forest mt-2 mb-1">Generate 5 hooks for any product</h4>
           <p class="text-ash text-sm leading-relaxed">The first 2 seconds decide everything. Drop in a product and get five specific, scroll-stopping hooks — ready to shoot.</p>
         </div>
       </div>
-
       <div class="reveal bg-cream rounded-md overflow-hidden lift shadow-float">
-        <img src="shot-script-builder.png" alt="The UGC Script Builder inside Booked Out" class="w-full block" loading="lazy">
+        <div class="zoom-wrap"><img data-zoom src="shot-script-builder.png" alt="The UGC Script Builder inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
         <div class="p-6">
           <span class="font-mono text-[10px] tracking-widest uppercase text-moss font-medium">// 02_visible · ugc_script_builder</span>
           <h4 class="font-display text-xl font-bold text-forest mt-2 mb-1">Build a viral UGC script</h4>
           <p class="text-ash text-sm leading-relaxed">Pick your format, mode, and timing — get a complete script with visual direction built in. Sells the transformation, not the spec sheet.</p>
         </div>
       </div>
-
       <div class="reveal bg-cream rounded-md overflow-hidden lift shadow-float">
-        <img src="shot-pitch-generator.png" alt="The Pitch Generator inside Booked Out" class="w-full block" loading="lazy">
+        <div class="zoom-wrap"><img data-zoom src="shot-pitch-generator.png" alt="The Pitch Generator inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
         <div class="p-6">
           <span class="font-mono text-[10px] tracking-widest uppercase text-moss font-medium">// 04_booked · pitch_generator</span>
           <h4 class="font-display text-xl font-bold text-forest mt-2 mb-1">Write the outbound for me</h4>
           <p class="text-ash text-sm leading-relaxed">Fill the fields, get a personalized cold pitch that sounds like you — so the blank DM box stops being the reason you don't pitch.</p>
         </div>
       </div>
-
       <div class="reveal bg-cream rounded-md overflow-hidden lift shadow-float">
-        <img src="shot-workshops.png" alt="In-depth workshops inside Booked Out" class="w-full block" loading="lazy">
+        <div class="zoom-wrap"><img data-zoom src="shot-workshops.png" alt="In-depth workshops inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
         <div class="p-6">
           <span class="font-mono text-[10px] tracking-widest uppercase text-moss font-medium">// workshops · members_only</span>
           <h4 class="font-display text-xl font-bold text-forest mt-2 mb-1">In-depth workshops</h4>
           <p class="text-ash text-sm leading-relaxed">Real walkthroughs on the business-critical stuff nobody teaches — portfolio, taxes, systems. New drops every month.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -471,7 +647,7 @@
     <div class="reveal max-w-2xl mb-16">
       <span class="mono-label">// benefits</span>
       <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-5 display-balance text-cream">
-        What changes when you run on Booked Out.
+        What changes when you run on a system.
       </h2>
       <p class="text-lg text-cream/70 leading-relaxed display-balance">
         The tools are the "what." Here's the "so what" — the four shifts members feel first.
@@ -479,7 +655,6 @@
     </div>
 
     <div data-stagger class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
       <div class="reveal bg-cream/[0.04] border border-cream/10 rounded-md p-8 lift">
         <div class="w-11 h-11 rounded-full bg-moss/15 border border-moss/40 flex items-center justify-center mb-5">
           <svg class="draw-check w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
@@ -487,7 +662,6 @@
         <h3 class="font-display text-2xl font-bold text-cream mb-3">You stop guessing your rates.</h3>
         <p class="text-cream/65 leading-relaxed">The Rate Calculator and live benchmarks mean you walk into every deal with a number you can defend — and stop leaving money on the table because you panicked and picked something low.</p>
       </div>
-
       <div class="reveal bg-cream/[0.04] border border-cream/10 rounded-md p-8 lift">
         <div class="w-11 h-11 rounded-full bg-moss/15 border border-moss/40 flex items-center justify-center mb-5">
           <svg class="draw-check w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
@@ -495,7 +669,6 @@
         <h3 class="font-display text-2xl font-bold text-cream mb-3">Your pipeline stays full.</h3>
         <p class="text-cream/65 leading-relaxed">The Pitch Generator and 12+ outreach scripts mean consistent pitching becomes a 10-minute task — not a staring contest with an empty DM box that ends in "I'll do it tomorrow."</p>
       </div>
-
       <div class="reveal bg-cream/[0.04] border border-cream/10 rounded-md p-8 lift">
         <div class="w-11 h-11 rounded-full bg-moss/15 border border-moss/40 flex items-center justify-center mb-5">
           <svg class="draw-check w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
@@ -503,7 +676,6 @@
         <h3 class="font-display text-2xl font-bold text-cream mb-3">You never sign a bad contract.</h3>
         <p class="text-cream/65 leading-relaxed">The AI Redline Detector flags the usage, exclusivity, and payment clauses that quietly cost creators thousands — and hands you the exact language to send back.</p>
       </div>
-
       <div class="reveal bg-cream/[0.04] border border-cream/10 rounded-md p-8 lift">
         <div class="w-11 h-11 rounded-full bg-moss/15 border border-moss/40 flex items-center justify-center mb-5">
           <svg class="draw-check w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
@@ -511,197 +683,240 @@
         <h3 class="font-display text-2xl font-bold text-cream mb-3">You know what's coming next month.</h3>
         <p class="text-cream/65 leading-relaxed">Systems for onboarding, hand-off, and follow-up turn one-off deals into repeat clients — so income becomes something you can predict, not pray for.</p>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- ============ PRICING ============ -->
-<section id="pricing" class="px-6 py-28 flow-b">
+<section id="pricing" class="px-6 py-28 bg-green">
   <div class="max-w-5xl mx-auto">
     <div class="reveal text-center mb-14">
       <span class="mono-label">// pricing</span>
-      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-4 display-balance text-cream">One subscription. The whole platform.</h2>
-      <p class="text-lg text-cream/70 max-w-xl mx-auto display-balance">Unlimited access to all six stages, every interactive tool, all scripts and templates, and new workshop drops every month.</p>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-4 display-balance text-cream">One price. Every system you've been missing.</h2>
+      <p class="text-lg text-cream/70 max-w-xl mx-auto display-balance">No upsells. No locked "advanced" tier. One subscription unlocks all six stages, every tool, every script, and every new drop — for as long as you're a member.</p>
     </div>
 
     <div data-stagger class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch max-w-3xl mx-auto">
 
-      <!-- PRIMARY: Founding Annual -->
+      <!-- Founding Annual -->
       <div class="reveal bg-cream text-forest rounded-md relative overflow-hidden flex flex-col shadow-hard-moss">
         <div class="checkerboard-moss h-2"></div>
         <div class="p-8 flex flex-col flex-1">
-          <div class="mb-4">
-            <span class="inline-block bg-moss text-cream text-xs font-mono font-bold px-3 py-1 rounded-full mb-3">Limited: First 100 Members</span>
-            <p class="font-mono text-[11px] tracking-widest uppercase text-moss font-medium">// founding_annual</p>
+          <span class="inline-block bg-moss text-cream text-xs font-mono font-bold px-3 py-1 rounded-full mb-4 w-max">Best value — first 100 members</span>
+          <p class="font-mono text-[11px] tracking-widest uppercase text-moss font-medium">// founding_annual</p>
+          <div class="flex items-end gap-2 mt-1 mb-1">
+            <p class="font-display text-6xl font-bold text-forest">$197</p>
+            <p class="text-ash font-mono text-sm mb-2">/year</p>
           </div>
-          <p class="font-display text-6xl font-bold text-forest mb-1">$197</p>
-          <p class="text-xs text-ash font-mono mb-4">// per year — locked in forever</p>
-          <p class="text-ash text-sm leading-relaxed mb-8 flex-1">Founding member rate, locked in for as long as you stay subscribed. After the first 100 members, annual reverts to $397/yr. Full platform access, every tool, all scripts, monthly workshop drops, the contract redline detector, and every new tool we ship.</p>
-          <a href="https://booked-out.mayacreativeco.com/" class="w-full justify-center text-base font-bold inline-flex items-center gap-2 rounded font-display"
-             style="background:#1B3A2F;color:#F5F0E4;padding:16px 28px;border:2px solid #1B3A2F;">Get Founding Access →</a>
+          <p class="text-xs text-ash font-mono mb-6">// the lowest price Booked Out will ever be</p>
+          <div class="space-y-2.5 mb-8 flex-1">
+            <div class="flex gap-2.5"><span class="text-moss font-bold shrink-0">✓</span><p class="text-ash text-sm">All six stages + every interactive tool</p></div>
+            <div class="flex gap-2.5"><span class="text-moss font-bold shrink-0">✓</span><p class="text-ash text-sm">Every script, template &amp; the AI contract redline detector</p></div>
+            <div class="flex gap-2.5"><span class="text-moss font-bold shrink-0">✓</span><p class="text-ash text-sm">New tools &amp; workshop drops every month</p></div>
+            <div class="flex gap-2.5"><span class="text-moss font-bold shrink-0">✓</span><p class="text-ash text-sm font-semibold text-forest">Founding rate locked in for life</p></div>
+            <div class="flex gap-2.5"><span class="text-moss font-bold shrink-0">✓</span><p class="text-ash text-sm">Cancel anytime — keep access through your term</p></div>
+          </div>
+          <a href="https://booked-out.mayacreativeco.com/" class="btn-dark w-full justify-center text-base font-bold">Get Founding Access →</a>
         </div>
       </div>
 
       <!-- Monthly -->
       <div class="reveal bg-cream/[0.04] border border-cream/15 rounded-md flex flex-col">
         <div class="p-8 flex flex-col flex-1">
-          <div class="mb-4">
-            <span class="inline-block text-xs font-mono text-cream/60 px-3 py-1 border border-cream/20 rounded-full mb-3">Pay as you go</span>
-            <p class="mono-label !text-xs">// monthly</p>
+          <span class="inline-block text-xs font-mono text-cream/60 px-3 py-1 border border-cream/20 rounded-full mb-4 w-max">No commitment</span>
+          <p class="mono-label !text-xs">// monthly</p>
+          <div class="flex items-end gap-2 mt-1 mb-1">
+            <p class="font-display text-6xl font-bold text-cream">$49</p>
+            <p class="text-cream/50 font-mono text-sm mb-2">/month</p>
           </div>
-          <p class="font-display text-6xl font-bold text-cream mb-1">$49</p>
-          <p class="text-xs text-cream/50 font-mono mb-4">// per month · cancel any time</p>
-          <p class="text-cream/65 text-sm leading-relaxed mb-8 flex-1">Full platform access, all six stages, every tool, all scripts and templates, monthly workshop drops, the contract redline detector, and every new tool we ship. No annual commitment.</p>
+          <p class="text-xs text-cream/50 font-mono mb-6">// try the whole system, cancel any time</p>
+          <div class="space-y-2.5 mb-8 flex-1">
+            <div class="flex gap-2.5"><span class="text-mint font-bold shrink-0">✓</span><p class="text-cream/70 text-sm">All six stages + every interactive tool</p></div>
+            <div class="flex gap-2.5"><span class="text-mint font-bold shrink-0">✓</span><p class="text-cream/70 text-sm">Every script, template &amp; the AI contract redline detector</p></div>
+            <div class="flex gap-2.5"><span class="text-mint font-bold shrink-0">✓</span><p class="text-cream/70 text-sm">New tools &amp; workshop drops every month</p></div>
+            <div class="flex gap-2.5"><span class="text-mint font-bold shrink-0">✓</span><p class="text-cream/70 text-sm">Zero annual commitment</p></div>
+          </div>
           <a href="https://booked-out.mayacreativeco.com/" class="btn-secondary w-full justify-center">Get Monthly Access</a>
         </div>
       </div>
 
     </div>
 
-    <p class="reveal text-center text-sm text-cream/55 font-mono mt-8">
-      Already a member? <a href="https://booked-out.mayacreativeco.com/login.html" class="text-mint underline hover:text-cream">Sign in →</a>
+    <p class="reveal text-center text-sm text-cream/65 font-mono mt-8">
+      Not ready to commit? <a href="https://booked-out.mayacreativeco.com" class="text-mint underline hover:text-cream">Start on the free tier →</a> &nbsp;·&nbsp; explore the platform, no card required.
     </p>
   </div>
 </section>
 
-<!-- ============ INTENSIVE TEASER ============ -->
-<section id="intensive" class="px-6 py-20 flow-a">
-  <div class="max-w-5xl mx-auto">
-    <div class="reveal reveal-scale bg-forestDeep border border-cream/10 rounded-md p-8 md:p-14 relative overflow-hidden shadow-float">
-      <div class="absolute top-0 right-0 w-48 h-48 checkerboard-moss opacity-20"></div>
-      <div class="relative">
-        <span class="mono-label">// for_when_you_need_more_than_tools</span>
-        <h3 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-5 leading-tight display-balance text-cream">The Strategy Intensive.</h3>
-        <p class="text-cream/75 text-lg leading-relaxed mb-8 max-w-2xl">Three sessions across one quarter. A custom dashboard built for your business. The full AI workflow that took me from $5K to $15K months — every tool, every agent, every prompt. This is 1:1 coaching, not a course.</p>
-        <p class="text-cream/50 text-sm font-mono mb-8">For UGC creators making $2–10K/month who are ready to scale past $10K.</p>
-        <div data-stagger class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-          <div class="reveal border border-cream/15 rounded p-4">
-            <p class="text-xs text-cream/45 font-mono mb-2">// 01</p>
-            <p class="text-sm text-cream font-semibold leading-snug">Custom dashboard built for your business</p>
-          </div>
-          <div class="reveal border border-cream/15 rounded p-4">
-            <p class="text-xs text-cream/45 font-mono mb-2">// 02</p>
-            <p class="text-sm text-cream font-semibold leading-snug">Full AI workflow &amp; $15K playbook</p>
-          </div>
-          <div class="reveal border border-cream/15 rounded p-4">
-            <p class="text-xs text-cream/45 font-mono mb-2">// 03</p>
-            <p class="text-sm text-cream font-semibold leading-snug">Three sessions across the quarter</p>
-          </div>
-          <div class="reveal border border-cream/15 rounded p-4">
-            <p class="text-xs text-cream/45 font-mono mb-2">// 04</p>
-            <p class="text-sm text-cream font-semibold leading-snug">Async support between sessions</p>
-          </div>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-          <a href="intensive.html" class="btn-primary">See the full Intensive →</a>
-          <p class="text-cream/50 font-mono text-sm">$1,250 · one quarter · application required</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ TESTIMONIALS ============ -->
-<section class="px-6 py-28 flow-b">
+<section class="enter-cream px-6 pt-44 pb-28">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal mb-16 max-w-2xl">
-      <span class="mono-label">// creator_results</span>
-      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 text-cream display-balance">
-        What happens when you actually use the tools.
+    <div class="reveal text-center max-w-2xl mx-auto mb-14">
+      <span class="mono-label on-cream">// creator_results</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 text-forest display-balance">
+        Creators who stopped guessing.
       </h2>
     </div>
-    <div data-stagger class="grid md:grid-cols-3 gap-6">
 
-      <div class="reveal bg-cream/[0.04] border border-cream/10 rounded-md p-8 lift flex flex-col">
-        <div class="flex gap-1 mb-5 text-mint">★★★★★</div>
-        <p class="text-cream/85 leading-relaxed mb-6 flex-1">"I doubled my rates in a weekend after using Maya's calculator. I'd been leaving so much on the table and didn't even know it."</p>
-        <div class="flex items-center gap-3 pt-5 border-t border-cream/10">
-          <div class="avatar relative w-12 h-12 rounded-full overflow-hidden bg-forestLight border border-cream/15 shrink-0">
-            <span class="absolute inset-0 flex items-center justify-center font-mono text-xs text-mint">JR</span>
-            <img src="avatar-jordan.jpg" alt="Jordan R." class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+    <!-- featured testimonial -->
+    <figure class="reveal bg-forest text-cream rounded-md p-8 md:p-14 max-w-4xl mx-auto mb-8 shadow-float-soft relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-40 h-40 checkerboard-moss opacity-25"></div>
+      <div class="relative">
+        <div class="flex gap-1 mb-6 text-mint text-lg">★★★★★</div>
+        <blockquote class="font-display text-2xl md:text-4xl font-bold leading-snug display-balance mb-8">
+          "Six months ago I was undercharging every brand and pitching maybe twice a week. I run my whole business out of Booked Out now — I've doubled my rates, I pitch every morning in fifteen minutes, and for the first time I actually know what next month looks like."
+        </blockquote>
+        <figcaption class="flex items-center gap-4">
+          <div class="avatar relative w-14 h-14 rounded-full overflow-hidden bg-forestLight border border-cream/15 shrink-0">
+            <span class="absolute inset-0 flex items-center justify-center font-mono text-sm text-mint">RW</span>
+            <img src="avatar-featured.jpg" alt="Riley W." class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
           </div>
           <div>
-            <p class="font-semibold text-cream text-sm">Jordan R.</p>
-            <p class="mono-label !text-cream/45">// UGC_creator</p>
+            <p class="font-semibold text-cream">Riley W.</p>
+            <p class="mono-label">// ugc_creator · 14 months in</p>
+          </div>
+        </figcaption>
+      </div>
+    </figure>
+
+    <!-- scrolling marquee of shorter testimonials -->
+    <div class="reveal marquee">
+      <div class="marquee-track py-2">
+        <!-- set 1 -->
+        <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6">
+          <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
+          <p class="text-forest leading-relaxed text-sm mb-4">"Doubled my rates in a single weekend. I had no idea how much I was leaving on the table."</p>
+          <div class="flex items-center gap-2.5">
+            <div class="avatar relative w-9 h-9 rounded-full overflow-hidden bg-creamDeep border border-line shrink-0">
+              <span class="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-moss">JR</span>
+              <img src="avatar-jordan.jpg" alt="Jordan R." class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+            </div>
+            <div><p class="font-semibold text-forest text-xs">Jordan R.</p><p class="font-mono text-[10px] text-ash">// ugc_creator</p></div>
           </div>
         </div>
-      </div>
-
-      <div class="reveal bg-cream/[0.04] border border-cream/10 rounded-md p-8 lift flex flex-col">
-        <div class="flex gap-1 mb-5 text-mint">★★★★★</div>
-        <p class="text-cream/85 leading-relaxed mb-6 flex-1">"The outreach scripts alone were worth it. Landed two brand deals in the first week just by sending what was in the kit."</p>
-        <div class="flex items-center gap-3 pt-5 border-t border-cream/10">
-          <div class="avatar relative w-12 h-12 rounded-full overflow-hidden bg-forestLight border border-cream/15 shrink-0">
-            <span class="absolute inset-0 flex items-center justify-center font-mono text-xs text-mint">AM</span>
-            <img src="avatar-alex.jpg" alt="Alex M." class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
-          </div>
-          <div>
-            <p class="font-semibold text-cream text-sm">Alex M.</p>
-            <p class="mono-label !text-cream/45">// creator_founder</p>
+        <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6">
+          <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
+          <p class="text-forest leading-relaxed text-sm mb-4">"Two brand deals in my first week — just from sending the outreach scripts in the kit."</p>
+          <div class="flex items-center gap-2.5">
+            <div class="avatar relative w-9 h-9 rounded-full overflow-hidden bg-creamDeep border border-line shrink-0">
+              <span class="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-moss">AM</span>
+              <img src="avatar-alex.jpg" alt="Alex M." class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+            </div>
+            <div><p class="font-semibold text-forest text-xs">Alex M.</p><p class="font-mono text-[10px] text-ash">// creator_founder</p></div>
           </div>
         </div>
-      </div>
-
-      <div class="reveal bg-cream/[0.04] border border-cream/10 rounded-md p-8 lift flex flex-col">
-        <div class="flex gap-1 mb-5 text-mint">★★★★★</div>
-        <p class="text-cream/85 leading-relaxed mb-6 flex-1">"Maya runs a real UGC business — that's why her systems actually work. This isn't theory from someone who's never shipped."</p>
-        <div class="flex items-center gap-3 pt-5 border-t border-cream/10">
-          <div class="avatar relative w-12 h-12 rounded-full overflow-hidden bg-forestLight border border-cream/15 shrink-0">
-            <span class="absolute inset-0 flex items-center justify-center font-mono text-xs text-mint">TS</span>
-            <img src="avatar-taylor.jpg" alt="Taylor S." class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
-          </div>
-          <div>
-            <p class="font-semibold text-cream text-sm">Taylor S.</p>
-            <p class="mono-label !text-cream/45">// mini_agency_owner</p>
+        <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6">
+          <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
+          <p class="text-forest leading-relaxed text-sm mb-4">"The contract detector caught a usage clause that would've cost me $2K. Worth the year alone."</p>
+          <div class="flex items-center gap-2.5">
+            <div class="avatar relative w-9 h-9 rounded-full overflow-hidden bg-creamDeep border border-line shrink-0">
+              <span class="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-moss">PN</span>
+              <img src="avatar-priya.jpg" alt="Priya N." class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+            </div>
+            <div><p class="font-semibold text-forest text-xs">Priya N.</p><p class="font-mono text-[10px] text-ash">// beauty_ugc</p></div>
           </div>
         </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ ABOUT MAYA ============ -->
-<section id="about" class="px-6 py-28 flow-a">
-  <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-12 items-center">
-    <div class="reveal reveal-left md:col-span-2">
-      <img src="Tezza-8235.JPG" alt="Maya — Maya Creative Co" class="max-w-xs w-full rounded-md object-cover shadow-float" />
-      <div class="mt-3 flex gap-1">
-        <span class="w-3 h-3 checkerboard-mini-cream"></span>
-        <span class="w-3 h-3 bg-cream"></span>
-        <span class="w-3 h-3 checkerboard-mini-cream"></span>
-      </div>
-    </div>
-    <div class="reveal reveal-right md:col-span-3">
-      <span class="mono-label">// behind_the_brand</span>
-      <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mt-4 mb-6 text-cream display-balance">
-        Hi, I'm Maya.
-      </h2>
-      <div class="space-y-4 text-cream/70 leading-relaxed">
-        <p>I'm a working UGC creator. I've shot for DTC brands across beauty, wellness, and lifestyle, and I've spent the last five years figuring out how to actually run this like a business — not a side hustle.</p>
-        <p>Booked Out is the command center I built for myself. The same calculator, the same scripts, the same contract auditor, the same systems I actually run from. It's the thing I wish someone had handed me when I was undercharging and ghost-pitching brands at 1 AM.</p>
-        <p>I'm sharing it because creator coaching is full of theory, and I'd rather just hand you the tools I use.</p>
-      </div>
-      <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-mono text-cream/60">
-        <a href="about.html" class="hover:text-mint underline">→ full story</a>
-        <a href="contact.html" class="hover:text-mint underline">→ contact</a>
+        <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6">
+          <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
+          <p class="text-forest leading-relaxed text-sm mb-4">"I pitch every morning now instead of dreading it. It's a 15-minute habit, not a wall."</p>
+          <div class="flex items-center gap-2.5">
+            <div class="avatar relative w-9 h-9 rounded-full overflow-hidden bg-creamDeep border border-line shrink-0">
+              <span class="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-moss">SK</span>
+              <img src="avatar-sam.jpg" alt="Sam K." class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+            </div>
+            <div><p class="font-semibold text-forest text-xs">Sam K.</p><p class="font-mono text-[10px] text-ash">// lifestyle_ugc</p></div>
+          </div>
+        </div>
+        <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6">
+          <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
+          <p class="text-forest leading-relaxed text-sm mb-4">"Booked Out replaced four tools and a messy Notion. Everything finally lives in one place."</p>
+          <div class="flex items-center gap-2.5">
+            <div class="avatar relative w-9 h-9 rounded-full overflow-hidden bg-creamDeep border border-line shrink-0">
+              <span class="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-moss">ML</span>
+              <img src="avatar-mia.jpg" alt="Mia L." class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+            </div>
+            <div><p class="font-semibold text-forest text-xs">Mia L.</p><p class="font-mono text-[10px] text-ash">// wellness_ugc</p></div>
+          </div>
+        </div>
+        <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6">
+          <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
+          <p class="text-forest leading-relaxed text-sm mb-4">"My income stopped being a rollercoaster. I can finally plan my life around it."</p>
+          <div class="flex items-center gap-2.5">
+            <div class="avatar relative w-9 h-9 rounded-full overflow-hidden bg-creamDeep border border-line shrink-0">
+              <span class="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-moss">DW</span>
+              <img src="avatar-devon.jpg" alt="Devon W." class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+            </div>
+            <div><p class="font-semibold text-forest text-xs">Devon W.</p><p class="font-mono text-[10px] text-ash">// mini_agency</p></div>
+          </div>
+        </div>
+        <!-- set 2 (duplicate for seamless loop) -->
+        <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6" aria-hidden="true">
+          <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
+          <p class="text-forest leading-relaxed text-sm mb-4">"Doubled my rates in a single weekend. I had no idea how much I was leaving on the table."</p>
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-full bg-creamDeep border border-line shrink-0 flex items-center justify-center font-mono text-[10px] text-moss">JR</div>
+            <div><p class="font-semibold text-forest text-xs">Jordan R.</p><p class="font-mono text-[10px] text-ash">// ugc_creator</p></div>
+          </div>
+        </div>
+        <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6" aria-hidden="true">
+          <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
+          <p class="text-forest leading-relaxed text-sm mb-4">"Two brand deals in my first week — just from sending the outreach scripts in the kit."</p>
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-full bg-creamDeep border border-line shrink-0 flex items-center justify-center font-mono text-[10px] text-moss">AM</div>
+            <div><p class="font-semibold text-forest text-xs">Alex M.</p><p class="font-mono text-[10px] text-ash">// creator_founder</p></div>
+          </div>
+        </div>
+        <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6" aria-hidden="true">
+          <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
+          <p class="text-forest leading-relaxed text-sm mb-4">"The contract detector caught a usage clause that would've cost me $2K. Worth the year alone."</p>
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-full bg-creamDeep border border-line shrink-0 flex items-center justify-center font-mono text-[10px] text-moss">PN</div>
+            <div><p class="font-semibold text-forest text-xs">Priya N.</p><p class="font-mono text-[10px] text-ash">// beauty_ugc</p></div>
+          </div>
+        </div>
+        <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6" aria-hidden="true">
+          <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
+          <p class="text-forest leading-relaxed text-sm mb-4">"I pitch every morning now instead of dreading it. It's a 15-minute habit, not a wall."</p>
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-full bg-creamDeep border border-line shrink-0 flex items-center justify-center font-mono text-[10px] text-moss">SK</div>
+            <div><p class="font-semibold text-forest text-xs">Sam K.</p><p class="font-mono text-[10px] text-ash">// lifestyle_ugc</p></div>
+          </div>
+        </div>
+        <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6" aria-hidden="true">
+          <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
+          <p class="text-forest leading-relaxed text-sm mb-4">"Booked Out replaced four tools and a messy Notion. Everything finally lives in one place."</p>
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-full bg-creamDeep border border-line shrink-0 flex items-center justify-center font-mono text-[10px] text-moss">ML</div>
+            <div><p class="font-semibold text-forest text-xs">Mia L.</p><p class="font-mono text-[10px] text-ash">// wellness_ugc</p></div>
+          </div>
+        </div>
+        <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6" aria-hidden="true">
+          <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
+          <p class="text-forest leading-relaxed text-sm mb-4">"My income stopped being a rollercoaster. I can finally plan my life around it."</p>
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-full bg-creamDeep border border-line shrink-0 flex items-center justify-center font-mono text-[10px] text-moss">DW</div>
+            <div><p class="font-semibold text-forest text-xs">Devon W.</p><p class="font-mono text-[10px] text-ash">// mini_agency</p></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ CONTACT CTA ============ -->
-<section class="px-6 py-24 flow-b">
+<section class="enter-green px-6 pt-44 pb-28">
   <div class="reveal max-w-3xl mx-auto text-center">
-    <span class="mono-label">// still_deciding</span>
+    <span class="mono-label">// ready_when_you_are</span>
     <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-5 display-balance text-cream">
-      Not sure if it's the right fit?
+      Stop running your business on guesswork.
     </h2>
     <p class="text-lg text-cream/70 leading-relaxed mb-9 display-balance max-w-xl mx-auto">
-      Tell me where you're at and what you're stuck on — I read and answer every message personally.
+      Start free, explore every stage, and upgrade when the system has already paid for itself. Got a question first? I answer every message personally.
     </p>
-    <a href="contact.html" class="btn-primary text-base">Get in touch →</a>
+    <div class="flex flex-col sm:flex-row gap-4 items-center justify-center">
+      <a href="https://booked-out.mayacreativeco.com" class="btn-primary text-base">Try Booked Out for Free →</a>
+      <a href="contact.html" class="btn-secondary text-base">Get in touch</a>
+    </div>
   </div>
 </section>
 
@@ -717,9 +932,9 @@
       <p class="text-xs max-w-xs">Booked Out — the command center for UGC creators ready to operate like a business.</p>
     </div>
     <div class="text-xs grid grid-cols-2 gap-x-10 gap-y-2">
+      <a href="#story" class="hover:text-cream font-mono">→ story</a>
       <a href="#features" class="hover:text-cream font-mono">→ features</a>
       <a href="#pricing" class="hover:text-cream font-mono">→ pricing</a>
-      <a href="#benefits" class="hover:text-cream font-mono">→ benefits</a>
       <a href="intensive.html" class="hover:text-cream font-mono">→ intensive</a>
       <a href="about.html" class="hover:text-cream font-mono">→ about</a>
       <a href="contact.html" class="hover:text-cream font-mono">→ contact</a>
@@ -739,11 +954,26 @@
     link.addEventListener('click', function() { mobileMenu.classList.add('hidden'); });
   });
 
-  // scroll-reveal + staggered children + count-up
-  (function() {
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // stagger: give each .reveal child of a [data-stagger] group an incremental delay
+  // ---- interactive stage stepper ----
+  (function() {
+    var tabs = document.querySelectorAll('.stage-tab');
+    var panels = document.querySelectorAll('.stage-panel');
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var s = tab.getAttribute('data-stage');
+        tabs.forEach(function(t) { t.classList.remove('is-active'); });
+        tab.classList.add('is-active');
+        panels.forEach(function(p) {
+          p.classList.toggle('is-active', p.getAttribute('data-stage') === s);
+        });
+      });
+    });
+  })();
+
+  // ---- scroll-reveal + stagger + count-up ----
+  (function() {
     document.querySelectorAll('[data-stagger]').forEach(function(group) {
       Array.prototype.forEach.call(group.querySelectorAll('.reveal'), function(el, i) {
         el.style.transitionDelay = (i * 0.08) + 's';
@@ -772,8 +1002,33 @@
         io.unobserve(e.target);
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
-
     document.querySelectorAll('.reveal, [data-count]').forEach(function(el) { io.observe(el); });
+  })();
+
+  // ---- scroll-linked zoom on screenshots ----
+  (function() {
+    if (reduce) return;
+    var imgs = document.querySelectorAll('[data-zoom]');
+    if (!imgs.length) return;
+    var ticking = false;
+    function update() {
+      var vh = window.innerHeight;
+      imgs.forEach(function(img) {
+        var r = img.getBoundingClientRect();
+        if (r.bottom < -100 || r.top > vh + 100) return;
+        // 0 when entering bottom, 1 when leaving top
+        var p = (vh - r.top) / (vh + r.height);
+        p = Math.max(0, Math.min(1, p));
+        img.style.transform = 'scale(' + (1 + p * 0.12).toFixed(4) + ')';
+      });
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
   })();
 </script>
 
