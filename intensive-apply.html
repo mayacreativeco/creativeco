@@ -6,8 +6,7 @@
 <title>Apply — Strategy Intensive · Maya Creative Co</title>
 <meta name="description" content="Apply for the Strategy Intensive. Takes about 5 minutes. I review every application within 48 hours." />
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="booked-out-logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -23,9 +22,10 @@
           mono: ['JetBrains Mono', 'monospace'],
         },
         colors: {
-          cream: '#F5F0E4', creamDeep: '#EDE5D2', forest: '#1B3A2F',
-          forestDeep: '#1B3A2F', forestLight: '#2D5742', moss: '#4A7C59',
-          mint: '#86C9A1', ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
+          cream: '#F5F0E4', creamDeep: '#EDE5D2',
+          forest: '#1B3A2F', forestDeep: '#1B3A2F', forestLight: '#2D5742',
+          moss: '#4A7C59', mint: '#86C9A1',
+          ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
         },
       },
     },
@@ -39,7 +39,10 @@
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .display-balance { text-wrap: balance; }
 
-  .flow-a { background: #1B3A2F; }
+  .bg-green { background-color: #1B3A2F; }
+  .bg-cream { background-color: #F5F0E4; }
+  .fade-to-cream { background: linear-gradient(180deg, #1B3A2F 0%, #F5F0E4 100%); }
+  .fade-to-green { background: linear-gradient(180deg, #F5F0E4 0%, #1B3A2F 100%); }
 
   .checkerboard-cream {
     background-image:
@@ -50,54 +53,55 @@
     background-size: 16px 16px;
     background-position: 0 0, 0 8px, 8px -8px, -8px 0;
   }
-  .checker-amb { position: absolute; pointer-events: none; opacity: 0.07; z-index: 0; }
+  .checker-amb { position: absolute; pointer-events: none; opacity: 0.06; z-index: 0; }
+  .shadow-float-soft { box-shadow: 0 24px 50px -26px rgba(10,26,18,0.40); }
 
   .mono-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; text-transform: uppercase;
     letter-spacing: 0.1em; color: #86C9A1; font-weight: 500;
   }
+  .mono-label.on-cream { color: #4A7C59; }
 
   .field-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; font-weight: 500; color: #86C9A1;
+    font-size: 11px; font-weight: 500; color: #4A7C59;
     text-transform: uppercase; letter-spacing: 0.06em;
     display: block; margin-bottom: 8px;
   }
 
   input[type="text"], input[type="email"], select, textarea {
-    background-color: rgba(245,240,228,0.05);
-    border: 1.5px solid rgba(245,240,228,0.15);
+    background-color: #FFFFFF;
+    border: 1.5px solid #D8D0BE;
     border-radius: 4px;
     padding: 14px 16px;
     font-size: 15px;
-    color: #F5F0E4;
+    color: #0A1A12;
     width: 100%;
     font-family: 'Inter', sans-serif;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
   input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: #86C9A1;
-    box-shadow: 0 0 0 3px rgba(134,201,161,0.15);
+    border-color: #4A7C59;
+    box-shadow: 0 0 0 3px rgba(74,124,89,0.15);
   }
-  input::placeholder, textarea::placeholder { color: rgba(245,240,228,0.35); }
-  select option { background-color: #1B3A2F; color: #F5F0E4; }
+  input::placeholder, textarea::placeholder { color: #9AA39C; }
   textarea { resize: vertical; min-height: 100px; }
 
-  .btn-primary {
-    background-color: #F5F0E4; color: #0F2620;
+  .btn-dark {
+    background-color: #1B3A2F; color: #F5F0E4;
     padding: 16px 32px; border-radius: 4px;
     font-weight: 600; font-size: 16px;
     transition: background-color 0.15s ease, transform 0.1s ease;
     display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    border: 2px solid #F5F0E4;
+    border: 2px solid #1B3A2F;
     font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
     cursor: pointer; width: 100%;
   }
-  .btn-primary:hover { background-color: #FFFFFF; }
-  .btn-primary:active { transform: scale(0.98); }
-  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-dark:hover { background-color: #0F2620; }
+  .btn-dark:active { transform: scale(0.98); }
+  .btn-dark:disabled { opacity: 0.5; cursor: not-allowed; }
 
   .nav-link {
     font-family: 'JetBrains Mono', monospace; font-size: 12px;
@@ -106,12 +110,17 @@
   .nav-link:hover { color: #F5F0E4; }
 
   @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.in { opacity: 1; transform: none; }
     @keyframes checkerDrift {
       from { background-position: 0 0, 0 8px, 8px -8px, -8px 0; }
       to   { background-position: 32px 0, 32px 8px, 40px -8px, 24px 0; }
     }
     .checker-drift { animation: checkerDrift 7s linear infinite; }
-    @keyframes checkerBreath { 0%, 100% { opacity: 0.035; } 50% { opacity: 0.14; } }
+    @keyframes checkerBreath { 0%, 100% { opacity: 0.03; } 50% { opacity: 0.12; } }
     .checker-amb { animation: checkerBreath 9s ease-in-out infinite, checkerDrift 22s linear infinite; }
   }
 </style>
@@ -120,7 +129,7 @@
 
 <div class="checkerboard-cream checker-drift h-2"></div>
 
-<!-- NAV -->
+<!-- NAV (floating pill) -->
 <div class="fixed top-3 inset-x-0 z-50 px-4">
   <nav class="max-w-5xl mx-auto flex items-center justify-between gap-4 rounded-full border border-cream/12 bg-forest/75 backdrop-blur-lg pl-5 pr-5 py-2.5 shadow-[0_14px_44px_-16px_rgba(0,0,0,0.65)]">
     <a href="index.html" class="font-display text-base font-bold tracking-tight text-cream flex items-center gap-2">
@@ -131,32 +140,37 @@
   </nav>
 </div>
 
-<!-- FORM PAGE -->
-<section class="px-6 pt-28 md:pt-36 pb-16 md:pb-24 relative overflow-hidden flow-a">
-  <div class="checker-amb checkerboard-cream w-[340px] h-[340px] -top-16 -right-24"></div>
-  <div class="max-w-2xl mx-auto relative z-10">
+<!-- ============ HERO (green) ============ -->
+<section class="bg-green px-6 pt-32 md:pt-40 pb-24 md:pb-28 relative overflow-hidden">
+  <div class="checker-amb checkerboard-cream w-[320px] h-[320px] -top-16 -right-24"></div>
+  <div class="reveal max-w-2xl mx-auto relative z-10 text-center">
+    <span class="mono-label">// application · strategy_intensive</span>
+    <h1 class="font-display text-4xl md:text-6xl font-bold text-cream leading-[1.05] tracking-tight display-balance mt-6 mb-5">
+      Apply for the Intensive.
+    </h1>
+    <p class="text-cream/75 text-lg leading-relaxed display-balance">
+      Takes about 5 minutes. I review every application within 48 hours and get back to you — yes, no, or not yet — always with context. No one gets left on read.
+    </p>
+  </div>
+</section>
 
-    <div class="mb-12">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="inline-block w-8 h-2 checkerboard-cream"></span>
-        <span class="mono-label">// application · strategy_intensive</span>
-      </div>
-      <h1 class="font-display text-4xl md:text-5xl font-bold text-cream leading-tight display-balance mb-4">
-        Apply for the Intensive.
-      </h1>
-      <p class="text-cream/70 leading-relaxed">Takes about 5 minutes. I review every application within 48 hours and get back to you — yes, no, or not yet — always with context. No one gets left on read.</p>
-    </div>
+<!-- soft transition: green → cream -->
+<div class="fade-to-cream h-72 md:h-96"></div>
+
+<!-- ============ FORM (cream) ============ -->
+<section class="bg-cream px-6 pt-4 pb-28">
+  <div class="max-w-2xl mx-auto">
 
     <!-- Success state -->
-    <div id="successMessage" class="hidden bg-cream/[0.04] border border-cream/12 rounded-md p-10 text-center">
-      <p class="mono-label mb-4">// application_received</p>
-      <h2 class="font-display text-3xl font-bold mb-4 text-cream">Thanks for applying.</h2>
-      <p class="text-cream/70 leading-relaxed mb-6">I review applications within 48 hours and get back to everyone — yes or no. Watch your inbox. In the meantime, if you don't already have Booked Out, the free tier is worth exploring before we start.</p>
-      <a href="index.html" class="inline-flex items-center gap-2 text-mint font-mono text-sm hover:text-cream transition-colors">← Back to mayacreativeco.com</a>
+    <div id="successMessage" class="hidden bg-white border border-line rounded-md p-10 text-center shadow-float-soft">
+      <p class="mono-label on-cream mb-4">// application_received</p>
+      <h2 class="font-display text-3xl font-bold mb-4 text-forest">Thanks for applying.</h2>
+      <p class="text-ash leading-relaxed mb-6">I review applications within 48 hours and get back to everyone — yes or no. Watch your inbox. In the meantime, if you don't already have Booked Out, the free tier is worth exploring before we start.</p>
+      <a href="index.html" class="inline-flex items-center gap-2 text-moss font-mono text-sm hover:text-forest transition-colors">← Back to mayacreativeco.com</a>
     </div>
 
     <!-- Form -->
-    <form id="applyForm" class="space-y-8 bg-cream/[0.04] border border-cream/12 rounded-md p-7 md:p-10">
+    <form id="applyForm" class="reveal space-y-8 bg-white border border-line rounded-md p-7 md:p-10 shadow-float-soft">
 
       <div class="grid md:grid-cols-2 gap-6">
         <div>
@@ -188,24 +202,24 @@
 
       <div>
         <label class="field-label" for="bottleneck">Biggest bottleneck right now</label>
-        <p class="text-xs text-cream/45 font-mono mb-3 -mt-1">1–2 sentences. Be specific — "pricing" is less useful than "I don't know how to price retainers vs. one-offs."</p>
+        <p class="text-xs text-ash font-mono mb-3 -mt-1">1–2 sentences. Be specific — "pricing" is less useful than "I don't know how to price retainers vs. one-offs."</p>
         <textarea id="bottleneck" name="biggest_bottleneck" placeholder="What's actually blocking you right now?" required></textarea>
       </div>
 
       <div>
         <label class="field-label" for="outcome">What do you want to walk away with after the intensive?</label>
-        <p class="text-xs text-cream/45 font-mono mb-3 -mt-1">1–2 sentences. Specific outcomes are more useful than general goals.</p>
+        <p class="text-xs text-ash font-mono mb-3 -mt-1">1–2 sentences. Specific outcomes are more useful than general goals.</p>
         <textarea id="outcome" name="desired_outcome" placeholder="What does success look like for you at the end of the quarter?" required></textarea>
       </div>
 
       <div>
-        <label class="field-label" for="anything_else">Anything else I should know? <span class="text-cream/40">(optional)</span></label>
+        <label class="field-label" for="anything_else">Anything else I should know? <span class="text-ash/60">(optional)</span></label>
         <textarea id="anything_else" name="anything_else" placeholder="Previous coaching, unusual circumstances, payment plan request, etc." style="min-height:80px;"></textarea>
       </div>
 
       <div class="pt-2">
-        <button type="submit" id="submitBtn" class="btn-primary">Submit Application →</button>
-        <p class="text-xs text-cream/45 font-mono text-center mt-4">I respond to every application within 48 hours.</p>
+        <button type="submit" id="submitBtn" class="btn-dark">Submit Application →</button>
+        <p class="text-xs text-ash font-mono text-center mt-4">I respond to every application within 48 hours.</p>
       </div>
 
     </form>
@@ -213,15 +227,21 @@
   </div>
 </section>
 
+<!-- soft transition: cream → green -->
+<div class="fade-to-green h-72 md:h-96"></div>
+
 <!-- FOOTER -->
-<footer class="bg-forestDeep text-cream/60">
+<footer class="bg-green">
   <div class="checkerboard-cream h-2"></div>
   <div class="px-6 py-10 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-    <p class="font-display text-sm font-bold text-cream">Maya Creative Co</p>
+    <div class="flex items-center gap-2.5">
+      <img src="booked-out-logo.png" alt="Booked Out" class="w-7 h-7 rounded-[3px]">
+      <p class="font-display text-sm font-bold text-cream">Maya Creative Co</p>
+    </div>
     <div class="flex gap-8 text-xs font-mono">
-      <a href="intensive.html" class="hover:text-cream">→ intensive</a>
-      <a href="index.html" class="hover:text-cream">→ home</a>
-      <a href="contact.html" class="hover:text-cream">→ contact</a>
+      <a href="intensive.html" class="text-cream/60 hover:text-cream">→ intensive</a>
+      <a href="index.html" class="text-cream/60 hover:text-cream">→ home</a>
+      <a href="contact.html" class="text-cream/60 hover:text-cream">→ contact</a>
     </div>
     <p class="text-xs font-mono text-cream/40">© 2026</p>
   </div>
@@ -229,12 +249,10 @@
 
 <script>
   // Strategy Intensive applications post to Formspree (form: mykvzppq).
-  // Manage submissions + notification email at formspree.io.
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykvzppq';
 
   document.getElementById('applyForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
     btn.textContent = 'Submitting…';
@@ -250,7 +268,6 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(data),
       });
-
       if (response.ok) {
         document.getElementById('applyForm').classList.add('hidden');
         document.getElementById('successMessage').classList.remove('hidden');
@@ -264,6 +281,14 @@
       alert('Something went wrong. Please email your application directly to support@mayaherring.com');
     }
   });
+
+  // scroll-reveal
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); } else { e.target.classList.remove('in'); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
 </script>
 
 </body>

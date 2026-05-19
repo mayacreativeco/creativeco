@@ -9,8 +9,7 @@
 <meta property="og:description" content="Questions about Booked Out or the Strategy Intensive? Get in touch." />
 <meta property="og:type" content="website" />
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="booked-out-logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -26,9 +25,10 @@
           mono: ['JetBrains Mono', 'monospace'],
         },
         colors: {
-          cream: '#F5F0E4', creamDeep: '#EDE5D2', forest: '#1B3A2F',
-          forestDeep: '#1B3A2F', forestLight: '#2D5742', moss: '#4A7C59',
-          mint: '#86C9A1', ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
+          cream: '#F5F0E4', creamDeep: '#EDE5D2',
+          forest: '#1B3A2F', forestDeep: '#1B3A2F', forestLight: '#2D5742',
+          moss: '#4A7C59', mint: '#86C9A1',
+          ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
         },
       },
     },
@@ -42,8 +42,10 @@
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .display-balance { text-wrap: balance; }
 
-  .flow-a { background: #1B3A2F; }
-  .flow-b { background: #1B3A2F; }
+  .bg-green { background-color: #1B3A2F; }
+  .bg-cream { background-color: #F5F0E4; }
+  .fade-to-cream { background: linear-gradient(180deg, #1B3A2F 0%, #F5F0E4 100%); }
+  .fade-to-green { background: linear-gradient(180deg, #F5F0E4 0%, #1B3A2F 100%); }
 
   .checkerboard-cream {
     background-image:
@@ -54,40 +56,46 @@
     background-size: 16px 16px;
     background-position: 0 0, 0 8px, 8px -8px, -8px 0;
   }
+  .checker-amb { position: absolute; pointer-events: none; opacity: 0.06; z-index: 0; }
 
-  .shadow-float { box-shadow: 0 30px 70px -28px rgba(0,0,0,0.85); }
+  .shadow-float-soft { box-shadow: 0 24px 50px -26px rgba(10,26,18,0.40); }
   .lift { transition: transform .22s cubic-bezier(.16,1,.3,1), box-shadow .22s ease; }
-  .lift:hover { transform: translateY(-5px); box-shadow: 0 22px 44px -20px rgba(0,0,0,0.7); }
+  .lift:hover { transform: translateY(-5px); box-shadow: 0 22px 44px -20px rgba(10,26,18,0.5); }
 
   .btn-primary {
-    background-color: #F5F0E4; color: #0F2620;
-    padding: 16px 28px; border-radius: 4px;
-    font-weight: 600; font-size: 15px;
+    background-color: #F5F0E4; color: #1B3A2F;
+    padding: 16px 28px; border-radius: 4px; font-weight: 600; font-size: 15px;
     transition: background-color .15s ease, transform .1s ease, box-shadow .15s ease;
     display: inline-flex; align-items: center; gap: 10px;
-    border: 2px solid #F5F0E4;
-    font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
-    cursor: pointer;
+    border: 2px solid #F5F0E4; font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em; cursor: pointer;
   }
-  .btn-primary:hover { background-color: #FFFFFF; border-color: #FFFFFF; box-shadow: 0 8px 24px -8px rgba(0,0,0,.6); }
+  .btn-primary:hover { background-color: #FFFFFF; border-color: #FFFFFF; box-shadow: 0 8px 24px -8px rgba(0,0,0,.5); }
   .btn-primary:active { transform: scale(0.98); }
 
   .btn-secondary {
     background-color: transparent; color: #F5F0E4;
-    padding: 16px 28px; border-radius: 4px;
-    font-weight: 600; font-size: 15px;
-    border: 2px solid rgba(245,240,228,0.35);
-    transition: all .15s ease;
+    padding: 16px 28px; border-radius: 4px; font-weight: 600; font-size: 15px;
+    border: 2px solid rgba(245,240,228,0.35); transition: all .15s ease;
     display: inline-flex; align-items: center; gap: 10px;
     font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
   }
-  .btn-secondary:hover { background-color: #F5F0E4; color: #0F2620; border-color: #F5F0E4; }
+  .btn-secondary:hover { background-color: #F5F0E4; color: #1B3A2F; border-color: #F5F0E4; }
+
+  .btn-dark {
+    background-color: #1B3A2F; color: #F5F0E4;
+    padding: 16px 28px; border-radius: 4px; font-weight: 600; font-size: 15px;
+    transition: background-color .15s ease, box-shadow .15s ease;
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    border: 2px solid #1B3A2F; font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em; cursor: pointer;
+  }
+  .btn-dark:hover { background-color: #0F2620; box-shadow: 0 10px 26px -10px rgba(10,26,18,.5); }
 
   .mono-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; text-transform: uppercase;
     letter-spacing: 0.1em; color: #86C9A1; font-weight: 500;
   }
+  .mono-label.on-cream { color: #4A7C59; }
 
   .nav-link {
     font-family: 'JetBrains Mono', monospace;
@@ -97,20 +105,20 @@
   .nav-link:hover { color: #F5F0E4; }
   .nav-link.active { color: #F5F0E4; }
 
-  /* ---- form fields (dark theme) ---- */
+  /* ---- form fields (light, for the cream section) ---- */
   label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; font-weight: 500; color: #86C9A1;
+    font-size: 11px; font-weight: 500; color: #4A7C59;
     text-transform: uppercase; letter-spacing: 0.06em;
     margin-bottom: 8px; display: block;
   }
   input[type="text"], input[type="email"], textarea, select {
-    background-color: rgba(245,240,228,0.05);
-    border: 1.5px solid rgba(245,240,228,0.15);
+    background-color: #FFFFFF;
+    border: 1.5px solid #D8D0BE;
     border-radius: 4px;
     padding: 13px 15px;
     font-size: 15px;
-    color: #F5F0E4;
+    color: #0A1A12;
     width: 100%;
     font-family: 'Inter', sans-serif;
     transition: border-color .15s ease, box-shadow .15s ease;
@@ -118,36 +126,36 @@
   textarea { resize: vertical; }
   input:focus, textarea:focus, select:focus {
     outline: none;
-    border-color: #86C9A1;
-    box-shadow: 0 0 0 3px rgba(134,201,161,0.15);
+    border-color: #4A7C59;
+    box-shadow: 0 0 0 3px rgba(74,124,89,0.15);
   }
-  input::placeholder, textarea::placeholder { color: rgba(245,240,228,0.35); }
-  select option { background-color: #1B3A2F; color: #F5F0E4; }
+  input::placeholder, textarea::placeholder { color: #9AA39C; }
 
   @media (prefers-reduced-motion: no-preference) {
     .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
     }
-    .reveal-left  { transform: translateX(-36px); }
-    .reveal-right { transform: translateX(36px); }
+    .reveal-left  { transform: translateX(-38px); }
+    .reveal-right { transform: translateX(38px); }
     .reveal.in { opacity: 1; transform: none; }
     .reveal-d1 { transition-delay: .08s; }
-    .reveal-d2 { transition-delay: .16s; }
     @keyframes checkerDrift {
       from { background-position: 0 0, 0 8px, 8px -8px, -8px 0; }
       to   { background-position: 32px 0, 32px 8px, 40px -8px, 24px 0; }
     }
     .checker-drift { animation: checkerDrift 7s linear infinite; }
+    @keyframes checkerBreath { 0%, 100% { opacity: 0.03; } 50% { opacity: 0.12; } }
+    .checker-amb { animation: checkerBreath 9s ease-in-out infinite, checkerDrift 22s linear infinite; }
   }
 </style>
 </head>
 <body class="antialiased">
 
-<!-- ============ TOP STRIP ============ -->
+<!-- TOP STRIP -->
 <div class="checkerboard-cream checker-drift h-2"></div>
 
-<!-- ============ NAV ============ -->
+<!-- NAV (floating pill) -->
 <div class="fixed top-3 inset-x-0 z-50 px-4">
   <div class="max-w-5xl mx-auto">
     <nav class="flex items-center justify-between gap-4 rounded-full border border-cream/12 bg-forest/75 backdrop-blur-lg pl-5 pr-2.5 py-2.5 shadow-[0_14px_44px_-16px_rgba(0,0,0,0.65)]">
@@ -180,106 +188,109 @@
   </div>
 </div>
 
-<!-- ============ CONTACT ============ -->
-<section class="px-6 pt-32 md:pt-44 pb-28 flow-a relative overflow-hidden">
+<!-- ============ HERO (green) ============ -->
+<section class="bg-green px-6 pt-32 md:pt-44 pb-24 md:pb-32 relative overflow-hidden">
   <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[620px] h-[620px] rounded-full pointer-events-none"
        style="background: radial-gradient(circle, rgba(74,124,89,0.32) 0%, rgba(74,124,89,0) 70%);"></div>
-
-  <div class="max-w-5xl mx-auto relative">
-    <div class="reveal text-center max-w-2xl mx-auto mb-16">
-      <span class="mono-label">// contact</span>
-      <h1 class="font-display text-5xl md:text-7xl font-bold leading-[1.04] tracking-tight mt-6 mb-5 text-cream display-balance">
-        Let's connect.
-      </h1>
-      <p class="text-lg md:text-xl text-cream/70 leading-relaxed display-balance">
-        Questions about Booked Out, or wondering if the Strategy Intensive is right for you? Send a message — it comes straight to me, and I read and answer every one personally.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-5 gap-8 items-start">
-
-      <!-- FORM -->
-      <div class="reveal reveal-left md:col-span-3 bg-cream/[0.04] border border-cream/12 rounded-md p-7 md:p-10">
-        <p class="mono-label mb-6">// send_a_message</p>
-
-        <!-- success state — shown after a successful submission -->
-        <div id="contactSuccess" class="hidden text-center py-10">
-          <p class="mono-label mb-3">// message_sent</p>
-          <h3 class="font-display text-2xl font-bold text-cream mb-3">Thanks — it's on its way.</h3>
-          <p class="text-cream/65 text-sm leading-relaxed">Your message landed in my inbox. I read and answer every one personally, usually within 1–2 business days.</p>
-        </div>
-
-        <form id="contactForm" class="space-y-5">
-          <input type="hidden" name="_subject" value="New message from the Maya Creative Co site">
-
-          <div>
-            <label for="name">Your name</label>
-            <input type="text" id="name" name="name" required placeholder="First and last name">
-          </div>
-
-          <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="you@email.com">
-          </div>
-
-          <div>
-            <label for="topic">What's this about?</label>
-            <select id="topic" name="topic">
-              <option>Booked Out — the platform</option>
-              <option>The Strategy Intensive</option>
-              <option>Billing or my account</option>
-              <option>A partnership or collab</option>
-              <option>Something else</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="message">Your message</label>
-            <textarea id="message" name="message" rows="6" required placeholder="Where are you at in your UGC business, and what are you stuck on?"></textarea>
-          </div>
-
-          <button type="submit" id="contactBtn" class="btn-primary w-full justify-center text-base">Send message →</button>
-          <p class="text-xs text-cream/45 font-mono text-center">// typical reply time: within 1–2 business days</p>
-        </form>
-      </div>
-
-      <!-- DIRECT DETAILS -->
-      <div class="reveal reveal-right md:col-span-2 space-y-6">
-        <div class="bg-cream/[0.04] border border-cream/12 rounded-md p-7 lift">
-          <p class="mono-label mb-5">// reach_me_directly</p>
-          <div class="space-y-4">
-            <a href="mailto:support@mayaherring.com" class="flex items-center justify-between border-b border-cream/12 pb-4 group">
-              <span class="text-cream/60 font-mono text-sm">email</span>
-              <span class="text-cream group-hover:text-mint transition-colors font-medium text-sm">support@mayaherring.com</span>
-            </a>
-            <a href="https://www.instagram.com/mayacreativeco/" target="_blank" rel="noopener" class="flex items-center justify-between border-b border-cream/12 pb-4 group">
-              <span class="text-cream/60 font-mono text-sm">instagram</span>
-              <span class="text-cream group-hover:text-mint transition-colors font-medium text-sm">@mayacreativeco →</span>
-            </a>
-            <a href="https://www.tiktok.com/@mayacreativeco" target="_blank" rel="noopener" class="flex items-center justify-between group">
-              <span class="text-cream/60 font-mono text-sm">tiktok</span>
-              <span class="text-cream group-hover:text-mint transition-colors font-medium text-sm">@mayacreativeco →</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="bg-forestDeep border border-cream/10 rounded-md p-7">
-          <p class="mono-label mb-3">// ready_to_start?</p>
-          <h2 class="font-display text-xl font-bold text-cream mb-2">Skip the wait.</h2>
-          <p class="text-cream/65 text-sm leading-relaxed mb-5">If you already know Booked Out is for you, the free tier takes about a minute to set up.</p>
-          <div class="flex flex-col gap-3">
-            <a href="https://booked-out.mayacreativeco.com" class="btn-primary !py-3 text-sm justify-center">Try Booked Out for Free →</a>
-            <a href="intensive.html" class="btn-secondary !py-3 text-sm justify-center">Explore the Intensive</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
+  <div class="checker-amb checkerboard-cream w-[320px] h-[320px] -top-16 -right-24"></div>
+  <div class="reveal max-w-2xl mx-auto relative z-10 text-center">
+    <span class="mono-label">// contact</span>
+    <h1 class="font-display text-5xl md:text-7xl font-bold leading-[1.04] tracking-tight mt-6 mb-5 text-cream display-balance">
+      Let's connect.
+    </h1>
+    <p class="text-lg md:text-xl text-cream/75 leading-relaxed display-balance">
+      Questions about Booked Out, or wondering if the Strategy Intensive is right for you? Send a message — it comes straight to me, and I answer every one personally.
+    </p>
   </div>
 </section>
 
+<!-- soft transition: green → cream -->
+<div class="fade-to-cream h-72 md:h-96"></div>
+
+<!-- ============ FORM (cream) ============ -->
+<section class="bg-cream px-6 pt-4 pb-28">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-8 items-start">
+
+    <!-- FORM -->
+    <div class="reveal reveal-left md:col-span-3 bg-white border border-line rounded-md p-7 md:p-10 shadow-float-soft">
+      <p class="mono-label on-cream mb-6">// send_a_message</p>
+
+      <!-- success state -->
+      <div id="contactSuccess" class="hidden text-center py-10">
+        <p class="mono-label on-cream mb-3">// message_sent</p>
+        <h3 class="font-display text-2xl font-bold text-forest mb-3">Thanks — it's on its way.</h3>
+        <p class="text-ash text-sm leading-relaxed">Your message landed in my inbox. I read and answer every one personally, usually within 1–2 business days.</p>
+      </div>
+
+      <form id="contactForm" class="space-y-5">
+        <input type="hidden" name="_subject" value="New message from the Maya Creative Co site">
+
+        <div>
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" required placeholder="First and last name">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="you@email.com">
+        </div>
+        <div>
+          <label for="topic">What's this about?</label>
+          <select id="topic" name="topic">
+            <option>Booked Out — the platform</option>
+            <option>The Strategy Intensive</option>
+            <option>Billing or my account</option>
+            <option>A partnership or collab</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div>
+          <label for="message">Your message</label>
+          <textarea id="message" name="message" rows="6" required placeholder="Where are you at in your UGC business, and what are you stuck on?"></textarea>
+        </div>
+        <button type="submit" id="contactBtn" class="btn-dark w-full text-base">Send message →</button>
+        <p class="text-xs text-ash font-mono text-center">// typical reply time: within 1–2 business days</p>
+      </form>
+    </div>
+
+    <!-- DIRECT DETAILS -->
+    <div class="reveal reveal-right md:col-span-2 space-y-6">
+      <div class="bg-white border border-line rounded-md p-7 lift">
+        <p class="mono-label on-cream mb-5">// reach_me_directly</p>
+        <div class="space-y-4">
+          <a href="mailto:support@mayaherring.com" class="flex items-center justify-between border-b border-line pb-4 group">
+            <span class="text-ash font-mono text-sm">email</span>
+            <span class="text-forest group-hover:text-moss transition-colors font-medium text-sm">support@mayaherring.com</span>
+          </a>
+          <a href="https://www.instagram.com/mayacreativeco/" target="_blank" rel="noopener" class="flex items-center justify-between border-b border-line pb-4 group">
+            <span class="text-ash font-mono text-sm">instagram</span>
+            <span class="text-forest group-hover:text-moss transition-colors font-medium text-sm">@mayacreativeco →</span>
+          </a>
+          <a href="https://www.tiktok.com/@mayacreativeco" target="_blank" rel="noopener" class="flex items-center justify-between group">
+            <span class="text-ash font-mono text-sm">tiktok</span>
+            <span class="text-forest group-hover:text-moss transition-colors font-medium text-sm">@mayacreativeco →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-forest rounded-md p-7 shadow-float-soft">
+        <p class="mono-label mb-3">// ready_to_start?</p>
+        <h2 class="font-display text-xl font-bold text-cream mb-2">Skip the wait.</h2>
+        <p class="text-cream/65 text-sm leading-relaxed mb-5">If you already know Booked Out is for you, the free tier takes about a minute to set up.</p>
+        <div class="flex flex-col gap-3">
+          <a href="https://booked-out.mayacreativeco.com" class="btn-primary !py-3 text-sm justify-center">Try Booked Out for Free →</a>
+          <a href="intensive.html" class="btn-secondary !py-3 text-sm justify-center">Explore the Intensive</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- soft transition: cream → green -->
+<div class="fade-to-green h-72 md:h-96"></div>
+
 <!-- ============ FOOTER ============ -->
-<footer class="bg-forestDeep relative overflow-hidden">
+<footer class="bg-green relative overflow-hidden">
   <div class="checkerboard-cream h-2"></div>
   <div class="max-w-6xl mx-auto px-6 relative z-10">
     <div class="grid md:grid-cols-12 gap-10 py-16 border-b border-cream/10">
@@ -356,7 +367,7 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
   document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
 
-  // ---- contact form → Formspree (AJAX, inline success, no redirect) ----
+  // contact form → Formspree (AJAX, inline success, no redirect)
   var contactForm = document.getElementById('contactForm');
   contactForm.addEventListener('submit', function(e) {
     e.preventDefault();

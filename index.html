@@ -43,6 +43,15 @@
   .display-balance { text-wrap: balance; }
   section[id] { scroll-margin-top: 108px; }
 
+  /* branded loading screen */
+  #loader {
+    position: fixed; inset: 0; z-index: 100;
+    background-color: #1B3A2F;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity .55s ease;
+  }
+  #loader.done { opacity: 0; pointer-events: none; }
+
   /* ---- two colors only: one dark green, one cream ---- */
   .bg-green { background-color: #1B3A2F; }
   .bg-cream { background-color: #F5F0E4; }
@@ -195,6 +204,31 @@
 </head>
 <body class="antialiased">
 
+<!-- ============ LOADING SCREEN ============ -->
+<div id="loader">
+  <div class="flex flex-col items-center gap-5">
+    <div class="grid grid-cols-4 gap-2 w-24" aria-hidden="true">
+      <span class="aspect-square tile" style="animation-delay:0s"></span>
+      <span class="aspect-square"></span>
+      <span class="aspect-square tile" style="animation-delay:.34s"></span>
+      <span class="aspect-square"></span>
+      <span class="aspect-square"></span>
+      <span class="aspect-square tile" style="animation-delay:.34s"></span>
+      <span class="aspect-square"></span>
+      <span class="aspect-square tile" style="animation-delay:.68s"></span>
+      <span class="aspect-square tile" style="animation-delay:.34s"></span>
+      <span class="aspect-square"></span>
+      <span class="aspect-square tile" style="animation-delay:.68s"></span>
+      <span class="aspect-square"></span>
+      <span class="aspect-square"></span>
+      <span class="aspect-square tile" style="animation-delay:.68s"></span>
+      <span class="aspect-square"></span>
+      <span class="aspect-square tile" style="animation-delay:1.02s"></span>
+    </div>
+    <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-cream/50">Maya Creative Co</p>
+  </div>
+</div>
+
 <!-- ============ TOP STRIP ============ -->
 <div class="checkerboard-cream checker-drift h-2"></div>
 
@@ -268,24 +302,9 @@
     <h1 class="reveal reveal-d1 font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] tracking-tight display-balance mb-8 text-cream">
       Great videos don't book brands. <span class="italic text-mint">Systems do.</span>
     </h1>
-    <p class="reveal reveal-d2 text-lg md:text-2xl text-cream/70 leading-relaxed max-w-2xl mx-auto mb-8 display-balance">
-      <span class="text-cream font-semibold">Booked Out is a subscription platform</span> that hands UGC creators that system — interactive tools to price your rates, write your pitches, audit your contracts, and walk you through all six stages of building a real business.
+    <p class="reveal reveal-d2 text-lg md:text-2xl text-cream/75 leading-relaxed max-w-xl mx-auto mb-10 display-balance">
+      <span class="text-cream font-semibold">Booked Out is the subscription platform</span> that gives UGC creators a real system — to price, pitch, and stay booked.
     </p>
-    <!-- checkmark reassurance row -->
-    <div class="reveal reveal-d2 in flex flex-wrap items-center justify-center gap-x-7 gap-y-2 mb-9 text-sm text-cream/75">
-      <span class="inline-flex items-center gap-2">
-        <svg class="draw-check w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
-        Free tier — no card
-      </span>
-      <span class="inline-flex items-center gap-2">
-        <svg class="draw-check w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
-        Real tools, not a course
-      </span>
-      <span class="inline-flex items-center gap-2">
-        <svg class="draw-check w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
-        Cancel anytime
-      </span>
-    </div>
     <div class="reveal reveal-d3 flex flex-col sm:flex-row gap-4 items-center justify-center">
       <a href="https://booked-out.mayacreativeco.com" class="btn-primary text-base">Try Booked Out for Free →</a>
       <a href="#features" class="btn-secondary text-base">Explore the platform</a>
@@ -1033,6 +1052,18 @@
 </footer>
 
 <script>
+  // branded loading screen — hide once the page is ready (with a safety cap)
+  (function() {
+    function hideLoader() {
+      var l = document.getElementById('loader');
+      if (!l || l.classList.contains('done')) return;
+      l.classList.add('done');
+      setTimeout(function() { l.style.display = 'none'; }, 600);
+    }
+    window.addEventListener('load', function() { setTimeout(hideLoader, 450); });
+    setTimeout(hideLoader, 2600);
+  })();
+
   var menuBtn = document.getElementById('menuBtn');
   var mobileMenu = document.getElementById('mobileMenu');
   menuBtn.addEventListener('click', function() { mobileMenu.classList.toggle('hidden'); });
