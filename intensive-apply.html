@@ -23,15 +23,9 @@
           mono: ['JetBrains Mono', 'monospace'],
         },
         colors: {
-          cream: '#F5F0E4',
-          creamDeep: '#EDE5D2',
-          forest: '#1B3A2F',
-          forestDeep: '#0F2620',
-          forestLight: '#2D5742',
-          moss: '#4A7C59',
-          ink: '#0A1A12',
-          ash: '#4A5C50',
-          line: '#D8D0BE',
+          cream: '#F5F0E4', creamDeep: '#EDE5D2', forest: '#1B3A2F',
+          forestDeep: '#0F2620', forestLight: '#2D5742', moss: '#4A7C59',
+          mint: '#86C9A1', ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
         },
       },
     },
@@ -40,136 +34,129 @@
 
 <style>
   html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', system-ui, sans-serif; background-color: #F5F0E4; color: #0A1A12; }
+  body { font-family: 'Inter', system-ui, sans-serif; background-color: #0F2620; color: #F5F0E4; }
   .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
   .display-balance { text-wrap: balance; }
 
-  .checkerboard {
-    background-image:
-      linear-gradient(45deg, #1B3A2F 25%, transparent 25%),
-      linear-gradient(-45deg, #1B3A2F 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #1B3A2F 75%),
-      linear-gradient(-45deg, transparent 75%, #1B3A2F 75%);
-    background-size: 16px 16px;
-    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
-  }
+  .flow-a { background: linear-gradient(180deg, #1B3A2F 0%, #0F2620 100%); }
+
   .checkerboard-cream {
     background-image:
       linear-gradient(45deg, #F5F0E4 25%, transparent 25%),
       linear-gradient(-45deg, #F5F0E4 25%, transparent 25%),
       linear-gradient(45deg, transparent 75%, #F5F0E4 75%),
       linear-gradient(-45deg, transparent 75%, #F5F0E4 75%);
-    background-size: 12px 12px;
-    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
   }
+  .checker-amb { position: absolute; pointer-events: none; opacity: 0.07; z-index: 0; }
 
   .mono-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #1B3A2F;
-    font-weight: 500;
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: #86C9A1; font-weight: 500;
   }
 
   .field-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    color: #4A5C50;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    display: block;
-    margin-bottom: 8px;
+    font-size: 11px; font-weight: 500; color: #86C9A1;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    display: block; margin-bottom: 8px;
   }
-  .field-label::before { content: '> '; color: #1B3A2F; }
 
-  input[type="text"],
-  input[type="email"],
-  select,
-  textarea {
-    background-color: #FFFFFF;
-    border: 1.5px solid #D8D0BE;
+  input[type="text"], input[type="email"], select, textarea {
+    background-color: rgba(245,240,228,0.05);
+    border: 1.5px solid rgba(245,240,228,0.15);
     border-radius: 4px;
     padding: 14px 16px;
     font-size: 15px;
-    color: #0A1A12;
+    color: #F5F0E4;
     width: 100%;
     font-family: 'Inter', sans-serif;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
   input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: #1B3A2F;
-    box-shadow: 0 0 0 3px rgba(27, 58, 47, 0.12);
+    border-color: #86C9A1;
+    box-shadow: 0 0 0 3px rgba(134,201,161,0.15);
   }
+  input::placeholder, textarea::placeholder { color: rgba(245,240,228,0.35); }
+  select option { background-color: #1B3A2F; color: #F5F0E4; }
   textarea { resize: vertical; min-height: 100px; }
 
   .btn-primary {
-    background-color: #1B3A2F;
-    color: #F5F0E4;
-    padding: 16px 32px;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 16px;
+    background-color: #F5F0E4; color: #0F2620;
+    padding: 16px 32px; border-radius: 4px;
+    font-weight: 600; font-size: 16px;
     transition: background-color 0.15s ease, transform 0.1s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    border: 2px solid #1B3A2F;
-    font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: -0.01em;
-    cursor: pointer;
-    width: 100%;
-    justify-content: center;
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    border: 2px solid #F5F0E4;
+    font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
+    cursor: pointer; width: 100%;
   }
-  .btn-primary:hover { background-color: #0F2620; }
+  .btn-primary:hover { background-color: #FFFFFF; }
   .btn-primary:active { transform: scale(0.98); }
   .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .nav-link {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    letter-spacing: 0.04em; color: rgba(245,240,228,0.55); transition: color .15s ease;
+  }
+  .nav-link:hover { color: #F5F0E4; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes checkerDrift {
+      from { background-position: 0 0, 0 8px, 8px -8px, -8px 0; }
+      to   { background-position: 32px 0, 32px 8px, 40px -8px, 24px 0; }
+    }
+    .checker-drift { animation: checkerDrift 7s linear infinite; }
+    @keyframes checkerBreath { 0%, 100% { opacity: 0.035; } 50% { opacity: 0.14; } }
+    .checker-amb { animation: checkerBreath 9s ease-in-out infinite, checkerDrift 22s linear infinite; }
+  }
 </style>
 </head>
 <body class="antialiased">
 
-<div class="checkerboard h-2"></div>
+<div class="checkerboard-cream checker-drift h-2"></div>
 
 <!-- NAV -->
-<nav class="border-b border-line bg-cream">
+<nav class="border-b border-cream/10 bg-forestDeep/90 backdrop-blur sticky top-0 z-40">
   <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2">
-      <span class="inline-block w-5 h-5 checkerboard rounded-sm"></span>
+    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-cream flex items-center gap-2">
+      <span class="inline-block w-5 h-5 checkerboard-cream rounded-sm"></span>
       Maya Creative Co
     </a>
-    <a href="intensive.html" class="text-sm font-mono text-ash hover:text-forest transition-colors">← Back to Intensive</a>
+    <a href="intensive.html" class="nav-link">← Back to Intensive</a>
   </div>
 </nav>
 
 <!-- FORM PAGE -->
-<section class="px-6 py-16 md:py-24">
-  <div class="max-w-2xl mx-auto">
+<section class="px-6 py-16 md:py-24 relative overflow-hidden flow-a">
+  <div class="checker-amb checkerboard-cream w-[340px] h-[340px] -top-16 -right-24"></div>
+  <div class="max-w-2xl mx-auto relative z-10">
 
-    <!-- Header -->
     <div class="mb-12">
       <div class="flex items-center gap-3 mb-6">
-        <span class="inline-block w-8 h-2 checkerboard"></span>
+        <span class="inline-block w-8 h-2 checkerboard-cream"></span>
         <span class="mono-label">// application · strategy_intensive</span>
       </div>
-      <h1 class="font-display text-4xl md:text-5xl font-bold text-forest leading-tight display-balance mb-4">
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-cream leading-tight display-balance mb-4">
         Apply for the Intensive.
       </h1>
-      <p class="text-ash leading-relaxed">Takes about 5 minutes. I review every application within 48 hours and get back to you — yes, no, or not yet — always with context. No one gets left on read.</p>
+      <p class="text-cream/70 leading-relaxed">Takes about 5 minutes. I review every application within 48 hours and get back to you — yes, no, or not yet — always with context. No one gets left on read.</p>
     </div>
 
-    <!-- Success state (hidden until submission) -->
-    <div id="successMessage" class="hidden bg-forest text-cream rounded-md p-10 text-center">
-      <div class="checkerboard h-1 mb-8 -mx-10 -mt-10 rounded-t-md"></div>
-      <p class="mono-label !text-moss mb-4">// application_received</p>
-      <h2 class="font-display text-3xl font-bold mb-4">Thanks for applying.</h2>
-      <p class="text-cream/80 leading-relaxed mb-6">I review applications within 48 hours and get back to everyone — yes or no. Watch your inbox. In the meantime, if you don't already have the Booked Out Kit, it's worth grabbing before we start.</p>
-      <a href="index.html" class="inline-flex items-center gap-2 text-moss font-mono text-sm hover:text-cream transition-colors">← Back to mayacreativeco.com</a>
+    <!-- Success state -->
+    <div id="successMessage" class="hidden bg-cream/[0.04] border border-cream/12 rounded-md p-10 text-center">
+      <p class="mono-label mb-4">// application_received</p>
+      <h2 class="font-display text-3xl font-bold mb-4 text-cream">Thanks for applying.</h2>
+      <p class="text-cream/70 leading-relaxed mb-6">I review applications within 48 hours and get back to everyone — yes or no. Watch your inbox. In the meantime, if you don't already have Booked Out, the free tier is worth exploring before we start.</p>
+      <a href="index.html" class="inline-flex items-center gap-2 text-mint font-mono text-sm hover:text-cream transition-colors">← Back to mayacreativeco.com</a>
     </div>
 
     <!-- Form -->
-    <form id="applyForm" class="space-y-8">
+    <form id="applyForm" class="space-y-8 bg-cream/[0.04] border border-cream/12 rounded-md p-7 md:p-10">
 
       <div class="grid md:grid-cols-2 gap-6">
         <div>
@@ -201,26 +188,24 @@
 
       <div>
         <label class="field-label" for="bottleneck">Biggest bottleneck right now</label>
-        <p class="text-xs text-ash font-mono mb-3 -mt-1">1–2 sentences. Be specific — "pricing" is less useful than "I don't know how to price retainers vs. one-offs."</p>
+        <p class="text-xs text-cream/45 font-mono mb-3 -mt-1">1–2 sentences. Be specific — "pricing" is less useful than "I don't know how to price retainers vs. one-offs."</p>
         <textarea id="bottleneck" name="biggest_bottleneck" placeholder="What's actually blocking you right now?" required></textarea>
       </div>
 
       <div>
         <label class="field-label" for="outcome">What do you want to walk away with after the intensive?</label>
-        <p class="text-xs text-ash font-mono mb-3 -mt-1">1–2 sentences. Specific outcomes are more useful than general goals.</p>
+        <p class="text-xs text-cream/45 font-mono mb-3 -mt-1">1–2 sentences. Specific outcomes are more useful than general goals.</p>
         <textarea id="outcome" name="desired_outcome" placeholder="What does success look like for you at the end of the quarter?" required></textarea>
       </div>
 
       <div>
-        <label class="field-label" for="anything_else">Anything else I should know? <span class="text-ash">(optional)</span></label>
+        <label class="field-label" for="anything_else">Anything else I should know? <span class="text-cream/40">(optional)</span></label>
         <textarea id="anything_else" name="anything_else" placeholder="Previous coaching, unusual circumstances, payment plan request, etc." style="min-height:80px;"></textarea>
       </div>
 
       <div class="pt-2">
-        <button type="submit" id="submitBtn" class="btn-primary">
-          Submit Application →
-        </button>
-        <p class="text-xs text-ash font-mono text-center mt-4">I respond to every application within 48 hours.</p>
+        <button type="submit" id="submitBtn" class="btn-primary">Submit Application →</button>
+        <p class="text-xs text-cream/45 font-mono text-center mt-4">I respond to every application within 48 hours.</p>
       </div>
 
     </form>
@@ -229,33 +214,23 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-forestDeep text-cream/70">
-  <div class="checkerboard h-2"></div>
+<footer class="bg-forestDeep text-cream/60">
+  <div class="checkerboard-cream h-2"></div>
   <div class="px-6 py-10 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
     <p class="font-display text-sm font-bold text-cream">Maya Creative Co</p>
     <div class="flex gap-8 text-xs font-mono">
       <a href="intensive.html" class="hover:text-cream">→ intensive</a>
       <a href="index.html" class="hover:text-cream">→ home</a>
-      <a href="mailto:support@mayaherring.com" class="hover:text-cream">→ contact</a>
+      <a href="contact.html" class="hover:text-cream">→ contact</a>
     </div>
-    <p class="text-xs font-mono">© 2026</p>
+    <p class="text-xs font-mono text-cream/40">© 2026</p>
   </div>
 </footer>
 
 <script>
-  // -------------------------------------------------------------------------
-  // SETUP NOTE FOR MAYA:
-  // This form uses Formspree (formspree.io — free tier works for launch).
-  // To activate:
-  //   1. Go to formspree.io and sign up / log in
-  //   2. Create a new form — it will give you an endpoint like:
-  //      https://formspree.io/f/xabcdefg
-  //   3. Replace YOUR_FORMSPREE_ENDPOINT below with that URL
-  //   4. In Formspree dashboard, enable "Reply-To" so applicants get
-  //      an auto-confirmation email, and set your notification email
-  //      to support@mayaherring.com
-  // -------------------------------------------------------------------------
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT';
+  // Strategy Intensive applications post to Formspree (form: mykvzppq).
+  // Manage submissions + notification email at formspree.io.
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykvzppq';
 
   document.getElementById('applyForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -266,8 +241,6 @@
 
     const formData = new FormData(this);
     const data = Object.fromEntries(formData.entries());
-
-    // Add a reply-to field so Formspree can auto-reply to the applicant
     data['_replyto'] = data['email'];
     data['_subject'] = 'New Intensive Application — ' + data['full_name'];
 

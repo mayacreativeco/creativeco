@@ -199,14 +199,15 @@
       <!-- FORM -->
       <div class="reveal reveal-left md:col-span-3 bg-cream/[0.04] border border-cream/12 rounded-md p-7 md:p-10">
         <p class="mono-label mb-6">// send_a_message</p>
-        <!--
-          ┌─────────────────────────────────────────────────────────────┐
-          │  SETUP: create a free form at https://formspree.io            │
-          │  then replace YOUR_FORM_ID below with your form's ID          │
-          │  (looks like:  https://formspree.io/f/abcdwxyz )              │
-          └─────────────────────────────────────────────────────────────┘
-        -->
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-5">
+
+        <!-- success state — shown after a successful submission -->
+        <div id="contactSuccess" class="hidden text-center py-10">
+          <p class="mono-label mb-3">// message_sent</p>
+          <h3 class="font-display text-2xl font-bold text-cream mb-3">Thanks — it's on its way.</h3>
+          <p class="text-cream/65 text-sm leading-relaxed">Your message landed in my inbox. I read and answer every one personally, usually within 1–2 business days.</p>
+        </div>
+
+        <form id="contactForm" class="space-y-5">
           <input type="hidden" name="_subject" value="New message from the Maya Creative Co site">
 
           <div>
@@ -235,7 +236,7 @@
             <textarea id="message" name="message" rows="6" required placeholder="Where are you at in your UGC business, and what are you stuck on?"></textarea>
           </div>
 
-          <button type="submit" class="btn-primary w-full justify-center text-base">Send message →</button>
+          <button type="submit" id="contactBtn" class="btn-primary w-full justify-center text-base">Send message →</button>
           <p class="text-xs text-cream/45 font-mono text-center">// typical reply time: within 1–2 business days</p>
         </form>
       </div>
@@ -276,27 +277,65 @@
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer class="bg-forestDeep text-cream/60">
+<footer class="bg-forestDeep relative overflow-hidden">
   <div class="checkerboard-cream h-2"></div>
-  <div class="px-6 py-14 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
-    <div>
-      <div class="flex items-center gap-2 mb-3">
-        <span class="inline-block w-5 h-5 checkerboard-cream"></span>
-        <p class="font-display text-lg font-bold text-cream">Maya Creative Co</p>
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="grid md:grid-cols-12 gap-10 py-16 border-b border-cream/10">
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-block w-6 h-6 checkerboard-cream"></span>
+          <p class="font-display text-xl font-bold text-cream">Maya Creative Co</p>
+        </div>
+        <p class="text-cream/55 text-sm leading-relaxed max-w-xs mb-6">
+          Booked Out — the subscription command center for UGC creators ready to operate like a business.
+        </p>
+        <a href="https://booked-out.mayacreativeco.com" class="btn-primary !py-3 !px-5 text-sm">Try Booked Out for Free →</a>
       </div>
-      <p class="text-xs max-w-xs">Booked Out — the command center for UGC creators ready to operate like a business.</p>
+      <div class="md:col-span-2">
+        <p class="mono-label mb-5">// platform</p>
+        <div class="flex flex-col gap-3 text-sm">
+          <a href="index.html#features" class="text-cream/60 hover:text-cream transition-colors">Features</a>
+          <a href="index.html#benefits" class="text-cream/60 hover:text-cream transition-colors">Benefits</a>
+          <a href="index.html#pricing" class="text-cream/60 hover:text-cream transition-colors">Pricing</a>
+          <a href="https://booked-out.mayacreativeco.com/login.html" class="text-cream/60 hover:text-cream transition-colors">Sign in</a>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <p class="mono-label mb-5">// company</p>
+        <div class="flex flex-col gap-3 text-sm">
+          <a href="index.html#story" class="text-cream/60 hover:text-cream transition-colors">Story</a>
+          <a href="about.html" class="text-cream/60 hover:text-cream transition-colors">About Maya</a>
+          <a href="intensive.html" class="text-cream/60 hover:text-cream transition-colors">The Intensive</a>
+          <a href="contact.html" class="text-cream/60 hover:text-cream transition-colors">Contact</a>
+        </div>
+      </div>
+      <div class="md:col-span-3">
+        <p class="mono-label mb-5">// connect</p>
+        <p class="text-cream/55 text-sm leading-relaxed mb-5">
+          Questions? Email me at<br>
+          <a href="mailto:support@mayaherring.com" class="text-mint hover:text-cream underline">support@mayaherring.com</a>
+        </p>
+        <div class="flex gap-3">
+          <a href="https://www.instagram.com/mayacreativeco/" target="_blank" rel="noopener" aria-label="Instagram"
+             class="w-10 h-10 rounded-md border border-cream/15 flex items-center justify-center text-cream/70 hover:text-cream hover:border-mint hover:bg-cream/5 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/>
+              <circle cx="17.8" cy="6.2" r="1.2" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@mayacreativeco" target="_blank" rel="noopener" aria-label="TikTok"
+             class="w-10 h-10 rounded-md border border-cream/15 flex items-center justify-center text-cream/70 hover:text-cream hover:border-mint hover:bg-cream/5 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16.6 2h-3.1v12.8a2.6 2.6 0 1 1-2.6-2.6c.25 0 .5.04.73.1V9.1a5.7 5.7 0 1 0 4.97 5.65V8.3a6.9 6.9 0 0 0 4.1 1.32V6.5a3.9 3.9 0 0 1-4.07-3.8c-.01-.23-.02-.46-.02-.7z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="text-xs grid grid-cols-2 gap-x-10 gap-y-2">
-      <a href="index.html#features" class="hover:text-cream font-mono">→ features</a>
-      <a href="index.html#pricing" class="hover:text-cream font-mono">→ pricing</a>
-      <a href="index.html#benefits" class="hover:text-cream font-mono">→ benefits</a>
-      <a href="intensive.html" class="hover:text-cream font-mono">→ intensive</a>
-      <a href="about.html" class="hover:text-cream font-mono">→ about</a>
-      <a href="contact.html" class="hover:text-cream font-mono">→ contact</a>
-      <a href="https://www.instagram.com/mayacreativeco/" target="_blank" rel="noopener" class="hover:text-cream font-mono">→ instagram</a>
-      <a href="https://www.tiktok.com/@mayacreativeco" target="_blank" rel="noopener" class="hover:text-cream font-mono">→ tiktok</a>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-3 py-8 text-xs font-mono text-cream/40">
+      <p>© 2026 Maya Creative Co · All rights reserved.</p>
+      <p class="text-cream/55">Great videos don't book brands. Systems do.</p>
     </div>
-    <p class="text-xs font-mono">© 2026</p>
   </div>
 </footer>
 
@@ -314,6 +353,28 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
   document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+
+  // ---- contact form → Formspree (AJAX, inline success, no redirect) ----
+  var contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('contactBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    fetch('https://formspree.io/f/xaqknbbv', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(contactForm)
+    }).then(function(res) {
+      if (!res.ok) throw new Error('failed');
+      contactForm.classList.add('hidden');
+      document.getElementById('contactSuccess').classList.remove('hidden');
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send message →';
+      alert('Something went wrong — please email support@mayaherring.com directly.');
+    });
+  });
 </script>
 
 </body>

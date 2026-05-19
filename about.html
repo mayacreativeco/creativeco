@@ -28,7 +28,7 @@
         colors: {
           cream: '#F5F0E4', creamDeep: '#EDE5D2', forest: '#1B3A2F',
           forestDeep: '#0F2620', forestLight: '#2D5742', moss: '#4A7C59',
-          ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
+          mint: '#86C9A1', ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
         },
       },
     },
@@ -37,12 +37,37 @@
 
 <style>
   html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', system-ui, sans-serif; background-color: #F5F0E4; color: #0A1A12; }
+  body { font-family: 'Inter', system-ui, sans-serif; background-color: #0F2620; color: #F5F0E4; }
   .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .display-balance { text-wrap: balance; }
 
-  .checkerboard {
+  .flow-a { background: linear-gradient(180deg, #1B3A2F 0%, #0F2620 100%); }
+  .flow-b { background: linear-gradient(180deg, #0F2620 0%, #1B3A2F 100%); }
+  .cream-down { background: linear-gradient(180deg, #F5F0E4 0%, #EDE5D2 100%); }
+  .cream-up   { background: linear-gradient(180deg, #EDE5D2 0%, #F5F0E4 100%); }
+  .enter-cream { background: linear-gradient(180deg, #0F2620 0px, #F5F0E4 160px, #F5F0E4 100%); }
+  .enter-green { background: linear-gradient(180deg, #EDE5D2 0px, #1B3A2F 170px, #0F2620 100%); }
+
+  .checkerboard-cream {
+    background-image:
+      linear-gradient(45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(-45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #F5F0E4 75%),
+      linear-gradient(-45deg, transparent 75%, #F5F0E4 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  }
+  .checkerboard-mini-cream {
+    background-image:
+      linear-gradient(45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(-45deg, #F5F0E4 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #F5F0E4 75%),
+      linear-gradient(-45deg, transparent 75%, #F5F0E4 75%);
+    background-size: 8px 8px;
+    background-position: 0 0, 0 4px, 4px -4px, -4px 0;
+  }
+  .checkerboard-forest {
     background-image:
       linear-gradient(45deg, #1B3A2F 25%, transparent 25%),
       linear-gradient(-45deg, #1B3A2F 25%, transparent 25%),
@@ -51,113 +76,148 @@
     background-size: 16px 16px;
     background-position: 0 0, 0 8px, 8px -8px, -8px 0;
   }
-  .checkerboard-cream {
-    background-image:
-      linear-gradient(45deg, #F5F0E4 25%, transparent 25%),
-      linear-gradient(-45deg, #F5F0E4 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #F5F0E4 75%),
-      linear-gradient(-45deg, transparent 75%, #F5F0E4 75%);
-    background-size: 12px 12px;
-    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
-  }
+  .checker-amb { position: absolute; pointer-events: none; opacity: 0.07; z-index: 0; }
 
-  input[type="email"] {
-    background-color: #FFFFFF; border: 1.5px solid #D8D0BE; border-radius: 4px;
-    padding: 14px 16px; font-size: 15px; color: #0A1A12; width: 100%;
-    font-family: 'Inter', sans-serif;
-  }
-  input[type="email"]:focus { outline: none; border-color: #1B3A2F; box-shadow: 0 0 0 3px rgba(27, 58, 47, 0.12); }
+  .shadow-float { box-shadow: 0 30px 70px -28px rgba(0,0,0,0.85); }
+  .shadow-float-soft { box-shadow: 0 24px 50px -26px rgba(10,26,18,0.40); }
+  .lift { transition: transform .22s cubic-bezier(.16,1,.3,1), box-shadow .22s ease; }
+  .lift:hover { transform: translateY(-5px); box-shadow: 0 22px 44px -20px rgba(10,26,18,0.5); }
 
   .btn-primary {
-    background-color: #1B3A2F; color: #F5F0E4; padding: 16px 28px; border-radius: 4px;
-    font-weight: 600; font-size: 15px; transition: background-color 0.15s ease, transform 0.1s ease;
-    display: inline-flex; align-items: center; gap: 10px; border: 2px solid #1B3A2F;
+    background-color: #F5F0E4; color: #0F2620;
+    padding: 16px 28px; border-radius: 4px; font-weight: 600; font-size: 15px;
+    transition: background-color .15s ease, transform .1s ease, box-shadow .15s ease;
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 2px solid #F5F0E4; font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em; cursor: pointer;
+  }
+  .btn-primary:hover { background-color: #FFFFFF; border-color: #FFFFFF; box-shadow: 0 8px 24px -8px rgba(0,0,0,.6); }
+  .btn-secondary {
+    background-color: transparent; color: #F5F0E4;
+    padding: 16px 28px; border-radius: 4px; font-weight: 600; font-size: 15px;
+    border: 2px solid rgba(245,240,228,0.35); transition: all .15s ease;
+    display: inline-flex; align-items: center; gap: 10px;
     font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
   }
-  .btn-primary:hover { background-color: #0F2620; }
-  .btn-primary:active { transform: scale(0.98); }
-
-  .btn-secondary {
-    background-color: transparent; color: #1B3A2F; padding: 16px 28px; border-radius: 4px;
-    font-weight: 600; font-size: 15px; border: 2px solid #1B3A2F; transition: all 0.15s ease;
-    display: inline-flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: -0.01em;
+  .btn-secondary:hover { background-color: #F5F0E4; color: #0F2620; border-color: #F5F0E4; }
+  .btn-dark {
+    background-color: #1B3A2F; color: #F5F0E4;
+    padding: 16px 28px; border-radius: 4px; font-weight: 600; font-size: 15px;
+    transition: background-color .15s ease, box-shadow .15s ease;
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 2px solid #1B3A2F; font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em; cursor: pointer;
   }
-  .btn-secondary:hover { background-color: #1B3A2F; color: #F5F0E4; }
+  .btn-dark:hover { background-color: #0F2620; box-shadow: 0 10px 26px -10px rgba(10,26,18,.5); }
+  .btn-outline-dark {
+    background-color: transparent; color: #1B3A2F;
+    padding: 16px 28px; border-radius: 4px; font-weight: 600; font-size: 15px;
+    border: 2px solid #1B3A2F; transition: all .15s ease;
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
+  }
+  .btn-outline-dark:hover { background-color: #1B3A2F; color: #F5F0E4; }
 
   .mono-label {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
-    letter-spacing: 0.1em; color: #1B3A2F; font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: #86C9A1; font-weight: 500;
   }
+  .mono-label.on-cream { color: #4A7C59; }
 
-  .headshot-placeholder {
-    background: linear-gradient(135deg, #1B3A2F 0%, #2D5742 100%);
-    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
-    color: #F5F0E4; font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    text-align: center; padding: 16px; border-radius: 4px; position: relative; overflow: hidden;
+  .nav-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.04em;
+    color: rgba(245,240,228,0.55); transition: color .15s ease;
   }
-  .headshot-placeholder::before {
-    content: ''; position: absolute; inset: 0;
-    background-image:
-      linear-gradient(45deg, rgba(245,240,228,0.1) 25%, transparent 25%),
-      linear-gradient(-45deg, rgba(245,240,228,0.1) 25%, transparent 25%);
-    background-size: 20px 20px;
+  .nav-link:hover { color: #F5F0E4; }
+  .nav-link.active { color: #F5F0E4; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal-left  { transform: translateX(-36px); }
+    .reveal-right { transform: translateX(36px); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: .08s; }
+    .reveal-d2 { transition-delay: .16s; }
+
+    @keyframes checkerDrift {
+      from { background-position: 0 0, 0 8px, 8px -8px, -8px 0; }
+      to   { background-position: 32px 0, 32px 8px, 40px -8px, 24px 0; }
+    }
+    .checker-drift { animation: checkerDrift 7s linear infinite; }
+    @keyframes checkerBreath { 0%, 100% { opacity: 0.035; } 50% { opacity: 0.14; } }
+    .checker-amb { animation: checkerBreath 9s ease-in-out infinite, checkerDrift 22s linear infinite; }
   }
-  .headshot-placeholder span { position: relative; z-index: 1; }
 </style>
 </head>
 <body class="antialiased">
 
-<div class="checkerboard h-2"></div>
+<!-- TOP STRIP -->
+<div class="checkerboard-cream checker-drift h-2"></div>
 
 <!-- NAV -->
-<nav class="border-b border-line bg-cream sticky top-0 z-40">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-forest flex items-center gap-2">
-      <span class="inline-block w-5 h-5 checkerboard rounded-sm"></span>
+<nav class="border-b border-cream/10 bg-forestDeep/90 backdrop-blur sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center gap-6">
+    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-cream flex items-center gap-2 shrink-0">
+      <span class="inline-block w-5 h-5 checkerboard-cream rounded-sm"></span>
       Maya Creative Co
     </a>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ash">
-      <a href="about.html" class="text-forest transition-colors">About</a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="index.html#features" class="nav-link">Features</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+      <a href="intensive.html" class="nav-link">Intensive</a>
+      <a href="about.html" class="nav-link active">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
     </div>
-    <a href="https://booked-out.mayacreativeco.com" class="btn-primary text-sm hidden md:inline-flex !py-3 !px-5">Get Started →</a>
-    <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
-      <span class="w-6 h-0.5 bg-forest block"></span>
-      <span class="w-6 h-0.5 bg-forest block"></span>
-      <span class="w-6 h-0.5 bg-forest block"></span>
+    <a href="https://booked-out.mayacreativeco.com" class="btn-primary text-sm hidden lg:inline-flex !py-3 !px-5">Try for Free →</a>
+    <button id="menuBtn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+      <span class="w-6 h-0.5 bg-cream block"></span>
+      <span class="w-6 h-0.5 bg-cream block"></span>
+      <span class="w-6 h-0.5 bg-cream block"></span>
     </button>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden border-t border-line bg-cream px-6 py-6 flex flex-col gap-5">
-    <a href="about.html" class="text-sm font-semibold text-forest">About</a>
-    <a href="https://booked-out.mayacreativeco.com" class="btn-primary !py-3 !px-5 text-sm justify-center">Get Started →</a>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-cream/10 bg-forestDeep px-6 py-6 flex flex-col gap-5">
+    <a href="index.html#features" class="nav-link !text-sm">Features</a>
+    <a href="index.html#pricing" class="nav-link !text-sm">Pricing</a>
+    <a href="intensive.html" class="nav-link !text-sm">Intensive</a>
+    <a href="about.html" class="nav-link !text-sm active">About</a>
+    <a href="contact.html" class="nav-link !text-sm">Contact</a>
+    <a href="https://booked-out.mayacreativeco.com" class="btn-primary !py-3 !px-5 text-sm justify-center">Try for Free →</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="px-6 py-20 md:py-28">
-  <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-12 items-center">
-    <div class="md:col-span-2">
-      <img src="Tezza-2253.JPG" alt="Maya — Maya Creative Co" class="max-w-sm w-full rounded-md object-cover" />
-    </div>
-    <div class="md:col-span-3">
-      <div class="flex items-center gap-3 mb-8">
-        <span class="inline-block w-8 h-2 checkerboard"></span>
-        <span class="mono-label">Maya_Creative_Co / about.me</span>
+<!-- ============ HERO ============ -->
+<section class="px-6 py-24 md:py-32 relative overflow-hidden flow-a">
+  <div class="checker-amb checkerboard-cream w-[340px] h-[340px] -top-16 -left-24"></div>
+  <div class="checker-amb checkerboard-cream w-[280px] h-[280px] bottom-0 -right-20" style="animation-delay: -4.5s, -8s;"></div>
+  <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-12 items-center relative z-10">
+    <div class="reveal reveal-left md:col-span-2">
+      <img src="Tezza-2253.JPG" alt="Maya — Maya Creative Co" class="w-full rounded-md object-cover shadow-float" />
+      <div class="mt-3 flex gap-1">
+        <span class="w-3 h-3 checkerboard-cream"></span>
+        <span class="w-3 h-3 bg-cream"></span>
+        <span class="w-3 h-3 checkerboard-cream"></span>
       </div>
-      <h1 class="font-display text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight display-balance text-forest">
-        I'm Maya. I build systems for the creators I <span class="italic text-moss">wish I'd had</span> when I started.
+    </div>
+    <div class="reveal reveal-right md:col-span-3">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="inline-block w-8 h-2 checkerboard-cream"></span>
+        <span class="mono-label">// maya_creative_co / about.me</span>
+      </div>
+      <h1 class="font-display text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight display-balance text-cream">
+        I'm Maya. I build the systems I <span class="italic text-mint">wish I'd had</span> when I started.
       </h1>
     </div>
   </div>
 </section>
 
-<div class="checkerboard h-3"></div>
-
-<!-- THE STORY -->
-<section class="px-6 py-24 bg-cream">
-  <div class="max-w-3xl mx-auto">
-    <span class="mono-label">// the_story</span>
-    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-10 text-forest display-balance">
+<!-- ============ THE STORY (cream) ============ -->
+<section class="enter-cream px-6 pt-44 pb-28">
+  <div class="reveal max-w-3xl mx-auto">
+    <span class="mono-label on-cream">// the_story</span>
+    <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-10 text-forest display-balance">
       How I got here.
     </h2>
     <div class="space-y-6 text-lg text-ash leading-relaxed">
@@ -170,60 +230,60 @@
   </div>
 </section>
 
-<!-- WHAT I'M BUILDING -->
-<section class="px-6 py-24 bg-forest text-cream">
+<!-- ============ WHAT I'M BUILDING (cream) ============ -->
+<section class="cream-down px-6 py-28">
   <div class="max-w-5xl mx-auto">
-    <div class="mb-14 max-w-2xl">
-      <span class="mono-label !text-cream/60">// what_i_am_building</span>
-      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 display-balance">
+    <div class="reveal mb-14 max-w-2xl">
+      <span class="mono-label on-cream">// what_i_am_building</span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 display-balance text-forest">
         Two businesses. One creative stack.
       </h2>
     </div>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="border-2 border-cream/20 rounded-md p-8 bg-forestDeep/50">
+    <div data-stagger class="grid md:grid-cols-2 gap-6">
+      <div class="reveal bg-white border border-line rounded-md p-8 lift">
         <p class="font-mono text-moss text-xs mb-4">// business_01 · brand_side</p>
-        <h3 class="font-display text-2xl font-bold text-cream mb-4">mayaherring.com</h3>
-        <p class="text-cream/70 leading-relaxed mb-6">My personal UGC portfolio. Where DTC brands come to hire me for video production, ad creative, and retainer work. This is the active business — the engine.</p>
-        <a href="https://mayaherring.com" class="font-mono text-xs text-moss hover:text-cream">→ see the portfolio</a>
+        <h3 class="font-display text-2xl font-bold text-forest mb-4">mayaherring.com</h3>
+        <p class="text-ash leading-relaxed mb-6">My personal UGC portfolio. Where DTC brands come to hire me for video production, ad creative, and retainer work. This is the active business — the engine.</p>
+        <a href="https://mayaherring.com" class="font-mono text-xs text-moss hover:text-forest">→ see the portfolio</a>
       </div>
-      <div class="border-2 border-moss rounded-md p-8 bg-forestDeep/50">
-        <p class="font-mono text-moss text-xs mb-4">// business_02 · creator_side</p>
+      <div class="reveal bg-forest text-cream rounded-md p-8 lift shadow-float-soft">
+        <p class="font-mono text-mint text-xs mb-4">// business_02 · creator_side</p>
         <h3 class="font-display text-2xl font-bold text-cream mb-4">Maya Creative Co</h3>
         <p class="text-cream/70 leading-relaxed mb-6">This site. Where I share the tools, kits, and systems I built for myself with fellow UGC creators. Not for brand clients — this is for creators who want what I had to figure out the hard way.</p>
-        <a href="index.html" class="font-mono text-xs text-moss hover:text-cream">→ you're here</a>
+        <a href="index.html" class="font-mono text-xs text-mint hover:text-cream">→ you're here</a>
       </div>
     </div>
-    <p class="mt-10 text-cream/60 text-sm max-w-3xl leading-relaxed">These two sites are intentionally separate. If you're a brand looking to hire me for UGC, go to mayaherring.com. If you're a creator looking to learn from the systems I built, you're in the right place.</p>
+    <p class="reveal mt-10 text-ash text-sm max-w-3xl leading-relaxed">These two sites are intentionally separate. If you're a brand looking to hire me for UGC, go to mayaherring.com. If you're a creator looking to learn from the systems I built, you're in the right place.</p>
   </div>
 </section>
 
-<!-- PRINCIPLES -->
-<section class="px-6 py-24 bg-cream">
+<!-- ============ PRINCIPLES (cream) ============ -->
+<section class="cream-up px-6 py-28">
   <div class="max-w-5xl mx-auto">
-    <div class="mb-14 max-w-2xl">
-      <span class="mono-label">// how_i_work</span>
+    <div class="reveal mb-14 max-w-2xl">
+      <span class="mono-label on-cream">// how_i_work</span>
       <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 text-forest display-balance">
         Four things I believe.
       </h2>
     </div>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-white border border-line rounded-md p-8">
-        <p class="mono-label mb-4">// principle_01</p>
-        <h3 class="font-display text-xl font-bold text-forest mb-3">Systems > motivation.</h3>
+    <div data-stagger class="grid md:grid-cols-2 gap-6">
+      <div class="reveal bg-white border border-line rounded-md p-8 lift">
+        <p class="mono-label on-cream mb-4">// principle_01</p>
+        <h3 class="font-display text-xl font-bold text-forest mb-3">Systems &gt; motivation.</h3>
         <p class="text-ash text-sm leading-relaxed">Most creator content is emotional fuel. Useful for a day, forgotten by the next. I'd rather give you one tool you'll use every week than one post that makes you feel inspired for an hour.</p>
       </div>
-      <div class="bg-white border border-line rounded-md p-8">
-        <p class="mono-label mb-4">// principle_02</p>
+      <div class="reveal bg-white border border-line rounded-md p-8 lift">
+        <p class="mono-label on-cream mb-4">// principle_02</p>
         <h3 class="font-display text-xl font-bold text-forest mb-3">Ship working tools, not courses.</h3>
         <p class="text-ash text-sm leading-relaxed">I'm a creator who can code. That means what I make are actual tools — calculators, trackers, generators — not modules you have to binge and then figure out how to apply.</p>
       </div>
-      <div class="bg-white border border-line rounded-md p-8">
-        <p class="mono-label mb-4">// principle_03</p>
+      <div class="reveal bg-white border border-line rounded-md p-8 lift">
+        <p class="mono-label on-cream mb-4">// principle_03</p>
         <h3 class="font-display text-xl font-bold text-forest mb-3">Show the work, not the guru pose.</h3>
         <p class="text-ash text-sm leading-relaxed">Everything I teach is stress-tested against my own active business. If I haven't shipped it, I don't sell it.</p>
       </div>
-      <div class="bg-white border border-line rounded-md p-8">
-        <p class="mono-label mb-4">// principle_04</p>
+      <div class="reveal bg-white border border-line rounded-md p-8 lift">
+        <p class="mono-label on-cream mb-4">// principle_04</p>
         <h3 class="font-display text-xl font-bold text-forest mb-3">Price it so it's serious.</h3>
         <p class="text-ash text-sm leading-relaxed">Free stuff gets ignored. The best work I've done with creators started when they decided to actually invest in the systems they needed.</p>
       </div>
@@ -231,101 +291,122 @@
   </div>
 </section>
 
-<!-- PRESS / AS SEEN IN — placeholder -->
-<section class="px-6 py-16 bg-creamDeep border-y border-line">
-  <div class="max-w-5xl mx-auto text-center">
-    <span class="mono-label">// featured_in · coming_soon</span>
-    <p class="text-ash mt-4 text-sm max-w-xl mx-auto font-mono">[ press_logos.placeholder — add when first features land ]</p>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
-<section id="newsletter" class="px-6 py-24 bg-forestDeep text-cream">
-  <div class="max-w-3xl mx-auto">
+<!-- ============ NEWSLETTER (dark) ============ -->
+<section id="newsletter" class="enter-green px-6 pt-44 pb-28">
+  <div class="reveal max-w-3xl mx-auto">
     <div class="flex items-center gap-3 mb-8">
       <span class="inline-block w-8 h-2 checkerboard-cream"></span>
-      <span class="mono-label !text-cream/60">// weekly_playbook</span>
+      <span class="mono-label">// weekly_playbook</span>
     </div>
-    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mb-6 display-balance">
+    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mb-6 display-balance text-cream">
       The weekly playbook.
     </h2>
     <p class="text-lg text-cream/70 mb-10 display-balance">
       One email a week. Real pricing frameworks, outreach scripts I'm actually using, and behind-the-scenes of my own brand deals. No fluff.
     </p>
     <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-      <form action="https://app.kit.com/forms/9319858/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9319858" data-uid="ef3b310cee" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:true},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;hide&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800" style="background-color: rgb(255, 254, 238); border-radius: 4px;"><div class="formkit-background" style="opacity: 0.2;"></div><div data-style="minimal"><div class="formkit-header" data-element="header" style="color: rgb(21, 75, 20); font-size: 27px; font-weight: 700;"><h2>Join the Newsletter</h2></div><div class="formkit-subheader" data-element="subheader" style="color: rgb(21, 75, 20); font-size: 18px;"><p>Subscribe to get our latest content by email.</p></div><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="true" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" aria-label="First Name" name="fields[first_name]" required="" placeholder="First Name" type="text" style="color: rgb(21, 75, 20); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(21, 75, 20); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(21, 75, 20); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Subscribe</span></button></div><div class="formkit-guarantee" data-element="guarantee" style="color: rgb(21, 75, 20); font-size: 13px; font-weight: 400;"><p>We won't send you spam. Unsubscribe at any time.</p></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with Kit</a></div></div><style>.formkit-form[data-uid="ef3b310cee"] *{box-sizing:border-box;}.formkit-form[data-uid="ef3b310cee"]{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.formkit-form[data-uid="ef3b310cee"] legend{border:none;font-size:inherit;margin-bottom:10px;padding:0;position:relative;display:table;}.formkit-form[data-uid="ef3b310cee"] fieldset{border:0;padding:0.01em 0 0 0;margin:0;min-width:0;}.formkit-form[data-uid="ef3b310cee"] body:not(:-moz-handler-blocked) fieldset{display:table-cell;}.formkit-form[data-uid="ef3b310cee"] h1,.formkit-form[data-uid="ef3b310cee"] h2,.formkit-form[data-uid="ef3b310cee"] h3,.formkit-form[data-uid="ef3b310cee"] h4,.formkit-form[data-uid="ef3b310cee"] h5,.formkit-form[data-uid="ef3b310cee"] h6{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="ef3b310cee"] h2{font-size:1.5em;margin:1em 0;}.formkit-form[data-uid="ef3b310cee"] h3{font-size:1.17em;margin:1em 0;}.formkit-form[data-uid="ef3b310cee"] p{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="ef3b310cee"] ol:not([template-default]),.formkit-form[data-uid="ef3b310cee"] ul:not([template-default]),.formkit-form[data-uid="ef3b310cee"] blockquote:not([template-default]){text-align:left;}.formkit-form[data-uid="ef3b310cee"] p:not([template-default]),.formkit-form[data-uid="ef3b310cee"] hr:not([template-default]),.formkit-form[data-uid="ef3b310cee"] blockquote:not([template-default]),.formkit-form[data-uid="ef3b310cee"] ol:not([template-default]),.formkit-form[data-uid="ef3b310cee"] ul:not([template-default]){color:inherit;font-style:initial;}.formkit-form[data-uid="ef3b310cee"] .ordered-list,.formkit-form[data-uid="ef3b310cee"] .unordered-list{list-style-position:outside !important;padding-left:1em;}.formkit-form[data-uid="ef3b310cee"] .list-item{padding-left:0;}.formkit-form[data-uid="ef3b310cee"][data-format="modal"]{display:none;}.formkit-form[data-uid="ef3b310cee"][data-format="slide in"]{display:none;}.formkit-form[data-uid="ef3b310cee"][data-format="sticky bar"]{display:none;}.formkit-sticky-bar .formkit-form[data-uid="ef3b310cee"][data-format="sticky bar"]{display:block;}.formkit-form[data-uid="ef3b310cee"] .formkit-input,.formkit-form[data-uid="ef3b310cee"] .formkit-select,.formkit-form[data-uid="ef3b310cee"] .formkit-checkboxes{width:100%;}.formkit-form[data-uid="ef3b310cee"] .formkit-button,.formkit-form[data-uid="ef3b310cee"] .formkit-submit{border:0;border-radius:5px;color:#ffffff;cursor:pointer;display:inline-block;text-align:center;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:15px;overflow:hidden;padding:0;position:relative;vertical-align:middle;}.formkit-form[data-uid="ef3b310cee"] .formkit-button:hover,.formkit-form[data-uid="ef3b310cee"] .formkit-submit:hover,.formkit-form[data-uid="ef3b310cee"] .formkit-button:focus,.formkit-form[data-uid="ef3b310cee"] .formkit-submit:focus{outline:none;}.formkit-form[data-uid="ef3b310cee"] .formkit-button:hover > span,.formkit-form[data-uid="ef3b310cee"] .formkit-submit:hover > span,.formkit-form[data-uid="ef3b310cee"] .formkit-button:focus > span,.formkit-form[data-uid="ef3b310cee"] .formkit-submit:focus > span{background-color:rgba(0,0,0,0.1);}.formkit-form[data-uid="ef3b310cee"] .formkit-button > span,.formkit-form[data-uid="ef3b310cee"] .formkit-submit > span{display:block;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;padding:12px 24px;}.formkit-form[data-uid="ef3b310cee"] .formkit-input{background:#ffffff;font-size:15px;padding:12px;border:1px solid #e3e3e3;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;line-height:1.4;margin:0;-webkit-transition:border-color ease-out 300ms;transition:border-color ease-out 300ms;}.formkit-form[data-uid="ef3b310cee"] .formkit-input:focus{outline:none;border-color:#1677be;-webkit-transition:border-color ease 300ms;transition:border-color ease 300ms;}.formkit-form[data-uid="ef3b310cee"] .formkit-input::-webkit-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="ef3b310cee"] .formkit-input::-moz-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="ef3b310cee"] .formkit-input:-ms-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="ef3b310cee"] .formkit-input::placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="ef3b310cee"] [data-group="dropdown"]{position:relative;display:inline-block;width:100%;}.formkit-form[data-uid="ef3b310cee"] [data-group="dropdown"]::before{content:"";top:calc(50% - 2.5px);right:10px;position:absolute;pointer-events:none;border-color:#4f4f4f transparent transparent transparent;border-style:solid;border-width:6px 6px 0 6px;height:0;width:0;z-index:999;}.formkit-form[data-uid="ef3b310cee"] [data-group="dropdown"] select{height:auto;width:100%;cursor:pointer;color:#333333;line-height:1.4;margin-bottom:0;padding:0 6px;-webkit-appearance:none;-moz-appearance:none;appearance:none;font-size:15px;padding:12px;padding-right:25px;border:1px solid #e3e3e3;background:#ffffff;}.formkit-form[data-uid="ef3b310cee"] [data-group="dropdown"] select:focus{outline:none;}.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"]{text-align:left;margin:0;}.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"] [data-group="checkbox"]{margin-bottom:10px;}.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"] [data-group="checkbox"] *{cursor:pointer;}.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"] [data-group="checkbox"]:last-of-type{margin-bottom:0;}.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]{display:none;}.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"] + label::after{content:none;}.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::after{border-color:#ffffff;content:"";}.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::before{background:#10bf7a;border-color:#10bf7a;}.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"] [data-group="checkbox"] label{position:relative;display:inline-block;padding-left:28px;}.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"] [data-group="checkbox"] label::before,.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"] [data-group="checkbox"] label::after{position:absolute;content:"";display:inline-block;}.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"] [data-group="checkbox"] label::before{height:16px;width:16px;border:1px solid #e3e3e3;background:#ffffff;left:0px;top:3px;}.formkit-form[data-uid="ef3b310cee"] [data-group="checkboxes"] [data-group="checkbox"] label::after{height:4px;width:8px;border-left:2px solid #4d4d4d;border-bottom:2px solid #4d4d4d;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);left:4px;top:8px;}.formkit-form[data-uid="ef3b310cee"] .formkit-alert{background:#f9fafb;border:1px solid #e3e3e3;border-radius:5px;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;list-style:none;margin:25px auto;padding:12px;text-align:center;width:100%;}.formkit-form[data-uid="ef3b310cee"] .formkit-alert:empty{display:none;}.formkit-form[data-uid="ef3b310cee"] .formkit-alert-success{background:#d3fbeb;border-color:#10bf7a;color:#0c905c;}.formkit-form[data-uid="ef3b310cee"] .formkit-alert-error{background:#fde8e2;border-color:#f2643b;color:#ea4110;}.formkit-form[data-uid="ef3b310cee"] .formkit-spinner{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:0px;width:0px;margin:0 auto;position:absolute;top:0;left:0;right:0;width:0px;overflow:hidden;text-align:center;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;}.formkit-form[data-uid="ef3b310cee"] .formkit-spinner > div{margin:auto;width:12px;height:12px;background-color:#fff;opacity:0.3;border-radius:100%;display:inline-block;-webkit-animation:formkit-bouncedelay-formkit-form-data-uid-ef3b310cee- 1.4s infinite ease-in-out both;animation:formkit-bouncedelay-formkit-form-data-uid-ef3b310cee- 1.4s infinite ease-in-out both;}.formkit-form[data-uid="ef3b310cee"] .formkit-spinner > div:nth-child(1){-webkit-animation-delay:-0.32s;animation-delay:-0.32s;}.formkit-form[data-uid="ef3b310cee"] .formkit-spinner > div:nth-child(2){-webkit-animation-delay:-0.16s;animation-delay:-0.16s;}.formkit-form[data-uid="ef3b310cee"] .formkit-submit[data-active] .formkit-spinner{opacity:1;height:100%;width:50px;}.formkit-form[data-uid="ef3b310cee"] .formkit-submit[data-active] .formkit-spinner ~ span{opacity:0;}.formkit-form[data-uid="ef3b310cee"] .formkit-powered-by[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="ef3b310cee"] .formkit-powered-by-convertkit-container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;margin:10px 0;position:relative;}.formkit-form[data-uid="ef3b310cee"] .formkit-powered-by-convertkit-container[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="ef3b310cee"] .formkit-powered-by-convertkit{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;border-radius:9px;color:#3d3d3d;cursor:pointer;display:block;height:36px;margin:0 auto;opacity:0.95;padding:0;-webkit-text-decoration:none;text-decoration:none;text-indent:100%;-webkit-transition:ease-in-out all 200ms;transition:ease-in-out all 200ms;white-space:nowrap;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:157px;background-repeat:no-repeat;background-position:center;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='133' height='36' viewBox='0 0 133 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.861 25.5C0.735 25.5 0.651 25.416 0.651 25.29V10.548C0.651 10.422 0.735 10.338 0.861 10.338H6.279C9.072 10.338 10.668 11.451 10.668 13.824C10.668 15.819 9.219 16.932 8.001 17.226C7.707 17.268 7.707 17.625 8.022 17.688C9.912 18.108 11.088 19.116 11.088 21.321C11.088 23.715 9.429 25.5 6.426 25.5H0.861ZM5.397 23.085C6.825 23.085 7.518 22.224 7.518 21.006C7.518 19.683 6.825 18.948 5.397 18.948H4.2V23.085H5.397ZM5.313 16.617C6.51 16.617 7.245 15.945 7.245 14.601C7.245 13.383 6.51 12.753 5.25 12.753H4.2V16.617H5.313ZM17.9758 23.883C17.9758 23.568 17.6608 23.505 17.5348 23.799C17.0308 24.954 16.1698 25.731 14.5528 25.731C12.8728 25.731 12.0958 24.471 12.0958 22.707V14.937C12.0958 14.811 12.1798 14.727 12.3058 14.727H15.2248C15.3508 14.727 15.4348 14.811 15.4348 14.937V21.657C15.4348 22.581 15.7708 23.022 16.4638 23.022C17.1778 23.022 17.6188 22.581 17.6188 21.657V14.937C17.6188 14.811 17.7028 14.727 17.8288 14.727H20.7478C20.8738 14.727 20.9578 14.811 20.9578 14.937V25.29C20.9578 25.416 20.8738 25.5 20.7478 25.5H18.1858C18.0598 25.5 17.9758 25.416 17.9758 25.29V23.883ZM25.6141 25.29C25.6141 25.416 25.5301 25.5 25.4041 25.5H22.4851C22.3591 25.5 22.2751 25.416 22.2751 25.29V14.937C22.2751 14.811 22.3591 14.727 22.4851 14.727H25.4041C25.5301 14.727 25.6141 14.811 25.6141 14.937V25.29ZM23.9131 13.74C22.8001 13.74 22.0441 12.942 22.0441 11.934C22.0441 10.926 22.8001 10.107 23.9131 10.107C25.0051 10.107 25.7611 10.926 25.7611 11.934C25.7611 12.942 25.0051 13.74 23.9131 13.74ZM26.7883 10.548C26.7883 10.422 26.8723 10.338 26.9983 10.338H29.9173C30.0433 10.338 30.1273 10.422 30.1273 10.548V22.056C30.1273 22.749 30.2533 23.085 30.8203 23.085C31.0093 23.085 31.1983 23.043 31.3663 23.001C31.5133 22.959 31.6183 22.959 31.6183 23.127V25.059C31.6183 25.164 31.5763 25.269 31.4923 25.311C30.9673 25.521 30.2953 25.71 29.5813 25.71C27.7123 25.71 26.7883 24.639 26.7883 22.476V10.548ZM32.4237 14.727C32.8227 14.727 32.9277 14.538 32.9697 14.055L33.1167 12.039C33.1167 11.913 33.2217 11.829 33.3477 11.829H35.8887C36.0147 11.829 36.0987 11.913 36.0987 12.039V14.517C36.0987 14.643 36.1827 14.727 36.3087 14.727H38.2827C38.4087 14.727 38.4927 14.811 38.4927 14.937V16.659C38.4927 16.785 38.4087 16.869 38.2827 16.869H36.0777V22.056C36.0777 22.875 36.5397 23.085 37.0647 23.085C37.4847 23.085 37.9467 22.938 38.3247 22.707C38.4717 22.623 38.5767 22.665 38.5767 22.833V24.828C38.5767 24.933 38.5347 25.017 38.4507 25.08C37.8417 25.458 36.9807 25.71 36.0357 25.71C34.2927 25.71 32.7387 24.912 32.7387 22.476V16.869H31.8567C31.7307 16.869 31.6467 16.785 31.6467 16.659V14.937C31.6467 14.811 31.7307 14.727 31.8567 14.727H32.4237ZM51.3808 14.727C51.5068 14.727 51.5908 14.79 51.6118 14.916L52.3888 19.851L52.5778 21.174C52.6198 21.468 52.9558 21.468 52.9768 21.174C53.0398 20.712 53.0818 20.271 53.1658 19.83L53.8798 14.916C53.9008 14.79 53.9848 14.727 54.1108 14.727H56.6728C56.8198 14.727 56.8828 14.811 56.8618 14.958L54.6778 25.311C54.6568 25.437 54.5728 25.5 54.4468 25.5H51.3178C51.1918 25.5 51.1078 25.437 51.0868 25.311L50.1208 20.082L49.8898 18.633C49.8688 18.444 49.6588 18.444 49.6378 18.633L49.4068 20.103L48.5458 25.311C48.5248 25.437 48.4408 25.5 48.3148 25.5H45.2068C45.0808 25.5 44.9968 25.437 44.9758 25.311L42.8128 14.958C42.7918 14.811 42.8548 14.727 43.0018 14.727H45.9628C46.0888 14.727 46.1728 14.79 46.1938 14.916L46.9288 19.83C47.0128 20.271 47.0758 20.754 47.1388 21.195C47.2018 21.51 47.4748 21.531 47.5378 21.195L47.7478 19.872L48.6088 14.916C48.6298 14.79 48.7138 14.727 48.8398 14.727H51.3808ZM61.1582 25.29C61.1582 25.416 61.0742 25.5 60.9482 25.5H58.0292C57.9032 25.5 57.8192 25.416 57.8192 25.29V14.937C57.8192 14.811 57.9032 14.727 58.0292 14.727H60.9482C61.0742 14.727 61.1582 14.811 61.1582 14.937V25.29ZM59.4572 13.74C58.3442 13.74 57.5882 12.942 57.5882 11.934C57.5882 10.926 58.3442 10.107 59.4572 10.107C60.5492 10.107 61.3052 10.926 61.3052 11.934C61.3052 12.942 60.5492 13.74 59.4572 13.74ZM62.8154 14.727C63.2144 14.727 63.3194 14.538 63.3614 14.055L63.5084 12.039C63.5084 11.913 63.6134 11.829 63.7394 11.829H66.2804C66.4064 11.829 66.4904 11.913 66.4904 12.039V14.517C66.4904 14.643 66.5744 14.727 66.7004 14.727H68.6744C68.8004 14.727 68.8844 14.811 68.8844 14.937V16.659C68.8844 16.785 68.8004 16.869 68.6744 16.869H66.4694V22.056C66.4694 22.875 66.9314 23.085 67.4564 23.085C67.8764 23.085 68.3384 22.938 68.7164 22.707C68.8634 22.623 68.9684 22.665 68.9684 22.833V24.828C68.9684 24.933 68.9264 25.017 68.8424 25.08C68.2334 25.458 67.3724 25.71 66.4274 25.71C64.6844 25.71 63.1304 24.912 63.1304 22.476V16.869H62.2484C62.1224 16.869 62.0384 16.785 62.0384 16.659V14.937C62.0384 14.811 62.1224 14.727 62.2484 14.727H62.8154ZM73.4298 16.323C73.4298 16.638 73.7868 16.68 73.9128 16.407C74.3748 15.315 75.1308 14.496 76.6008 14.496C78.2178 14.496 78.9528 15.609 78.9528 17.373V25.29C78.9528 25.416 78.8688 25.5 78.7428 25.5H75.8238C75.6978 25.5 75.6138 25.416 75.6138 25.29V18.633C75.6138 17.709 75.2778 17.268 74.5848 17.268C73.8708 17.268 73.4298 17.709 73.4298 18.633V25.29C73.4298 25.416 73.3458 25.5 73.2198 25.5H70.3008C70.1748 25.5 70.0908 25.416 70.0908 25.29V10.548C70.0908 10.422 70.1748 10.338 70.3008 10.338H73.2198C73.3458 10.338 73.4298 10.422 73.4298 10.548V16.323Z' fill='%231E1E1E'/%3E%3Cpath d='M100.132 16.3203C105.58 17.3761 107.272 22.4211 107.318 27.4961C107.318 27.6101 107.226 27.7041 107.112 27.7041H100.252C100.138 27.7041 100.046 27.6121 100.046 27.5001C100.026 23.5629 99.3877 20.0896 95.4865 19.9396C95.3705 19.9356 95.2725 20.0276 95.2725 20.1456V27.5001C95.2725 27.6141 95.1806 27.7061 95.0666 27.7061H88.206C88.092 27.7061 88 27.6141 88 27.5001V8.75585C88 8.64187 88.092 8.54989 88.206 8.54989H95.0686C95.1826 8.54989 95.2745 8.64187 95.2745 8.75585V15.7764C95.2745 15.8804 95.3585 15.9644 95.4625 15.9644C95.5445 15.9644 95.6185 15.9104 95.6425 15.8324C97.4081 10.0416 100.709 8.58588 106.07 8.55189C106.184 8.55189 106.276 8.64387 106.276 8.75785V15.7604C106.276 15.8744 106.184 15.9664 106.07 15.9664H100.166C100.066 15.9664 99.9856 16.0464 99.9856 16.1464C99.9856 16.2304 100.048 16.3043 100.132 16.3203ZM118.918 20.7095V16.1704C118.918 16.0564 119.01 15.9644 119.124 15.9644H124.173C124.273 15.9644 124.353 15.8844 124.353 15.7844C124.353 15.6985 124.291 15.6245 124.207 15.6085C120.256 14.8246 118.432 12.5511 118.37 8.75585C118.368 8.64387 118.458 8.54989 118.572 8.54989H125.986C126.1 8.54989 126.192 8.64187 126.192 8.75585V11.9532C126.192 12.0672 126.284 12.1592 126.398 12.1592H130.649C130.763 12.1592 130.855 12.2511 130.855 12.3651V15.7624C130.855 15.8764 130.763 15.9684 130.649 15.9684H126.398C126.284 15.9684 126.192 16.0604 126.192 16.1744V19.8356C126.192 21.1294 126.986 21.5553 128.04 21.5553C129.692 21.5553 131.323 20.8114 131.977 20.4735C132.113 20.4035 132.277 20.5015 132.277 20.6555V26.3543C132.277 26.5063 132.193 26.6463 132.059 26.7183C131.413 27.0582 129.418 28 127.136 28C122.435 27.996 118.918 26.0824 118.918 20.7095ZM109.266 27.4981V16.1704C109.266 16.0564 109.358 15.9644 109.472 15.9644H116.334C116.448 15.9644 116.54 16.0564 116.54 16.1704V27.4981C116.54 27.6121 116.448 27.7041 116.334 27.7041H109.472C109.358 27.7021 109.266 27.6101 109.266 27.4981ZM108.876 11.4913C108.876 13.4189 110.238 14.9826 112.853 14.9826C115.469 14.9826 116.83 13.4189 116.83 11.4913C116.83 9.56369 115.471 8 112.853 8C110.238 8 108.876 9.56369 108.876 11.4913Z' fill='%231E1E1E'/%3E%3C/svg%3E");}.formkit-form[data-uid="ef3b310cee"] .formkit-powered-by-convertkit:hover,.formkit-form[data-uid="ef3b310cee"] .formkit-powered-by-convertkit:focus{background-color:#ffffff;-webkit-transform:scale(1.025) perspective(1px);-ms-transform:scale(1.025) perspective(1px);transform:scale(1.025) perspective(1px);opacity:1;}.formkit-form[data-uid="ef3b310cee"] .formkit-powered-by-convertkit[data-variant="dark"],.formkit-form[data-uid="ef3b310cee"] .formkit-powered-by-convertkit[data-variant="light"]{background-color:transparent;border-color:transparent;width:133px;}.formkit-form[data-uid="ef3b310cee"] .formkit-powered-by-convertkit[data-variant="light"]{color:#ffffff;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='133' height='36' viewBox='0 0 133 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.861 25.5C0.735 25.5 0.651 25.416 0.651 25.29V10.548C0.651 10.422 0.735 10.338 0.861 10.338H6.279C9.072 10.338 10.668 11.451 10.668 13.824C10.668 15.819 9.219 16.932 8.001 17.226C7.707 17.268 7.707 17.625 8.022 17.688C9.912 18.108 11.088 19.116 11.088 21.321C11.088 23.715 9.429 25.5 6.426 25.5H0.861ZM5.397 23.085C6.825 23.085 7.518 22.224 7.518 21.006C7.518 19.683 6.825 18.948 5.397 18.948H4.2V23.085H5.397ZM5.313 16.617C6.51 16.617 7.245 15.945 7.245 14.601C7.245 13.383 6.51 12.753 5.25 12.753H4.2V16.617H5.313ZM17.9758 23.883C17.9758 23.568 17.6608 23.505 17.5348 23.799C17.0308 24.954 16.1698 25.731 14.5528 25.731C12.8728 25.731 12.0958 24.471 12.0958 22.707V14.937C12.0958 14.811 12.1798 14.727 12.3058 14.727H15.2248C15.3508 14.727 15.4348 14.811 15.4348 14.937V21.657C15.4348 22.581 15.7708 23.022 16.4638 23.022C17.1778 23.022 17.6188 22.581 17.6188 21.657V14.937C17.6188 14.811 17.7028 14.727 17.8288 14.727H20.7478C20.8738 14.727 20.9578 14.811 20.9578 14.937V25.29C20.9578 25.416 20.8738 25.5 20.7478 25.5H18.1858C18.0598 25.5 17.9758 25.416 17.9758 25.29V23.883ZM25.6141 25.29C25.6141 25.416 25.5301 25.5 25.4041 25.5H22.4851C22.3591 25.5 22.2751 25.416 22.2751 25.29V14.937C22.2751 14.811 22.3591 14.727 22.4851 14.727H25.4041C25.5301 14.727 25.6141 14.811 25.6141 14.937V25.29ZM23.9131 13.74C22.8001 13.74 22.0441 12.942 22.0441 11.934C22.0441 10.926 22.8001 10.107 23.9131 10.107C25.0051 10.107 25.7611 10.926 25.7611 11.934C25.7611 12.942 25.0051 13.74 23.9131 13.74ZM26.7883 10.548C26.7883 10.422 26.8723 10.338 26.9983 10.338H29.9173C30.0433 10.338 30.1273 10.422 30.1273 10.548V22.056C30.1273 22.749 30.2533 23.085 30.8203 23.085C31.0093 23.085 31.1983 23.043 31.3663 23.001C31.5133 22.959 31.6183 22.959 31.6183 23.127V25.059C31.6183 25.164 31.5763 25.269 31.4923 25.311C30.9673 25.521 30.2953 25.71 29.5813 25.71C27.7123 25.71 26.7883 24.639 26.7883 22.476V10.548ZM32.4237 14.727C32.8227 14.727 32.9277 14.538 32.9697 14.055L33.1167 12.039C33.1167 11.913 33.2217 11.829 33.3477 11.829H35.8887C36.0147 11.829 36.0987 11.913 36.0987 12.039V14.517C36.0987 14.643 36.1827 14.727 36.3087 14.727H38.2827C38.4087 14.727 38.4927 14.811 38.4927 14.937V16.659C38.4927 16.785 38.4087 16.869 38.2827 16.869H36.0777V22.056C36.0777 22.875 36.5397 23.085 37.0647 23.085C37.4847 23.085 37.9467 22.938 38.3247 22.707C38.4717 22.623 38.5767 22.665 38.5767 22.833V24.828C38.5767 24.933 38.5347 25.017 38.4507 25.08C37.8417 25.458 36.9807 25.71 36.0357 25.71C34.2927 25.71 32.7387 24.912 32.7387 22.476V16.869H31.8567C31.7307 16.869 31.6467 16.785 31.6467 16.659V14.937C31.6467 14.811 31.7307 14.727 31.8567 14.727H32.4237ZM51.3808 14.727C51.5068 14.727 51.5908 14.79 51.6118 14.916L52.3888 19.851L52.5778 21.174C52.6198 21.468 52.9558 21.468 52.9768 21.174C53.0398 20.712 53.0818 20.271 53.1658 19.83L53.8798 14.916C53.9008 14.79 53.9848 14.727 54.1108 14.727H56.6728C56.8198 14.727 56.8828 14.811 56.8618 14.958L54.6778 25.311C54.6568 25.437 54.5728 25.5 54.4468 25.5H51.3178C51.1918 25.5 51.1078 25.437 51.0868 25.311L50.1208 20.082L49.8898 18.633C49.8688 18.444 49.6588 18.444 49.6378 18.633L49.4068 20.103L48.5458 25.311C48.5248 25.437 48.4408 25.5 48.3148 25.5H45.2068C45.0808 25.5 44.9968 25.437 44.9758 25.311L42.8128 14.958C42.7918 14.811 42.8548 14.727 43.0018 14.727H45.9628C46.0888 14.727 46.1728 14.79 46.1938 14.916L46.9288 19.83C47.0128 20.271 47.0758 20.754 47.1388 21.195C47.2018 21.51 47.4748 21.531 47.5378 21.195L47.7478 19.872L48.6088 14.916C48.6298 14.79 48.7138 14.727 48.8398 14.727H51.3808ZM61.1582 25.29C61.1582 25.416 61.0742 25.5 60.9482 25.5H58.0292C57.9032 25.5 57.8192 25.416 57.8192 25.29V14.937C57.8192 14.811 57.9032 14.727 58.0292 14.727H60.9482C61.0742 14.727 61.1582 14.811 61.1582 14.937V25.29ZM59.4572 13.74C58.3442 13.74 57.5882 12.942 57.5882 11.934C57.5882 10.926 58.3442 10.107 59.4572 10.107C60.5492 10.107 61.3052 10.926 61.3052 11.934C61.3052 12.942 60.5492 13.74 59.4572 13.74ZM62.8154 14.727C63.2144 14.727 63.3194 14.538 63.3614 14.055L63.5084 12.039C63.5084 11.913 63.6134 11.829 63.7394 11.829H66.2804C66.4064 11.829 66.4904 11.913 66.4904 12.039V14.517C66.4904 14.643 66.5744 14.727 66.7004 14.727H68.6744C68.8004 14.727 68.8844 14.811 68.8844 14.937V16.659C68.8844 16.785 68.8004 16.869 68.6744 16.869H66.4694V22.056C66.4694 22.875 66.9314 23.085 67.4564 23.085C67.8764 23.085 68.3384 22.938 68.7164 22.707C68.8634 22.623 68.9684 22.665 68.9684 22.833V24.828C68.9684 24.933 68.9264 25.017 68.8424 25.08C68.2334 25.458 67.3724 25.71 66.4274 25.71C64.6844 25.71 63.1304 24.912 63.1304 22.476V16.869H62.2484C62.1224 16.869 62.0384 16.785 62.0384 16.659V14.937C62.0384 14.811 62.1224 14.727 62.2484 14.727H62.8154ZM73.4298 16.323C73.4298 16.638 73.7868 16.68 73.9128 16.407C74.3748 15.315 75.1308 14.496 76.6008 14.496C78.2178 14.496 78.9528 15.609 78.9528 17.373V25.29C78.9528 25.416 78.8688 25.5 78.7428 25.5H75.8238C75.6978 25.5 75.6138 25.416 75.6138 25.29V18.633C75.6138 17.709 75.2778 17.268 74.5848 17.268C73.8708 17.268 73.4298 17.709 73.4298 18.633V25.29C73.4298 25.416 73.3458 25.5 73.2198 25.5H70.3008C70.1748 25.5 70.0908 25.416 70.0908 25.29V10.548C70.0908 10.422 70.1748 10.338 70.3008 10.338H73.2198C73.3458 10.338 73.4298 10.422 73.4298 10.548V16.323Z' fill='white'/%3E%3Cpath d='M100.132 16.3203C105.58 17.3761 107.272 22.4211 107.318 27.4961C107.318 27.6101 107.226 27.7041 107.112 27.7041H100.252C100.138 27.7041 100.046 27.6121 100.046 27.5001C100.026 23.5629 99.3877 20.0896 95.4865 19.9396C95.3705 19.9356 95.2725 20.0276 95.2725 20.1456V27.5001C95.2725 27.6141 95.1806 27.7061 95.0666 27.7061H88.206C88.092 27.7061 88 27.6141 88 27.5001V8.75585C88 8.64187 88.092 8.54989 88.206 8.54989H95.0686C95.1826 8.54989 95.2745 8.64187 95.2745 8.75585V15.7764C95.2745 15.8804 95.3585 15.9644 95.4625 15.9644C95.5445 15.9644 95.6185 15.9104 95.6425 15.8324C97.4081 10.0416 100.709 8.58588 106.07 8.55189C106.184 8.55189 106.276 8.64387 106.276 8.75785V15.7604C106.276 15.8744 106.184 15.9664 106.07 15.9664H100.166C100.066 15.9664 99.9856 16.0464 99.9856 16.1464C99.9856 16.2304 100.048 16.3043 100.132 16.3203ZM118.918 20.7095V16.1704C118.918 16.0564 119.01 15.9644 119.124 15.9644H124.173C124.273 15.9644 124.353 15.8844 124.353 15.7844C124.353 15.6985 124.291 15.6245 124.207 15.6085C120.256 14.8246 118.432 12.5511 118.37 8.75585C118.368 8.64387 118.458 8.54989 118.572 8.54989H125.986C126.1 8.54989 126.192 8.64187 126.192 8.75585V11.9532C126.192 12.0672 126.284 12.1592 126.398 12.1592H130.649C130.763 12.1592 130.855 12.2511 130.855 12.3651V15.7624C130.855 15.8764 130.763 15.9684 130.649 15.9684H126.398C126.284 15.9684 126.192 16.0604 126.192 16.1744V19.8356C126.192 21.1294 126.986 21.5553 128.04 21.5553C129.692 21.5553 131.323 20.8114 131.977 20.4735C132.113 20.4035 132.277 20.5015 132.277 20.6555V26.3543C132.277 26.5063 132.193 26.6463 132.059 26.7183C131.413 27.0582 129.418 28 127.136 28C122.435 27.996 118.918 26.0824 118.918 20.7095ZM109.266 27.4981V16.1704C109.266 16.0564 109.358 15.9644 109.472 15.9644H116.334C116.448 15.9644 116.54 16.0564 116.54 16.1704V27.4981C116.54 27.6121 116.448 27.7041 116.334 27.7041H109.472C109.358 27.7021 109.266 27.6101 109.266 27.4981ZM108.876 11.4913C108.876 13.4189 110.238 14.9826 112.853 14.9826C115.469 14.9826 116.83 13.4189 116.83 11.4913C116.83 9.56369 115.471 8 112.853 8C110.238 8 108.876 9.56369 108.876 11.4913Z' fill='white'/%3E%3C/svg%3E");}@-webkit-keyframes formkit-bouncedelay-formkit-form-data-uid-ef3b310cee-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}@keyframes formkit-bouncedelay-formkit-form-data-uid-ef3b310cee-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}.formkit-form[data-uid="ef3b310cee"] blockquote{padding:10px 20px;margin:0 0 20px;border-left:5px solid #e1e1e1;}.formkit-form[data-uid="ef3b310cee"] .seva-custom-content{padding:15px;font-size:16px;color:#fff;mix-blend-mode:difference;}.formkit-form[data-uid="ef3b310cee"] .formkit-modal.guard{max-width:420px;width:100%;} .formkit-form[data-uid="ef3b310cee"]{border:1px solid #e3e3e3;max-width:700px;position:relative;overflow:hidden;}.formkit-form[data-uid="ef3b310cee"] .formkit-background{width:100%;height:100%;position:absolute;top:0;left:0;background-size:cover;background-position:center;opacity:0.3;}.formkit-form[data-uid="ef3b310cee"] [data-style="minimal"]{padding:20px;width:100%;position:relative;}.formkit-form[data-uid="ef3b310cee"] .formkit-header{margin:0 0 27px 0;text-align:center;}.formkit-form[data-uid="ef3b310cee"] .formkit-subheader{margin:18px 0;text-align:center;}.formkit-form[data-uid="ef3b310cee"] .formkit-guarantee{font-size:13px;margin:10px 0 15px 0;text-align:center;}.formkit-form[data-uid="ef3b310cee"] .formkit-guarantee > p{margin:0;}.formkit-form[data-uid="ef3b310cee"] .formkit-powered-by-convertkit-container{margin-bottom:0;}.formkit-form[data-uid="ef3b310cee"] .formkit-fields{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:25px auto 0 auto;}.formkit-form[data-uid="ef3b310cee"] .formkit-field{min-width:220px;}.formkit-form[data-uid="ef3b310cee"] .formkit-field,.formkit-form[data-uid="ef3b310cee"] .formkit-submit{margin:0 0 15px 0;-webkit-flex:1 0 100%;-ms-flex:1 0 100%;flex:1 0 100%;}.formkit-form[data-uid="ef3b310cee"][min-width~="600"] [data-style="minimal"]{padding:40px;}.formkit-form[data-uid="ef3b310cee"][min-width~="600"] .formkit-fields[data-stacked="false"]{margin-left:-5px;margin-right:-5px;}.formkit-form[data-uid="ef3b310cee"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="ef3b310cee"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-submit{margin:0 5px 15px 5px;}.formkit-form[data-uid="ef3b310cee"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-field{-webkit-flex:100 1 auto;-ms-flex:100 1 auto;flex:100 1 auto;}.formkit-form[data-uid="ef3b310cee"][min-width~="600"] .formkit-fields[data-stacked="false"] .formkit-submit{-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;} </style></form>
+      <form action="https://app.kit.com/forms/9319858/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9319858" data-uid="ef3b310cee" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:true},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;hide&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800" style="background-color: rgb(255, 254, 238); border-radius: 4px;"><div class="formkit-background" style="opacity: 0.2;"></div><div data-style="minimal"><div class="formkit-header" data-element="header" style="color: rgb(21, 75, 20); font-size: 27px; font-weight: 700;"><h2>Join the Newsletter</h2></div><div class="formkit-subheader" data-element="subheader" style="color: rgb(21, 75, 20); font-size: 18px;"><p>Subscribe to get our latest content by email.</p></div><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="true" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" aria-label="First Name" name="fields[first_name]" required="" placeholder="First Name" type="text" style="color: rgb(21, 75, 20); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(21, 75, 20); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(21, 75, 20); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Subscribe</span></button></div><div class="formkit-guarantee" data-element="guarantee" style="color: rgb(21, 75, 20); font-size: 13px; font-weight: 400;"><p>We won't send you spam. Unsubscribe at any time.</p></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with Kit</a></div></div></form>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="px-6 py-24 bg-cream">
-  <div class="max-w-3xl mx-auto">
-    <span class="mono-label">// contact</span>
-    <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 mb-8 text-forest display-balance">
-      How to reach me.
-    </h2>
-    <div class="space-y-5 text-ash text-base leading-relaxed">
-      <div class="flex gap-4">
-        <span class="font-mono text-forest text-sm w-32 shrink-0">// general</span>
-        <a href="mailto:support@mayaherring.com" class="text-forest underline decoration-moss decoration-2 underline-offset-4">support@mayaherring.com</a>
-      </div>
-      <div class="flex gap-4">
-        <span class="font-mono text-forest text-sm w-32 shrink-0">// brand_inquiries</span>
-        <a href="https://mayaherring.com" class="text-forest underline decoration-moss decoration-2 underline-offset-4">mayaherring.com</a>
-        <span class="text-ash/60 text-sm">(not handled here)</span>
-      </div>
-      <div class="flex gap-4">
-        <span class="font-mono text-forest text-sm w-32 shrink-0">// instagram</span>
-        <a href="https://www.instagram.com/mayacreativeco/" target="_blank" rel="noopener" class="text-forest underline decoration-moss decoration-2 underline-offset-4">@mayacreativeco</a>
-      </div>
-      <div class="flex gap-4">
-        <span class="font-mono text-forest text-sm w-32 shrink-0">// tiktok</span>
-        <a href="https://www.tiktok.com/@mayacreativeco" target="_blank" rel="noopener" class="text-forest underline decoration-moss decoration-2 underline-offset-4">@mayacreativeco</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="px-6 py-24 bg-creamDeep border-t border-line">
-  <div class="max-w-3xl mx-auto text-center">
+<!-- ============ FINAL CTA ============ -->
+<section class="px-6 py-28 relative overflow-hidden flow-b">
+  <div class="checker-amb checkerboard-cream w-[340px] h-[340px] -top-10 -left-20"></div>
+  <div class="checker-amb checkerboard-cream w-[300px] h-[300px] -bottom-12 -right-16" style="animation-delay: -5s, -9s;"></div>
+  <div class="reveal max-w-3xl mx-auto text-center relative z-10">
     <span class="mono-label">// where_to_go_next</span>
-    <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-6 display-balance text-forest">Now that you know me.</h2>
-    <p class="text-lg text-ash mb-10 max-w-xl mx-auto display-balance">Start with the Kit or apply for an Intensive. Both are built to actually move your business.</p>
+    <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-6 display-balance text-cream">Now that you know me.</h2>
+    <p class="text-lg text-cream/70 mb-10 max-w-xl mx-auto display-balance">Start free with Booked Out, or apply for an Intensive. Both are built to actually move your business — no theory.</p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-      <a href="https://booked-out.mayacreativeco.com/" class="btn-primary">Get the Kit →</a>
+      <a href="https://booked-out.mayacreativeco.com" class="btn-primary">Try Booked Out for Free →</a>
       <a href="intensive.html" class="btn-secondary">See the Intensive</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="bg-forestDeep text-cream/70">
-  <div class="checkerboard h-2"></div>
-  <div class="px-6 py-14 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
-    <div>
-      <div class="flex items-center gap-2 mb-3">
-        <span class="inline-block w-5 h-5 checkerboard-cream"></span>
-        <p class="font-display text-lg font-bold text-cream">Maya Creative Co</p>
+<!-- ============ FOOTER ============ -->
+<footer class="bg-forestDeep relative overflow-hidden">
+  <div class="checkerboard-cream h-2"></div>
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="grid md:grid-cols-12 gap-10 py-16 border-b border-cream/10">
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-block w-6 h-6 checkerboard-cream"></span>
+          <p class="font-display text-xl font-bold text-cream">Maya Creative Co</p>
+        </div>
+        <p class="text-cream/55 text-sm leading-relaxed max-w-xs mb-6">
+          Booked Out — the subscription command center for UGC creators ready to operate like a business.
+        </p>
+        <a href="https://booked-out.mayacreativeco.com" class="btn-primary !py-3 !px-5 text-sm">Try Booked Out for Free →</a>
       </div>
-      <p class="text-xs max-w-xs">For UGC creators ready to operate like a business.</p>
+      <div class="md:col-span-2">
+        <p class="mono-label mb-5">// platform</p>
+        <div class="flex flex-col gap-3 text-sm">
+          <a href="index.html#features" class="text-cream/60 hover:text-cream transition-colors">Features</a>
+          <a href="index.html#benefits" class="text-cream/60 hover:text-cream transition-colors">Benefits</a>
+          <a href="index.html#pricing" class="text-cream/60 hover:text-cream transition-colors">Pricing</a>
+          <a href="https://booked-out.mayacreativeco.com/login.html" class="text-cream/60 hover:text-cream transition-colors">Sign in</a>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <p class="mono-label mb-5">// company</p>
+        <div class="flex flex-col gap-3 text-sm">
+          <a href="index.html#story" class="text-cream/60 hover:text-cream transition-colors">Story</a>
+          <a href="about.html" class="text-cream/60 hover:text-cream transition-colors">About Maya</a>
+          <a href="intensive.html" class="text-cream/60 hover:text-cream transition-colors">The Intensive</a>
+          <a href="contact.html" class="text-cream/60 hover:text-cream transition-colors">Contact</a>
+        </div>
+      </div>
+      <div class="md:col-span-3">
+        <p class="mono-label mb-5">// connect</p>
+        <p class="text-cream/55 text-sm leading-relaxed mb-5">
+          Questions? Email me at<br>
+          <a href="mailto:support@mayaherring.com" class="text-mint hover:text-cream underline">support@mayaherring.com</a>
+        </p>
+        <div class="flex gap-3">
+          <a href="https://www.instagram.com/mayacreativeco/" target="_blank" rel="noopener" aria-label="Instagram"
+             class="w-10 h-10 rounded-md border border-cream/15 flex items-center justify-center text-cream/70 hover:text-cream hover:border-mint hover:bg-cream/5 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/>
+              <circle cx="17.8" cy="6.2" r="1.2" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@mayacreativeco" target="_blank" rel="noopener" aria-label="TikTok"
+             class="w-10 h-10 rounded-md border border-cream/15 flex items-center justify-center text-cream/70 hover:text-cream hover:border-mint hover:bg-cream/5 transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16.6 2h-3.1v12.8a2.6 2.6 0 1 1-2.6-2.6c.25 0 .5.04.73.1V9.1a5.7 5.7 0 1 0 4.97 5.65V8.3a6.9 6.9 0 0 0 4.1 1.32V6.5a3.9 3.9 0 0 1-4.07-3.8c-.01-.23-.02-.46-.02-.7z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="text-xs grid grid-cols-2 gap-x-10 gap-y-2">
-      <a href="https://booked-out.mayacreativeco.com" class="hover:text-cream font-mono">→ booked out kit</a>
-      <a href="index.html#intensive" class="hover:text-cream font-mono">→ intensive</a>
-      <a href="about.html" class="hover:text-cream font-mono">→ about</a>
-      <a href="mailto:support@mayaherring.com" class="hover:text-cream font-mono">→ contact</a>
-      <a href="https://www.instagram.com/mayacreativeco/" target="_blank" rel="noopener" class="hover:text-cream font-mono">→ instagram</a>
-      <a href="https://www.tiktok.com/@mayacreativeco" target="_blank" rel="noopener" class="hover:text-cream font-mono">→ tiktok</a>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-3 py-8 text-xs font-mono text-cream/40">
+      <p>© 2026 Maya Creative Co · All rights reserved.</p>
+      <p class="text-cream/55">Great videos don't book brands. Systems do.</p>
     </div>
-    <p class="text-xs font-mono">© 2026</p>
   </div>
 </footer>
 
 <script>
-  document.getElementById('menuBtn').addEventListener('click', function() {
-    document.getElementById('mobileMenu').classList.toggle('hidden');
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', function() { mobileMenu.classList.toggle('hidden'); });
+  document.querySelectorAll('#mobileMenu a').forEach(function(link) {
+    link.addEventListener('click', function() { mobileMenu.classList.add('hidden'); });
   });
+  (function() {
+    document.querySelectorAll('[data-stagger]').forEach(function(group) {
+      Array.prototype.forEach.call(group.querySelectorAll('.reveal'), function(el, i) {
+        el.style.transitionDelay = (i * 0.08) + 's';
+      });
+    });
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+  })();
 </script>
 
 </body>
