@@ -41,7 +41,7 @@
   .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .display-balance { text-wrap: balance; }
-  section[id] { scroll-margin-top: 84px; }
+  section[id] { scroll-margin-top: 108px; }
 
   .flow-a { background: #1B3A2F; }
   .flow-b { background: #1B3A2F; }
@@ -141,40 +141,42 @@
 <div class="checkerboard-cream checker-drift h-2"></div>
 
 <!-- NAV -->
-<nav class="border-b border-cream/10 bg-forestDeep/90 backdrop-blur sticky top-0 z-40">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center gap-6">
-    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-cream flex items-center gap-2 shrink-0">
-      <img src="booked-out-logo.png" alt="Booked Out" class="w-7 h-7 rounded-[3px]">
-      Maya Creative Co
-    </a>
-    <div class="hidden lg:flex items-center gap-7">
-      <a href="#fit" class="nav-link">Is it for me?</a>
-      <a href="#inside" class="nav-link">What's included</a>
-      <a href="#process" class="nav-link">Process</a>
-      <a href="#investment" class="nav-link">Investment</a>
-      <a href="#faq" class="nav-link">FAQ</a>
-      <a href="index.html" class="nav-link">Booked Out Kit</a>
+<div class="fixed top-3 inset-x-0 z-50 px-4">
+  <div class="max-w-5xl mx-auto">
+    <nav class="flex items-center justify-between gap-4 rounded-full border border-cream/12 bg-forest/75 backdrop-blur-lg pl-5 pr-2.5 py-2.5 shadow-[0_14px_44px_-16px_rgba(0,0,0,0.65)]">
+      <a href="index.html" class="font-display text-base font-bold tracking-tight text-cream flex items-center gap-2 shrink-0">
+        <img src="booked-out-logo.png" alt="Booked Out" class="w-7 h-7 rounded-[4px]">
+        <span class="hidden sm:inline">Maya Creative Co</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-5">
+        <a href="#fit" class="nav-link">Is it for me?</a>
+        <a href="#inside" class="nav-link">What's included</a>
+        <a href="#process" class="nav-link">Process</a>
+        <a href="#investment" class="nav-link">Investment</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="index.html" class="nav-link">Booked Out Kit</a>
+      </div>
+      <a href="intensive-apply.html" class="btn-primary text-sm hidden lg:inline-flex !py-2.5 !px-5 !rounded-full">Apply →</a>
+      <button id="menuBtn" class="lg:hidden flex flex-col gap-1.5 p-2.5" aria-label="Open menu">
+        <span class="w-5 h-0.5 bg-cream block"></span>
+        <span class="w-5 h-0.5 bg-cream block"></span>
+        <span class="w-5 h-0.5 bg-cream block"></span>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden lg:hidden mt-2 rounded-2xl border border-cream/12 bg-forest/97 backdrop-blur-lg px-6 py-6 flex flex-col gap-4 shadow-[0_14px_44px_-16px_rgba(0,0,0,0.65)]">
+      <a href="#fit" class="nav-link !text-sm">Is it for me?</a>
+      <a href="#inside" class="nav-link !text-sm">What's included</a>
+      <a href="#process" class="nav-link !text-sm">Process</a>
+      <a href="#investment" class="nav-link !text-sm">Investment</a>
+      <a href="#faq" class="nav-link !text-sm">FAQ</a>
+      <a href="index.html" class="nav-link !text-sm">Booked Out Kit</a>
+      <a href="intensive-apply.html" class="btn-primary !py-3 !px-5 text-sm justify-center !rounded-full">Apply for an Intensive →</a>
     </div>
-    <a href="intensive-apply.html" class="btn-primary text-sm hidden lg:inline-flex !py-3 !px-5">Apply →</a>
-    <button id="menuBtn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
-      <span class="w-6 h-0.5 bg-cream block"></span>
-      <span class="w-6 h-0.5 bg-cream block"></span>
-      <span class="w-6 h-0.5 bg-cream block"></span>
-    </button>
   </div>
-  <div id="mobileMenu" class="hidden lg:hidden border-t border-cream/10 bg-forestDeep px-6 py-6 flex flex-col gap-5">
-    <a href="#fit" class="nav-link !text-sm">Is it for me?</a>
-    <a href="#inside" class="nav-link !text-sm">What's included</a>
-    <a href="#process" class="nav-link !text-sm">Process</a>
-    <a href="#investment" class="nav-link !text-sm">Investment</a>
-    <a href="#faq" class="nav-link !text-sm">FAQ</a>
-    <a href="index.html" class="nav-link !text-sm">Booked Out Kit</a>
-    <a href="intensive-apply.html" class="btn-primary !py-3 !px-5 text-sm justify-center">Apply for an Intensive →</a>
-  </div>
-</nav>
+</div>
 
 <!-- ============ HERO ============ -->
-<section class="px-6 py-24 md:py-36 relative overflow-hidden flow-a">
+<section class="px-6 pt-32 md:pt-44 pb-24 md:pb-32 relative overflow-hidden flow-a">
   <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[640px] h-[640px] rounded-full pointer-events-none"
        style="background: radial-gradient(circle, rgba(74,124,89,0.38) 0%, rgba(74,124,89,0) 70%);"></div>
   <div class="max-w-4xl mx-auto relative text-center">

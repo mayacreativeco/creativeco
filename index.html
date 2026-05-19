@@ -41,7 +41,7 @@
   .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .display-balance { text-wrap: balance; }
-  section[id] { scroll-margin-top: 84px; }
+  section[id] { scroll-margin-top: 108px; }
 
   /* ---- two colors only: one dark green, one cream ---- */
   .bg-green { background-color: #1B3A2F; }
@@ -70,6 +70,9 @@
     background-position: 0 0, 0 8px, 8px -8px, -8px 0;
   }
   .checker-amb { position: absolute; pointer-events: none; opacity: 0.06; z-index: 0; }
+
+  /* animated checkerboard mark — the brand logo, built tile by tile */
+  .tile { background-color: #F5F0E4; border-radius: 3px; }
 
   /* ---- elevation ---- */
   .shadow-float { box-shadow: 0 30px 70px -28px rgba(0,0,0,0.7); }
@@ -176,6 +179,10 @@
     @keyframes checkerBreath { 0%, 100% { opacity: 0.03; } 50% { opacity: 0.12; } }
     .checker-amb { animation: checkerBreath 9s ease-in-out infinite, checkerDrift 22s linear infinite; }
 
+    /* hero checkerboard tiles pop in a diagonal wave, quadrant by quadrant */
+    @keyframes tilePop { 0%, 100% { opacity: .28; transform: scale(.66); } 48% { opacity: 1; transform: scale(1); } }
+    .tile { animation: tilePop 3s ease-in-out infinite; }
+
     /* checkmark draws itself whenever its card is in view */
     .draw-check path { stroke-dasharray: 30; stroke-dashoffset: 30; transition: stroke-dashoffset .65s ease .15s; }
     .in .draw-check path { stroke-dashoffset: 0; }
@@ -191,51 +198,72 @@
 <!-- ============ TOP STRIP ============ -->
 <div class="checkerboard-cream checker-drift h-2"></div>
 
-<!-- ============ NAV ============ -->
-<nav class="border-b border-cream/10 bg-green/95 backdrop-blur sticky top-0 z-40">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center gap-6">
-    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-cream flex items-center gap-2.5 shrink-0">
-      <img src="booked-out-logo.png" alt="Booked Out" class="w-7 h-7 rounded-[3px]">
-      Maya Creative Co
-    </a>
-    <div class="hidden lg:flex items-center gap-7">
-      <a href="#story" class="nav-link">Story</a>
-      <a href="#features" class="nav-link">Features</a>
-      <a href="#benefits" class="nav-link">Benefits</a>
-      <a href="#pricing" class="nav-link">Pricing</a>
-      <a href="intensive.html" class="nav-link">Intensive</a>
-      <a href="contact.html" class="nav-link">Contact</a>
+<!-- ============ NAV (floating pill) ============ -->
+<div class="fixed top-3 inset-x-0 z-50 px-4">
+  <div class="max-w-5xl mx-auto">
+    <nav class="flex items-center justify-between gap-4 rounded-full border border-cream/12 bg-forest/75 backdrop-blur-lg pl-5 pr-2.5 py-2.5 shadow-[0_14px_44px_-16px_rgba(0,0,0,0.65)]">
+      <a href="index.html" class="font-display text-base font-bold tracking-tight text-cream flex items-center gap-2 shrink-0">
+        <img src="booked-out-logo.png" alt="Booked Out" class="w-7 h-7 rounded-[4px]">
+        <span class="hidden sm:inline">Maya Creative Co</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-6">
+        <a href="#story" class="nav-link">Story</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#benefits" class="nav-link">Benefits</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="intensive.html" class="nav-link">Intensive</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <a href="https://booked-out.mayacreativeco.com" class="btn-primary text-sm hidden lg:inline-flex !py-2.5 !px-5 !rounded-full">Try for Free →</a>
+      <button id="menuBtn" class="lg:hidden flex flex-col gap-1.5 p-2.5" aria-label="Open menu">
+        <span class="w-5 h-0.5 bg-cream block"></span>
+        <span class="w-5 h-0.5 bg-cream block"></span>
+        <span class="w-5 h-0.5 bg-cream block"></span>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden lg:hidden mt-2 rounded-2xl border border-cream/12 bg-forest/97 backdrop-blur-lg px-6 py-6 flex flex-col gap-4 shadow-[0_14px_44px_-16px_rgba(0,0,0,0.65)]">
+      <a href="#story" class="nav-link !text-sm">Story</a>
+      <a href="#features" class="nav-link !text-sm">Features</a>
+      <a href="#benefits" class="nav-link !text-sm">Benefits</a>
+      <a href="#pricing" class="nav-link !text-sm">Pricing</a>
+      <a href="intensive.html" class="nav-link !text-sm">Intensive</a>
+      <a href="contact.html" class="nav-link !text-sm">Contact</a>
+      <a href="https://booked-out.mayacreativeco.com" class="btn-primary !py-3 !px-5 text-sm justify-center !rounded-full">Try for Free →</a>
     </div>
-    <a href="https://booked-out.mayacreativeco.com" class="btn-primary text-sm hidden lg:inline-flex !py-3 !px-5">Try for Free →</a>
-    <button id="menuBtn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
-      <span class="w-6 h-0.5 bg-cream block"></span>
-      <span class="w-6 h-0.5 bg-cream block"></span>
-      <span class="w-6 h-0.5 bg-cream block"></span>
-    </button>
   </div>
-  <div id="mobileMenu" class="hidden lg:hidden border-t border-cream/10 bg-green px-6 py-6 flex flex-col gap-5">
-    <a href="#story" class="nav-link !text-sm">Story</a>
-    <a href="#features" class="nav-link !text-sm">Features</a>
-    <a href="#benefits" class="nav-link !text-sm">Benefits</a>
-    <a href="#pricing" class="nav-link !text-sm">Pricing</a>
-    <a href="intensive.html" class="nav-link !text-sm">Intensive</a>
-    <a href="contact.html" class="nav-link !text-sm">Contact</a>
-    <a href="https://booked-out.mayacreativeco.com" class="btn-primary !py-3 !px-5 text-sm justify-center">Try for Free →</a>
-  </div>
-</nav>
+</div>
 
 <!-- ============ HERO ============ -->
-<section class="bg-green px-6 py-24 md:py-36 relative overflow-hidden">
+<section class="bg-green px-6 pt-32 md:pt-44 pb-24 md:pb-32 relative overflow-hidden">
   <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[640px] h-[640px] rounded-full pointer-events-none"
        style="background: radial-gradient(circle, rgba(74,124,89,0.30) 0%, rgba(74,124,89,0) 70%);"></div>
   <div class="checker-amb checkerboard-cream w-[360px] h-[360px] -top-16 -left-24"></div>
   <div class="checker-amb checkerboard-cream w-[300px] h-[300px] bottom-0 -right-20" style="animation-delay: -4.5s, -8s;"></div>
 
   <div class="max-w-4xl mx-auto relative z-10 text-center">
-    <div class="reveal flex items-center justify-center gap-3 mb-8">
-      <span class="inline-block w-8 h-2 checkerboard-cream"></span>
+    <!-- animated checkerboard mark -->
+    <div class="reveal flex justify-center mb-7">
+      <div class="grid grid-cols-4 gap-1.5 w-[72px]" aria-hidden="true">
+        <span class="aspect-square tile" style="animation-delay:0s"></span>
+        <span class="aspect-square"></span>
+        <span class="aspect-square tile" style="animation-delay:.34s"></span>
+        <span class="aspect-square"></span>
+        <span class="aspect-square"></span>
+        <span class="aspect-square tile" style="animation-delay:.34s"></span>
+        <span class="aspect-square"></span>
+        <span class="aspect-square tile" style="animation-delay:.68s"></span>
+        <span class="aspect-square tile" style="animation-delay:.34s"></span>
+        <span class="aspect-square"></span>
+        <span class="aspect-square tile" style="animation-delay:.68s"></span>
+        <span class="aspect-square"></span>
+        <span class="aspect-square"></span>
+        <span class="aspect-square tile" style="animation-delay:.68s"></span>
+        <span class="aspect-square"></span>
+        <span class="aspect-square tile" style="animation-delay:1.02s"></span>
+      </div>
+    </div>
+    <div class="reveal reveal-d1 flex items-center justify-center mb-7">
       <span class="mono-label">// booked_out — your ugc command center</span>
-      <span class="inline-block w-8 h-2 checkerboard-cream"></span>
     </div>
     <h1 class="reveal reveal-d1 font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] tracking-tight display-balance mb-8 text-cream">
       Great videos don't book brands. <span class="italic text-mint">Systems do.</span>
@@ -532,90 +560,92 @@
       </h3>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-10 lg:gap-14 items-center mb-24">
-      <div class="reveal reveal-left">
-        <span class="mono-label on-cream">// 01_clear · niche_selector</span>
-        <h4 class="font-display text-3xl font-bold text-forest mt-4 mb-4 display-balance">What kind of creator are you?</h4>
-        <p class="text-ash leading-relaxed mb-5">Answer a few prompts and the Niche Selector builds your positioning sentence — the one line you'll use in every pitch, bio, and brand intro. No more sounding like a generalist who shoots "anything."</p>
-        <p class="font-mono text-xs text-moss">→ positioning · niche · media_kit_ready</p>
-      </div>
-      <figure class="reveal reveal-right bg-white border border-line rounded-md overflow-hidden shadow-float-soft lift">
-        <div class="browser-bar flex items-center gap-2 px-3 py-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
-        </div>
-        <div class="zoom-wrap"><img data-zoom src="shot-niche-selector.png" alt="The Niche Selector tool inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
-      </figure>
-    </div>
+    <div data-stagger class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-    <div class="grid md:grid-cols-2 gap-10 lg:gap-14 items-center mb-24">
-      <figure class="reveal reveal-left md:order-1 order-2 bg-white border border-line rounded-md overflow-hidden shadow-float-soft lift">
-        <div class="browser-bar flex items-center gap-2 px-3 py-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
-        </div>
-        <div class="zoom-wrap"><img data-zoom src="shot-rate-calculator.png" alt="The Rate Calculator tool inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
-      </figure>
-      <div class="reveal reveal-right md:order-2 order-1">
-        <span class="mono-label on-cream">// 03_paid · rate_calculator</span>
-        <h4 class="font-display text-3xl font-bold text-forest mt-4 mb-4 display-balance">What should I charge?</h4>
-        <p class="text-ash leading-relaxed mb-5">Run any deal through the calculator — deliverables, usage rights, turnaround, revisions, your experience tier — and get a defensible rate range, a suggested package, and tailored negotiation notes. Works for UGC-only, posting, and bundles.</p>
-        <p class="font-mono text-xs text-moss">→ rate_range · package · negotiation_notes</p>
-      </div>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-10 lg:gap-14 items-center mb-28">
-      <div class="reveal reveal-left">
-        <span class="mono-label on-cream">// 04_booked · contract_redline_detector</span>
-        <h4 class="font-display text-3xl font-bold text-forest mt-4 mb-4 display-balance">Don't sign that contract yet.</h4>
-        <p class="text-ash leading-relaxed mb-5">Paste a brand's contract and the AI audits every clause against 9 categories that quietly cost creators money, rights, and leverage — then writes the exact redlines to send back. Private: nothing is logged or stored.</p>
-        <p class="font-mono text-xs text-moss">→ ai_powered · 9_categories · redlines_written_for_you</p>
-      </div>
-      <figure class="reveal reveal-right bg-white border border-line rounded-md overflow-hidden shadow-float-soft lift">
-        <div class="browser-bar flex items-center gap-2 px-3 py-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-cream/20"></span>
-        </div>
-        <div class="zoom-wrap"><img data-zoom src="shot-contract-redline.png" alt="The Contract Redline Detector inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
-      </figure>
-    </div>
-
-    <div data-stagger class="grid grid-cols-1 sm:grid-cols-2 gap-6">
       <div class="reveal bg-white border border-line rounded-md overflow-hidden lift shadow-float-soft">
-        <div class="zoom-wrap"><img data-zoom src="shot-hook-generator.png" alt="The Hook Generator inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
+        <div class="browser-bar flex items-center gap-1.5 px-3 py-2">
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+        </div>
+        <img src="shot-niche-selector.png" alt="The Niche Selector inside Booked Out" class="w-full block border-b border-line" loading="lazy">
+        <div class="p-6">
+          <span class="font-mono text-[10px] tracking-widest uppercase text-moss font-medium">// 01_clear · niche_selector</span>
+          <h4 class="font-display text-lg font-bold text-forest mt-2 mb-1.5">What kind of creator are you?</h4>
+          <p class="text-ash text-sm leading-relaxed">Builds the one-line positioning statement you'll use in every bio, pitch, and media kit.</p>
+        </div>
+      </div>
+
+      <div class="reveal bg-white border border-line rounded-md overflow-hidden lift shadow-float-soft">
+        <div class="browser-bar flex items-center gap-1.5 px-3 py-2">
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+        </div>
+        <img src="shot-hook-generator.png" alt="The Hook Generator inside Booked Out" class="w-full block border-b border-line" loading="lazy">
         <div class="p-6">
           <span class="font-mono text-[10px] tracking-widest uppercase text-moss font-medium">// 02_visible · hook_generator</span>
-          <h4 class="font-display text-xl font-bold text-forest mt-2 mb-1">Generate 5 hooks for any product</h4>
-          <p class="text-ash text-sm leading-relaxed">The first 2 seconds decide everything. Drop in a product and get five specific, scroll-stopping hooks — ready to shoot.</p>
+          <h4 class="font-display text-lg font-bold text-forest mt-2 mb-1.5">Generate 5 hooks for any product</h4>
+          <p class="text-ash text-sm leading-relaxed">Drop in a product, get five specific, scroll-stopping hooks — ready to shoot.</p>
         </div>
       </div>
+
       <div class="reveal bg-white border border-line rounded-md overflow-hidden lift shadow-float-soft">
-        <div class="zoom-wrap"><img data-zoom src="shot-script-builder.png" alt="The UGC Script Builder inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
+        <div class="browser-bar flex items-center gap-1.5 px-3 py-2">
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+        </div>
+        <img src="shot-rate-calculator.png" alt="The Rate Calculator inside Booked Out" class="w-full block border-b border-line" loading="lazy">
         <div class="p-6">
-          <span class="font-mono text-[10px] tracking-widest uppercase text-moss font-medium">// 02_visible · ugc_script_builder</span>
-          <h4 class="font-display text-xl font-bold text-forest mt-2 mb-1">Build a viral UGC script</h4>
-          <p class="text-ash text-sm leading-relaxed">Pick your format, mode, and timing — get a complete script with visual direction built in. Sells the transformation, not the spec sheet.</p>
+          <span class="font-mono text-[10px] tracking-widest uppercase text-moss font-medium">// 03_paid · rate_calculator</span>
+          <h4 class="font-display text-lg font-bold text-forest mt-2 mb-1.5">What should I charge?</h4>
+          <p class="text-ash text-sm leading-relaxed">A defensible rate range, a package, and negotiation notes for any deal type.</p>
         </div>
       </div>
+
       <div class="reveal bg-white border border-line rounded-md overflow-hidden lift shadow-float-soft">
-        <div class="zoom-wrap"><img data-zoom src="shot-pitch-generator.png" alt="The Pitch Generator inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
+        <div class="browser-bar flex items-center gap-1.5 px-3 py-2">
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+        </div>
+        <img src="shot-pitch-generator.png" alt="The Pitch Generator inside Booked Out" class="w-full block border-b border-line" loading="lazy">
         <div class="p-6">
           <span class="font-mono text-[10px] tracking-widest uppercase text-moss font-medium">// 04_booked · pitch_generator</span>
-          <h4 class="font-display text-xl font-bold text-forest mt-2 mb-1">Write the outbound for me</h4>
-          <p class="text-ash text-sm leading-relaxed">Fill the fields, get a personalized cold pitch that sounds like you — so the blank DM box stops being the reason you don't pitch.</p>
+          <h4 class="font-display text-lg font-bold text-forest mt-2 mb-1.5">Write the outbound for me</h4>
+          <p class="text-ash text-sm leading-relaxed">A personalized cold pitch that sounds like you — outreach without the blank-page dread.</p>
         </div>
       </div>
+
       <div class="reveal bg-white border border-line rounded-md overflow-hidden lift shadow-float-soft">
-        <div class="zoom-wrap"><img data-zoom src="shot-workshops.png" alt="In-depth workshops inside Booked Out" class="zoom-img w-full block" loading="lazy"></div>
+        <div class="browser-bar flex items-center gap-1.5 px-3 py-2">
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+        </div>
+        <img src="shot-contract-redline.png" alt="The Contract Redline Detector inside Booked Out" class="w-full block border-b border-line" loading="lazy">
+        <div class="p-6">
+          <span class="font-mono text-[10px] tracking-widest uppercase text-moss font-medium">// 04_booked · contract_redline</span>
+          <h4 class="font-display text-lg font-bold text-forest mt-2 mb-1.5">Don't sign that contract yet</h4>
+          <p class="text-ash text-sm leading-relaxed">AI audits every clause against 9 risk categories and writes the redlines to send back.</p>
+        </div>
+      </div>
+
+      <div class="reveal bg-white border border-line rounded-md overflow-hidden lift shadow-float-soft">
+        <div class="browser-bar flex items-center gap-1.5 px-3 py-2">
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+          <span class="w-2 h-2 rounded-full bg-cream/20"></span>
+        </div>
+        <img src="shot-workshops.png" alt="In-depth workshops inside Booked Out" class="w-full block border-b border-line" loading="lazy">
         <div class="p-6">
           <span class="font-mono text-[10px] tracking-widest uppercase text-moss font-medium">// workshops · members_only</span>
-          <h4 class="font-display text-xl font-bold text-forest mt-2 mb-1">In-depth workshops</h4>
-          <p class="text-ash text-sm leading-relaxed">Real walkthroughs on the business-critical stuff nobody teaches — portfolio, taxes, systems. New drops every month.</p>
+          <h4 class="font-display text-lg font-bold text-forest mt-2 mb-1.5">In-depth workshops</h4>
+          <p class="text-ash text-sm leading-relaxed">Monthly deep-dive walkthroughs on the business of UGC — portfolio, taxes, systems.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
