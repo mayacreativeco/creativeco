@@ -180,6 +180,10 @@
     .reveal-scale { transform: scale(.93); }
     .reveal.in { opacity: 1; transform: none; }
 
+    /* mockup starts zoomed-in, eases back out to full scale on scroll-in */
+    .zoom-out { transform: scale(1.24); transition: transform 1.15s cubic-bezier(.16,1,.3,1); will-change: transform; }
+    .zoom-out.in { transform: scale(1); }
+
     @keyframes checkerDrift {
       from { background-position: 0 0, 0 8px, 8px -8px, -8px 0; }
       to   { background-position: 32px 0, 32px 8px, 40px -8px, 24px 0; }
@@ -342,8 +346,8 @@
         Open Booked Out and you get a real web app — interactive tools that do the work <span class="italic">with</span> you. Not a folder of documents you'll download once and never open again.
       </p>
     </div>
-    <figure class="reveal reveal-scale">
-      <img src="mockup-command-center.png" alt="The Booked Out command center, open on a laptop" class="w-full block rounded-xl shadow-float">
+    <figure class="overflow-hidden rounded-xl shadow-float">
+      <img src="mockup-command-center.png" alt="The Booked Out command center, open on a laptop" class="zoom-out w-full block">
     </figure>
   </div>
 </section>
@@ -1112,7 +1116,7 @@
         }
       });
     }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal, [data-count]').forEach(function(el) { io.observe(el); });
+    document.querySelectorAll('.reveal, .zoom-out, [data-count]').forEach(function(el) { io.observe(el); });
   })();
 
   // scroll-linked zoom on screenshots
