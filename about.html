@@ -27,7 +27,7 @@
         },
         colors: {
           cream: '#F5F0E4', creamDeep: '#EDE5D2', forest: '#1B3A2F',
-          forestDeep: '#0F2620', forestLight: '#2D5742', moss: '#4A7C59',
+          forestDeep: '#1B3A2F', forestLight: '#2D5742', moss: '#4A7C59',
           mint: '#86C9A1', ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
         },
       },
@@ -37,17 +37,17 @@
 
 <style>
   html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', system-ui, sans-serif; background-color: #0F2620; color: #F5F0E4; }
+  body { font-family: 'Inter', system-ui, sans-serif; background-color: #1B3A2F; color: #F5F0E4; }
   .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .display-balance { text-wrap: balance; }
 
-  .flow-a { background: linear-gradient(180deg, #1B3A2F 0%, #0F2620 100%); }
-  .flow-b { background: linear-gradient(180deg, #0F2620 0%, #1B3A2F 100%); }
-  .cream-down { background: linear-gradient(180deg, #F5F0E4 0%, #EDE5D2 100%); }
-  .cream-up   { background: linear-gradient(180deg, #EDE5D2 0%, #F5F0E4 100%); }
-  .enter-cream { background: linear-gradient(180deg, #0F2620 0px, #F5F0E4 160px, #F5F0E4 100%); }
-  .enter-green { background: linear-gradient(180deg, #EDE5D2 0px, #1B3A2F 170px, #0F2620 100%); }
+  .flow-a, .flow-b, .bg-green { background: #1B3A2F; }
+  .cream-down, .cream-up, .enter-cream, .bg-cream { background: #F5F0E4; }
+  .enter-green { background: #1B3A2F; }
+  /* soft transition strips between the green and cream blocks */
+  .fade-to-cream { background: linear-gradient(180deg, #1B3A2F 0%, #F5F0E4 100%); }
+  .fade-to-green { background: linear-gradient(180deg, #F5F0E4 0%, #1B3A2F 100%); }
 
   .checkerboard-cream {
     background-image:
@@ -161,7 +161,7 @@
 <nav class="border-b border-cream/10 bg-forestDeep/90 backdrop-blur sticky top-0 z-40">
   <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center gap-6">
     <a href="index.html" class="font-display text-xl font-bold tracking-tight text-cream flex items-center gap-2 shrink-0">
-      <span class="inline-block w-5 h-5 checkerboard-cream rounded-sm"></span>
+      <img src="booked-out-logo.png" alt="Booked Out" class="w-7 h-7 rounded-[3px]">
       Maya Creative Co
     </a>
     <div class="hidden lg:flex items-center gap-7">
@@ -213,8 +213,11 @@
   </div>
 </section>
 
+<!-- soft transition: green → cream -->
+<div class="fade-to-cream h-72 md:h-96"></div>
+
 <!-- ============ THE STORY (cream) ============ -->
-<section class="enter-cream px-6 pt-44 pb-28">
+<section class="bg-cream px-6 pt-4 pb-28">
   <div class="reveal max-w-3xl mx-auto">
     <span class="mono-label on-cream">// the_story</span>
     <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-10 text-forest display-balance">
@@ -291,8 +294,11 @@
   </div>
 </section>
 
+<!-- soft transition: cream → green -->
+<div class="fade-to-green h-72 md:h-96"></div>
+
 <!-- ============ NEWSLETTER (dark) ============ -->
-<section id="newsletter" class="enter-green px-6 pt-44 pb-28">
+<section id="newsletter" class="bg-green px-6 pt-4 pb-28">
   <div class="reveal max-w-3xl mx-auto">
     <div class="flex items-center gap-3 mb-8">
       <span class="inline-block w-8 h-2 checkerboard-cream"></span>
@@ -331,7 +337,7 @@
     <div class="grid md:grid-cols-12 gap-10 py-16 border-b border-cream/10">
       <div class="md:col-span-5">
         <div class="flex items-center gap-2.5 mb-4">
-          <span class="inline-block w-6 h-6 checkerboard-cream"></span>
+          <img src="booked-out-logo.png" alt="Booked Out" class="w-8 h-8 rounded-[3px]">
           <p class="font-display text-xl font-bold text-cream">Maya Creative Co</p>
         </div>
         <p class="text-cream/55 text-sm leading-relaxed max-w-xs mb-6">
@@ -402,7 +408,7 @@
     });
     var io = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        if (e.isIntersecting) { e.target.classList.add('in'); } else { e.target.classList.remove('in'); }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });

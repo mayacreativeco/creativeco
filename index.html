@@ -9,8 +9,7 @@
 <meta property="og:description" content="Great videos don't book brands. Systems do. The subscription platform for UGC creators ready to operate like a business." />
 <meta property="og:type" content="website" />
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="booked-out-logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -26,9 +25,10 @@
           mono: ['JetBrains Mono', 'monospace'],
         },
         colors: {
-          cream: '#F5F0E4', creamDeep: '#EDE5D2', forest: '#1B3A2F',
-          forestDeep: '#0F2620', forestLight: '#2D5742', moss: '#4A7C59',
-          mint: '#86C9A1', ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
+          cream: '#F5F0E4', creamDeep: '#EDE5D2',
+          forest: '#1B3A2F', forestDeep: '#1B3A2F', forestLight: '#2D5742',
+          moss: '#4A7C59', mint: '#86C9A1',
+          ink: '#0A1A12', ash: '#4A5C50', line: '#D8D0BE',
         },
       },
     },
@@ -37,25 +37,18 @@
 
 <style>
   html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', system-ui, sans-serif; background-color: #0F2620; color: #F5F0E4; }
+  body { font-family: 'Inter', system-ui, sans-serif; background-color: #1B3A2F; color: #F5F0E4; }
   .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .display-balance { text-wrap: balance; }
   section[id] { scroll-margin-top: 84px; }
 
-  /* ---- section backgrounds ---- */
-  .flow-a   { background: linear-gradient(180deg, #1B3A2F 0%, #0F2620 100%); }
-  .flow-b   { background: linear-gradient(180deg, #0F2620 0%, #1B3A2F 100%); }
-  .bg-deep  { background: #0F2620; }
-  /* glowy gradient behind the product video */
-  .showcase-grad { background: radial-gradient(ellipse 90% 75% at 50% 32%, #305A48 0%, #1B3A2F 48%, #0F2620 100%); }
-  /* cream middle block — subtle internal gradients */
-  .cream-down { background: linear-gradient(180deg, #F5F0E4 0%, #EDE5D2 100%); }
-  .cream-up   { background: linear-gradient(180deg, #EDE5D2 0%, #F5F0E4 100%); }
-  /* green → cream transition (fade in the top 160px) */
-  .enter-cream { background: linear-gradient(180deg, #0F2620 0px, #F5F0E4 160px, #F5F0E4 100%); }
-  /* cream → green transition */
-  .enter-green { background: linear-gradient(180deg, #EDE5D2 0px, #1B3A2F 170px, #0F2620 100%); }
+  /* ---- two colors only: one dark green, one cream ---- */
+  .bg-green { background-color: #1B3A2F; }
+  .bg-cream { background-color: #F5F0E4; }
+  /* soft transition strips between the green and cream blocks */
+  .fade-to-cream { background: linear-gradient(180deg, #1B3A2F 0%, #F5F0E4 100%); }
+  .fade-to-green { background: linear-gradient(180deg, #F5F0E4 0%, #1B3A2F 100%); }
 
   /* ---- checkerboard motif ---- */
   .checkerboard-cream {
@@ -64,24 +57,6 @@
       linear-gradient(-45deg, #F5F0E4 25%, transparent 25%),
       linear-gradient(45deg, transparent 75%, #F5F0E4 75%),
       linear-gradient(-45deg, transparent 75%, #F5F0E4 75%);
-    background-size: 16px 16px;
-    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
-  }
-  .checkerboard-mini-cream {
-    background-image:
-      linear-gradient(45deg, #F5F0E4 25%, transparent 25%),
-      linear-gradient(-45deg, #F5F0E4 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #F5F0E4 75%),
-      linear-gradient(-45deg, transparent 75%, #F5F0E4 75%);
-    background-size: 8px 8px;
-    background-position: 0 0, 0 4px, 4px -4px, -4px 0;
-  }
-  .checkerboard-moss {
-    background-image:
-      linear-gradient(45deg, #4A7C59 25%, transparent 25%),
-      linear-gradient(-45deg, #4A7C59 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #4A7C59 75%),
-      linear-gradient(-45deg, transparent 75%, #4A7C59 75%);
     background-size: 16px 16px;
     background-position: 0 0, 0 8px, 8px -8px, -8px 0;
   }
@@ -94,26 +69,23 @@
     background-size: 16px 16px;
     background-position: 0 0, 0 8px, 8px -8px, -8px 0;
   }
-
-  /* ---- ambient checkerboard panels (hero + ending) ---- */
-  .checker-amb { position: absolute; pointer-events: none; opacity: 0.07; z-index: 0; }
+  .checker-amb { position: absolute; pointer-events: none; opacity: 0.06; z-index: 0; }
 
   /* ---- elevation ---- */
-  .shadow-float { box-shadow: 0 30px 70px -28px rgba(0,0,0,0.85); }
+  .shadow-float { box-shadow: 0 30px 70px -28px rgba(0,0,0,0.7); }
   .shadow-float-soft { box-shadow: 0 24px 50px -26px rgba(10,26,18,0.40); }
-  .shadow-hard-moss { box-shadow: 10px 10px 0 0 #4A7C59; }
   .lift { transition: transform .22s cubic-bezier(.16,1,.3,1), box-shadow .22s ease; }
   .lift:hover { transform: translateY(-5px); box-shadow: 0 22px 44px -20px rgba(10,26,18,0.5); }
 
   /* ---- buttons ---- */
   .btn-primary {
-    background-color: #F5F0E4; color: #0F2620;
+    background-color: #F5F0E4; color: #1B3A2F;
     padding: 16px 28px; border-radius: 4px; font-weight: 600; font-size: 15px;
     transition: background-color .15s ease, transform .1s ease, box-shadow .15s ease;
     display: inline-flex; align-items: center; gap: 10px;
     border: 2px solid #F5F0E4; font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em; cursor: pointer;
   }
-  .btn-primary:hover { background-color: #FFFFFF; border-color: #FFFFFF; box-shadow: 0 8px 24px -8px rgba(0,0,0,.6); }
+  .btn-primary:hover { background-color: #FFFFFF; border-color: #FFFFFF; box-shadow: 0 8px 24px -8px rgba(0,0,0,.5); }
   .btn-primary:active { transform: scale(0.98); }
 
   .btn-secondary {
@@ -123,9 +95,8 @@
     display: inline-flex; align-items: center; gap: 10px;
     font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
   }
-  .btn-secondary:hover { background-color: #F5F0E4; color: #0F2620; border-color: #F5F0E4; }
+  .btn-secondary:hover { background-color: #F5F0E4; color: #1B3A2F; border-color: #F5F0E4; }
 
-  /* dark filled button — for cream sections */
   .btn-dark {
     background-color: #1B3A2F; color: #F5F0E4;
     padding: 16px 28px; border-radius: 4px; font-weight: 600; font-size: 15px;
@@ -136,7 +107,6 @@
   .btn-dark:hover { background-color: #0F2620; box-shadow: 0 10px 26px -10px rgba(10,26,18,.5); }
   .btn-dark:active { transform: scale(0.98); }
 
-  /* dark outline button — for cream sections */
   .btn-outline-dark {
     background-color: transparent; color: #1B3A2F;
     padding: 16px 28px; border-radius: 4px; font-weight: 600; font-size: 15px;
@@ -162,7 +132,7 @@
 
   .browser-bar { background-color: #0A1A12; }
 
-  /* ---- interactive stage stepper (cream theme) ---- */
+  /* ---- interactive stage stepper ---- */
   .stage-tab {
     font-family: 'Space Grotesk', sans-serif; text-align: left; cursor: pointer;
     background: #FFFFFF; border: 1.5px solid #D8D0BE; border-radius: 6px; padding: 16px 18px;
@@ -178,24 +148,24 @@
   .stage-panel.is-active { display: block; animation: panelIn .45s cubic-bezier(.16,1,.3,1); }
   @keyframes panelIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
-  /* ---- testimonial marquee ---- */
   .marquee { overflow: hidden; }
   .marquee-track { display: flex; gap: 1.25rem; width: max-content; }
   .zoom-wrap { overflow: hidden; }
   .zoom-img { transform-origin: center; will-change: transform; }
 
-  .reveal-d1 { transition-delay: .08s; }
-  .reveal-d2 { transition-delay: .16s; }
-  .reveal-d3 { transition-delay: .24s; }
+  .reveal-d1 { transition-delay: .07s; }
+  .reveal-d2 { transition-delay: .14s; }
+  .reveal-d3 { transition-delay: .21s; }
 
   @media (prefers-reduced-motion: no-preference) {
+    /* reveals animate in AND out — re-trigger every time they enter view */
     .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
     }
-    .reveal-left  { transform: translateX(-36px); }
-    .reveal-right { transform: translateX(36px); }
-    .reveal-scale { transform: scale(.94); }
+    .reveal-left  { transform: translateX(-38px); }
+    .reveal-right { transform: translateX(38px); }
+    .reveal-scale { transform: scale(.93); }
     .reveal.in { opacity: 1; transform: none; }
 
     @keyframes checkerDrift {
@@ -203,13 +173,12 @@
       to   { background-position: 32px 0, 32px 8px, 40px -8px, 24px 0; }
     }
     .checker-drift { animation: checkerDrift 7s linear infinite; }
-
-    /* ambient panels breathe in and out + drift */
-    @keyframes checkerBreath { 0%, 100% { opacity: 0.035; } 50% { opacity: 0.14; } }
+    @keyframes checkerBreath { 0%, 100% { opacity: 0.03; } 50% { opacity: 0.12; } }
     .checker-amb { animation: checkerBreath 9s ease-in-out infinite, checkerDrift 22s linear infinite; }
 
-    .draw-check path { stroke-dasharray: 30; stroke-dashoffset: 30; transition: stroke-dashoffset .7s ease .2s; }
-    .reveal.in .draw-check path, .in .draw-check path { stroke-dashoffset: 0; }
+    /* checkmark draws itself whenever its card is in view */
+    .draw-check path { stroke-dasharray: 30; stroke-dashoffset: 30; transition: stroke-dashoffset .65s ease .15s; }
+    .in .draw-check path { stroke-dashoffset: 0; }
 
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .marquee-track { animation: marquee 56s linear infinite; }
@@ -223,10 +192,10 @@
 <div class="checkerboard-cream checker-drift h-2"></div>
 
 <!-- ============ NAV ============ -->
-<nav class="border-b border-cream/10 bg-forestDeep/90 backdrop-blur sticky top-0 z-40">
+<nav class="border-b border-cream/10 bg-green/95 backdrop-blur sticky top-0 z-40">
   <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center gap-6">
-    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-cream flex items-center gap-2 shrink-0">
-      <span class="inline-block w-5 h-5 checkerboard-cream rounded-sm"></span>
+    <a href="index.html" class="font-display text-xl font-bold tracking-tight text-cream flex items-center gap-2.5 shrink-0">
+      <img src="booked-out-logo.png" alt="Booked Out" class="w-7 h-7 rounded-[3px]">
       Maya Creative Co
     </a>
     <div class="hidden lg:flex items-center gap-7">
@@ -244,7 +213,7 @@
       <span class="w-6 h-0.5 bg-cream block"></span>
     </button>
   </div>
-  <div id="mobileMenu" class="hidden lg:hidden border-t border-cream/10 bg-forestDeep px-6 py-6 flex flex-col gap-5">
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-cream/10 bg-green px-6 py-6 flex flex-col gap-5">
     <a href="#story" class="nav-link !text-sm">Story</a>
     <a href="#features" class="nav-link !text-sm">Features</a>
     <a href="#benefits" class="nav-link !text-sm">Benefits</a>
@@ -256,10 +225,9 @@
 </nav>
 
 <!-- ============ HERO ============ -->
-<section class="px-6 py-24 md:py-36 relative overflow-hidden flow-a">
-  <!-- ambient dynamic background -->
-  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[640px] h-[640px] rounded-full pointer-events-none z-0"
-       style="background: radial-gradient(circle, rgba(74,124,89,0.38) 0%, rgba(74,124,89,0) 70%);"></div>
+<section class="bg-green px-6 py-24 md:py-36 relative overflow-hidden">
+  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[640px] h-[640px] rounded-full pointer-events-none"
+       style="background: radial-gradient(circle, rgba(74,124,89,0.30) 0%, rgba(74,124,89,0) 70%);"></div>
   <div class="checker-amb checkerboard-cream w-[360px] h-[360px] -top-16 -left-24"></div>
   <div class="checker-amb checkerboard-cream w-[300px] h-[300px] bottom-0 -right-20" style="animation-delay: -4.5s, -8s;"></div>
 
@@ -275,26 +243,33 @@
     <p class="reveal reveal-d2 text-lg md:text-2xl text-cream/70 leading-relaxed max-w-2xl mx-auto mb-8 display-balance">
       <span class="text-cream font-semibold">Booked Out is a subscription platform</span> that hands UGC creators that system — interactive tools to price your rates, write your pitches, audit your contracts, and walk you through all six stages of building a real business.
     </p>
-    <div data-stagger class="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 mb-12 font-mono text-xs text-cream/60">
-      <span class="reveal bg-cream/5 border border-cream/15 rounded px-2.5 py-1">01 Clear</span><span class="reveal text-mint">→</span>
-      <span class="reveal bg-cream/5 border border-cream/15 rounded px-2.5 py-1">02 Visible</span><span class="reveal text-mint">→</span>
-      <span class="reveal bg-cream/5 border border-cream/15 rounded px-2.5 py-1">03 Paid</span><span class="reveal text-mint">→</span>
-      <span class="reveal bg-cream/5 border border-cream/15 rounded px-2.5 py-1">04 Booked</span><span class="reveal text-mint">→</span>
-      <span class="reveal bg-cream/5 border border-cream/15 rounded px-2.5 py-1">05 Consistent</span><span class="reveal text-mint">→</span>
-      <span class="reveal bg-cream/5 border border-cream/15 rounded px-2.5 py-1">06 Scale</span>
+    <!-- checkmark reassurance row -->
+    <div class="reveal reveal-d2 in flex flex-wrap items-center justify-center gap-x-7 gap-y-2 mb-9 text-sm text-cream/75">
+      <span class="inline-flex items-center gap-2">
+        <svg class="draw-check w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
+        Free tier — no card
+      </span>
+      <span class="inline-flex items-center gap-2">
+        <svg class="draw-check w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
+        Real tools, not a course
+      </span>
+      <span class="inline-flex items-center gap-2">
+        <svg class="draw-check w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
+        Cancel anytime
+      </span>
     </div>
     <div class="reveal reveal-d3 flex flex-col sm:flex-row gap-4 items-center justify-center">
       <a href="https://booked-out.mayacreativeco.com" class="btn-primary text-base">Try Booked Out for Free →</a>
       <a href="#features" class="btn-secondary text-base">Explore the platform</a>
     </div>
     <p class="reveal mt-5 text-sm font-mono text-cream/55">
-      Free tier available · <a href="https://booked-out.mayacreativeco.com/login.html" class="text-mint hover:text-cream underline">Already a member? Sign in →</a>
+      <a href="https://booked-out.mayacreativeco.com/login.html" class="text-mint hover:text-cream underline">Already a member? Sign in →</a>
     </p>
   </div>
 </section>
 
 <!-- ============ TRUST STRIP ============ -->
-<section class="border-y border-cream/10 bg-deep">
+<section class="bg-green border-y border-cream/10">
   <div data-stagger class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-3 gap-8">
     <div class="reveal text-center">
       <p class="font-display text-4xl md:text-5xl font-bold text-cream" data-count="390" data-suffix="+">390+</p>
@@ -312,7 +287,7 @@
 </section>
 
 <!-- ============ PRODUCT SHOWCASE ============ -->
-<section class="px-6 py-28 showcase-grad">
+<section class="bg-green px-6 py-28">
   <div class="max-w-5xl mx-auto">
     <div class="reveal max-w-2xl mb-12 text-center mx-auto">
       <span class="mono-label">// the_product</span>
@@ -323,8 +298,7 @@
         Open Booked Out and you get a real web app — interactive tools that do the work <span class="italic">with</span> you. Not a folder of documents you'll download once and never open again.
       </p>
     </div>
-
-    <figure class="reveal reveal-scale bg-cream rounded-md overflow-hidden shadow-hard-moss">
+    <figure class="reveal reveal-scale bg-cream rounded-md overflow-hidden shadow-float">
       <div class="browser-bar flex items-center gap-2 px-4 py-3">
         <span class="w-3 h-3 rounded-full bg-cream/20"></span>
         <span class="w-3 h-3 rounded-full bg-cream/20"></span>
@@ -339,8 +313,11 @@
   </div>
 </section>
 
+<!-- soft transition: green → cream -->
+<div class="fade-to-cream h-72 md:h-96"></div>
+
 <!-- ============ STORY (cream) ============ -->
-<section id="story" class="enter-cream px-6 pt-44 pb-28">
+<section id="story" class="bg-cream px-6 pt-4 pb-28">
   <div class="max-w-5xl mx-auto">
     <div class="reveal max-w-3xl mb-14">
       <span class="mono-label on-cream">// the_story</span>
@@ -396,9 +373,9 @@
 </section>
 
 <!-- ============ FEATURES — STAGE STEPPER (cream) ============ -->
-<section id="features" class="cream-down px-6 py-28">
+<section id="features" class="bg-cream px-6 py-28">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal max-w-2xl mb-12">
+    <div class="reveal max-w-2xl mb-12 text-center mx-auto">
       <span class="mono-label on-cream">// features · one_clear_path</span>
       <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-5 display-balance text-forest">
         Six stages. Tap one to see where you are.
@@ -436,7 +413,6 @@
     </div>
 
     <div class="reveal">
-      <!-- 01 -->
       <div class="stage-panel is-active" data-stage="0">
         <div class="bg-white border border-line rounded-md p-8 md:p-12 grid md:grid-cols-3 gap-10 shadow-float-soft">
           <div class="md:col-span-2">
@@ -454,7 +430,6 @@
           </div>
         </div>
       </div>
-      <!-- 02 -->
       <div class="stage-panel" data-stage="1">
         <div class="bg-white border border-line rounded-md p-8 md:p-12 grid md:grid-cols-3 gap-10 shadow-float-soft">
           <div class="md:col-span-2">
@@ -474,7 +449,6 @@
           </div>
         </div>
       </div>
-      <!-- 03 -->
       <div class="stage-panel" data-stage="2">
         <div class="bg-white border border-line rounded-md p-8 md:p-12 grid md:grid-cols-3 gap-10 shadow-float-soft">
           <div class="md:col-span-2">
@@ -492,7 +466,6 @@
           </div>
         </div>
       </div>
-      <!-- 04 -->
       <div class="stage-panel" data-stage="3">
         <div class="bg-white border border-line rounded-md p-8 md:p-12 grid md:grid-cols-3 gap-10 shadow-float-soft">
           <div class="md:col-span-2">
@@ -512,7 +485,6 @@
           </div>
         </div>
       </div>
-      <!-- 05 -->
       <div class="stage-panel" data-stage="4">
         <div class="bg-white border border-line rounded-md p-8 md:p-12 grid md:grid-cols-3 gap-10 shadow-float-soft">
           <div class="md:col-span-2">
@@ -532,7 +504,6 @@
           </div>
         </div>
       </div>
-      <!-- 06 -->
       <div class="stage-panel" data-stage="5">
         <div class="bg-white border border-line rounded-md p-8 md:p-12 grid md:grid-cols-3 gap-10 shadow-float-soft">
           <div class="md:col-span-2">
@@ -554,7 +525,6 @@
       </div>
     </div>
 
-    <!-- TOOLS UP CLOSE -->
     <div class="reveal max-w-2xl mb-16 mt-28 text-center mx-auto">
       <span class="mono-label on-cream">// inside_the_tools</span>
       <h3 class="font-display text-3xl md:text-5xl font-bold leading-tight mt-6 display-balance text-forest">
@@ -651,9 +621,9 @@
 </section>
 
 <!-- ============ BENEFITS (cream) ============ -->
-<section id="benefits" class="cream-up px-6 py-28">
+<section id="benefits" class="bg-cream px-6 py-28">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal max-w-2xl mb-16">
+    <div class="reveal max-w-2xl mb-16 text-center mx-auto">
       <span class="mono-label on-cream">// benefits</span>
       <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-5 display-balance text-forest">
         What changes when you run on a system.
@@ -697,19 +667,18 @@
 </section>
 
 <!-- ============ PRICING (cream) ============ -->
-<section id="pricing" class="cream-down px-6 py-28">
+<section id="pricing" class="bg-cream px-6 py-28">
   <div class="max-w-5xl mx-auto">
-    <div class="reveal text-center mb-14">
+    <div class="reveal text-center mb-14 max-w-xl mx-auto">
       <span class="mono-label on-cream">// pricing</span>
       <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mt-6 mb-4 display-balance text-forest">One price. Every system you've been missing.</h2>
-      <p class="text-lg text-ash max-w-xl mx-auto display-balance">No upsells. No locked "advanced" tier. One subscription unlocks all six stages, every tool, every script, and every new drop — for as long as you're a member.</p>
+      <p class="text-lg text-ash display-balance">No upsells. No locked "advanced" tier. One subscription unlocks all six stages, every tool, every script, and every new drop.</p>
     </div>
 
     <div data-stagger class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch max-w-3xl mx-auto">
 
-      <!-- Founding Annual — dark card to pop on cream -->
       <div class="reveal bg-forest text-cream rounded-md relative overflow-hidden flex flex-col shadow-float">
-        <div class="checkerboard-moss h-2"></div>
+        <div class="checkerboard-cream h-2 opacity-90"></div>
         <div class="p-8 flex flex-col flex-1">
           <span class="inline-block bg-moss text-cream text-xs font-mono font-bold px-3 py-1 rounded-full mb-4 w-max">Best value — first 100 members</span>
           <p class="mono-label !text-xs">// founding_annual</p>
@@ -718,18 +687,17 @@
             <p class="text-cream/55 font-mono text-sm mb-2">/year</p>
           </div>
           <p class="text-xs text-cream/50 font-mono mb-6">// the lowest price Booked Out will ever be</p>
-          <div class="space-y-2.5 mb-8 flex-1">
-            <div class="flex gap-2.5"><span class="text-mint font-bold shrink-0">✓</span><p class="text-cream/75 text-sm">All six stages + every interactive tool</p></div>
-            <div class="flex gap-2.5"><span class="text-mint font-bold shrink-0">✓</span><p class="text-cream/75 text-sm">Every script, template &amp; the AI contract redline detector</p></div>
-            <div class="flex gap-2.5"><span class="text-mint font-bold shrink-0">✓</span><p class="text-cream/75 text-sm">New tools &amp; workshop drops every month</p></div>
-            <div class="flex gap-2.5"><span class="text-mint font-bold shrink-0">✓</span><p class="text-cream text-sm font-semibold">Founding rate locked in for life</p></div>
-            <div class="flex gap-2.5"><span class="text-mint font-bold shrink-0">✓</span><p class="text-cream/75 text-sm">Cancel anytime — keep access through your term</p></div>
+          <div class="space-y-3 mb-8 flex-1">
+            <div class="flex gap-2.5"><svg class="draw-check w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg><p class="text-cream/75 text-sm">All six stages + every interactive tool</p></div>
+            <div class="flex gap-2.5"><svg class="draw-check w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg><p class="text-cream/75 text-sm">Every script, template &amp; the AI contract redline detector</p></div>
+            <div class="flex gap-2.5"><svg class="draw-check w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg><p class="text-cream/75 text-sm">New tools &amp; workshop drops every month</p></div>
+            <div class="flex gap-2.5"><svg class="draw-check w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg><p class="text-cream text-sm font-semibold">Founding rate locked in for life</p></div>
+            <div class="flex gap-2.5"><svg class="draw-check w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#86C9A1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg><p class="text-cream/75 text-sm">Cancel anytime — keep access through your term</p></div>
           </div>
           <a href="https://booked-out.mayacreativeco.com/" class="btn-primary w-full justify-center text-base font-bold">Get Founding Access →</a>
         </div>
       </div>
 
-      <!-- Monthly — white card -->
       <div class="reveal bg-white border border-line rounded-md flex flex-col">
         <div class="p-8 flex flex-col flex-1">
           <span class="inline-block text-xs font-mono text-ash px-3 py-1 border border-line rounded-full mb-4 w-max">No commitment</span>
@@ -739,11 +707,11 @@
             <p class="text-ash font-mono text-sm mb-2">/month</p>
           </div>
           <p class="text-xs text-ash font-mono mb-6">// try the whole system, cancel any time</p>
-          <div class="space-y-2.5 mb-8 flex-1">
-            <div class="flex gap-2.5"><span class="text-moss font-bold shrink-0">✓</span><p class="text-ash text-sm">All six stages + every interactive tool</p></div>
-            <div class="flex gap-2.5"><span class="text-moss font-bold shrink-0">✓</span><p class="text-ash text-sm">Every script, template &amp; the AI contract redline detector</p></div>
-            <div class="flex gap-2.5"><span class="text-moss font-bold shrink-0">✓</span><p class="text-ash text-sm">New tools &amp; workshop drops every month</p></div>
-            <div class="flex gap-2.5"><span class="text-moss font-bold shrink-0">✓</span><p class="text-ash text-sm">Zero annual commitment</p></div>
+          <div class="space-y-3 mb-8 flex-1">
+            <div class="flex gap-2.5"><svg class="draw-check w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg><p class="text-ash text-sm">All six stages + every interactive tool</p></div>
+            <div class="flex gap-2.5"><svg class="draw-check w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg><p class="text-ash text-sm">Every script, template &amp; the AI contract redline detector</p></div>
+            <div class="flex gap-2.5"><svg class="draw-check w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg><p class="text-ash text-sm">New tools &amp; workshop drops every month</p></div>
+            <div class="flex gap-2.5"><svg class="draw-check w-4 h-4 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg><p class="text-ash text-sm">Zero annual commitment</p></div>
           </div>
           <a href="https://booked-out.mayacreativeco.com/" class="btn-outline-dark w-full justify-center">Get Monthly Access</a>
         </div>
@@ -757,8 +725,11 @@
   </div>
 </section>
 
-<!-- ============ TESTIMONIALS (dark) ============ -->
-<section class="enter-green px-6 pt-44 pb-28">
+<!-- soft transition: cream → green -->
+<div class="fade-to-green h-72 md:h-96"></div>
+
+<!-- ============ TESTIMONIALS (green) ============ -->
+<section class="bg-green px-6 pt-4 pb-28">
   <div class="max-w-6xl mx-auto">
     <div class="reveal text-center max-w-2xl mx-auto mb-14">
       <span class="mono-label">// creator_results</span>
@@ -767,21 +738,21 @@
       </h2>
     </div>
 
-    <figure class="reveal bg-forestDeep border border-cream/10 rounded-md p-8 md:p-14 max-w-4xl mx-auto mb-8 shadow-float relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-40 h-40 checkerboard-moss opacity-25"></div>
+    <figure class="reveal bg-cream rounded-md p-8 md:p-14 max-w-4xl mx-auto mb-8 shadow-float relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-40 h-40 checkerboard-forest opacity-10"></div>
       <div class="relative">
-        <div class="flex gap-1 mb-6 text-mint text-lg">★★★★★</div>
-        <blockquote class="font-display text-2xl md:text-4xl font-bold leading-snug display-balance mb-8 text-cream">
+        <div class="flex gap-1 mb-6 text-moss text-lg">★★★★★</div>
+        <blockquote class="font-display text-2xl md:text-4xl font-bold leading-snug display-balance mb-8 text-forest">
           "Six months ago I was undercharging every brand and pitching maybe twice a week. I run my whole business out of Booked Out now — I've doubled my rates, I pitch every morning in fifteen minutes, and for the first time I actually know what next month looks like."
         </blockquote>
         <figcaption class="flex items-center gap-4">
-          <div class="avatar relative w-14 h-14 rounded-full overflow-hidden bg-forestLight border border-cream/15 shrink-0">
-            <span class="absolute inset-0 flex items-center justify-center font-mono text-sm text-mint">RW</span>
+          <div class="avatar relative w-14 h-14 rounded-full overflow-hidden bg-creamDeep border border-line shrink-0">
+            <span class="absolute inset-0 flex items-center justify-center font-mono text-sm text-moss">RW</span>
             <img src="avatar-featured.jpg" alt="Riley W." class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
           </div>
           <div>
-            <p class="font-semibold text-cream">Riley W.</p>
-            <p class="mono-label">// ugc_creator · 14 months in</p>
+            <p class="font-semibold text-forest">Riley W.</p>
+            <p class="font-mono text-[11px] tracking-widest uppercase text-moss">// ugc_creator · 14 months in</p>
           </div>
         </figcaption>
       </div>
@@ -789,7 +760,6 @@
 
     <div class="reveal marquee">
       <div class="marquee-track py-2">
-        <!-- set 1 -->
         <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6">
           <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
           <p class="text-forest leading-relaxed text-sm mb-4">"Doubled my rates in a single weekend. I had no idea how much I was leaving on the table."</p>
@@ -856,7 +826,6 @@
             <div><p class="font-semibold text-forest text-xs">Devon W.</p><p class="font-mono text-[10px] text-ash">// mini_agency</p></div>
           </div>
         </div>
-        <!-- set 2 (duplicate for seamless loop) -->
         <div class="w-[320px] shrink-0 bg-white border border-line rounded-md p-6" aria-hidden="true">
           <div class="flex gap-1 mb-3 text-moss text-sm">★★★★★</div>
           <p class="text-forest leading-relaxed text-sm mb-4">"Doubled my rates in a single weekend. I had no idea how much I was leaving on the table."</p>
@@ -910,8 +879,8 @@
   </div>
 </section>
 
-<!-- ============ SOCIALS ============ -->
-<section class="px-6 py-28 flow-b">
+<!-- ============ SOCIALS (green) ============ -->
+<section class="bg-green px-6 py-28">
   <div class="max-w-5xl mx-auto">
     <div class="reveal text-center max-w-xl mx-auto mb-12">
       <span class="mono-label">// community</span>
@@ -919,7 +888,6 @@
       <p class="text-lg text-cream/70 mt-5 display-balance">Behind the scenes, pricing breakdowns, and the business side of UGC — follow along between drops.</p>
     </div>
     <div data-stagger class="grid md:grid-cols-2 gap-6">
-
       <a href="https://www.instagram.com/mayacreativeco/" target="_blank" rel="noopener" class="reveal group block bg-cream/[0.04] border border-cream/12 rounded-md p-8 lift">
         <div class="flex items-start justify-between mb-6">
           <div class="w-14 h-14 rounded-xl bg-cream flex items-center justify-center shrink-0">
@@ -935,7 +903,6 @@
         <p class="text-cream/65 text-sm leading-relaxed mb-6">Behind the scenes, creator tips, and real numbers from a working UGC business.</p>
         <span class="inline-flex items-center gap-2 text-sm font-semibold text-mint group-hover:gap-3 transition-all">Follow along →</span>
       </a>
-
       <a href="https://www.tiktok.com/@mayacreativeco" target="_blank" rel="noopener" class="reveal group block bg-cream/[0.04] border border-cream/12 rounded-md p-8 lift">
         <div class="flex items-start justify-between mb-6">
           <div class="w-14 h-14 rounded-xl bg-cream flex items-center justify-center shrink-0">
@@ -949,13 +916,12 @@
         <p class="text-cream/65 text-sm leading-relaxed mb-6">UGC pitching tips, tool walkthroughs, and the growth strategies that actually move the needle.</p>
         <span class="inline-flex items-center gap-2 text-sm font-semibold text-mint group-hover:gap-3 transition-all">Follow along →</span>
       </a>
-
     </div>
   </div>
 </section>
 
-<!-- ============ CONTACT CTA (dark, dynamic bg) ============ -->
-<section class="px-6 py-28 relative overflow-hidden flow-a">
+<!-- ============ CONTACT CTA (green, dynamic bg) ============ -->
+<section class="bg-green px-6 py-28 relative overflow-hidden">
   <div class="checker-amb checkerboard-cream w-[340px] h-[340px] -top-10 -left-20"></div>
   <div class="checker-amb checkerboard-cream w-[300px] h-[300px] -bottom-12 -right-16" style="animation-delay: -5s, -9s;"></div>
   <div class="reveal max-w-3xl mx-auto text-center relative z-10">
@@ -974,16 +940,13 @@
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer class="bg-forestDeep relative overflow-hidden">
+<footer class="bg-green relative overflow-hidden border-t border-cream/10">
   <div class="checker-amb checkerboard-cream w-[420px] h-[240px] -bottom-8 right-6"></div>
-  <div class="checkerboard-cream h-2"></div>
   <div class="max-w-6xl mx-auto px-6 relative z-10">
-
     <div class="grid md:grid-cols-12 gap-10 py-16 border-b border-cream/10">
-      <!-- brand -->
       <div class="md:col-span-5">
         <div class="flex items-center gap-2.5 mb-4">
-          <span class="inline-block w-6 h-6 checkerboard-cream"></span>
+          <img src="booked-out-logo.png" alt="Booked Out" class="w-8 h-8 rounded-[3px]">
           <p class="font-display text-xl font-bold text-cream">Maya Creative Co</p>
         </div>
         <p class="text-cream/55 text-sm leading-relaxed max-w-xs mb-6">
@@ -991,8 +954,6 @@
         </p>
         <a href="https://booked-out.mayacreativeco.com" class="btn-primary !py-3 !px-5 text-sm">Try Booked Out for Free →</a>
       </div>
-
-      <!-- platform -->
       <div class="md:col-span-2">
         <p class="mono-label mb-5">// platform</p>
         <div class="flex flex-col gap-3 text-sm">
@@ -1002,8 +963,6 @@
           <a href="https://booked-out.mayacreativeco.com/login.html" class="text-cream/60 hover:text-cream transition-colors">Sign in</a>
         </div>
       </div>
-
-      <!-- company -->
       <div class="md:col-span-2">
         <p class="mono-label mb-5">// company</p>
         <div class="flex flex-col gap-3 text-sm">
@@ -1013,8 +972,6 @@
           <a href="contact.html" class="text-cream/60 hover:text-cream transition-colors">Contact</a>
         </div>
       </div>
-
-      <!-- connect -->
       <div class="md:col-span-3">
         <p class="mono-label mb-5">// connect</p>
         <p class="text-cream/55 text-sm leading-relaxed mb-5">
@@ -1038,7 +995,6 @@
         </div>
       </div>
     </div>
-
     <div class="flex flex-col md:flex-row justify-between items-center gap-3 py-8 text-xs font-mono text-cream/40">
       <p>© 2026 Maya Creative Co · All rights reserved.</p>
       <p class="text-cream/55">Great videos don't book brands. Systems do.</p>
@@ -1072,13 +1028,14 @@
     });
   })();
 
-  // scroll-reveal + stagger + count-up
+  // scroll-reveal — animates IN and OUT, both scroll directions
   (function() {
     document.querySelectorAll('[data-stagger]').forEach(function(group) {
       Array.prototype.forEach.call(group.querySelectorAll('.reveal'), function(el, i) {
-        el.style.transitionDelay = (i * 0.08) + 's';
+        el.style.transitionDelay = (i * 0.07) + 's';
       });
     });
+
     function countUp(el) {
       var target = parseInt(el.dataset.count, 10);
       var suffix = el.dataset.suffix || '';
@@ -1092,14 +1049,20 @@
       }
       requestAnimationFrame(tick);
     }
+
     var io = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
-        if (!e.isIntersecting) return;
-        e.target.classList.add('in');
-        if (e.target.dataset.count) countUp(e.target);
-        io.unobserve(e.target);
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          if (e.target.dataset.count && !e.target.dataset.counted) {
+            e.target.dataset.counted = '1';
+            countUp(e.target);
+          }
+        } else {
+          e.target.classList.remove('in');
+        }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+    }, { threshold: 0.12 });
     document.querySelectorAll('.reveal, [data-count]').forEach(function(el) { io.observe(el); });
   })();
 
