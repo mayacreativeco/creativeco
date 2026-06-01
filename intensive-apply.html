@@ -200,6 +200,12 @@
       </div>
 
       <div>
+        <label class="field-label" for="portfolio">Portfolio link</label>
+        <p class="text-xs text-ash font-mono mb-3 -mt-1">Where can I see your work? A portfolio site, Notion page, media kit — or your best IG/TikTok reel link.</p>
+        <input type="text" id="portfolio" name="portfolio_url" placeholder="https://..." required />
+      </div>
+
+      <div>
         <label class="field-label" for="revenue">Current average monthly revenue from UGC</label>
         <select id="revenue" name="monthly_revenue" required>
           <option value="" disabled selected>Select a range</option>
@@ -226,6 +232,18 @@
       <div>
         <label class="field-label" for="anything_else">Anything else I should know? <span class="text-ash/60">(optional)</span></label>
         <textarea id="anything_else" name="anything_else" placeholder="Previous coaching, unusual circumstances, payment plan request, etc." style="min-height:80px;"></textarea>
+      </div>
+
+      <!-- program confirmation — required before submit -->
+      <div class="bg-creamDeep border border-line rounded-md p-6">
+        <p class="mono-label on-cream mb-4">// before_you_submit</p>
+        <p class="text-ash text-sm leading-relaxed mb-5">
+          The Strategy Intensive is a full-quarter program: <strong class="text-forest">three 90-minute 1:1 sessions</strong>, your custom dashboard, the full AI workflow walkthrough, six weeks of async support, and every resource we build together — yours to keep. Investment is <strong class="text-forest">$1,250 for the quarter</strong>, or two installments of $625 (mention it in the question above). I review every application within 48 hours.
+        </p>
+        <label for="confirmBox" class="flex items-start gap-3 cursor-pointer">
+          <input type="checkbox" name="confirmed_program" id="confirmBox" required class="mt-1 w-4 h-4 shrink-0 accent-forest cursor-pointer" />
+          <span class="text-forest text-sm font-medium leading-snug">Yes — I've read the program details and pricing above, and I'm ready to commit to a full quarter if accepted.</span>
+        </label>
       </div>
 
       <div class="pt-2">
