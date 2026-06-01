@@ -76,7 +76,7 @@
     border-radius: 4px;
     padding: 14px 16px;
     font-size: 15px;
-    color: #0A1A12;
+    color: #0A1A12 !important;
     width: 100%;
     font-family: 'Inter', sans-serif;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -87,6 +87,17 @@
     box-shadow: 0 0 0 3px rgba(74,124,89,0.15);
   }
   input::placeholder, textarea::placeholder { color: #9AA39C; }
+  /* force the typed text to stay dark — including when Chrome/Safari autofills */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-text-fill-color: #0A1A12 !important;
+    -webkit-box-shadow: 0 0 0 1000px #FFFFFF inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
   textarea { resize: vertical; min-height: 100px; }
 
   .btn-dark {
