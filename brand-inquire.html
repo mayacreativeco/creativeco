@@ -20,6 +20,7 @@ a{color:#141414;text-decoration:none}
 a:hover{color:#D9471F}
 input,textarea,select{font-family:Archivo,Arial,sans-serif;font-size:16px;color:#141414;background:#FBF6EA;border:2px solid #141414;border-radius:12px;padding:12px 14px;width:100%;outline:none}
 input:focus,textarea:focus,select:focus{border-color:#D9471F}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#141414 50%),linear-gradient(135deg,#141414 50%,transparent 50%);background-position:calc(100% - 20px) calc(50% + 2px),calc(100% - 14px) calc(50% + 2px);background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:44px}
 </style>
 </helmet>
 
@@ -57,7 +58,9 @@ input:focus,textarea:focus,select:focus{border-color:#D9471F}
       <div style="font-family:'Reenie Beanie',cursive;font-size:40px;line-height:1;transform:rotate(-2deg);width:max-content;color:#D9471F">tell me about the brand.</div>
       <h2 style="margin:0;font-family:Boldonse,'Archivo Black',Arial,sans-serif;font-weight:400;font-size:clamp(26px,2.6vw,38px);line-height:1.2;text-transform:uppercase">Start the conversation.</h2>
     </div>
-    <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:18px">
+    <form action="https://formspree.io/f/mnpqvela" method="POST" style="display:flex;flex-direction:column;gap:18px">
+      <input type="hidden" name="_subject" value="Content day inquiry">
+      <input type="hidden" name="_next" value="https://mayacreativeco.com/thanks.html">
       <div style="display:flex;flex-direction:column;gap:12px">
         <span style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">What you're after</span>
         <div style="display:flex;gap:12px;flex-wrap:wrap">
@@ -65,23 +68,35 @@ input:focus,textarea:focus,select:focus{border-color:#D9471F}
             <button type="button" onClick="{{ c.pick }}" style="cursor:pointer;border:2px solid #141414;border-radius:999px;padding:8px 20px;font-family:'Reenie Beanie',cursive;font-size:24px;line-height:1;background:{{ c.bg }};color:{{ c.color }};transform:rotate({{ c.tilt }}deg);transition:transform .15s" style-hover="transform:rotate({{ c.tiltHover }}deg)">{{ c.label }}</button>
           </sc-for>
         </div>
+        <input type="hidden" name="service" value="{{ picked }}">
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+      <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
         <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Name<input name="name" required="{{ true }}"></label>
-        <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Email<input name="email" required="{{ true }}"></label>
-        <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Brand or company<input name="brand" required="{{ true }}"></label>
-        <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Website or socials<input name="site"></label>
-        <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Timeline<input name="timeline" placeholder="when it needs to be live"></label>
-        <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Location<input name="location" placeholder="where we'd shoot"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Brand<input name="brand" required="{{ true }}"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Email<input name="email" type="email" required="{{ true }}"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Rough dates<input name="dates" placeholder="when you'd shoot"></label>
       </div>
-      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">What you need<textarea name="need" rows="{{ 3 }}" required="{{ true }}"></textarea></label>
-      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Budget range<input name="budget" placeholder="so I can scope it properly"></label>
-      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Anything else<textarea name="notes" rows="{{ 3 }}"></textarea></label>
-      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:8px">
-        <button type="submit" disabled="{{ sending }}" style="cursor:pointer;display:inline-block;background:#D9471F;color:#F5EBD6;border:2px solid #D9471F;border-radius:999px;padding:14px 26px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2" style-hover="background:#141414;border-color:#141414">{{ buttonLabel }}</button>
-        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Reenie Beanie',cursive;font-size:30px;line-height:1">got it. real answer within two business days.</span></sc-if>
-        <sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}"><span style="font-size:15px;text-wrap:pretty">That didn't send. Email me directly at <a href="mailto:hello@collegarestudio.com" style="border-bottom:1.5px solid #141414">hello@collegarestudio.com</a>.</span></sc-if>
+          <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">What you sell<textarea name="what_you_sell" rows="{{ 3 }}" required="{{ true }}"></textarea></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Location(s)<input name="locations" placeholder="where we'd shoot"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">What you'd screenshot<input name="what_youd_screenshot" placeholder="one line"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Budget range<select name="budget_range"><option>Under $5K</option><option>$5–10K</option><option>$10K+</option><option>Not sure</option></select></label>
+          <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:8px">
+        <button type="submit" style="cursor:pointer;display:inline-block;background:#D9471F;color:#F5EBD6;border:2px solid #D9471F;border-radius:999px;padding:14px 26px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2" style-hover="background:#141414;border-color:#141414">Send it</button>
       </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ diverted }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:16px;padding:28px;background:#F6E3B4;border:2px solid #141414;border-radius:20px">
+          <div style="font-family:'Reenie Beanie',cursive;font-size:36px;line-height:1;transform:rotate(-2deg);width:max-content">no form needed.</div>
+          <p style="margin:0;font-size:17px;text-wrap:pretty">Interested in UGC or influencer work? Everything you need — rates, packages, past brands and the reel — lives in my media kit. Have a look, then email me if it's a fit.</p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:4px">
+            <a href="https://m0chic.bio/mediakit" style="display:inline-block;background:#D9471F;color:#F5EBD6;border:2px solid #D9471F;border-radius:999px;padding:14px 26px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2" style-hover="background:#141414;border-color:#141414">See the media kit</a>
+            <a href="mailto:hello@collegarestudio.com" style="display:inline-block;background:transparent;color:#141414;border:2px solid #141414;border-radius:999px;padding:14px 26px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2" style-hover="background:#141414;color:#F5EBD6">Email me</a>
+          </div>
+        </div>
+      </sc-if>
     </form>
   </div>
 </section>
@@ -120,7 +135,7 @@ input:focus,textarea:focus,select:focus{border-color:#D9471F}
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.4">
       <div style="display:flex;flex-direction:column;gap:10px"><a href="creators.html">Creators</a><a href="brands.html">Brands</a><a href="work.html">Work</a><a href="shop.html">Shop</a><a href="about.html">About</a></div>
-      <div style="display:flex;flex-direction:column;gap:10px"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Substack</a><a href="#">The Editing Corner (Whop)</a></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><a href="https://instagram.com/mayacreativeco">Instagram</a><a href="#">TikTok</a><a href="#">Substack</a><a href="https://whop.com/the-editing-corner">The Editing Corner (Whop)</a></div>
     </div>
     <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;justify-self:end;text-align:right">
       <p style="margin:0">Brands: <a href="mailto:hello@collegarestudio.com" style="border-bottom:1.5px solid #141414">hello@collegarestudio.com</a></p>
@@ -132,63 +147,24 @@ input:focus,textarea:focus,select:focus{border-color:#D9471F}
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
-/* ---------------------------------------------------------------------------
-   WHERE INQUIRIES GO
-   Paste your form endpoint below — e.g. https://formspree.io/f/xxxxxxx
-   Until it is set, the form falls back to opening a pre-filled email.
-   --------------------------------------------------------------------------- */
-const FORM_ENDPOINT = '';
-
 class Component extends DCLogic {
   OPTIONS = ['Group content day', 'UGC / creator content', 'Branding & website'];
-  state = { service: '',  status: 'idle' };
-
-  mailtoFallback(data) {
-    const lines = [];
-    data.forEach((v, k) => { if (String(v).trim()) lines.push(k + ': ' + v); });
-    window.location.href = 'mailto:hello@collegarestudio.com'
-      + '?subject=' + encodeURIComponent('Brand inquiry')
-      + '&body=' + encodeURIComponent(lines.join('\n'));
-  }
-
-  async send(e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-    if (this.state.service) data.append('service', this.state.service);
-    data.append('_subject', 'Brand inquiry');
-
-    if (!FORM_ENDPOINT) { this.mailtoFallback(data); return; }
-
-    this.setState({ status: 'sending' });
-    try {
-      const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-      if (!res.ok) throw new Error('submit failed: ' + res.status);
-      form.reset();
-      this.setState({ service: '',  status: 'sent' });
-    } catch (err) {
-      this.setState({ status: 'error' });
-    }
-  }
-
+  state = { picked: '' };
   renderVals() {
-    const status = this.state.status;
+    const tilts = [-4, 3, -2, 5, -3];
+    const fills = ['#F6E3B4', '#C8C0EE', '#E8A5A0', '#FBF6EA', '#F6E3B4'];
     return {
+      picked: this.state.picked,
+      showForm: this.state.picked !== 'UGC / creator content',
+      diverted: this.state.picked === 'UGC / creator content',
       choices: this.OPTIONS.map((o, i) => {
-        const tilts = [-4, 3, -2, 5, -3];
-        const fills = ['#F6E3B4', '#C8C0EE', '#E8A5A0', '#FBF6EA', '#F6E3B4'];
-        const on = this.state.service === o;
+        const on = this.state.picked === o;
         return {
           label: o, tilt: tilts[i % 5], tiltHover: tilts[i % 5] - 2,
           bg: on ? '#D9471F' : fills[i % 5], color: on ? '#F5EBD6' : '#141414',
-          pick: () => this.setState({ service: o }),
+          pick: () => this.setState({ picked: o }),
         };
       }),
-      sending: status === 'sending',
-      sent: status === 'sent',
-      failed: status === 'error',
-      buttonLabel: status === 'sending' ? 'Sending…' : 'Send the inquiry',
-      submit: e => this.send(e),
     };
   }
 }

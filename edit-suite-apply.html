@@ -20,6 +20,7 @@ a{color:#141414;text-decoration:none}
 a:hover{color:#D9471F}
 input,textarea,select{font-family:Archivo,Arial,sans-serif;font-size:16px;color:#141414;background:#FBF6EA;border:2px solid #141414;border-radius:12px;padding:12px 14px;width:100%;outline:none}
 input:focus,textarea:focus,select:focus{border-color:#D9471F}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#141414 50%),linear-gradient(135deg,#141414 50%,transparent 50%);background-position:calc(100% - 20px) calc(50% + 2px),calc(100% - 14px) calc(50% + 2px);background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:44px}
 </style>
 </helmet>
 
@@ -46,7 +47,7 @@ input:focus,textarea:focus,select:focus{border-color:#D9471F}
     <div style="font-family:'Reenie Beanie',cursive;font-size:48px;line-height:1;transform:rotate(-3deg);transform-origin:left bottom;width:max-content;margin-top:8px">a quarter with me.</div>
     <h1 style="margin:0;font-family:Boldonse,'Archivo Black',Arial,sans-serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.2;text-transform:uppercase">Apply for the Edit Suite.</h1>
     <p style="margin:0;max-width:640px;font-size:17px;text-wrap:pretty">Twelve weeks, one to one, editing as a skill. Three 90-minute screen-share sessions, two weeks of async review after each, and a preset and template library built around how you actually cut. Tell me what you make and what you want to be able to do by week twelve.</p>
-    <div style="display:inline-block;width:max-content;background:#F6E3B4;border:2px solid #141414;border-radius:999px;padding:8px 20px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2;transform:rotate(-2deg);margin-top:6px">$3,000 · a quarter · four seats</div>
+    <div style="display:inline-block;width:max-content;background:#F6E3B4;border:2px solid #141414;border-radius:999px;padding:8px 20px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2;transform:rotate(-2deg);margin-top:6px">$3,000 / quarter · four seats</div>
   </div>
 </section>
 
@@ -57,7 +58,9 @@ input:focus,textarea:focus,select:focus{border-color:#D9471F}
       <div style="font-family:'Reenie Beanie',cursive;font-size:40px;line-height:1;transform:rotate(-2deg);width:max-content;color:#D9471F">tell me what you make.</div>
       <h2 style="margin:0;font-family:Boldonse,'Archivo Black',Arial,sans-serif;font-weight:400;font-size:clamp(26px,2.6vw,38px);line-height:1.2;text-transform:uppercase">Apply for the Suite.</h2>
     </div>
-    <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:18px">
+    <form action="https://formspree.io/f/mdeozqyk" method="POST" style="display:flex;flex-direction:column;gap:18px">
+      <input type="hidden" name="_subject" value="Suite application">
+      <input type="hidden" name="_next" value="https://mayacreativeco.com/thanks.html">
       <div style="display:flex;flex-direction:column;gap:12px">
         <span style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Payment preference</span>
         <div style="display:flex;gap:12px;flex-wrap:wrap">
@@ -65,21 +68,19 @@ input:focus,textarea:focus,select:focus{border-color:#D9471F}
             <button type="button" onClick="{{ c.pick }}" style="cursor:pointer;border:2px solid #141414;border-radius:999px;padding:8px 20px;font-family:'Reenie Beanie',cursive;font-size:24px;line-height:1;background:{{ c.bg }};color:{{ c.color }};transform:rotate({{ c.tilt }}deg);transition:transform .15s" style-hover="transform:rotate({{ c.tiltHover }}deg)">{{ c.label }}</button>
           </sc-for>
         </div>
+        <input type="hidden" name="payment" value="{{ picked }}">
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
         <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Name<input name="name" required="{{ true }}"></label>
-        <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Email<input name="email" required="{{ true }}"></label>
         <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Handle<input name="handle" placeholder="@" required="{{ true }}"></label>
-        <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Where you post<input name="platform" placeholder="TikTok, Reels, YouTube…"></label>
       </div>
-      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">What you make<textarea name="make" rows="{{ 3 }}" required="{{ true }}"></textarea></label>
-      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">What you want to be able to edit by week 12<textarea name="goal" rows="{{ 3 }}" required="{{ true }}"></textarea></label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Email<input name="email" type="email" required="{{ true }}"></label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">What you make<textarea name="what_you_make" rows="{{ 3 }}" required="{{ true }}"></textarea></label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">What you want to be able to edit by week 12<textarea name="week_12_goal" rows="{{ 3 }}" required="{{ true }}"></textarea></label>
       <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Links to your last three posts<textarea name="links" rows="{{ 3 }}" placeholder="one per line" required="{{ true }}"></textarea></label>
-      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">How did you find me<input name="source"></label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">How you found me<input name="how_you_found_me"></label>
       <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:8px">
-        <button type="submit" disabled="{{ sending }}" style="cursor:pointer;display:inline-block;background:#D9471F;color:#F5EBD6;border:2px solid #D9471F;border-radius:999px;padding:14px 26px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2" style-hover="background:#141414;border-color:#141414">{{ buttonLabel }}</button>
-        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Reenie Beanie',cursive;font-size:30px;line-height:1">got it. real answer within 48 hours.</span></sc-if>
-        <sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}"><span style="font-size:15px;text-wrap:pretty">That didn't send. Email me directly at <a href="mailto:hello@collegarestudio.com" style="border-bottom:1.5px solid #141414">hello@collegarestudio.com</a>.</span></sc-if>
+        <button type="submit" style="cursor:pointer;display:inline-block;background:#D9471F;color:#F5EBD6;border:2px solid #D9471F;border-radius:999px;padding:14px 26px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2" style-hover="background:#141414;border-color:#141414">Apply for the Suite</button>
       </div>
     </form>
   </div>
@@ -98,7 +99,7 @@ input:focus,textarea:focus,select:focus{border-color:#D9471F}
       <li style="display:flex;flex-direction:column;gap:8px;padding-top:18px;border-top:1.5px solid #F5EBD6">
         <span style="font-family:'Reenie Beanie',cursive;font-size:38px;line-height:1;color:#C8C0EE">02</span>
         <strong style="font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">I read it properly</strong>
-        <span style="font-size:16px;text-wrap:pretty">Real answer within 48 hours — yes, not yet, or a question.</span>
+        <span style="font-size:16px;text-wrap:pretty">Real answer within two business days — yes, not yet, or a question.</span>
       </li>
       <li style="display:flex;flex-direction:column;gap:8px;padding-top:18px;border-top:1.5px solid #F5EBD6">
         <span style="font-family:'Reenie Beanie',cursive;font-size:38px;line-height:1;color:#C8C0EE">03</span>
@@ -119,7 +120,7 @@ input:focus,textarea:focus,select:focus{border-color:#D9471F}
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.4">
       <div style="display:flex;flex-direction:column;gap:10px"><a href="creators.html">Creators</a><a href="brands.html">Brands</a><a href="work.html">Work</a><a href="shop.html">Shop</a><a href="about.html">About</a></div>
-      <div style="display:flex;flex-direction:column;gap:10px"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Substack</a><a href="#">The Editing Corner (Whop)</a></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><a href="https://instagram.com/mayacreativeco">Instagram</a><a href="#">TikTok</a><a href="#">Substack</a><a href="https://whop.com/the-editing-corner">The Editing Corner (Whop)</a></div>
     </div>
     <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;justify-self:end;text-align:right">
       <p style="margin:0">Brands: <a href="mailto:hello@collegarestudio.com" style="border-bottom:1.5px solid #141414">hello@collegarestudio.com</a></p>
@@ -131,63 +132,24 @@ input:focus,textarea:focus,select:focus{border-color:#D9471F}
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
-/* ---------------------------------------------------------------------------
-   WHERE INQUIRIES GO
-   Paste your form endpoint below — e.g. https://formspree.io/f/xxxxxxx
-   Until it is set, the form falls back to opening a pre-filled email.
-   --------------------------------------------------------------------------- */
-const FORM_ENDPOINT = '';
-
 class Component extends DCLogic {
   OPTIONS = ['Pay in full · $3,000', '3 × $1,050'];
-  state = { plan: '',  status: 'idle' };
-
-  mailtoFallback(data) {
-    const lines = [];
-    data.forEach((v, k) => { if (String(v).trim()) lines.push(k + ': ' + v); });
-    window.location.href = 'mailto:hello@collegarestudio.com'
-      + '?subject=' + encodeURIComponent('Edit Suite application')
-      + '&body=' + encodeURIComponent(lines.join('\n'));
-  }
-
-  async send(e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-    if (this.state.plan) data.append('plan', this.state.plan);
-    data.append('_subject', 'Edit Suite application');
-
-    if (!FORM_ENDPOINT) { this.mailtoFallback(data); return; }
-
-    this.setState({ status: 'sending' });
-    try {
-      const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-      if (!res.ok) throw new Error('submit failed: ' + res.status);
-      form.reset();
-      this.setState({ plan: '',  status: 'sent' });
-    } catch (err) {
-      this.setState({ status: 'error' });
-    }
-  }
-
+  state = { picked: '' };
   renderVals() {
-    const status = this.state.status;
+    const tilts = [-4, 3, -2, 5, -3];
+    const fills = ['#F6E3B4', '#C8C0EE', '#E8A5A0', '#FBF6EA', '#F6E3B4'];
     return {
+      picked: this.state.picked,
+      showForm: this.state.picked !== null,
+      diverted: this.state.picked === null,
       choices: this.OPTIONS.map((o, i) => {
-        const tilts = [-4, 3, -2, 5, -3];
-        const fills = ['#F6E3B4', '#C8C0EE', '#E8A5A0', '#FBF6EA', '#F6E3B4'];
-        const on = this.state.plan === o;
+        const on = this.state.picked === o;
         return {
           label: o, tilt: tilts[i % 5], tiltHover: tilts[i % 5] - 2,
           bg: on ? '#D9471F' : fills[i % 5], color: on ? '#F5EBD6' : '#141414',
-          pick: () => this.setState({ plan: o }),
+          pick: () => this.setState({ picked: o }),
         };
       }),
-      sending: status === 'sending',
-      sent: status === 'sent',
-      failed: status === 'error',
-      buttonLabel: status === 'sending' ? 'Sending…' : 'Apply for the Suite',
-      submit: e => this.send(e),
     };
   }
 }
