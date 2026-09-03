@@ -166,7 +166,7 @@ a:hover{color:#D9471F}
       </div>
       <a href="shop.html" style="font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;border-bottom:2px solid #141414;padding-bottom:2px" style-hover="border-color:#D9471F">See the whole shop →</a>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,300px));gap:28px">
       <sc-for list="{{ products }}" as="p" hint-placeholder-count="4">
         <a href="shop.html" style="display:flex;flex-direction:column;background:#FBF6EA;border:2px solid #141414;border-radius:20px;box-shadow:6px 6px 0 #141414;overflow:hidden;color:#141414;transition:transform .15s" style-hover="transform:translateY(-2px);color:#141414">
           <div style="height:190px;border-bottom:2px solid #141414;background:repeating-linear-gradient(90deg,#F6E3B4 0 18px,#F5EBD6 18px 36px);display:flex;align-items:center;justify-content:center;padding:20px">
@@ -254,11 +254,10 @@ class Component extends DCLogic {
       displayFont: fonts[this.props.displayFont] ?? fonts['Boldonse'],
       marqueeDuration: (this.props.marqueeSpeed ?? 45) + 's',
       f0: frame(0), f1: frame(1), f2: frame(2), f3: frame(3),
+      // Keep this in step with the live products in shop.html.
       products: [
-        { title: 'Caption Style Pack', line: 'Five caption looks, saved as presets. Safe zones included.', price: '$19', sticker: 'captions', tilt: -5 },
-        { title: 'Preset Pack', line: 'Six CapCut color looks: warm film, clean beauty, moody travel, camcorder.', price: '$29', sticker: 'color looks', tilt: 4 },
-        { title: 'Interactive Editing Guides', line: 'One trend, one page, follow-along video and checkpoints. Opens in your browser.', price: '$12 each', sticker: 'one trend, one page', tilt: -3 },
-        { title: 'CapCut Template Drops', line: 'My actual project files. Swap your clips in, keep the timing.', price: '$9', sticker: 'project files', tilt: 6 },
+        { title: 'The Hook Bank', line: 'Fifty opening lines sorted by format.', price: '$12', sticker: 'fifty hooks', tilt: 4 },
+        { title: 'Font Pairings Pack', line: 'Eight imported pairs: one hook font, one caption font, each.', price: '$15', sticker: 'type pairs', tilt: -3 },
       ],
     };
   }
