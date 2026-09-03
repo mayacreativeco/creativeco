@@ -129,26 +129,18 @@ input:focus,textarea:focus{border-color:#D9471F}
 
 <!-- APPLICATION -->
 <section id="apply" data-screen-label="Apply" style="padding:96px 40px">
-  <div style="max-width:800px;margin:0 auto;background:#FBF6EA;border:2px solid #141414;border-radius:20px;box-shadow:6px 6px 0 #141414;padding:48px;display:flex;flex-direction:column;gap:24px">
-    <div style="display:flex;flex-direction:column;gap:10px">
+  <div style="max-width:800px;margin:0 auto;background:#FBF6EA;border:2px solid #141414;border-radius:20px;box-shadow:6px 6px 0 #141414;padding:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:12px">
       <div style="font-family:'Reenie Beanie',cursive;font-size:40px;line-height:1;transform:rotate(-2deg);width:max-content;color:#D9471F">tell me what you make.</div>
       <h2 style="margin:0;font-family:Boldonse,'Archivo Black',Arial,sans-serif;font-weight:400;font-size:clamp(26px,2.6vw,38px);line-height:1.2;text-transform:uppercase">Apply for the Suite.</h2>
+      <p style="margin:0;font-size:17px;text-wrap:pretty">Four seats a quarter, application only. Takes about five minutes if you have your links handy — real answer within 48 hours.</p>
+      <sc-if value="{{ showPrice }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font-family:'Reenie Beanie',cursive;font-size:36px;line-height:1;color:#D9471F">{{ price }}</p>
+      </sc-if>
     </div>
-    <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:18px">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
-        <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Name<input name="name" required="{{ true }}"></label>
-        <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Handle<input name="handle" placeholder="@" required="{{ true }}"></label>
-      </div>
-      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">What you make<textarea name="make" rows="{{ 3 }}" required="{{ true }}"></textarea></label>
-      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">What you want to be able to edit by week 12<textarea name="goal" rows="{{ 3 }}" required="{{ true }}"></textarea></label>
-      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">Links to your last three posts<textarea name="links" rows="{{ 3 }}" placeholder="one per line" required="{{ true }}"></textarea></label>
-      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase">How did you find me<input name="source"></label>
-      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:8px">
-        <button type="submit" style="cursor:pointer;display:inline-block;background:#D9471F;color:#F5EBD6;border:2px solid #D9471F;border-radius:999px;padding:14px 26px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2" style-hover="background:#141414;border-color:#141414">Apply for the Suite</button>
-        <sc-if value="{{ showPrice }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Reenie Beanie',cursive;font-size:32px;line-height:1;color:#D9471F">{{ price }}</span></sc-if>
-        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Reenie Beanie',cursive;font-size:30px;line-height:1">got it. real answer within 48 hours.</span></sc-if>
-      </div>
-    </form>
+    <div style="display:flex;justify-content:flex-end">
+      <a href="edit-suite-apply.html" style="display:inline-block;background:#D9471F;color:#F5EBD6;border:2px solid #D9471F;border-radius:999px;padding:14px 26px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2" style-hover="background:#141414;border-color:#141414">Apply for the Suite</a>
+    </div>
   </div>
 </section>
 
@@ -173,15 +165,12 @@ input:focus,textarea:focus{border-color:#D9471F}
 </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;price&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Offer&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;price&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;$3,000 · a quarter · four seats&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Offer&quot;}}">
 class Component extends DCLogic {
-  state = { sent: false };
   renderVals() {
     const price = (this.props.price ?? '').trim();
     return {
       showPrice: price.length > 0, price,
-      sent: this.state.sent,
-      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
     };
   }
 }
