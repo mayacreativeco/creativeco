@@ -93,19 +93,21 @@ a:hover{color:#D9471F}
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { filter: 'All' };
+  // Live in the shop right now. The rest are parked below — uncomment a line
+  // to put that product back, and the category filters pick it up automatically.
   products = [
-    { cat: 'Packs', title: 'Caption Style Pack', line: 'Five caption looks, saved as presets. Safe zones included.', price: '$19', sticker: 'captions', tilt: -5 },
-    { cat: 'Packs', title: 'Preset Pack', line: 'Six CapCut color looks: warm film, clean beauty, moody travel, camcorder, bright dump, night city.', price: '$29', sticker: 'color looks', tilt: 4 },
-    { cat: 'Packs', title: 'Font Pairings Pack', line: 'Eight imported pairs: one hook font, one caption font, each.', price: '$15', sticker: 'type pairs', tilt: -3 },
-    { cat: 'Packs', title: 'Overlay Pack', line: 'Grain, light leaks, dust, VHS lines, paper. Screen-blend ready.', price: '$19', sticker: 'texture', tilt: 5 },
-    { cat: 'Packs', title: 'Transition Pack', line: 'Keyframe templates for the six moves everyone asks about.', price: '$19', sticker: 'the six moves', tilt: -4 },
-    { cat: 'Guides', title: 'Interactive Editing Guides', line: 'One trend, one page, follow-along video and checkpoints.', price: '$12 each', sticker: 'one trend, one page', tilt: 3 },
-    { cat: 'Templates', title: 'CapCut Template Drops', line: 'My actual project files. Swap your clips in, keep the timing.', price: '$9', sticker: 'project files', tilt: -6 },
     { cat: 'Guides', title: 'The Hook Bank', line: 'Fifty opening lines sorted by format.', price: '$12', sticker: 'fifty hooks', tilt: 4 },
-    { cat: 'Guides', title: 'Shoot + Export Card', line: 'Phone settings, framing, export specs.', price: 'free with any pack', sticker: 'the card', tilt: -2 },
+    { cat: 'Packs', title: 'Font Pairings Pack', line: 'Eight imported pairs: one hook font, one caption font, each.', price: '$15', sticker: 'type pairs', tilt: -3 },
+    // { cat: 'Packs', title: 'Caption Style Pack', line: 'Five caption looks, saved as presets. Safe zones included.', price: '$19', sticker: 'captions', tilt: -5 },
+    // { cat: 'Packs', title: 'Preset Pack', line: 'Six CapCut color looks: warm film, clean beauty, moody travel, camcorder, bright dump, night city.', price: '$29', sticker: 'color looks', tilt: 4 },
+    // { cat: 'Packs', title: 'Overlay Pack', line: 'Grain, light leaks, dust, VHS lines, paper. Screen-blend ready.', price: '$19', sticker: 'texture', tilt: 5 },
+    // { cat: 'Packs', title: 'Transition Pack', line: 'Keyframe templates for the six moves everyone asks about.', price: '$19', sticker: 'the six moves', tilt: -4 },
+    // { cat: 'Guides', title: 'Interactive Editing Guides', line: 'One trend, one page, follow-along video and checkpoints.', price: '$12 each', sticker: 'one trend, one page', tilt: 3 },
+    // { cat: 'Templates', title: 'CapCut Template Drops', line: 'My actual project files. Swap your clips in, keep the timing.', price: '$9', sticker: 'project files', tilt: -6 },
+    // { cat: 'Guides', title: 'Shoot + Export Card', line: 'Phone settings, framing, export specs.', price: 'free with any pack', sticker: 'the card', tilt: -2 },
   ];
   renderVals() {
-    const cats = ['All', 'Packs', 'Guides', 'Templates'];
+    const cats = ['All', ...['Packs', 'Guides', 'Templates'].filter(c => this.products.some(p => p.cat === c))];
     const tilts = [-4, 3, -2, 5];
     const active = this.state.filter;
     return {
