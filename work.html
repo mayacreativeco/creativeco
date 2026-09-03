@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="logos/favicon-m-32.png">
+<link rel="apple-touch-icon" href="logos/favicon-co-512.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Boldonse&family=Archivo+Black&family=Archivo:wght@400;500;600&family=Archivo+Narrow:wght@700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#F5EBD6;color:#141414;font-family:Archivo,Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#141414;text-decoration:none}
+a:hover{color:#D9471F}
+</style>
+</helmet>
+
+<div data-screen-label="Work" style="background:#F5EBD6;min-height:100vh;overflow-x:clip">
+
+<nav style="position:sticky;top:0;z-index:50;background:#F5EBD6;border-bottom:2px solid #141414;height:72px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 40px">
+  <a href="index.html" style="font-family:Boldonse,'Archivo Black',Arial,sans-serif;font-size:15px;letter-spacing:0.04em;text-transform:uppercase;color:#2C3A28;line-height:1">Maya Creative Co</a>
+  <div style="display:flex;gap:32px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase">
+    <a href="creators.html">Creators</a>
+    <a href="brands.html">Brands</a>
+    <a href="work.html" style="border-bottom:2px solid #141414">Work</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+  </div>
+  <div style="display:flex;justify-content:flex-end">
+    <a href="rough-cut.html" style="display:inline-block;background:#D9471F;color:#F5EBD6;border:2px solid #D9471F;border-radius:999px;padding:10px 22px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2" style-hover="background:#141414;border-color:#141414;color:#F5EBD6">Book a Rough Cut</a>
+  </div>
+</nav>
+
+<section data-screen-label="Header" style="padding:88px 40px 48px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:'Reenie Beanie',cursive;font-size:48px;line-height:1;transform:rotate(-3deg);transform-origin:left bottom;width:max-content">receipts</div>
+    <h1 style="margin:0;font-family:Boldonse,'Archivo Black',Arial,sans-serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.2;text-transform:uppercase">The work.</h1>
+    <p style="margin:0;max-width:600px;font-size:17px;text-wrap:pretty">Group content days, travel, edits from the Corner, and the sites I've designed. Tap anything to watch.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:16px">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+        <button onClick="{{ f.pick }}" style="cursor:pointer;border:2px solid #141414;border-radius:999px;padding:6px 18px;font-family:'Reenie Beanie',cursive;font-size:24px;line-height:1;background:{{ f.bg }};color:{{ f.color }};transform:rotate({{ f.tilt }}deg);transition:transform .15s" style-hover="transform:rotate({{ f.tiltHover }}deg)">{{ f.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Grid" style="padding:16px 40px 104px">
+  <div style="max-width:1200px;margin:0 auto;columns:3 280px;column-gap:28px">
+    <sc-for list="{{ visible }}" as="t" hint-placeholder-count="9">
+      <a href="#" title="[VIDEO LINK]" style="display:flex;flex-direction:column;gap:12px;break-inside:avoid;margin-bottom:28px;color:#141414" style-hover="color:#141414">
+        <div style="aspect-ratio:{{ t.ratio }};border:2px solid #141414;border-radius:20px;box-shadow:6px 6px 0 #141414;background:{{ t.bg }};overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.5;transition:transform .15s" style-hover="transform:translateY(-2px)">
+          {{ t.media }}
+          <sc-if value="{{ t.showSlot }}" hint-placeholder-val="{{ true }}">{{ t.slot }}</sc-if>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:2px;padding:0 4px">
+          <span style="font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase">{{ t.brand }}</span>
+          <span style="font-style:italic;font-size:15px">{{ t.note }}</span>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+  <p style="max-width:1200px;margin:8px auto 0;font-family:'Reenie Beanie',cursive;font-size:32px;line-height:1;transform:rotate(-2deg);width:max-content">add as you go — nine minimum before launch.</p>
+</section>
+
+<div style="height:72px;border-top:2px solid #141414;border-bottom:2px solid #141414;background:repeating-linear-gradient(90deg,#F6E3B4 0 18px,#F5EBD6 18px 36px)"></div>
+
+<footer style="background:#F5EBD6;padding:56px 40px 28px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <a href="index.html" style="font-family:Boldonse,'Archivo Black',Arial,sans-serif;font-size:15px;letter-spacing:0.04em;text-transform:uppercase;color:#2C3A28;line-height:1">Maya Creative Co</a>
+      <p style="margin:0;font-size:15px">Phoenix, AZ · and wherever you fly me</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.4">
+      <div style="display:flex;flex-direction:column;gap:10px"><a href="creators.html">Creators</a><a href="brands.html">Brands</a><a href="work.html">Work</a><a href="shop.html">Shop</a><a href="about.html">About</a></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Substack</a><a href="#">The Editing Corner (Whop)</a></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;justify-self:end;text-align:right">
+      <p style="margin:0">Brands: <a href="mailto:hello@collegarestudio.com" style="border-bottom:1.5px solid #141414">hello@collegarestudio.com</a></p>
+      <p style="margin:0">Creators: <a href="creators.html" style="border-bottom:1.5px solid #141414">start in the Corner →</a></p>
+    </div>
+  </div>
+  <p style="max-width:1200px;margin:48px auto 0;padding-top:20px;border-top:1.5px solid #141414;font-size:12px;line-height:1.5">© Maya Creative Co · Media kit and UGC rates live on my Beacons, not here — on purpose.</p>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filter: 'All' };
+  tiles = [
+    { cat: 'Edits', brand: 'Hiking OOTD', note: 'outfit edit', ratio: '9/16', bg: '#E8A5A0', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/web1.mp4' },
+    { cat: 'Edits', brand: 'Creator edit', note: 'from the Corner', ratio: '9/16', bg: '#C8C0EE', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/web2.mp4' },
+    { cat: 'Edits', brand: 'Creator edit', note: 'from the Corner', ratio: '9/16', bg: '#F6E3B4', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/creat1.mp4' },
+    { cat: 'Travel', brand: 'Hotel content', note: 'arrivals, the room reveal', ratio: '9/16', bg: '#F6E3B4', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/web4.mp4' },
+    { cat: 'Group content', brand: 'Girls trip', note: 'the group-chat energy', ratio: '9/16', bg: '#E8A5A0', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/creat.mp4' },
+    { cat: 'Group content', brand: 'Group content', note: 'the group, on location', ratio: '9/16', bg: '#C8C0EE', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/web5.mp4' },
+    { cat: 'Edits', brand: 'Creator edit', note: 'retention pass', ratio: '9/16', bg: '#FBF6EA', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/creat6.mp4' },
+    { cat: 'Travel', brand: 'Travel', note: 'the trip', ratio: '9/16', bg: '#F6E3B4', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/creat8.mp4' },
+    { cat: 'Brand & web', brand: 'Collegare Studio', note: 'brand & web case study', ratio: '9/16', bg: '#FBF6EA', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/collstudio.mp4' },
+    { cat: 'Travel', brand: 'Flagstaff', note: 'the stay, the trip', ratio: '9/16', bg: '#C8C0EE', img: 'img/gc-pool.jpg' },
+    { cat: 'Travel', brand: 'The Frenchie · Round Top', note: 'the stay, as guests would post it', ratio: '9/16', bg: '#F6E3B4', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/web9.mp4' },
+    { cat: 'Travel', brand: 'Onera · glamping', note: 'arrivals, the reveal, the morning after', ratio: '9/16', bg: '#E8A5A0', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/web10.mp4' },
+    { cat: 'Group content', brand: 'Camp content day', note: 'the tent, the masks, the laptops', ratio: '9/16', bg: '#C8C0EE', img: 'img/gc-tent-masks.jpg' },
+    { cat: 'Group content', brand: 'Camp content day', note: 'dinner at the fire', ratio: '9/16', bg: '#E8A5A0', img: 'img/gc-fire-tent.jpg' },
+    { cat: 'Group content', brand: 'Camp content day', note: 'pickleball by the RV', ratio: '9/16', bg: '#FBF6EA', img: 'img/gc-pickleball.jpg' },
+    { cat: 'Group content', brand: 'Camp content day', note: 'the walk in', ratio: '9/16', bg: '#C8C0EE', img: 'img/gc-forest-walk.jpg' },
+    { cat: 'Travel', brand: 'Onera · glamping', note: 'the deck', ratio: '9/16', bg: '#F6E3B4', img: 'img/on-chairs.jpg' },
+    { cat: 'Travel', brand: 'The Frenchie · Round Top', note: 'under the umbrellas', ratio: '4/5', bg: '#C8C0EE', img: 'img/fr-umbrellas.jpg' },
+    { cat: 'Travel', brand: 'San Miguel', note: 'the friend shot', ratio: '4/5', bg: '#E8A5A0', img: 'img/gc-friend-door.jpg' },
+    { cat: 'Group content', brand: 'Wellness event', note: 'the class, phones up', ratio: '4/5', bg: '#F6E3B4', img: 'img/well-class.jpg' },
+    { cat: 'Group content', brand: 'Wellness event', note: 'gift bags at the bar', ratio: '4/5', bg: '#E8A5A0', img: 'img/well-bags.jpg' },
+    { cat: 'Group content', brand: 'Camp content day', note: 'the walk in, two of us', ratio: '9/16', bg: '#FBF6EA', img: 'img/gc-couple-walk.jpg' },
+    { cat: 'Group content', brand: 'Restaurant', note: 'rooftop, string lights, the table', ratio: '4/5', bg: '#F6E3B4', img: 'img/rest-rooftop.jpg' },
+    { cat: 'Travel', brand: 'The Frenchie · Round Top', note: 'the patio at dusk', ratio: '4/5', bg: '#C8C0EE', img: 'img/fr-patio.jpg' },
+    { cat: 'Travel', brand: 'The Frenchie · Round Top', note: 'the pool, from above', ratio: '4/5', bg: '#E8A5A0', img: 'img/fr-drone-pool.jpg' },
+    { cat: 'Travel', brand: 'The Frenchie · Round Top', note: 'champagne by the umbrellas', ratio: '4/5', bg: '#F6E3B4', img: 'img/fr-lounger.jpg' },
+    { cat: 'Travel', brand: 'The Frenchie · Round Top', note: 'pickleball at golden hour', ratio: '4/5', bg: '#FBF6EA', img: 'img/fr-pickleball.jpg' },
+    { cat: 'Travel', brand: 'The Frenchie · Round Top', note: '#sofrenchie', ratio: '4/5', bg: '#C8C0EE', img: 'img/fr-court-top.jpg' },
+    { cat: 'Travel', brand: 'The Frenchie · Round Top', note: 'the patio', ratio: '4/5', bg: '#E8A5A0', img: 'img/fr-chairs.jpg' },
+    { cat: 'Travel', brand: 'The Frenchie · Round Top', note: 'the firepit, from above', ratio: '4/5', bg: '#F6E3B4', img: 'img/fr-firepit-top.jpg' },
+    { cat: 'Travel', brand: 'Onera · glamping', note: 'the hammock', ratio: '4/5', bg: '#FBF6EA', img: 'img/on-hammock.jpg' },
+    { cat: 'Travel', brand: 'Onera · glamping', note: 'the pool', ratio: '4/5', bg: '#C8C0EE', img: 'img/on-pool.jpg' },
+    { cat: 'Travel', brand: 'Onera · glamping', note: 'the balcony', ratio: '9/16', bg: '#E8A5A0', img: 'img/on-balcony.jpg' },
+    { cat: 'Travel', brand: 'Onera · glamping', note: 'Walnut House', ratio: '4/5', bg: '#F6E3B4', img: 'img/on-stairs.jpg' },
+    { cat: 'Travel', brand: 'Onera · glamping', note: 'the neighbours', ratio: '4/5', bg: '#FBF6EA', img: 'img/on-horses.jpg' },
+  ];
+  muteAll() { document.querySelectorAll('video').forEach(v => { v.muted = true; v.defaultMuted = true; v.volume = 0; v.setAttribute('muted', ''); v.play().catch(() => {}); }); }
+  componentDidMount() { this.muteAll(); }
+  componentDidUpdate() { this.muteAll(); }
+  renderVals() {
+    const cats = ['All', 'Group content', 'Travel', 'Edits', 'Brand & web'];
+    const tilts = [-4, 3, -2, 5, -3];
+    const fills = ['#F6E3B4', '#C8C0EE', '#E8A5A0', '#FBF6EA', '#F6E3B4'];
+    const active = this.state.filter;
+    return {
+      filters: cats.map((c, i) => ({
+        label: c, tilt: tilts[i], tiltHover: tilts[i] - 2,
+        bg: active === c ? '#D9471F' : fills[i], color: active === c ? '#F5EBD6' : '#141414',
+        pick: () => this.setState({ filter: c }),
+      })),
+      visible: (active === 'All' ? this.tiles : this.tiles.filter(t => t.cat === active)).map(t => ({ ...t, showSlot: !t.img && !t.video, media: t.video
+        ? React.createElement('video', { key: t.video, src: t.video, autoPlay: true, muted: true, loop: true, playsInline: true, preload: 'metadata', ref: v => { if (v) { v.muted = true; v.defaultMuted = true; v.volume = 0; } }, style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' } })
+        : t.img ? React.createElement('img', { key: t.img, src: t.img, alt: t.brand, style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' } }) : null })),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+.vercel
+
+# Videos are hosted on Vercel Blob (store: creativeco-media), not in git
+uploads/
