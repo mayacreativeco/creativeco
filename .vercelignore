@@ -1,0 +1,5 @@
+# Kept in git as an archive, but not published to the live site.
+old-site/
+
+# Videos are served from Vercel Blob (store: creativeco-media), not from the deploy.
+uploads/
