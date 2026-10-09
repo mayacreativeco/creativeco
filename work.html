@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" type="image/png" sizes="32x32" href="logos/favicon-m-32.png">
-<link rel="apple-touch-icon" href="logos/favicon-co-512.png">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work · Maya Creative Co</title>
+<meta name="description" content="Group content days, travel, influencer edits and brand &amp; web case studies from Maya Creative Co.">
+<link rel="canonical" href="https://mayacreativeco.com/work.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Work · Maya Creative Co">
+<meta property="og:description" content="Group content days, travel, influencer edits and brand & web case studies.">
+<meta property="og:url" content="https://mayacreativeco.com/work.html">
+<meta property="og:image" content="https://mayacreativeco.com/logos/favicon-co-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" sizes="32x32" href="logos/favicon-m-32.png">
+<link rel="apple-touch-icon" href="logos/favicon-co-512.png">
 <script src="./support.js"></script>
 <script>!function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");whop.setScope("biz_FWl7NvMFPZuuHT");whop.track("page");</script>
 <link rel="stylesheet" href="mobile.css">
 </head>
 <body>
+<noscript>
+  <div style="background:#F5EBD6;color:#141414;font-family:Archivo,Arial,sans-serif;padding:64px 40px;text-align:center">
+    <p style="font-size:18px;margin:0 0 16px">This page's work grid needs JavaScript to load. In the meantime:</p>
+    <p style="margin:0"><a href="https://instagram.com/mayacreativeco" style="color:#D9471F">See the work on Instagram →</a> &nbsp;·&nbsp; <a href="brand-inquire.html" style="color:#D9471F">Start a project →</a></p>
+  </div>
+</noscript>
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,14 +42,13 @@ a:hover{color:#D9471F}
 <nav style="position:sticky;top:0;z-index:50;background:#F5EBD6;border-bottom:2px solid #141414;height:72px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 40px">
   <a href="index.html" style="font-family:Boldonse,'Archivo Black',Arial,sans-serif;font-size:15px;letter-spacing:0.04em;text-transform:uppercase;color:#2C3A28;line-height:1">Maya Creative Co</a>
   <div style="display:flex;gap:32px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase">
-    <a href="creators.html">Creators</a>
-    <a href="brands.html">Brands</a>
+    <a href="services.html">Services</a>
     <a href="work.html" style="border-bottom:2px solid #141414">Work</a>
     <a href="shop.html">Shop</a>
     <a href="about.html">About</a>
   </div>
   <div style="display:flex;justify-content:flex-end">
-    <a href="rough-cut.html" style="display:inline-block;background:#D9471F;color:#F5EBD6;border:2px solid #D9471F;border-radius:999px;padding:10px 22px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2" style-hover="background:#141414;border-color:#141414;color:#F5EBD6">Book a Rough Cut</a>
+    <a href="brand-inquire.html" style="display:inline-block;background:#D9471F;color:#F5EBD6;border:2px solid #D9471F;border-radius:999px;padding:10px 22px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.2" style-hover="background:#141414;border-color:#141414;color:#F5EBD6">Start a project</a>
   </div>
 </nav>
 
@@ -42,7 +56,7 @@ a:hover{color:#D9471F}
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:20px">
     <div style="font-family:'Reenie Beanie',cursive;font-size:48px;line-height:1;transform:rotate(-3deg);transform-origin:left bottom;width:max-content">receipts</div>
     <h1 style="margin:0;font-family:Boldonse,'Archivo Black',Arial,sans-serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.2;text-transform:uppercase">The work.</h1>
-    <p style="margin:0;max-width:600px;font-size:17px;text-wrap:pretty">Group content days, travel, edits from the Corner, and the sites I've designed. Tap anything to watch.</p>
+    <p style="margin:0;max-width:600px;font-size:17px;text-wrap:pretty">Group content days, travel, influencer edits, and the sites I've designed. Tap anything to watch.</p>
     <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:16px">
       <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
         <button onClick="{{ f.pick }}" style="cursor:pointer;border:2px solid #141414;border-radius:999px;padding:6px 18px;font-family:'Reenie Beanie',cursive;font-size:24px;line-height:1;background:{{ f.bg }};color:{{ f.color }};transform:rotate({{ f.tilt }}deg);transition:transform .15s" style-hover="transform:rotate({{ f.tiltHover }}deg)">{{ f.label }}</button>
@@ -76,17 +90,18 @@ a:hover{color:#D9471F}
     <div style="display:flex;flex-direction:column;gap:10px">
       <a href="index.html" style="font-family:Boldonse,'Archivo Black',Arial,sans-serif;font-size:15px;letter-spacing:0.04em;text-transform:uppercase;color:#2C3A28;line-height:1">Maya Creative Co</a>
       <p style="margin:0;font-size:15px">Phoenix, AZ · and wherever you fly me</p>
+      <a href="mailto:hello@mayaherring.com" style="font-size:15px;border-bottom:1.5px solid #141414;width:max-content">hello@mayaherring.com</a>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.4">
-      <div style="display:flex;flex-direction:column;gap:10px"><a href="creators.html">Creators</a><a href="brands.html">Brands</a><a href="work.html">Work</a><a href="shop.html">Shop</a><a href="about.html">About</a></div>
-      <div style="display:flex;flex-direction:column;gap:10px"><a href="https://instagram.com/mayacreativeco">Instagram</a><a href="https://www.tiktok.com/@mayacreativeco">TikTok</a><a href="https://substack.com/@mayacreativeco">Substack</a><a href="https://whop.com/the-editing-corner">The Editing Corner (Whop)</a></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><a href="services.html">Services</a><a href="work.html">Work</a><a href="shop.html">Shop</a><a href="about.html">About</a></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><a href="https://instagram.com/mayacreativeco">Instagram</a><a href="https://www.tiktok.com/@mayacreativeco">TikTok</a><a href="https://substack.com/@mayacreativeco">Substack</a></div>
     </div>
     <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;justify-self:end;text-align:right">
-      <p style="margin:0">Brands: <a href="mailto:hello@mayaherring.com" style="border-bottom:1.5px solid #141414">hello@mayaherring.com</a></p>
-      <p style="margin:0">Creators: <a href="creators.html" style="border-bottom:1.5px solid #141414">start in the Corner →</a></p>
+      <p style="margin:0"><a href="https://whop.com/the-editing-corner" style="border-bottom:1.5px solid #141414">Creator? Learn the cut in the Editing Corner →</a></p>
+      <p style="margin:0"><a href="https://m0chic.bio" style="border-bottom:1.5px solid #141414">UGC rates and media kit →</a></p>
     </div>
   </div>
-  <p style="max-width:1200px;margin:48px auto 0;padding-top:20px;border-top:1.5px solid #141414;font-size:12px;line-height:1.5">© Maya Creative Co · Media kit and UGC rates live on my Beacons, not here — on purpose.</p>
+  <p style="max-width:1200px;margin:48px auto 0;padding-top:20px;border-top:1.5px solid #141414;font-size:12px;line-height:1.5">© Maya Creative Co</p>
 </footer>
 </div>
 </x-dc>
@@ -95,8 +110,8 @@ class Component extends DCLogic {
   state = { filter: 'All' };
   tiles = [
     { cat: 'Edits', brand: 'Hiking OOTD', note: 'outfit edit', ratio: '9/16', bg: '#E8A5A0', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/web1.mp4' },
-    { cat: 'Edits', brand: 'Creator edit', note: 'from the Corner', ratio: '9/16', bg: '#C8C0EE', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/web2.mp4' },
-    { cat: 'Edits', brand: 'Creator edit', note: 'from the Corner', ratio: '9/16', bg: '#F6E3B4', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/creat1.mp4' },
+    { cat: 'Edits', brand: 'Creator edit', note: 'influencer edit', ratio: '9/16', bg: '#C8C0EE', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/web2.mp4' },
+    { cat: 'Edits', brand: 'Creator edit', note: 'influencer edit', ratio: '9/16', bg: '#F6E3B4', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/creat1.mp4' },
     { cat: 'Travel', brand: 'Hotel content', note: 'arrivals, the room reveal', ratio: '9/16', bg: '#F6E3B4', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/web4.mp4' },
     { cat: 'Group content', brand: 'Girls trip', note: 'the group-chat energy', ratio: '9/16', bg: '#E8A5A0', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/creat.mp4' },
     { cat: 'Group content', brand: 'Group content', note: 'the group, on location', ratio: '9/16', bg: '#C8C0EE', video: 'https://muadncb0sztluwjw.public.blob.vercel-storage.com/uploads/web5.mp4' },

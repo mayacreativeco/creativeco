@@ -1,0 +1,77 @@
+<!--
+  Shop products partial — parked here while shop.html shows a "coming soon" state.
+
+  To put the shop back live:
+  1. Copy the <section data-screen-label="Header"> and <section data-screen-label="Grid">
+     markup below into shop.html, inside <x-dc>, replacing the coming-soon section.
+  2. Copy the <script type="text/x-dc" data-dc-script> block below into shop.html,
+     replacing its current (empty) script tag. Uncomment whichever products should
+     go live and give them real prices — the category filters pick new products up
+     automatically.
+  3. Restore the <link rel="preconnect"...> / fonts <link> / <helmet> wrapper and
+     <script src="./support.js"> if shop.html has been simplified to static HTML
+     (it needs the x-dc runtime again for the sc-for / {{ }} templating below).
+-->
+
+<section data-screen-label="Header" style="padding:88px 40px 48px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:'Reenie Beanie',cursive;font-size:48px;line-height:1;transform:rotate(-3deg);transform-origin:left bottom;width:max-content">grab and go</div>
+    <h1 style="margin:0;font-family:Boldonse,'Archivo Black',Arial,sans-serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.2;text-transform:uppercase">One-offs from the Corner.</h1>
+    <p style="margin:0;max-width:600px;font-size:17px;text-wrap:pretty">Things I use every week, packaged so you can use them tonight. Corner members get everything here at member pricing inside Whop.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:16px">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+        <button onClick="{{ f.pick }}" style="cursor:pointer;border:2px solid #141414;border-radius:999px;padding:6px 18px;font-family:'Reenie Beanie',cursive;font-size:24px;line-height:1;background:{{ f.bg }};color:#141414;transform:rotate({{ f.tilt }}deg);transition:transform .15s" style-hover="transform:rotate({{ f.tiltHover }}deg)">{{ f.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Grid" style="padding:16px 40px 104px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:32px">
+    <sc-for list="{{ visible }}" as="p" hint-placeholder-count="9">
+      <a href="https://whop.com/the-editing-corner" style="display:flex;flex-direction:column;background:#FBF6EA;border:2px solid #141414;border-radius:20px;box-shadow:6px 6px 0 #141414;overflow:hidden;color:#141414;transition:transform .15s" style-hover="transform:translateY(-2px);color:#141414">
+        <div style="height:200px;border-bottom:2px solid #141414;background:repeating-linear-gradient(90deg,#F6E3B4 0 18px,#F5EBD6 18px 36px);display:flex;align-items:center;justify-content:center;padding:20px;position:relative">
+          <span style="background:#FBF6EA;border:2px solid #141414;border-radius:999px;padding:8px 20px;font-family:'Reenie Beanie',cursive;font-size:30px;line-height:1;transform:rotate({{ p.tilt }}deg);text-align:center">{{ p.sticker }}</span>
+          <span style="position:absolute;top:14px;left:16px;font-family:'Archivo Narrow',Arial,sans-serif;font-weight:700;font-size:12px;letter-spacing:0.12em;text-transform:uppercase">{{ p.cat }}</span>
+        </div>
+        <div style="padding:22px 24px 24px;display:flex;flex-direction:column;gap:8px;flex:1">
+          <h3 style="margin:0;font-size:17px;font-weight:600;line-height:1.3">{{ p.title }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.5;flex:1">{{ p.line }}</p>
+          <div style="font-family:'Reenie Beanie',cursive;font-size:32px;line-height:1;color:#D9471F;margin-top:8px">{{ p.price }}</div>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filter: 'All' };
+  // Live in the shop right now. The rest are parked below — uncomment a line
+  // to put that product back, and the category filters pick it up automatically.
+  products = [
+    { cat: 'Guides', title: 'The Hook Bank', line: 'Fifty opening lines sorted by format.', price: 'coming soon', sticker: 'fifty hooks', tilt: 4 }, // price when live: $12
+    { cat: 'Packs', title: 'Font Pairings Pack', line: 'Eight imported pairs: one hook font, one caption font, each.', price: 'coming soon', sticker: 'type pairs', tilt: -3 }, // price when live: $15
+    // { cat: 'Packs', title: 'Caption Style Pack', line: 'Five caption looks, saved as presets. Safe zones included.', price: '$19', sticker: 'captions', tilt: -5 },
+    // { cat: 'Packs', title: 'Preset Pack', line: 'Six CapCut color looks: warm film, clean beauty, moody travel, camcorder, bright dump, night city.', price: '$29', sticker: 'color looks', tilt: 4 },
+    // { cat: 'Packs', title: 'Overlay Pack', line: 'Grain, light leaks, dust, VHS lines, paper. Screen-blend ready.', price: '$19', sticker: 'texture', tilt: 5 },
+    // { cat: 'Packs', title: 'Transition Pack', line: 'Keyframe templates for the six moves everyone asks about.', price: '$19', sticker: 'the six moves', tilt: -4 },
+    // { cat: 'Guides', title: 'Interactive Editing Guides', line: 'One trend, one page, follow-along video and checkpoints.', price: '$12 each', sticker: 'one trend, one page', tilt: 3 },
+    // { cat: 'Templates', title: 'CapCut Template Drops', line: 'My actual project files. Swap your clips in, keep the timing.', price: '$9', sticker: 'project files', tilt: -6 },
+    // { cat: 'Guides', title: 'Shoot + Export Card', line: 'Phone settings, framing, export specs.', price: 'free with any pack', sticker: 'the card', tilt: -2 },
+  ];
+  renderVals() {
+    const cats = ['All', ...['Packs', 'Guides', 'Templates'].filter(c => this.products.some(p => p.cat === c))];
+    const tilts = [-4, 3, -2, 5];
+    const active = this.state.filter;
+    return {
+      filters: cats.map((c, i) => ({
+        label: c, tilt: tilts[i], tiltHover: tilts[i] - 2,
+        bg: active === c ? '#D9471F' : (i % 2 ? '#C8C0EE' : '#F6E3B4'),
+        pick: () => this.setState({ filter: c }),
+      })),
+      visible: active === 'All' ? this.products : this.products.filter(p => p.cat === active),
+    };
+  }
+}
+</script>
